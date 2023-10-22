@@ -113,8 +113,8 @@ class Overworld {
   }
 
   //Load the oxygen bar
-  this.hud = new Hud();
-  this.hud.init(container);
+  this.oxygenBar = new OxygenBar();
+  this.oxygenBar.init(container);
 
   //Load the interface
   this.keyArray = new KeyArray();

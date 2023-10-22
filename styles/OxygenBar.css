@@ -1,0 +1,44 @@
+.OxygenBar {
+  scale: 200%;
+  width: 67px;
+  height: 14px;
+  background: url("/images/ui/oxygen-bar.png") no-repeat no-repeat;
+  position: absolute;
+  image-rendering: pixelated;
+}
+
+.Player_name {
+  position: absolute;
+  left:2px;
+  top:-7px;
+  white-space: nowrap;
+  background: var(--menu-font-color);
+  color: #fff;
+  font-size: 5px; /*This is only so small because the component is scaled 2x in battle which is weird */
+  padding-left: 2px;
+  padding-right: 2px;
+  margin: 0;
+}
+
+.Icon {
+  position: absolute;
+  left: -3.5px;
+  bottom: -4px;
+  right: 40px;
+  width: 28px;
+  height: 28px;
+}
+
+.Oxygen-container {
+  position: absolute;
+  left: 23px;
+  top: 3.5px;
+  width: 26px;
+  height: 8px;
+  border-style: solid;
+  border-color: #3a160d;
+  border-width: 1px;
+}
+.Oxygen-container > rect {
+  transition: width 0.2s;
+}

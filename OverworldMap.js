@@ -176,8 +176,8 @@ window.OverworldMaps = {
               direction: "up"
             },
             {
-              type: "stateChange",
-              damage: 5,
+              type: "updateRoomTracker",
+              incre: 1,
             }
           ]
         }
@@ -904,7 +904,7 @@ window.OverworldMaps = {
           {
             events: [
               { type: "textMessage", text: "You think you have what it takes to cook here?!", faceHero: "diningRoomNpcA" },
-              { type: "updateRoomTracker", value: 2 },
+              { type: "updateRoomTracker", reset: true },
             ]
           },
         ]

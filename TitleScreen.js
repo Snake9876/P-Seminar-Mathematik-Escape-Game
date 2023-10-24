@@ -1,5 +1,6 @@
 class TitleScreen {
   constructor({ progress }) {
+    this.playerName = null;
     this.progress = progress;
   }
 
@@ -30,11 +31,17 @@ class TitleScreen {
     this.element.classList.add("TitleScreen");
     this.element.innerHTML = (`
       <img class="TitleScreen_logo" src="/images/logo.png" alt="Pizza Legends" />
+      <div class="username-container">
+        <input type="text" id="username-input" placeholder="Name">
+      </div>
     `)
-
   }
 
   close() {
+    //Save the player name
+    this.playerName = document.getElementById('username-input').value || "Mathe-Held";
+
+    //Close the menu
     this.keyboardMenu.end();
     this.element.remove();
   }
@@ -45,7 +52,7 @@ class TitleScreen {
       container.appendChild(this.element);
       this.keyboardMenu = new KeyboardMenu();
       this.keyboardMenu.init(this.element);
-      this.keyboardMenu.setOptions(this.getOptions(resolve))
+      this.keyboardMenu.setOptions(this.getOptions(resolve));
     })
   }
 

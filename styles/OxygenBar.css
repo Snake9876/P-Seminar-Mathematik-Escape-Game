@@ -35,9 +35,6 @@
   top: 3.5px;
   width: 26px;
   height: 8px;
-  border-style: solid;
-  border-color: #3a160d;
-  border-width: 1px;
 }
 .Oxygen-container > rect {
   transition: width 0.2s;

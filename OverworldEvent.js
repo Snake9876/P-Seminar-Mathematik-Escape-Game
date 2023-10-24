@@ -72,7 +72,7 @@ class OverworldEvent {
     sceneTransition.init(document.querySelector(".game-container"), () => {
 
       //Open Game-Over-Screen after 5 room changes
-      if (this.map.overworld.roomTracker === 5) {
+      if (this.map.overworld.roomTracker === 20) {
         this.map.overworld.startMap( window.OverworldMaps["Cafeteria"], {
           x: this.event.x,
           y: this.event.y,
@@ -96,9 +96,15 @@ class OverworldEvent {
   }
 
   updateRoomTracker(resolve) {
-    this.map.overworld.roomTracker = this.map.overworld.roomTracker + this.event.value;
-    alert(this.map.overworld.roomTracker)
+    var incre = this.event.incre || 0;
+    var tracker = this.map.overworld.roomTracker;
+    this.map.overworld.roomTracker = tracker + incre;
 
+    if (this.event.reset) {
+      tracker = 0;
+    }
+
+    this.map.overworld.oxygenBar.updateFill(tracker);
     resolve();
   }
 

@@ -1,7 +1,10 @@
 class OxygenBar {
-  constructor() {
-    
+  constructor({ playerName }) {
+    this.playerName = playerName;
+    this.tracker;
   }
+
+  
 
   createElement() {
     this.hudElement = document.createElement("div");
@@ -9,7 +12,7 @@ class OxygenBar {
     //this.hudElement.setAttribute("data-combatant", this.id);
     //this.hudElement.setAttribute("data-team", this.team);
     this.hudElement.innerHTML = (`
-      <p class="Player_name">Lorem</p>
+      <p class="Player_name">${this.playerName}</p>
       <img class="Icon" src="/images/icons/lung.png" />
       <svg viewBox="0 0 24 6" class="Oxygen-container">
         <rect x=0 y=0 width="100%" height=2 fill="#00ffff" />
@@ -18,28 +21,24 @@ class OxygenBar {
       </svg>
     `);
 
-    //this.hpFills = this.hudElement.querySelectorAll(".Oxygen-container > rect");
+    this.fill = this.hudElement.querySelectorAll(".Oxygen-container > rect");
 
   }
 
-  /* update(changes={}) {
-    //Update anything incoming
-    Object.keys(changes).forEach(key => {
-      this[key] = changes[key]
-    });
-
-    //Update active flag to show the correct pizza & hud
-    this.hudElement.setAttribute("data-active", this.isActive);
-    //this.pizzaElement.setAttribute("data-active", this.isActive);
+  updateFill(value) {
 
     //Update oxygen percent fills
-    this.hpFills.forEach(rect => rect.style.width = `${this.hpPercent}%`)
+    this.tracker = value || 0;
+    this.percentage = (1-(Math.floor(this.tracker/4)/5)) * 100;
+    alert('Room Tracker: ' + this.tracker + "/ Percentage: " + this.percentage);
+    this.fill.forEach(rect => rect.style.width = `${this.percentage}%`);
 
-  }*/
+  }
 
   init(container) {
     this.createElement();
     container.appendChild(this.hudElement);
+    this.updateFill();
   }
 
 }

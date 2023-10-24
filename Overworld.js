@@ -22,7 +22,6 @@ class Overworld {
           map: this.map,
         })
       })
-      
 
       //Draw Lower layer
       this.map.drawLowerImage(this.ctx, cameraPerson);
@@ -113,7 +112,9 @@ class Overworld {
   }
 
   //Load the oxygen bar
-  this.oxygenBar = new OxygenBar();
+  this.oxygenBar = new OxygenBar({
+    playerName: this.titleScreen.playerName,
+  });
   this.oxygenBar.init(container);
 
   //Load the interface

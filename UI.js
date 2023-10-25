@@ -1,8 +1,8 @@
-class ButtonArray {
+class UI {
 
   createElement() {
-    this.buttonArrayElement = document.createElement("div");
-    this.buttonArrayElement.classList.add("ButtonArray");
+    this.buttonArrayElement = document.createElement('div');
+    this.buttonArrayElement.classList.add('buttonArray');
     this.buttonArrayElement.innerHTML = (`
       <div class="buttonContainer">
         <button  data-modal-target="#map-modal" id="map-btn" class="keyButton">M</button>
@@ -14,7 +14,10 @@ class ButtonArray {
         <div id="inv-text" class="keyDescription">Inventar</div>
         <div id="notes-text" class="keyDescription">Notizen</div>
       </div>
+      <div id="overlay"></div>
     `);
+    this.overlay = document.createElement('div');
+    this.overlay.classList.add('overlay');
 
     /*this.inventoryElement = document.createElement("div");
     this.inventoryElement.classList.add("Modal");
@@ -31,9 +34,9 @@ class ButtonArray {
       </div>
     `);*/
 
-    this.minimapElement = document.createElement("div");
-    this.minimapElement.classList.add("Modal");
-    this.minimapElement.setAttribute("id", "map-modal");
+    this.minimapElement = document.createElement('div');
+    this.minimapElement.classList.add('Modal');
+    this.minimapElement.setAttribute('id', 'map-modal');
     this.minimapElement.innerHTML = (`
       <div class="modalHeader">
         <div class="title">
@@ -73,7 +76,7 @@ class ButtonArray {
     modal.classList.remove('active');
   }  
 
-  functionality() {
+  uiEvents() {
     this.openModalButtons = document.querySelectorAll('[data-modal-target]');
     this.closeModalButtons = document.querySelectorAll('[data-close-button]');
 
@@ -81,6 +84,7 @@ class ButtonArray {
       button.addEventListener('click', () => {
         const openTarget = document.querySelector(button.dataset.modalTarget);
         this.openModal(openTarget);
+        this.overlay.classList.add('active');
       })
     })
   
@@ -88,6 +92,7 @@ class ButtonArray {
       button.addEventListener('click', () => { 
         const closeTarget = button.closest('.Modal');
         this.closeModal(closeTarget);
+        this.overlay.classList.remove('active');
       })
     })
 
@@ -96,6 +101,7 @@ class ButtonArray {
       const activeModal = document.querySelectorAll('.Modal.active');
   
       if (open.length == 0) {
+        this.overlay.classList.add('active');
         switch (e.key) {
           case 'i':
             this.openModal(document.getElementById('inv-modal'));
@@ -110,6 +116,7 @@ class ButtonArray {
       } else {
         if (e.key === 'Escape') 
         this.closeModal(activeModal);
+        this.overlay.classList.remove('active');
       }
     })
   }   
@@ -133,6 +140,7 @@ class ButtonArray {
   init(container) {
     this.createElement();
     container.appendChild(this.buttonArrayElement);
+    container.appendChild(this.overlay)
     container.appendChild(this.minimapElement);
   }
 

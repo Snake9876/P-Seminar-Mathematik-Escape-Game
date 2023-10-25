@@ -1,0 +1,81 @@
+/*UI*/
+.buttonArray {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+    height: 30px;
+    left: 125px;
+    right: 100px;
+    bottom: 0px;
+    image-rendering: pixelated;
+    background-image: url(/images/ui/interface.png);
+    background-size: cover;
+    z-index: 10;
+}
+
+.buttonContainer {
+    position: absolute;
+    display: flex;
+    justify-content: left;
+    width: 100%;
+    top: 6px;
+}
+
+.keyButton {
+    position: relative;
+    padding: 0;
+    height: 13px;
+    font-family: "Press Start 2P";
+    font-size: 0.5em;
+    background-color: #b6cbd6;
+    border-style: none solid solid none;
+    border-color: #a0b2bc;
+    border-width: 2px;
+}
+
+.keyButton:active {
+    background-color: #a0b2bc;
+    border-color: #666;
+}
+
+#map-btn {
+    left: 9.75px;
+    width: 13px;
+}
+
+#inv-btn {
+    left: 30.6px;
+    width: 13.5px;
+}
+
+#notes-btn {
+    left: 50.9px;
+    width: 13.6px;
+}
+
+.textContainer {
+    position: absolute;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    bottom: 5px;
+}
+
+.keyDescription {
+    font-family: "Press Start 2P";
+    font-size: 2.5px;
+    color: #fff;
+}
+
+#map-text {
+    margin-left: 3px;
+}
+
+#inv-text {
+    margin-left: 10px;
+}
+
+#notes-text {
+    margin-left: 8px;
+}

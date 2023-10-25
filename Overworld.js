@@ -44,7 +44,7 @@ class Overworld {
     }
     step();
 
-    this.buttonArray.functionality();
+    this.ui.uiEvents();
  }
 
  bindActionInput() {
@@ -119,9 +119,9 @@ class Overworld {
   });
   this.oxygenBar.init(container);
 
-  //Load the interface
-  this.buttonArray = new ButtonArray();
-  this.buttonArray.init(container);
+  //Load the UI
+  this.ui = new UI();
+  this.ui.init(container);
 
   //Start the first map
   this.startMap(window.OverworldMaps[this.progress.mapId], initialHeroState );

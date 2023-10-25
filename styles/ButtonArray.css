@@ -1,0 +1,161 @@
+/*Button array*/
+.ButtonArray {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+    height: 30px;
+    left: 125px;
+    right: 100px;
+    image-rendering: pixelated;
+    background-image: url(/images/ui/interface.png);
+    background-size: cover;
+}
+
+.buttonContainer {
+    position: absolute;
+    display: flex;
+    justify-content: left;
+    width: 100%;
+    top: 6px;
+}
+
+.keyButton {
+    position: relative;
+    padding: 0;
+    height: 13px;
+    font-family: "Press Start 2P";
+    font-size: 0.5em;
+    background-color: #b6cbd6;
+    border-style: none solid solid none;
+    border-color: #a0b2bc;
+    border-width: 2px;
+}
+
+.keyButton:active {
+    background-color: #a0b2bc;
+    border-color: #666;
+}
+
+#map-btn {
+    left: 9.75px;
+    width: 13px;
+}
+
+#inv-btn {
+    left: 30.6px;
+    width: 13.5px;
+}
+
+#notes-btn {
+    left: 50.9px;
+    width: 13.6px;
+}
+
+.textContainer {
+    position: absolute;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    bottom: 5px;
+}
+
+.keyDescription {
+    font-family: "Press Start 2P";
+    font-size: 2.5px;
+    color: #fff;
+}
+
+#map-text {
+    margin-left: 3px;
+}
+
+#inv-text {
+    margin-left: 10px;
+}
+
+#notes-text {
+    margin-left: 8px;
+}
+
+
+/*Modals*/
+
+.Modal {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+    border: 1px solid #999;
+    border-radius: 10px;
+    z-index: 20;
+    background-color: #444;
+    width: 80px;
+}
+
+.Modal.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.modalHeader {
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #999;
+    color: #fff;
+}
+
+.modalHeader .title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    font-family: "Press Start 2P";
+}
+
+.modalHeader .closeBtn {
+    cursor: pointer;
+    color: #fff;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.modalContent {
+    padding: 10px 15px;
+    color: #fff;
+    font-family: "Press Start 2P";
+    display: flex;
+    flex-direction: column;
+}
+
+/*
+
+
+.inv-row {
+    padding: 10px 0px;
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+}
+
+.inv-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 120px;
+    border-radius: 20px;
+    background: linear-gradient(223deg, #8a8a8a -3.44%, rgba(217, 217, 217, 0.00) 105%);
+}
+
+
+#editableDiv {
+    height: 300px;
+    overflow: auto;
+} 
+*/

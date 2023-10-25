@@ -1,10 +1,12 @@
 .OxygenBar {
-  scale: 200%;
+  scale: 150%;
   width: 67px;
   height: 14px;
   background: url("/images/ui/oxygen-bar.png") no-repeat no-repeat;
   position: absolute;
   image-rendering: pixelated;
+  top: 20px;
+  left: 20px;
 }
 
 .Player_name {
@@ -32,7 +34,7 @@
 .Oxygen-container {
   position: absolute;
   left: 23px;
-  top: 3.5px;
+  top: 3px;
   width: 26px;
   height: 8px;
 }

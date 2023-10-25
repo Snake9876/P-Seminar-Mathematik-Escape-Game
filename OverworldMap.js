@@ -331,6 +331,10 @@ window.OverworldMaps = {
               x: utils.withGrid(7),
               y: utils.withGrid(10),
               direction: "up"
+            },
+            {
+              type: "updateRoomTracker",
+              incre: 1,
             }
           ]
         }
@@ -344,6 +348,10 @@ window.OverworldMaps = {
               x: utils.withGrid(6),
               y: utils.withGrid(10),
               direction: "up"
+            },
+            {
+              type: "updateRoomTracker",
+              incre: 1,
             }
           ]
         }

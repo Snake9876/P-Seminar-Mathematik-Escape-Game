@@ -30,7 +30,6 @@ class OxygenBar {
     //Update oxygen percent fills
     this.tracker = value || 0;
     this.percentage = (1-(Math.floor(this.tracker/4)/5)) * 100;
-    alert('Room Tracker: ' + this.tracker + "/ Percentage: " + this.percentage);
     this.fill.forEach(rect => rect.style.width = `${this.percentage}%`);
 
   }

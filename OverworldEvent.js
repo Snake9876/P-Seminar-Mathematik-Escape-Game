@@ -97,14 +97,13 @@ class OverworldEvent {
 
   updateRoomTracker(resolve) {
     var incre = this.event.incre || 0;
-    var tracker = this.map.overworld.roomTracker;
-    this.map.overworld.roomTracker = tracker + incre;
+    this.map.overworld.roomTracker = this.map.overworld.roomTracker + incre;
 
     if (this.event.reset) {
-      tracker = 0;
+      this.map.overworld.roomTracker = 0;
     }
 
-    this.map.overworld.oxygenBar.updateFill(tracker);
+    this.map.overworld.oxygenBar.updateFill(this.map.overworld.roomTracker);
     resolve();
   }
 

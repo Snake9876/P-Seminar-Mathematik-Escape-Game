@@ -173,11 +173,9 @@ window.OverworldMaps = {
               map: "Hallway1",
               x: utils.withGrid(7),
               y: utils.withGrid(6),
-              direction: "up"
-            },
-            {
-              type: "updateRoomTracker",
-              incre: 1,
+              direction: "up",
+              face: "down",
+              resetTracker: true, 
             }
           ]
         }
@@ -190,7 +188,8 @@ window.OverworldMaps = {
               map: "Hallway1",
               x: utils.withGrid(6),
               y: utils.withGrid(6),
-              direction: "up"
+              direction: "up",
+              face: "down",
             }
           ]
         }
@@ -317,7 +316,9 @@ window.OverworldMaps = {
               map: "Cafeteria",
               x: utils.withGrid(13),
               y: utils.withGrid(9),
-              direction: "left"
+              direction: "left",
+              face: "up",
+              updateTracker: 1,
             }
           ]
         }
@@ -331,10 +332,6 @@ window.OverworldMaps = {
               x: utils.withGrid(7),
               y: utils.withGrid(10),
               direction: "up"
-            },
-            {
-              type: "updateRoomTracker",
-              incre: 1,
             }
           ]
         }
@@ -348,10 +345,6 @@ window.OverworldMaps = {
               x: utils.withGrid(6),
               y: utils.withGrid(10),
               direction: "up"
-            },
-            {
-              type: "updateRoomTracker",
-              incre: 1,
             }
           ]
         }
@@ -911,8 +904,12 @@ window.OverworldMaps = {
         talking: [
           {
             events: [
-              { type: "textMessage", text: "You think you have what it takes to cook here?!", faceHero: "diningRoomNpcA" },
-              { type: "updateRoomTracker", reset: true },
+              { 
+                type: "textMessage", 
+                text: "You think you have what it takes to cook here?!", 
+                faceHero: "diningRoomNpcA", 
+                resetTracker: true, 
+              },
             ]
           },
         ]
@@ -979,7 +976,9 @@ window.OverworldMaps = {
               map: "Hallway2",
               x: utils.withGrid(1),
               y: utils.withGrid(7),
-              direction: "right"
+              direction: "right",
+              face: "up",
+              updateTracker: 1,
             }
           ]
         }
@@ -992,7 +991,9 @@ window.OverworldMaps = {
               map: "Hallway1",
               x: utils.withGrid(5),
               y: utils.withGrid(2),
-              direction: "down"
+              direction: "down",
+              face: "right",
+              updateTracker: 1,
             }
           ]
         }
@@ -1004,7 +1005,7 @@ window.OverworldMaps = {
       "9,4","10,5","11,5","12,5","11,7","12,7","2,7","3,7","4,7","7,7","8,7","9,7",
       "2,10","3,10","4,10","7,10","8,10","9,10","1,12","2,12","3,12","4,12","5,12",
       "6,12","7,12","8,12","9,12","10,12","11,12","12,12","0,4","0,5","0,6","0,7",
-      "0,8","0,9","0,10","0,11","13,4","13,5","13,6","13,8","13,10","13,11",
+      "0,8","0,9","0,10","0,11","13,4","13,5","13,6","13,8", "14,9","13,10","13,11",
       ].forEach(coord => {
         let [x,y] = coord.split(",");
         walls[utils.asGridCoord(x,y)] = true;

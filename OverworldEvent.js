@@ -46,6 +46,8 @@ class OverworldEvent {
 
   textMessage(resolve) {
 
+    this.updateRoomTracker();
+
     if (this.event.faceHero) {
       const obj = this.map.gameObjects[this.event.faceHero];
       obj.direction = utils.oppositeDirection(this.map.gameObjects["hero"].direction);
@@ -59,52 +61,59 @@ class OverworldEvent {
       onComplete: () => resolve()
     })
     message.init( document.querySelector(".game-container") )
+
   }
 
   changeMap(resolve) {
 
-    //Deactivate old objects
-    Object.values(this.map.gameObjects).forEach(obj => {
-      obj.isMounted = false;
-    })
+    const face = this.map.gameObjects[ 'hero' ].direction;
 
-    const sceneTransition = new SceneTransition();
-    sceneTransition.init(document.querySelector(".game-container"), () => {
+    if (face != (this.event.face || "down")) {
+      resolve()
+    } else {
+      this.updateRoomTracker();
 
-      //Open Game-Over-Screen after 5 room changes
-      if (this.map.overworld.roomTracker === 20) {
-        this.map.overworld.startMap( window.OverworldMaps["Cafeteria"], {
-          x: this.event.x,
-          y: this.event.y,
-          direction: this.event.direction,
-        });
-      } else {
-        this.map.overworld.startMap( window.OverworldMaps[this.event.map], {
-          x: this.event.x,
-          y: this.event.y,
-          direction: this.event.direction,
-        }); 
-      }
+      //Deactivate old objects
+      Object.values(this.map.gameObjects).forEach(obj => {
+        obj.isMounted = false;
+      })
 
-      resolve();
-      sceneTransition.fadeOut();
+      const sceneTransition = new SceneTransition();
+      sceneTransition.init(document.querySelector(".game-container"), () => {
 
-      //Updates player state
+        //Open Game-Over-Screen after 20 room changes
+        if (this.map.overworld.roomTracker === 20) {
+          this.map.overworld.startMap( window.OverworldMaps["Cafeteria"], {
+            x: this.event.x,
+            y: this.event.y,
+            direction: this.event.direction,
+          });
+        } else {
+          this.map.overworld.startMap( window.OverworldMaps[this.event.map], {
+            x: this.event.x,
+            y: this.event.y,
+            direction: this.event.direction,
+          }); 
+        }
 
-      utils.emitEvent("PlayerStateUpdated")
-    })
+        resolve();
+        sceneTransition.fadeOut();
+
+      })
+    }
   }
 
-  updateRoomTracker(resolve) {
-    var incre = this.event.incre || 0;
-    this.map.overworld.roomTracker = this.map.overworld.roomTracker + incre;
+  updateRoomTracker() {
+    this.resetTracker = this.event.resetTracker || false;
+    alert(this.resetTracker);
 
-    if (this.event.reset) {
+    this.map.overworld.roomTracker = this.map.overworld.roomTracker + (this.event.updateTracker || 0);
+    this.map.overworld.oxygenBar.updateFill(this.map.overworld.roomTracker);
+
+    if (this.resetTracker) {
+      alert("Helo")
       this.map.overworld.roomTracker = 0;
     }
-
-    this.map.overworld.oxygenBar.updateFill(this.map.overworld.roomTracker);
-    resolve();
   }
 
   pause(resolve) {

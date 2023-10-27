@@ -64,61 +64,6 @@ class UI {
       </div>
     `);*/
 
-  }
-
-  openModal(modal) {
-    if(modal == null) return
-    modal.classList.add('active');
-  }
-
-  closeModal(modal) {
-    if(modal == null) return
-    modal.classList.remove('active');
-  }  
-
-  uiEvents() {
-    this.openModalButtons = document.querySelectorAll('[data-modal-target]');
-    this.closeModalButtons = document.querySelectorAll('[data-close-button]');
-
-    this.openModalButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        const openTarget = document.querySelector(button.dataset.modalTarget);
-        this.openModal(openTarget);
-        this.overlay.classList.add('active');
-      })
-    })
-  
-    this.closeModalButtons.forEach(button => {
-      button.addEventListener('click', () => { 
-        const closeTarget = button.closest('.Modal');
-        this.closeModal(closeTarget);
-        this.overlay.classList.remove('active');
-      })
-    })
-
-    //Opens and closes modals with appropriate keys
-    document.addEventListener('keydown', (e) =>   {
-      const activeModal = document.querySelectorAll('.Modal.active');
-  
-      if (open.length == 0) {
-        this.overlay.classList.add('active');
-        switch (e.key) {
-          case 'i':
-            this.openModal(document.getElementById('inv-modal'));
-            break;
-          case 'm': 
-            this.openModal(document.getElementById('map-modal'));
-            break;
-          case 'n': 
-            this.openModal(document.getElementById('notes-modal'));
-            break;
-        } 
-      } else {
-        if (e.key === 'Escape') 
-        this.closeModal(activeModal);
-        this.overlay.classList.remove('active');
-      }
-    })
   }   
         
        /*Note-Modal

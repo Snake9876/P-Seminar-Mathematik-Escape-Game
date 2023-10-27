@@ -175,7 +175,7 @@ window.OverworldMaps = {
               y: utils.withGrid(6),
               direction: "up",
               face: "down",
-              resetTracker: true, 
+              updateTracker: 1, 
             }
           ]
         }
@@ -190,6 +190,7 @@ window.OverworldMaps = {
               y: utils.withGrid(6),
               direction: "up",
               face: "down",
+              updateTracker: 1, 
             }
           ]
         }
@@ -331,7 +332,9 @@ window.OverworldMaps = {
               map: "CommandBridge",
               x: utils.withGrid(7),
               y: utils.withGrid(10),
-              direction: "up"
+              direction: "up",
+              face: "down",
+              updateTracker: 1, 
             }
           ]
         }
@@ -344,7 +347,9 @@ window.OverworldMaps = {
               map: "CommandBridge",
               x: utils.withGrid(6),
               y: utils.withGrid(10),
-              direction: "up"
+              direction: "up",
+              face: "down",
+              updateTracker: 1, 
             }
           ]
         }
@@ -357,7 +362,9 @@ window.OverworldMaps = {
               map: "Hallway2",
               x: utils.withGrid(2),
               y: utils.withGrid(8),
-              direction: "up"
+              direction: "up",              
+              face: "up",
+              updateTracker: 1, 
             }
           ]
         }
@@ -370,7 +377,9 @@ window.OverworldMaps = {
               map: "Hallway2",
               x: utils.withGrid(3),
               y: utils.withGrid(8),
-              direction: "up"
+              direction: "up",
+              face: "up",
+              updateTracker: 1, 
             }
           ]
         }
@@ -383,7 +392,9 @@ window.OverworldMaps = {
               map: "Hallway2",
               x: utils.withGrid(4),
               y: utils.withGrid(8),
-              direction: "up"
+              direction: "up",
+              face: "up",
+              updateTracker: 1, 
             }
           ]
         }
@@ -478,7 +489,9 @@ window.OverworldMaps = {
               map: "Cafeteria",
               x: utils.withGrid(7),
               y: utils.withGrid(3),
-              direction: "down"
+              direction: "down",
+              face: "left",
+              updateTracker: 1, 
             }
           ]
         }
@@ -491,7 +504,9 @@ window.OverworldMaps = {
               map: "O2",
               x: utils.withGrid(7),
               y: utils.withGrid(10),
-              direction: "up"
+              direction: "up",
+              face: "left",
+              updateTracker: 1, 
             }
           ]
         }
@@ -504,7 +519,9 @@ window.OverworldMaps = {
               map: "Quarters",
               x: utils.withGrid(6),
               y: utils.withGrid(10),
-              direction: "up"
+              direction: "up",
+              face: "right",
+              updateTracker: 1, 
             }
           ]
         }
@@ -517,7 +534,9 @@ window.OverworldMaps = {
               map: "Hallway1",
               x: utils.withGrid(8),
               y: utils.withGrid(1),
-              direction: "down"
+              direction: "down",
+              face: "down",
+              updateTracker: 1, 
             }
           ]
         }
@@ -530,7 +549,9 @@ window.OverworldMaps = {
               map: "Hallway1",
               x: utils.withGrid(9),
               y: utils.withGrid(1),
-              direction: "down"
+              direction: "down",
+              face: "down",
+              updateTracker: 1, 
             }
           ]
         }
@@ -543,7 +564,9 @@ window.OverworldMaps = {
               map: "Hallway1",
               x: utils.withGrid(10),
               y: utils.withGrid(1),
-              direction: "down"
+              direction: "down",
+              face: "down",
+              updateTracker: 1, 
             }
           ]
         }
@@ -556,7 +579,9 @@ window.OverworldMaps = {
               map: "Corner",
               x: utils.withGrid(2),
               y: utils.withGrid(5),
-              direction: "up"
+              direction: "up",
+              face: "up",
+              updateTracker: 1, 
             }
           ]
         }
@@ -569,7 +594,9 @@ window.OverworldMaps = {
               map: "Corner",
               x: utils.withGrid(3),
               y: utils.withGrid(5),
-              direction: "up"
+              direction: "up",
+              face: "up",
+              updateTracker: 1, 
             }
           ]
         }
@@ -582,7 +609,9 @@ window.OverworldMaps = {
               map: "Corner",
               x: utils.withGrid(4),
               y: utils.withGrid(5),
-              direction: "up"
+              direction: "up",
+              face: "up",
+              updateTracker: 1, 
             }
           ]
         }
@@ -677,7 +706,9 @@ window.OverworldMaps = {
               map: "Hallway2",
               x: utils.withGrid(2),
               y: utils.withGrid(1),
-              direction: "down"
+              direction: "down",
+              face: "down",
+              updateTracker: 1, 
             }
           ]
         }
@@ -690,7 +721,9 @@ window.OverworldMaps = {
               map: "Hallway2",
               x: utils.withGrid(3),
               y: utils.withGrid(1),
-              direction: "down"
+              direction: "down",
+              face: "down",
+              updateTracker: 1, 
             }
           ]
         }
@@ -703,7 +736,9 @@ window.OverworldMaps = {
               map: "Hallway2",
               x: utils.withGrid(4),
               y: utils.withGrid(1),
-              direction: "down"
+              direction: "down",
+              face: "down",
+              updateTracker: 1, 
             }
           ]
         }
@@ -716,7 +751,9 @@ window.OverworldMaps = {
               map: "Hallway3",
               x: utils.withGrid(4),
               y: utils.withGrid(11),
-              direction: "up"
+              direction: "up",
+              face: "left",
+              updateTracker: 1, 
             }
           ]
         }
@@ -729,7 +766,9 @@ window.OverworldMaps = {
               map: "Hallway3",
               x: utils.withGrid(3),
               y: utils.withGrid(11),
-              direction: "up"
+              direction: "up",
+              face: "left",
+              updateTracker: 1, 
             }
           ]
         }
@@ -742,7 +781,9 @@ window.OverworldMaps = {
               map: "Hallway3",
               x: utils.withGrid(2),
               y: utils.withGrid(11),
-              direction: "up"
+              direction: "up",
+              face: "left",
+              updateTracker: 1, 
             }
           ]
         }
@@ -840,6 +881,8 @@ window.OverworldMaps = {
               x: utils.withGrid(1),
               y: utils.withGrid(4),
               direction: "right",
+              face: "down",
+              updateTracker: 1, 
             }
           ]
         }
@@ -852,7 +895,9 @@ window.OverworldMaps = {
               map: "Corner",
               x: utils.withGrid(1),
               y: utils.withGrid(3),
-              direction: "right"
+              direction: "right",
+              face: "down",
+              updateTracker: 1, 
             }
           ]
         }
@@ -865,7 +910,9 @@ window.OverworldMaps = {
               map: "Corner",
               x: utils.withGrid(1),
               y: utils.withGrid(2),
-              direction: "right"
+              direction: "right",
+              face: "down",
+              updateTracker: 1, 
             }
           ]
         }
@@ -878,7 +925,9 @@ window.OverworldMaps = {
               map: "Comms",
               x: utils.withGrid(5),
               y: utils.withGrid(1),
-              direction: "down"
+              direction: "down",
+              face: "left",
+              updateTracker: 1, 
             }
           ]
         }

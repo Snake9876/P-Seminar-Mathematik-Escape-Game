@@ -2,6 +2,8 @@ class OverworldEvent {
   constructor({ map, event }) {
     this.map = map;
     this.event = event;
+    this.updateTracker = this.event.updateTracker || 0;
+    this.resetTracker = this.event.resetTracker || false;
   }
 
   stand(resolve) {
@@ -46,8 +48,6 @@ class OverworldEvent {
 
   textMessage(resolve) {
 
-    this.updateRoomTracker();
-
     if (this.event.faceHero) {
       const obj = this.map.gameObjects[this.event.faceHero];
       obj.direction = utils.oppositeDirection(this.map.gameObjects["hero"].direction);
@@ -60,7 +60,11 @@ class OverworldEvent {
       text: this.event.text,
       onComplete: () => resolve()
     })
-    message.init( document.querySelector(".game-container") )
+    message.init( document.querySelector(".game-container") );
+
+    if (this.updateTracker!=0 || this.resetTracker) {
+      this.updateRoomTracker();
+    }
 
   }
 
@@ -71,7 +75,6 @@ class OverworldEvent {
     if (face != (this.event.face || "down")) {
       resolve()
     } else {
-      this.updateRoomTracker();
 
       //Deactivate old objects
       Object.values(this.map.gameObjects).forEach(obj => {
@@ -96,6 +99,10 @@ class OverworldEvent {
           }); 
         }
 
+        if (this.updateTracker!=0 || this.resetTracker) {
+          this.updateRoomTracker();
+        }
+
         resolve();
         sceneTransition.fadeOut();
 
@@ -104,16 +111,16 @@ class OverworldEvent {
   }
 
   updateRoomTracker() {
-    this.resetTracker = this.event.resetTracker || false;
-    alert(this.resetTracker);
-
-    this.map.overworld.roomTracker = this.map.overworld.roomTracker + (this.event.updateTracker || 0);
-    this.map.overworld.oxygenBar.updateFill(this.map.overworld.roomTracker);
 
     if (this.resetTracker) {
-      alert("Helo")
+      //Resets tracker
       this.map.overworld.roomTracker = 0;
+    } else {
+        //Updates tracker
+        this.map.overworld.roomTracker = this.map.overworld.roomTracker + (this.event.updateTracker || 0);
     }
+
+    this.map.overworld.oxygenBar.updateFill(this.map.overworld.roomTracker);
   }
 
   pause(resolve) {
@@ -129,19 +136,70 @@ class OverworldEvent {
     menu.init(document.querySelector(".game-container"));
   }
 
-  addStoryFlag(resolve) {
-    window.playerState.storyFlags[this.event.flag] = true;
+  openModal(modal) {
+    if(modal == null) return
+    modal.classList.add('active');
+    this.map.isPaused = true;
+  }
+
+  closeModal(modal) {
+    if(modal == null) return
+    modal.classList.remove('active');
+    this.map.isPaused = false;
+    this.map.overworld.startGameLoop();
+  }  
+
+  uiEvents(resolve) {
+    this.openModalButtons = document.querySelectorAll('[data-modal-target]');
+    this.closeModalButtons = document.querySelectorAll('[data-close-button]');
+    this.overlay = document.querySelector(".overlay");
+
+    this.openModalButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const openTarget = document.querySelector(button.dataset.modalTarget);
+        this.openModal(openTarget);
+        this.overlay.classList.add('active');
+      })
+    })
+  
+    this.closeModalButtons.forEach(button => {
+      button.addEventListener('click', () => { 
+        const closeTarget = button.closest('.Modal');
+        this.closeModal(closeTarget);
+        this.overlay.classList.remove('active');
+      })
+    })
+
+    //Opens and closes modals with appropriate keys
+    document.addEventListener('keydown', (e) =>   {
+      const activeModal = document.querySelectorAll('.Modal.active');
+  
+      if (open.length == 0) {
+        this.overlay.classList.add('active');
+        switch (e.key) {
+          case 'i':
+            this.openModal(document.getElementById('inv-modal'));
+            break;
+          case 'm': 
+            this.openModal(document.getElementById('map-modal'));
+            break;
+          case 'n': 
+            this.openModal(document.getElementById('notes-modal'));
+            break;
+        } 
+      } else {
+        if (e.key === 'Escape') 
+        this.closeModal(activeModal);
+        this.overlay.classList.remove('active');
+      }
+    })
+
     resolve();
   }
 
-  craftingMenu(resolve) {
-    const menu = new CraftingMenu({
-      pizzas: this.event.pizzas,
-      onComplete: () => {
-        resolve();
-      }
-    })
-    menu.init(document.querySelector(".game-container"))
+  addStoryFlag(resolve) {
+    window.playerState.storyFlags[this.event.flag] = true;
+    resolve();
   }
 
   init() {

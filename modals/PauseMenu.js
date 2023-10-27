@@ -8,25 +8,27 @@ class PauseMenu {
 
     //Case 1: Show the first page of options
     if (pageKey === "root") {
-      const lineupPizzas = playerState.lineup.map(id => {
-        const {pizzaId} = playerState.pizzas[id];
-        const base = Pizzas[pizzaId];
-        return {
-          label: base.name,
-          description: base.description,
-          handler: () => {
-            this.keyboardMenu.setOptions( this.getOptions(id) )
-          }
-        }
-      })
       return [
-        ...lineupPizzas,
+        {
+          label: "Help",
+          description: "Get a cue",
+          handler: () => {
+            alert('Help!');
+          }
+        },
         {
           label: "Save",
           description: "Save your progress",
           handler: () => {
             this.progress.save();
             this.close();
+          }
+        },
+        {
+          label: "GitHub",
+          description: "Visit our GitHub Page",
+          handler: () => {
+            window.open('https://github.com/Snake9876/P-Seminar-Mathematik-Escape-Game', '_blank').focus();;
           }
         },
         {
@@ -39,7 +41,7 @@ class PauseMenu {
       ]
     }
 
-    //Case 2: Show the options for just one pizza (by id)
+    /*Case 2: Show the options for just one pizza (by id)
     const unequipped = Object.keys(playerState.pizzas).filter(id => {
       return playerState.lineup.indexOf(id) === -1;
     }).map(id => {
@@ -72,7 +74,7 @@ class PauseMenu {
           this.keyboardMenu.setOptions( this.getOptions("root") );
         }
       }
-    ];
+    ];*/
   }
 
   createElement() {

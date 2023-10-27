@@ -1,81 +1,126 @@
-/*UI*/
 .buttonArray {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    width: 100px;
-    height: 30px;
-    left: 125px;
-    right: 100px;
-    bottom: 0;
-    image-rendering: pixelated;
-    background-image: url(/images/ui/interface.png);
-    background-size: cover;
-    z-index: 10;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+  height: 30px;
+  left: 125px;
+  right: 100px;
+  bottom: 0;
+  image-rendering: pixelated;
+  background-image: url(/images/ui/interface.png);
+  background-size: cover;
+  z-index: 10;
 }
 
 .buttonContainer {
-    position: absolute;
-    display: flex;
-    justify-content: left;
-    width: 100%;
-    top: 6px;
+  position: absolute;
+  display: flex;
+  justify-content: left;
+  width: 100%;
+  top: 6px;
 }
 
 .keyButton {
-    position: relative;
-    padding: 0;
-    height: 13px;
-    font-family: "Press Start 2P";
-    font-size: 0.5em;
-    background-color: #b6cbd6;
-    border-style: none solid solid none;
-    border-color: #a0b2bc;
-    border-width: 2px;
+  position: relative;
+  padding: 0;
+  height: 13px;
+  font-family: "Press Start 2P";
+  font-size: 0.5em;
+  background-color: #b6cbd6;
+  border-style: none solid solid none;
+  border-color: #a0b2bc;
+  border-width: 2px;
 }
 
 .keyButton:active {
-    background-color: #a0b2bc;
-    border-color: #666;
+  background-color: #a0b2bc;
+  border-color: #666;
 }
 
 #map-btn {
-    left: 9.75px;
-    width: 13px;
+  left: 9.75px;
+  width: 13px;
 }
 
 #inv-btn {
-    left: 30.6px;
-    width: 13.5px;
+  left: 30.6px;
+  width: 13.5px;
 }
 
 #notes-btn {
-    left: 50.9px;
-    width: 13.6px;
+  left: 50.9px;
+  width: 13.6px;
 }
 
 .textContainer {
-    position: absolute;
-    display: flex;
-    justify-content: space-evenly;
-    width: 100%;
-    bottom: 5px;
+  position: absolute;
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  bottom: 5px;
 }
 
 .keyDescription {
-    font-family: "Press Start 2P";
-    font-size: 2.5px;
-    color: #fff;
+  font-family: "Press Start 2P";
+  font-size: 2.5px;
+  color: #fff;
 }
 
 #map-text {
-    margin-left: 3px;
+  margin-left: 3px;
 }
 
 #inv-text {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 
 #notes-text {
-    margin-left: 8px;
+  margin-left: 8px;
+}
+
+
+
+.OxygenBar {
+  scale: 150%;
+  width: 67px;
+  height: 14px;
+  background: url("/images/ui/oxygen-bar.png") no-repeat no-repeat;
+  position: absolute;
+  image-rendering: pixelated;
+  top: 20px;
+  left: 20px;
+}
+
+.Player_name {
+  position: absolute;
+  left:2px;
+  top:-7px;
+  white-space: nowrap;
+  background: var(--menu-font-color);
+  color: #fff;
+  font-size: 5px; /*This is only so small because the component is scaled 2x in battle which is weird */
+  padding-left: 2px;
+  padding-right: 2px;
+  margin: 0;
+}
+
+.Icon {
+  position: absolute;
+  left: -3.5px;
+  bottom: -4px;
+  right: 40px;
+  width: 28px;
+  height: 28px;
+}
+
+.Oxygen-container {
+  position: absolute;
+  left: 23px;
+  top: 3px;
+  width: 26px;
+  height: 8px;
+}
+.Oxygen-container > rect {
+  transition: width 0.2s;
 }

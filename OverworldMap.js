@@ -133,7 +133,10 @@ window.OverworldMaps = {
         talking: [
           {
             events: [
-              { type: "textMessage", text: "** They don't want to talk to you **",},
+              { 
+                type: "openModal", 
+                modalRef: "PauseMenu"
+              },
             ]
           }
         ]

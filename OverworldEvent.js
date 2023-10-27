@@ -4,6 +4,10 @@ class OverworldEvent {
     this.event = event;
     this.updateTracker = this.event.updateTracker || 0;
     this.resetTracker = this.event.resetTracker || false;
+    this.classMap = {
+      "PauseMenu": PauseMenu,
+      "uiModals": uiModals,
+    };
   }
 
   stand(resolve) {
@@ -120,12 +124,13 @@ class OverworldEvent {
         this.map.overworld.roomTracker = this.map.overworld.roomTracker + (this.event.updateTracker || 0);
     }
 
-    this.map.overworld.oxygenBar.updateFill(this.map.overworld.roomTracker);
+    this.map.overworld.ui.updateFill(this.map.overworld.roomTracker);
   }
 
-  pause(resolve) {
+  openModal(resolve) {
     this.map.isPaused = true;
-    const menu = new PauseMenu({
+
+    const modal = new this.classMap[this.event.modalRef]({
       progress: this.map.overworld.progress,
       onComplete: () => {
         resolve();
@@ -133,10 +138,10 @@ class OverworldEvent {
         this.map.overworld.startGameLoop();
       }
     });
-    menu.init(document.querySelector(".game-container"));
+    modal.init(document.querySelector(".game-container"));
   }
 
-  openModal(modal) {
+  /*openModal(modal) {
     if(modal == null) return
     modal.classList.add('active');
     this.map.isPaused = true;
@@ -147,7 +152,7 @@ class OverworldEvent {
     modal.classList.remove('active');
     this.map.isPaused = false;
     this.map.overworld.startGameLoop();
-  }  
+  } 
 
   uiEvents(resolve) {
     this.openModalButtons = document.querySelectorAll('[data-modal-target]');
@@ -195,7 +200,7 @@ class OverworldEvent {
     })
 
     resolve();
-  }
+  }*/
 
   addStoryFlag(resolve) {
     window.playerState.storyFlags[this.event.flag] = true;

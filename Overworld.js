@@ -43,8 +43,6 @@ class Overworld {
       }
     }
     step();
-
-    this.ui.uiEvents();
  }
 
  bindActionInput() {
@@ -55,10 +53,43 @@ class Overworld {
    new KeyPressListener("Escape", () => {
      if (!this.map.isCutscenePlaying) {
       this.map.startCutscene([
-        { type: "pause" }
+        { 
+          type: "openModal", 
+          modalRef: "PauseMenu"
+        }
       ])
      }
    })
+  new KeyPressListener("m", () => {
+    if (!this.map.isCutscenePlaying) {
+     this.map.startCutscene([
+       { 
+         type: "openModal", 
+         modalRef: "PauseMenu"
+       }
+     ])
+    }
+  })
+  new KeyPressListener("i", () => {
+    if (!this.map.isCutscenePlaying) {
+     this.map.startCutscene([
+       { 
+         type: "openModal", 
+         modalRef: "uiModals"
+       }
+     ])
+    }
+  })
+  new KeyPressListener("n", () => {
+    if (!this.map.isCutscenePlaying) {
+     this.map.startCutscene([
+       { 
+         type: "openModal", 
+         modalRef: "PauseMenu"
+       }
+     ])
+    }
+  })
  }
 
  bindHeroPositionCheck() {
@@ -113,14 +144,10 @@ class Overworld {
     }
   }
 
-  //Load the oxygen bar
-  this.oxygenBar = new OxygenBar({
+  //Load the UI
+  this.ui = new UI({
     playerName: this.titleScreen.playerName,
   });
-  this.oxygenBar.init(container);
-
-  //Load the UI
-  this.ui = new UI();
   this.ui.init(container);
 
   //Start the first map

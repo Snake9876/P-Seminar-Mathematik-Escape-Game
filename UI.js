@@ -1,6 +1,11 @@
 class UI {
+  constructor({ playerName }) {
+    this.playerName = playerName;
+    this.tracker;
+  }
 
   createElement() {
+    //Button Array
     this.buttonArrayElement = document.createElement('div');
     this.buttonArrayElement.classList.add('buttonArray');
     this.buttonArrayElement.innerHTML = (`
@@ -16,77 +21,40 @@ class UI {
       </div>
       <div id="overlay"></div>
     `);
-    this.overlay = document.createElement('div');
-    this.overlay.classList.add('overlay');
 
-    /*this.inventoryElement = document.createElement("div");
-    this.inventoryElement.classList.add("Modal");
-    this.inventoryElement.innerHTML = (`
-      <div class="button-container">
-        <button id="map-btn" class="key-button">M</button>
-        <button id="inv-btn" class="key-button">I</button>
-        <button id="notes-btn" class="key-button">N</button>
-      </div>
-      <div class="text-container">
-        <div id="map-text" class="key-description">Karte</div>
-        <div id="inv-text" class="key-description">Inventar</div>
-        <div id="notes-text" class="key-description">Notizen</div>
-      </div>
-    `);*/
-
-    this.minimapElement = document.createElement('div');
-    this.minimapElement.classList.add('Modal');
-    this.minimapElement.setAttribute('id', 'map-modal');
-    this.minimapElement.innerHTML = (`
-      <div class="modalHeader">
-        <div class="title">
-            Map Modal
-        </div>
-        <button data-close-button class="closeBtn">&times;</button>
-      </div>
-      <div class="modalContent">
-        <img src="/images/maps/DemoBattle.png">
-      </div>
+    //Oxygen Bar
+    this.element = document.createElement("div");
+    this.element.classList.add("OxygenBar");
+    //this.hudElement.setAttribute("data-combatant", this.id);
+    //this.hudElement.setAttribute("data-team", this.team);
+    this.element.innerHTML = (`
+      <p class="Player_name">${this.playerName}</p>
+      <img class="Icon" src="/images/icons/lung.png" />
+      <svg viewBox="0 0 24 5" class="Oxygen-container">
+        <rect x=0 y=0 width="100%" height=1 fill="#00ffff" />
+        <rect x=0 y=1 width="100%" height=3 fill="#08daff" />
+        <rect x=0 y=4 width="100%" height=1 fill="#00b3ff" />
+      </svg>
     `);
 
-    /*this.notesElement = document.createElement("div");
-    this.notesElement.classList.add("Modal");
-    this.notesElement.innerHTML = (`
-      <div class="button-container">
-        <button id="map-btn" class="key-button">M</button>
-        <button id="inv-btn" class="key-button">I</button>
-        <button id="notes-btn" class="key-button">N</button>
-      </div>
-      <div class="text-container">
-        <div id="map-text" class="key-description">Karte</div>
-        <div id="inv-text" class="key-description">Inventar</div>
-        <div id="notes-text" class="key-description">Notizen</div>
-      </div>
-    `);*/
+    this.fill = this.element.querySelectorAll(".Oxygen-container > rect");
 
-  }   
-        
-       /*Note-Modal
-        
-        const editableDiv = document.getElementById("editableDiv");
-        
-        // Save the content when the user clicks outside the div
-        editableDiv.addEventListener("blur", () => {
-            localStorage.setItem("userContent", editableDiv.innerHTML);
-        });
-        
-        // Load the content from localStorage
-        const savedContent = localStorage.getItem("userContent");
-        if (savedContent) {
-            editableDiv.innerHTML = savedContent;
-        }*/
+  }
 
+  updateFill(value) {
+
+    //Update oxygen percent fills
+    this.tracker = value || 0;
+    this.percentage = (1-(Math.floor(this.tracker/4)/5)) * 100;
+    this.fill.forEach(rect => rect.style.width = `${this.percentage}%`);
+
+  }
 
   init(container) {
     this.createElement();
-    container.appendChild(this.buttonArrayElement);
-    container.appendChild(this.overlay)
-    container.appendChild(this.minimapElement);
+    container.append(this.buttonArrayElement);
+    container.appendChild(this.element);
+    this.updateFill();
   }
 
 }

@@ -4,7 +4,7 @@ class Overworld {
    this.canvas = this.element.querySelector(".game-canvas");
    this.ctx = this.canvas.getContext("2d");
    this.map = null;
-   this.roomTracker = 0;
+   this.roomTracker = null;
  }
 
   startGameLoop() {
@@ -65,7 +65,7 @@ class Overworld {
      this.map.startCutscene([
        { 
          type: "openModal", 
-         modalRef: "PauseMenu"
+         modalRef: "uiModals"
        }
      ])
     }
@@ -75,7 +75,7 @@ class Overworld {
      this.map.startCutscene([
        { 
          type: "openModal", 
-         modalRef: "uiModals"
+         modalRef: "PauseMenu"
        }
      ])
     }
@@ -101,7 +101,7 @@ class Overworld {
    })
  }
 
- startMap(mapConfig, heroInitialState=null) {
+ startMap(mapConfig, heroInitialState=null, tracker=0) {
   this.map = new OverworldMap(mapConfig);
   this.map.overworld = this;
   this.map.mountObjects();
@@ -117,6 +117,7 @@ class Overworld {
   this.progress.startingHeroX = this.map.gameObjects.hero.x;
   this.progress.startingHeroY = this.map.gameObjects.hero.y;
   this.progress.startingHeroDirection = this.map.gameObjects.hero.direction;
+  this.progress.roomTracker = tracker;
 
  }
 
@@ -135,14 +136,20 @@ class Overworld {
 
   //Potentially load saved data
   let initialHeroState = null;
+  let roomTracker = null;
   if (useSaveFile) {
     this.progress.load();
     initialHeroState = {
       x: this.progress.startingHeroX,
       y: this.progress.startingHeroY,
       direction: this.progress.startingHeroDirection,
+
     }
+
+    roomTracker = this.progress.roomTracker;
+    alert(roomTracker);
   }
+
 
   //Load the UI
   this.ui = new UI({
@@ -151,7 +158,7 @@ class Overworld {
   this.ui.init(container);
 
   //Start the first map
-  this.startMap(window.OverworldMaps[this.progress.mapId], initialHeroState );
+  this.startMap(window.OverworldMaps[this.progress.mapId], initialHeroState, roomTracker);
 
   //Create controls
   this.bindActionInput();

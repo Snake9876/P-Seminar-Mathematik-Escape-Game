@@ -10,13 +10,6 @@ class PauseMenu {
     if (pageKey === "root") {
       return [
         {
-          label: "Help",
-          description: "Get a cue",
-          handler: () => {
-            alert('Help!');
-          }
-        },
-        {
           label: "Save",
           description: "Save your progress",
           handler: () => {
@@ -25,10 +18,25 @@ class PauseMenu {
           }
         },
         {
+          label: "Title Screen",
+          description: "Go back to the title screen",
+          handler: () => {
+            //Deactivate old objects
+            Object.values(this.map.gameObjects).forEach(obj => {
+              obj.isMounted = false;
+            })
+            /*this.titleScreen = new TitleScreen({
+              progress: this.progress
+            });
+
+            this.titleScreen.init(document.querySelector('.game-container'));*/
+          }
+        },
+        {
           label: "GitHub",
           description: "Visit our GitHub Page",
           handler: () => {
-            window.open('https://github.com/Snake9876/P-Seminar-Mathematik-Escape-Game', '_blank').focus();;
+            window.open('https://github.com/Snake9876/P-Seminar-Mathematik-Escape-Game', '_blank').focus();
           }
         },
         {

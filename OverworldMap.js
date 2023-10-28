@@ -14,6 +14,9 @@ class OverworldMap {
     this.upperImage = new Image();
     this.upperImage.src = config.upperSrc;
 
+    this.minimap = new Image();
+    this.minimap.src = config.minimapSrc;
+
     this.isCutscenePlaying = false;
     this.isPaused = false;
   }
@@ -60,9 +63,9 @@ class OverworldMap {
       if (object.type === "Person") {
         instance = new Person(object);
       }
-      if (object.type === "PizzaStone") {
+      /*if (object.type === "PizzaStone") {
         instance = new PizzaStone(object);
-      }
+      }*/
       this.gameObjects[key] = instance;
       this.gameObjects[key].id = key;
       instance.mount(this);
@@ -116,6 +119,7 @@ window.OverworldMaps = {
     id: "CommandBridge",
     lowerSrc: "/images/maps/CommandBridgeLower.png",
     upperSrc: "/images/maps/KitchenUpper.png",
+    minimapSrc: "/images/maps/CommsLower.png",
     configObjects: {
       hero: {
         type: "Person",
@@ -133,6 +137,7 @@ window.OverworldMaps = {
         talking: [
           {
             events: [
+              { type: "textMessage", text: "People take their jobs here very seriously.", faceHero: "kitchenNpcA" },
               { 
                 type: "openModal", 
                 modalRef: "PauseMenu"
@@ -236,6 +241,7 @@ window.OverworldMaps = {
     id: "Hallway1",
     lowerSrc: "/images/maps/Hallway1Lower.png",
     upperSrc: "/images/maps/Hallway1Upper.png",
+    minimapSrc: "/images/maps/Hallway3Lower.png",
     configObjects: {
       hero: {
         type: "Person",

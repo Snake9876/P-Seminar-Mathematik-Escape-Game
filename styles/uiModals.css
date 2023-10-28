@@ -10,6 +10,7 @@
     padding-left: 4px;
     padding-right: 4px;
     padding-bottom: 4px;
+    image-rendering: pixelated;
   }
   
   /*.PauseMenu .KeyboardMenu {
@@ -35,10 +36,6 @@
     color: #fff;
 }
 
-.modalHeader .title {
-    font-family: "Press Start 2P";
-}
-
 .modalHeader .closeBtn {
     cursor: pointer;
     color: #fff;
@@ -52,7 +49,6 @@
 .modalContent {
     padding: 10px 15px;
     color: #fff;
-    font-family: "Press Start 2P";
     display: flex;
     flex-direction: column;
 }

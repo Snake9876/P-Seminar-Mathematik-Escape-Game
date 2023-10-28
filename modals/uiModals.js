@@ -1,5 +1,6 @@
 class uiModals {
-  constructor({progress, onComplete}) {
+  constructor({minimapSrc, progress, onComplete}) {
+    this.minimapSrc = minimapSrc || null;
     this.progress = progress;
     this.onComplete = onComplete;
   }
@@ -34,7 +35,7 @@ class uiModals {
         <button data-close-button class="closeBtn">&times;</button>
       </div>
       <div class="modalContent">
-        <img src="/images/maps/DemoBattle.png">
+        <img src=${this.minimapSrc}>
       </div>
     `);
 

@@ -4,7 +4,8 @@ class Progress {
     this.startingHeroX = 0;
     this.startingHeroY = 0;
     this.startingHeroDirection = "down";
-    this.saveFileKey = "PizzaLegends_SaveFile1";
+    this.roomTracker = 0;
+    this.saveFileKey = "EscapeGame_SaveFile1";
   }
 
   save() {
@@ -13,13 +14,9 @@ class Progress {
       startingHeroX: this.startingHeroX,
       startingHeroY: this.startingHeroY,
       startingHeroDirection: this.startingHeroDirection,
-      playerState: {
-        pizzas: playerState.pizzas,
-        lineup: playerState.lineup,
-        items: playerState.items,
-        storyFlags: playerState.storyFlags
-      }
+      roomTracker: this.roomTracker,
     }))
+    alert("Saved: " + this.roomTracker);
   }
 
   getSaveFile() {
@@ -39,9 +36,7 @@ class Progress {
       this.startingHeroX = file.startingHeroX;
       this.startingHeroY = file.startingHeroY;
       this.startingHeroDirection = file.startingHeroDirection;
-      Object.keys(file.playerState).forEach(key => {
-        playerState[key] = file.playerState[key];
-      })
+      this.roomTracker = file.roomTracker;
     }
   }
 

@@ -62,23 +62,26 @@ class uiModals {
       `);
     }
 
+    else if (this.modalRef === "inventory") {
+
+      this.element = document.createElement("div");
+      this.element.classList.add("Modal");
+      this.element.innerHTML = (`
+        <div class="modalHeader">
+          <div class="title">
+            Notes Modal
+          </div>
+        </div>
+        <div class="modalContent">
+          <div id="editableDiv" class="item-row">Lprem Ipsum</div>
+        </div>
+      `);
+
+    }
+
   }   
-        
-       /*Note-Modal
-        
-        const editableDiv = document.getElementById("editableDiv");
-        
-        // Save the content when the user clicks outside the div
-        editableDiv.addEventListener("blur", () => {
-            localStorage.setItem("userContent", editableDiv.innerHTML);
-        });
-        
-        // Load the content from localStorage
-        const savedContent = localStorage.getItem("userContent");
-        if (savedContent) {
-            editableDiv.innerHTML = savedContent;
-        }*/
-      
+          
+  
   showItems() {
     let itemList = {
       "GOT_ITEM_1": document.getElementById('item-1'),
@@ -107,8 +110,22 @@ class uiModals {
     this.createElement();
     container.appendChild(this.overlay)
     container.appendChild(this.element);
-    if(this.modalRef === "inventory") {
+
+    if (this.modalRef === "inventory") {
       this.showItems();
+    } else if (this.modalRef === "notes") {
+      const editableDiv = document.getElementById("editableDiv");
+        
+      // Save the content when the user clicks outside the div
+      editableDiv.addEventListener("blur", () => {
+          localStorage.setItem("userContent", editableDiv.innerHTML);
+      });
+      
+      // Load the content from localStorage
+      const savedContent = localStorage.getItem("userContent");
+      if (savedContent) {
+          editableDiv.innerHTML = savedContent;
+      }
     }
 
     utils.wait(200);

@@ -87,7 +87,7 @@ class Overworld {
        { 
          type: "openModal", 
          fileRef: "uiModals",
-         modalRef: "map"
+         modalRef: "notes"
        }
      ])
     }

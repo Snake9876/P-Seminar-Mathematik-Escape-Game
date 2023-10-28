@@ -32,7 +32,6 @@ class uiModals {
         <div class="title">
             Map Modal
         </div>
-        <button data-close-button class="closeBtn">&times;</button>
       </div>
       <div class="modalContent">
         <img src=${this.minimapSrc}>

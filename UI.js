@@ -10,9 +10,9 @@ class UI {
     this.buttonArrayElement.classList.add('buttonArray');
     this.buttonArrayElement.innerHTML = (`
       <div class="buttonContainer">
-        <button  data-modal-target="#map-modal" id="map-btn" class="keyButton">M</button>
-        <button  data-modal-target="#inv-modal" id="inv-btn" class="keyButton">I</button>
-        <button  data-modal-target="#notes-modal" id="notes-btn" class="keyButton">N</button>
+        <button id="map-btn" class="keyButton">M</button>
+        <button id="inv-btn" class="keyButton">I</button>
+        <button id="notes-btn" class="keyButton">N</button>
       </div>
       <div class="textContainer">
         <div id="map-text" class="keyDescription">Karte</div>

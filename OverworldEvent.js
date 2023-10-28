@@ -10,6 +10,12 @@ class OverworldEvent {
     };
   }
 
+  toggleOxygenBar(resolve) {
+    this.map.overworld.progress.isOxygenBarEnabled = !this.map.overworld.progress.isOxygenBarEnabled;
+    alert("Oxygen bar set to: " + this.map.overworld.progress.isOxygenBarEnabled);
+    resolve();
+  }
+
   stand(resolve) {
     const who = this.map.gameObjects[ this.event.who ];
     who.startBehavior({
@@ -66,8 +72,9 @@ class OverworldEvent {
     })
     message.init( document.querySelector(".game-container") );
 
-    if (this.updateTracker!=0 || this.resetTracker) {
-      this.updateRoomTracker();
+    if (this.resetTracker) {
+      this.map.overworld.progress.roomTracker = 0;
+      this.map.overworld.ui.updateFill(0);
     }
 
   }
@@ -89,7 +96,7 @@ class OverworldEvent {
       sceneTransition.init(document.querySelector(".game-container"), () => {
 
         //Open Game-Over-Screen after 20 room changes
-        if (this.map.overworld.roomTracker >= 19) {
+        if (this.map.overworld.progress.roomTracker >= 19) {
           alert("Hello!");
         } else {
           this.map.overworld.startMap( window.OverworldMaps[this.event.map], {
@@ -99,29 +106,11 @@ class OverworldEvent {
           }); 
         }
 
-        if (this.updateTracker!=0 || this.resetTracker) {
-          this.updateRoomTracker();
-        }
-
         resolve();
         sceneTransition.fadeOut();
 
       })
     }
-  }
-
-  updateRoomTracker() {
-
-    if (this.resetTracker) {
-      //Resets tracker
-      this.map.overworld.roomTracker = 0;
-    } else {
-        //Updates tracker
-        this.map.overworld.roomTracker = this.map.overworld.roomTracker + (this.event.updateTracker || 0);
-    }
-
-    alert(this.map.overworld.roomTracker);
-    this.map.overworld.ui.updateFill(this.map.overworld.roomTracker);
   }
 
   openModal(resolve) {

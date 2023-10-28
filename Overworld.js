@@ -4,7 +4,6 @@ class Overworld {
    this.canvas = this.element.querySelector(".game-canvas");
    this.ctx = this.canvas.getContext("2d");
    this.map = null;
-   this.roomTracker = null;
  }
 
   startGameLoop() {
@@ -101,7 +100,7 @@ class Overworld {
    })
  }
 
- startMap(mapConfig, heroInitialState=null, tracker=0) {
+ startMap(mapConfig, heroInitialState=null) {
   this.map = new OverworldMap(mapConfig);
   this.map.overworld = this;
   this.map.mountObjects();
@@ -117,7 +116,11 @@ class Overworld {
   this.progress.startingHeroX = this.map.gameObjects.hero.x;
   this.progress.startingHeroY = this.map.gameObjects.hero.y;
   this.progress.startingHeroDirection = this.map.gameObjects.hero.direction;
-  this.progress.roomTracker = tracker;
+  
+  if (this.progress.isOxygenBarEnabled) {
+    this.progress.roomTracker = this.progress.roomTracker + 1;
+    this.ui.updateFill(this.progress.roomTracker);
+  }
 
  }
 
@@ -136,7 +139,6 @@ class Overworld {
 
   //Potentially load saved data
   let initialHeroState = null;
-  let roomTracker = null;
   if (useSaveFile) {
     this.progress.load();
     initialHeroState = {
@@ -146,8 +148,7 @@ class Overworld {
 
     }
 
-    roomTracker = this.progress.roomTracker;
-    alert(roomTracker);
+    this.progress.roomTracker = this.progress.roomTracker - 1;
   }
 
 
@@ -158,7 +159,7 @@ class Overworld {
   this.ui.init(container);
 
   //Start the first map
-  this.startMap(window.OverworldMaps[this.progress.mapId], initialHeroState, roomTracker);
+  this.startMap(window.OverworldMaps[this.progress.mapId], initialHeroState);
 
   //Create controls
   this.bindActionInput();

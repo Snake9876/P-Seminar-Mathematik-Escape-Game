@@ -98,7 +98,7 @@ class OverworldMap {
 
       const relevantScenario = match.talking.find(scenario => {
         return (scenario.required || []).every(sf => {
-          return playerState.storyFlags[sf]
+          return progress.storyFlags[sf]
         })
       })
       relevantScenario && this.startCutscene(relevantScenario.events)
@@ -137,7 +137,8 @@ window.OverworldMaps = {
         talking: [
           {
             events: [
-              { type: "toggleOxygenBar" }
+              { type: "toggleOxygenBar" },
+              { type: "addStoryFlag", flag: "GOT_ITEM_1" }
             ]
           }
         ]

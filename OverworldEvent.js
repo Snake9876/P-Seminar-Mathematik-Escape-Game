@@ -116,7 +116,8 @@ class OverworldEvent {
   openModal(resolve) {
     this.map.isPaused = true;
 
-    const modal = new this.classMap[this.event.modalRef]({
+    const modal = new this.classMap[this.event.fileRef]({
+      modalRef: this.event.modalRef,
       minimapSrc: this.map.minimap.src,
       progress: this.map.overworld.progress,
       onComplete: () => {
@@ -190,7 +191,8 @@ class OverworldEvent {
   }*/
 
   addStoryFlag(resolve) {
-    window.playerState.storyFlags[this.event.flag] = true;
+    this.map.overworld.progress.storyFlags[this.event.flag] = true;
+
     resolve();
   }
 

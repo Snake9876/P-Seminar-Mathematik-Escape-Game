@@ -54,7 +54,7 @@ class Overworld {
       this.map.startCutscene([
         { 
           type: "openModal", 
-          modalRef: "PauseMenu"
+          fileRef: "PauseMenu"
         }
       ])
      }
@@ -64,7 +64,8 @@ class Overworld {
      this.map.startCutscene([
        { 
          type: "openModal", 
-         modalRef: "uiModals"
+         fileRef: "uiModals",
+         modalRef: "map",
        }
      ])
     }
@@ -74,7 +75,8 @@ class Overworld {
      this.map.startCutscene([
        { 
          type: "openModal", 
-         modalRef: "PauseMenu"
+         fileRef: "uiModals",
+         modalRef: "inventory"
        }
      ])
     }
@@ -84,7 +86,8 @@ class Overworld {
      this.map.startCutscene([
        { 
          type: "openModal", 
-         modalRef: "PauseMenu"
+         fileRef: "uiModals",
+         modalRef: "map"
        }
      ])
     }

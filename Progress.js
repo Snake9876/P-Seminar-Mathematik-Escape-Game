@@ -6,6 +6,14 @@ class Progress {
     this.startingHeroDirection = "down";
     this.isOxygenBarEnabled = false;
     this.roomTracker = 0;
+    this.storyFlags = {
+      "GOT_ITEM_1": false,
+      "GOT_ITEM_2": false,
+      "GOT_ITEM_3": false,
+      "GOT_ITEM_4": false,
+      "GOT_ITEM_5": false,
+      "GOT_ITEM_6": false,
+    };
     this.saveFileKey = "EscapeGame_SaveFile1";
   }
 
@@ -17,8 +25,8 @@ class Progress {
       startingHeroDirection: this.startingHeroDirection,
       roomTracker: this.roomTracker,
       isOxygenBarEnabled: this.isOxygenBarEnabled,
+      storyFlags: this.storyFlags,
     }))
-    alert("Saved: " + this.roomTracker + ", " + this.isOxygenBarEnabled);
   }
 
   getSaveFile() {
@@ -40,6 +48,7 @@ class Progress {
       this.startingHeroDirection = file.startingHeroDirection;
       this.roomTracker = file.roomTracker;
       this.isOxygenBarEnabled = file.isOxygenBarEnabled;
+      this.storyFlags = file.storyFlags;
     }
   }
 

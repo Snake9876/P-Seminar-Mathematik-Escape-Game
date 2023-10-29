@@ -5,8 +5,8 @@ class OverworldEvent {
     this.updateTracker = this.event.updateTracker || 0;
     this.resetTracker = this.event.resetTracker || false;
     this.classMap = {
-      "PauseMenu": PauseMenu,
-      "uiModals": uiModals,
+      "UI": UI,
+      //"questions": Questions,
     };
   }
 
@@ -128,67 +128,6 @@ class OverworldEvent {
     });
     modal.init(document.querySelector(".game-container"));
   }
-
-  /*openModal(modal) {
-    if(modal == null) return
-    modal.classList.add('active');
-    this.map.isPaused = true;
-  }
-
-  closeModal(modal) {
-    if(modal == null) return
-    modal.classList.remove('active');
-    this.map.isPaused = false;
-    this.map.overworld.startGameLoop();
-  } 
-
-  uiEvents(resolve) {
-    this.openModalButtons = document.querySelectorAll('[data-modal-target]');
-    this.closeModalButtons = document.querySelectorAll('[data-close-button]');
-    this.overlay = document.querySelector(".overlay");
-
-    this.openModalButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        const openTarget = document.querySelector(button.dataset.modalTarget);
-        this.openModal(openTarget);
-        this.overlay.classList.add('active');
-      })
-    })
-  
-    this.closeModalButtons.forEach(button => {
-      button.addEventListener('click', () => { 
-        const closeTarget = button.closest('.Modal');
-        this.closeModal(closeTarget);
-        this.overlay.classList.remove('active');
-      })
-    })
-
-    //Opens and closes modals with appropriate keys
-    document.addEventListener('keydown', (e) =>   {
-      const activeModal = document.querySelectorAll('.Modal.active');
-  
-      if (open.length == 0) {
-        this.overlay.classList.add('active');
-        switch (e.key) {
-          case 'i':
-            this.openModal(document.getElementById('inv-modal'));
-            break;
-          case 'm': 
-            this.openModal(document.getElementById('map-modal'));
-            break;
-          case 'n': 
-            this.openModal(document.getElementById('notes-modal'));
-            break;
-        } 
-      } else {
-        if (e.key === 'Escape') 
-        this.closeModal(activeModal);
-        this.overlay.classList.remove('active');
-      }
-    })
-
-    resolve();
-  }*/
 
   addStoryFlag(resolve) {
     this.map.overworld.progress.storyFlags[this.event.flag] = true;

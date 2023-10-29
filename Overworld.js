@@ -54,7 +54,8 @@ class Overworld {
       this.map.startCutscene([
         { 
           type: "openModal", 
-          fileRef: "PauseMenu"
+          fileRef: "UI",
+          modalRef: "menu"
         }
       ])
      }
@@ -64,8 +65,8 @@ class Overworld {
      this.map.startCutscene([
        { 
          type: "openModal", 
-         fileRef: "uiModals",
-         modalRef: "map",
+         fileRef: "UI",
+         modalRef: "map"
        }
      ])
     }
@@ -75,7 +76,7 @@ class Overworld {
      this.map.startCutscene([
        { 
          type: "openModal", 
-         fileRef: "uiModals",
+         fileRef: "UI",
          modalRef: "inventory"
        }
      ])
@@ -86,7 +87,7 @@ class Overworld {
      this.map.startCutscene([
        { 
          type: "openModal", 
-         fileRef: "uiModals",
+         fileRef: "UI",
          modalRef: "notes"
        }
      ])
@@ -158,6 +159,7 @@ class Overworld {
   //Load the UI
   this.ui = new UI({
     playerName: this.titleScreen.playerName,
+    progress: this.progress,
   });
   this.ui.init(container);
 

@@ -25,8 +25,6 @@ class UI {
     //Oxygen Bar
     this.element = document.createElement("div");
     this.element.classList.add("OxygenBar");
-    //this.hudElement.setAttribute("data-combatant", this.id);
-    //this.hudElement.setAttribute("data-team", this.team);
     this.element.innerHTML = (`
       <p class="Player_name">${this.playerName}</p>
       <img class="Icon" src="/images/icons/lung.png" />

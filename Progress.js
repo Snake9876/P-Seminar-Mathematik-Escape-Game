@@ -4,8 +4,10 @@ class Progress {
     this.startingHeroX = 0;
     this.startingHeroY = 0;
     this.startingHeroDirection = "down";
-    this.isOxygenBarEnabled = false;
+    this.isTrackerEnabled = false;
     this.roomTracker = 0;
+    this.isTimerEnabled = false;
+    this.timerValue = 10;
     this.storyFlags = {
       "GOT_ITEM_1": false,
       "GOT_ITEM_2": false,
@@ -23,8 +25,10 @@ class Progress {
       startingHeroX: this.startingHeroX,
       startingHeroY: this.startingHeroY,
       startingHeroDirection: this.startingHeroDirection,
+      isTrackerEnabled: this.isTrackerEnabled,
       roomTracker: this.roomTracker,
-      isOxygenBarEnabled: this.isOxygenBarEnabled,
+      isTimerEnabled: this.isTimerEnabled,
+      timerValue: this.timerValue,
       storyFlags: this.storyFlags,
     }))
   }
@@ -46,8 +50,10 @@ class Progress {
       this.startingHeroX = file.startingHeroX;
       this.startingHeroY = file.startingHeroY;
       this.startingHeroDirection = file.startingHeroDirection;
+      this.isTrackerEnabled = file.isTrackerEnabled;
       this.roomTracker = file.roomTracker;
-      this.isOxygenBarEnabled = file.isOxygenBarEnabled;
+      this.isTimerEnabled = file.isTimerEnabled;
+      this.timerValue = file.timerValue;
       this.storyFlags = file.storyFlags;
     }
   }

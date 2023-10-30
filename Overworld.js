@@ -40,59 +40,95 @@ class Overworld {
           step();   
         })
       }
+
     }
     step();
+
  }
 
+ timerLoop() {
+  if (this.progress.isTimerEnabled && this.progress.timerValue >= 0) {
+    this.progress.timerValue--;
+    this.hud.updateTimer(this.progress.timerValue);
+  } 
+
+  if (this.progress.timerValue < 0) {
+    this.map.isPaused = true;
+    this.gameOverScreen = new GameOverScreen({
+      progress: this.map.overworld.progress
+    })
+    this.gameOverScreen.init(document.querySelector('.game-container'));
+    return
+  }
+
+  // Schedule the next call to timerLoop after a delay of 1000 milliseconds (1 second)
+  setTimeout(() => this.timerLoop(), 1000);
+}
+
  bindActionInput() {
-   new KeyPressListener("Enter", () => {
-     //Is there a person here to talk to?
-     this.map.checkForActionCutscene()
-   })
-   new KeyPressListener("Escape", () => {
-     if (!this.map.isCutscenePlaying) {
-      this.map.startCutscene([
-        { 
-          type: "openModal", 
-          fileRef: "UI",
-          modalRef: "menu"
-        }
-      ])
-     }
-   })
-  new KeyPressListener("m", () => {
+  new KeyPressListener("Enter", () => {
+    //Is there a person here to talk to?
+    this.map.checkForActionCutscene()
+  })
+  new KeyPressListener("Escape", () => {
     if (!this.map.isCutscenePlaying) {
      this.map.startCutscene([
        { 
          type: "openModal", 
-         fileRef: "UI",
-         modalRef: "map"
+         fileRef: "HudModal",
+         modalRef: "menu"
        }
+     ])
+    }
+  })
+  new KeyPressListener("m", () => {
+    if (!this.map.isCutscenePlaying) {
+     this.map.startCutscene([
+      { 
+        type: "openModal", 
+        fileRef: "HudModal",
+        modalRef: "map"
+      }
      ])
     }
   })
   new KeyPressListener("i", () => {
     if (!this.map.isCutscenePlaying) {
      this.map.startCutscene([
-       { 
-         type: "openModal", 
-         fileRef: "UI",
-         modalRef: "inventory"
-       }
+      { 
+        type: "openModal", 
+        fileRef: "HudModal",
+        modalRef: "inventory"
+      }
      ])
     }
   })
   new KeyPressListener("n", () => {
     if (!this.map.isCutscenePlaying) {
      this.map.startCutscene([
-       { 
-         type: "openModal", 
-         fileRef: "UI",
-         modalRef: "notes"
-       }
+      { 
+        type: "openModal", 
+        fileRef: "HudModal",
+        modalRef: "notes"
+      }
      ])
     }
   })
+
+  this.modalButton = document.querySelectorAll('.KeyButton');
+  this.modalButton.forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (!this.map.isCutscenePlaying) {
+        this.map.startCutscene([
+         { 
+           type: "openModal", 
+           fileRef: "HudModal",
+           modalRef: btn.id
+         }
+        ])
+       }
+    });
+  });
  }
 
  bindHeroPositionCheck() {
@@ -121,9 +157,10 @@ class Overworld {
   this.progress.startingHeroY = this.map.gameObjects.hero.y;
   this.progress.startingHeroDirection = this.map.gameObjects.hero.direction;
   
-  if (this.progress.isOxygenBarEnabled) {
+  if (this.progress.isTrackerEnabled) {
     this.progress.roomTracker = this.progress.roomTracker + 1;
-    this.ui.updateFill(this.progress.roomTracker);
+    this.hud.updateFill(this.progress.roomTracker);
+
   }
 
  }
@@ -157,11 +194,11 @@ class Overworld {
 
 
   //Load the UI
-  this.ui = new UI({
+  this.hud = new HUD({
     playerName: this.titleScreen.playerName,
     progress: this.progress,
   });
-  this.ui.init(container);
+  this.hud.init(container);
 
   //Start the first map
   this.startMap(window.OverworldMaps[this.progress.mapId], initialHeroState);
@@ -175,7 +212,7 @@ class Overworld {
 
   //Kick off the game!
   this.startGameLoop();
-
+  this.timerLoop();
 
   // this.map.startCutscene([
   //   { type: "battle", enemyId: "beth" }

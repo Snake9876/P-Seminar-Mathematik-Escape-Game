@@ -5,14 +5,18 @@ class OverworldEvent {
     this.updateTracker = this.event.updateTracker || 0;
     this.resetTracker = this.event.resetTracker || false;
     this.classMap = {
-      "UI": UI,
+      "HudModal": HudModals,
       //"questions": Questions,
     };
   }
 
   toggleOxygenBar(resolve) {
-    this.map.overworld.progress.isOxygenBarEnabled = !this.map.overworld.progress.isOxygenBarEnabled;
-    alert("Oxygen bar set to: " + this.map.overworld.progress.isOxygenBarEnabled);
+    this.map.overworld.progress.isTrackerEnabled = this.event.bool || !this.map.overworld.progress.isTrackerEnabled;
+    resolve();
+  }
+
+  toggleTimer(resolve) {
+    this.map.overworld.progress.isTimerEnabled = this.event.bool || !this.map.overworld.progress.isTimerEnabled;
     resolve();
   }
 
@@ -58,16 +62,25 @@ class OverworldEvent {
 
   textMessage(resolve) {
 
+    if(this.event.randomText) {
+      this.random = Math.floor(Math.random()*this.event.randomText.length);
+      this.text = this.event.randomText[this.random];      
+    } else {
+      this.text = this.event.text;
+    }
+
     if (this.event.faceHero) {
       const obj = this.map.gameObjects[this.event.faceHero];
       obj.direction = utils.oppositeDirection(this.map.gameObjects["hero"].direction);
     }
 
-    const audio = new Audio(this.event.sound || "/sounds/chat.wav");
-    audio.play();
+    if (this.event.sound) {
+      const audio = new Audio(this.event.sound);
+      audio.play();
+    }
 
     const message = new TextMessage({
-      text: this.event.text,
+      text: this.text,
       onComplete: () => resolve()
     })
     message.init( document.querySelector(".game-container") );
@@ -96,8 +109,12 @@ class OverworldEvent {
       sceneTransition.init(document.querySelector(".game-container"), () => {
 
         //Open Game-Over-Screen after 20 room changes
-        if (this.map.overworld.progress.roomTracker >= 19) {
-          alert("Hello!");
+        if (this.map.overworld.progress.roomTracker >= 2) {
+          this.map.isPaused = true;
+          this.gameOverScreen = new GameOverScreen({
+            progress: this.map.overworld.progress
+          })
+          this.gameOverScreen.init(document.querySelector('.game-container'));
         } else {
           this.map.overworld.startMap( window.OverworldMaps[this.event.map], {
             x: this.event.x,

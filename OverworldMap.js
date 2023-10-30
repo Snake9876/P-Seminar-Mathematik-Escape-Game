@@ -81,10 +81,8 @@ class OverworldMap {
         map: this,
       })
       const result = await eventHandler.init();
-      if (result === "LOST_BATTLE") {
-        break;
-      }
     }
+
     this.isCutscenePlaying = false;
   }
 
@@ -137,7 +135,9 @@ window.OverworldMaps = {
         talking: [
           {
             events: [
+              { type: "textMessage", text: "1", faceHero: "kitchenNpcA", sound: "/sounds/chat.wav"},
               { type: "toggleOxygenBar" },
+              { type: "toggleTimer" },
               { type: "addStoryFlag", flag: "GOT_ITEM_1" }
             ]
           }
@@ -201,8 +201,11 @@ window.OverworldMaps = {
       [utils.asGridCoord(7,10)]: [{
         disqualify: ["SEEN_INTRO"],
         events: [
-          { type: "addStoryFlag", flag: "SEEN_INTRO"},
-          { type: "walk", who: "hero", direction: "up"},
+          { type: "textMessage", text: "1"},
+          { type: "textMessage", text: "2"},
+          { type: "textMessage", text: "3"},
+          { type: "textMessage", text: "4"}
+          /*{ type: "addStoryFlag", flag: "SEEN_INTRO"},
           { type: "textMessage", text: "SYSTEMWARNUNG!! MULTIPLE ÄUSSERE BESCHÄDIGUNGEN."},
           { type: "textMessage", text: "SAUERSTOFFKONZENTRATION: 95%, TENDENZ FALLEND."},
           { type: "textMessage", text: "DU: Oh je! Anscheinend sind wir mit einem Asteroiden kollidiert!"},
@@ -210,12 +213,7 @@ window.OverworldMaps = {
           { type: "textMessage", text: "Aber das ist erstmal Nebensache! Ich muss nach den anderen sehen!"},
           { type: "textMessage", text: "Ein System-Checkup in O2 sollte mir mehr verraten."},
           { type: "textMessage", text: "Don't even get me started on the mushrooms."},
-          { type: "textMessage", text: "You will never make it in pizza!"},
-          { type: "stand", who: "kitchenNpcA", direction: "right", time: 200},
-          { type: "walk", who: "kitchenNpcA", direction: "up"},
-          { type: "stand", who: "kitchenNpcA", direction: "up", time: 300},
-          { type: "stand", who: "hero", direction: "down", time: 400},
-          { type: "textMessage", text: "* The competition is fierce! You should spend some time leveling up your Pizza lineup and skills. *"},
+          { type: "textMessage", text: "You will never make it in pizza!"}*/
         ]
       }]
     },
@@ -254,7 +252,13 @@ window.OverworldMaps = {
         talking: [
           {
             events: [
-              { type: "textMessage", text: "AEIOU, DU GEHOERST AUCH MIT DAZU!", sound: "/sounds/knocking.wav"},
+              { type: "textMessage", 
+              randomText: [
+                "AEIOU, DU GEHOERST AUCH MIT DAZU!", 
+                "Geranienauflauf", 
+                "Lorem ipsum sit dolor amet"
+              ], 
+              sound: "/sounds/knocking.wav"},
             ]
           }
         ]

@@ -44,7 +44,8 @@
     z-index: 10;
   }
   
-  
+ 
+/*Menu*/
   #menu-modal {
     position:absolute;
     left:4.5em;
@@ -74,6 +75,7 @@
   }
   
   
+/*Inventory*/
   #inv-background {
     background-image: url(/images/ui/inventory-background.png);
     background-size: cover;
@@ -101,7 +103,46 @@
   }
   
   
+/*Notes*/
   #editable-div {
     height: 300px;
     overflow: auto;
+  }
+
+
+/*Questions*/
+  #q1-modal {
+    z-index: 50;
+  }
+
+  .button_a {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 15px; /* Rounded corners */
+  }
+
+  .button_a.correct {
+    background-color: #2ecc71; /* Green color for correct answer */
+  }
+
+  .button_a.wrong {
+    background-color: #e74c3c; /* Red color for wrong answer */
+  }
+
+  .input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 55px;
+  }
+
+  .input-long[type="text"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 150px;
   }

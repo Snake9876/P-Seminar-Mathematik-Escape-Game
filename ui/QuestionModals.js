@@ -23,6 +23,7 @@ class QuestionModals {
           <div class="Title">
             Störsignal
           </div>
+          <button class="CloseButton">&times;</button>
         </div>
         <div class="ModalContent">
           <img id="O2-img" src="/images/questions/Sauerstoffflasche.jpg">
@@ -91,6 +92,10 @@ class QuestionModals {
 
     utils.wait(200);
     this.esc = new KeyPressListener("Escape", () => {
+      this.close();
+    })
+    this.closeButton = document.querySelector('.CloseButton');
+    this.closeButton.addEventListener('click', () => {
       this.close();
     })
 

@@ -22,6 +22,16 @@
     color: #fff;
     font-size: 0.65em;
   }
+
+  .ModalHeader .CloseButton {
+    cursor: pointer;
+    color: #fff;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
   
   .ModalContent {
     padding: 10px 15px;

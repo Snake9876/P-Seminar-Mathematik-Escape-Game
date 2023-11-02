@@ -256,7 +256,7 @@ window.OverworldMaps = {
             { 
               type: "changeMap",
               map: "Cafeteria",
-              x: utils.withGrid(13),
+              x: utils.withGrid(14),
               y: utils.withGrid(8),
               direction: "left",
               face: "up",
@@ -364,7 +364,7 @@ window.OverworldMaps = {
             { 
               type: "changeMap",
               map: "Cafeteria",
-              x: utils.withGrid(7),
+              x: utils.withGrid(8),
               y: utils.withGrid(2),
               direction: "down",
               face: "left",
@@ -557,7 +557,7 @@ window.OverworldMaps = {
               type: "changeMap",
               map: "Hallway3",
               x: utils.withGrid(4),
-              y: utils.withGrid(11),
+              y: utils.withGrid(15),
               direction: "up",
               face: "left",
             }
@@ -571,7 +571,7 @@ window.OverworldMaps = {
               type: "changeMap",
               map: "Hallway3",
               x: utils.withGrid(3),
-              y: utils.withGrid(11),
+              y: utils.withGrid(15),
               direction: "up",
               face: "left",
             }
@@ -585,7 +585,7 @@ window.OverworldMaps = {
               type: "changeMap",
               map: "Hallway3",
               x: utils.withGrid(2),
-              y: utils.withGrid(11),
+              y: utils.withGrid(15),
               direction: "up",
               face: "left",
             }
@@ -608,9 +608,12 @@ window.OverworldMaps = {
     },
     walls: function() {
       let walls = {};
-      ["2,12","3,12","4,12","5,11","5,10","6,9","5,8","5,7",
-      "5,6","5,5","6,4","6,3","5,2","4,2","3,2","2,2","1,2",
-      "0,3","0,4","1,5","0,6","1,7","0,8","1,9","1,10","1,11",
+      ["1,15","2,16","3,16","4,16","5,15",
+      "5,14","5,13","5,12","5,11","5,10",
+      "6,9","5,8","5,7","5,6","5,5","6,4",
+      "6,3","5,2","4,2","3,2","2,2","1,2",
+      "0,3","0,4","1,5","0,6","1,7","1,8",
+      "0,9","1,10","1,11","0,12","0,13","1,14",
       ].forEach(coord => {
         let [x,y] = coord.split(",");
         walls[utils.asGridCoord(x,y)] = true;
@@ -618,7 +621,7 @@ window.OverworldMaps = {
       return walls;
     }(),
     cutsceneSpaces: {
-      [utils.asGridCoord(2,11)]: [
+      [utils.asGridCoord(2,15)]: [
         {
           events: [
             {
@@ -632,7 +635,7 @@ window.OverworldMaps = {
           ]
         }
       ],
-      [utils.asGridCoord(3,11)]: [
+      [utils.asGridCoord(3,15)]: [
         {
           events: [
             {
@@ -646,7 +649,7 @@ window.OverworldMaps = {
           ]
         }
       ],
-      [utils.asGridCoord(4,11)]: [
+      [utils.asGridCoord(4,15)]: [
         {
           events: [
             {
@@ -660,7 +663,7 @@ window.OverworldMaps = {
           ]
         }
       ],
-      [utils.asGridCoord(1,6)]: [
+      [utils.asGridCoord(1,9)]: [
         {
           events: [
             {
@@ -687,8 +690,147 @@ window.OverworldMaps = {
             }
           ]
         }
+      ],
+      [utils.asGridCoord(1,6)]: [
+        {
+          events: [
+            {
+              type: "changeMap",
+              map: "Medbay",
+              x: utils.withGrid(7),
+              y: utils.withGrid(22),
+              direction: "left",
+              face: "left",
+            }
+          ]
+        }
+      ],
+      [utils.asGridCoord(1,12)]: [
+        {
+          events: [
+            {
+              type: "changeMap",
+              map: "Hallway4",
+              x: utils.withGrid(3),
+              y: utils.withGrid(8),
+              direction: "up",
+              face: "left",
+            }
+          ]
+        }
+      ],
+      [utils.asGridCoord(1,13)]: [
+        {
+          events: [
+            {
+              type: "changeMap",
+              map: "Hallway4",
+              x: utils.withGrid(2),
+              y: utils.withGrid(8),
+              direction: "up",
+              face: "left",
+            }
+          ]
+        }
       ]
     }
+  },
+  Hallway4: {
+    id: "Hallway4",
+    lowerSrc: "/images/maps/Hallway4Lower.png",
+    upperSrc: "/images/maps/Hallway4Upper.png",
+    configObjects: {
+      hero: {
+        type: "Person",
+        isPlayerControlled: true,
+        x: utils.withGrid(30),
+        y: utils.withGrid(10),
+      }
+    },
+    cutsceneSpaces: {
+      [utils.asGridCoord(2,8)]: [
+        {
+          events: [
+            {
+              type: "changeMap",
+              map: "Hallway3",
+              x: utils.withGrid(1),
+              y: utils.withGrid(13),
+              direction: "right",
+              face: "down",
+            }
+          ]
+        }
+      ],
+      [utils.asGridCoord(3,8)]: [
+        {
+          events: [
+            {
+              type: "changeMap",
+              map: "Hallway3",
+              x: utils.withGrid(1),
+              y: utils.withGrid(12),
+              direction: "right",
+              face: "down",
+            }
+          ]
+        }
+      ],
+      [utils.asGridCoord(1,4)]: [
+        {
+          events: [
+            {
+              type: "changeMap",
+              map: "O2",
+              x: utils.withGrid(5),
+              y: utils.withGrid(2),
+              direction: "down",
+              face: "left",
+            }
+          ]
+        }
+      ],
+      [utils.asGridCoord(2,1)]: [
+        {
+          events: [
+            {
+              type: "changeMap",
+              map: "Cafeteria",
+              x: utils.withGrid(1),
+              y: utils.withGrid(6),
+              direction: "right",
+              face: "up",
+            }
+          ]
+        }
+      ],
+      [utils.asGridCoord(3,1)]: [
+        {
+          events: [
+            {
+              type: "changeMap",
+              map: "Cafeteria",
+              x: utils.withGrid(1),
+              y: utils.withGrid(7),
+              direction: "right",
+              face: "up",
+            }
+          ]
+        }
+      ]
+    },
+    walls: function() {
+      let walls = {};
+      ["2,9","3,9","4,8","4,7","4,6","4,5",
+      "4,4","4,3","4,2","4,1","3,0","2,0",
+      "1,1","1,2","1,3","0,4","1,5","1,6",
+      "1,7","1,8",
+      ].forEach(coord => {
+        let [x,y] = coord.split(",");
+        walls[utils.asGridCoord(x,y)] = true;
+      })
+      return walls;
+    }(),
   },
   Cafeteria: {
     id: "Cafeteria",
@@ -703,7 +845,7 @@ window.OverworldMaps = {
       }
     },
     cutsceneSpaces: {
-      [utils.asGridCoord(7,2)]: [
+      [utils.asGridCoord(8,2)]: [
         {
           events: [
             {
@@ -717,7 +859,7 @@ window.OverworldMaps = {
           ]
         }
       ],
-      [utils.asGridCoord(13,8)]: [
+      [utils.asGridCoord(14,8)]: [
         {
           events: [
             {
@@ -731,14 +873,45 @@ window.OverworldMaps = {
           ]
         }
       ],
+      [utils.asGridCoord(1,6)]: [
+        {
+          events: [
+            {
+              type: "changeMap",
+              map: "Hallway4",
+              x: utils.withGrid(2),
+              y: utils.withGrid(1),
+              direction: "down",
+              face: "left",
+            }
+          ]
+        }
+      ],
+      [utils.asGridCoord(1,7)]: [
+        {
+          events: [
+            {
+              type: "changeMap",
+              map: "Hallway4",
+              x: utils.withGrid(3),
+              y: utils.withGrid(1),
+              direction: "down",
+              face: "left",
+            }
+          ]
+        }
+      ],
     },
     walls: function() {
       let walls = {};
-      ["6,2","7,1","6,12","1,4","2,4","3,4","4,4","4,3","5,2","6,3","6,4","8,2",
-      "9,3","10,4","11,4","12,4","11,6","12,6","2,6","3,6","4,6","7,6","8,6","9,6",
-      "2,9","3,9","4,9","7,9","8,9","9,9","1,11","2,11","3,11","4,11","5,11",
-      "6,11","7,11","8,11","9,11","10,11","11,11","12,11","0,3","0,4","0,5","0,6",
-      "0,7","0,8","0,9","0,10","13,3","13,4","13,5","13,7", "14,8","13,9","13,10",
+      ["2,11","3,11","4,11","5,11","6,11","7,11",
+      "8,11","9,11","10,11","11,11","12,11","13,11",
+      "14,10","14,9","15,8","14,7","14,5","10,3",
+      "9,2","8,1","6,2","5,3","5,4","4,4","3,4",
+      "2,4","1,5","0,6","0,7","1,8","1,9","1,10",
+      "3,9","4,9","5,9","3,6","4,6","5,6","8,6",
+      "9,6","10,6","8,9","9,9","10,9","11,4",
+      "12,4","13,4","12,6","13,6","7,3","7,4",
       ].forEach(coord => {
         let [x,y] = coord.split(",");
         walls[utils.asGridCoord(x,y)] = true;
@@ -778,7 +951,7 @@ window.OverworldMaps = {
               type: "changeMap",
               map: "Hallway3",
               x: utils.withGrid(1),
-              y: utils.withGrid(6),
+              y: utils.withGrid(9),
               direction: "right",
               face: "up",
             }
@@ -871,7 +1044,7 @@ window.OverworldMaps = {
               type: "changeMap",
               map: "Hallway3",
               x: utils.withGrid(5),
-              y: utils.withGrid(5),
+              y: utils.withGrid(9),
               direction: "left",
               face: "right",
             }

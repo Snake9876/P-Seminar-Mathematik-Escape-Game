@@ -6,7 +6,7 @@ class OverworldEvent {
     this.resetTracker = this.event.resetTracker || false;
     this.classMap = {
       "HudModal": HudModals,
-      //"questions": Questions,
+      "QuestionModal": QuestionModals,
     };
   }
 

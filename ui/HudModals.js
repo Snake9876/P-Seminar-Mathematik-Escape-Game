@@ -32,6 +32,7 @@ class HudModals {
           <div class="Title">
             Map Modal
           </div>
+          <button class="CloseButton">&times;</button>
         </div>
         <div class="ModalContent">
           <img src=${this.minimapSrc}>
@@ -49,6 +50,7 @@ class HudModals {
           <div class="Title">
             Inventory Modal
           </div>
+          <button class="CloseButton">&times;</button>
         </div>
         <div id="inv-background" class="ModalContent">
           <div class="ItemRow">
@@ -74,6 +76,7 @@ class HudModals {
           <div class="Title">
             Notes Modal
           </div>
+          <button class="CloseButton">&times;</button>
         </div>
         <div class="ModalContent">
           <div id="editable-div" contenteditable="true"></div>
@@ -218,6 +221,10 @@ class HudModals {
 
     utils.wait(200);
     this.esc = new KeyPressListener("Escape", () => {
+      this.close();
+    })
+    this.closeButton = document.querySelector('.CloseButton');
+    this.closeButton.addEventListener('click', () => {
       this.close();
     })
 

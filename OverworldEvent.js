@@ -87,7 +87,7 @@ class OverworldEvent {
 
     if (this.resetTracker) {
       this.map.overworld.progress.roomTracker = 0;
-      this.map.overworld.ui.updateFill(0);
+      this.map.overworld.hud.updateFill(0);
     }
 
   }
@@ -109,7 +109,7 @@ class OverworldEvent {
       sceneTransition.init(document.querySelector(".game-container"), () => {
 
         //Open Game-Over-Screen after 20 room changes
-        if (this.map.overworld.progress.roomTracker >= 2) {
+        if (this.map.overworld.progress.roomTracker >= 20) {
           this.map.isPaused = true;
           this.gameOverScreen = new GameOverScreen({
             progress: this.map.overworld.progress

@@ -116,7 +116,7 @@ window.OverworldMaps = {
   CommandBridge: {
     id: "CommandBridge",
     lowerSrc: "/images/maps/CommandBridgeLower.png",
-    upperSrc: "/images/maps/KitchenUpper.png",
+    upperSrc: "/images/maps/EmptyUpper.png",
     minimapSrc: "/images/maps/CommsLower.png",
     configObjects: {
       hero: {
@@ -137,37 +137,11 @@ window.OverworldMaps = {
             events: [
               { type: "textMessage", text: "1", faceHero: "kitchenNpcA", sound: "/sounds/chat.wav"},
               { type: "toggleOxygenBar" },
-              { type: "toggleTimer" },
               { type: "addStoryFlag", flag: "GOT_ITEM_1" }
             ]
           }
         ]
-      },
-      kitchenNpcB: {
-        type: "Person",
-        x: utils.withGrid(3),
-        y: utils.withGrid(6),
-        src: "/images/characters/people/npc3.png",
-        talking: [
-          {
-            events: [
-              { type: "textMessage", text: "People take their jobs here very seriously.", faceHero: "kitchenNpcB" },
-            ]
-          }
-        ],
-        behaviorLoop: [
-          { type: "walk", direction: "right", },
-          { type: "walk", direction: "right", },
-          { type: "walk", direction: "down", },
-          { type: "walk", direction: "down", },
-          { type: "walk", direction: "left", },
-          { type: "walk", direction: "left", },
-          { type: "walk", direction: "up", },
-          { type: "walk", direction: "up", },
-          { type: "stand", direction: "up", time: 500 },
-          { type: "stand", direction: "left", time: 500 },
-        ]
-      },
+      }
     },
     cutsceneSpaces: {
       [utils.asGridCoord(6,10)]: [
@@ -262,48 +236,7 @@ window.OverworldMaps = {
             ]
           }
         ]
-      },
-      streetNpcB: {
-        type: "Person",
-        x: utils.withGrid(31),
-        y: utils.withGrid(12),
-        src: "/images/characters/people/npc7.png",
-        behaviorLoop: [
-          { type: "stand", direction: "up", time: 400, },
-          { type: "stand", direction: "left", time: 800, },
-          { type: "stand", direction: "down", time: 400, },
-          { type: "stand", direction: "left", time: 800, },
-          { type: "stand", direction: "right", time: 800, },
-        ],
-        talking: [
-          {
-            events: [
-              { type: "textMessage", text: "I can't decide on my favorite toppings.", faceHero: "streetNpcB" },
-            ]
-          }
-        ]
-      },
-      streetNpcC: {
-        type: "Person",
-        x: utils.withGrid(22),
-        y: utils.withGrid(10),
-        src: "/images/characters/people/npc8.png",
-        talking: [
-          {
-            required: ["streetBattle"],
-            events: [
-              { type: "textMessage", text: "You are quite capable.", faceHero: "streetNpcC" },
-            ]
-          },
-          {
-            events: [
-              { type: "textMessage", text: "You should have just stayed home!", faceHero: "streetNpcC" },
-              { type: "battle", enemyId: "streetBattle" },
-              { type: "addStoryFlag", flag: "streetBattle"},
-            ]
-          },
-        ]
-      },
+      }
     },
     walls: function() {
       let walls = {};
@@ -413,65 +346,7 @@ window.OverworldMaps = {
         isPlayerControlled: true,
         x: utils.withGrid(30),
         y: utils.withGrid(10),
-      },
-      streetNpcA: {
-        type: "Person",
-        x: utils.withGrid(9),
-        y: utils.withGrid(11),
-        src: "/images/characters/people/npc2.png",
-        behaviorLoop: [
-          { type: "stand", direction: "right", time: 1400, },
-          { type: "stand", direction: "up", time: 900, },
-        ],
-        talking: [
-          {
-            events: [
-              { type: "textMessage", text: "All ambitious pizza chefs gather on Anchovy Avenue.", faceHero: "streetNpcA" },
-            ]
-          }
-        ]
-      },
-      streetNpcB: {
-        type: "Person",
-        x: utils.withGrid(31),
-        y: utils.withGrid(12),
-        src: "/images/characters/people/npc7.png",
-        behaviorLoop: [
-          { type: "stand", direction: "up", time: 400, },
-          { type: "stand", direction: "left", time: 800, },
-          { type: "stand", direction: "down", time: 400, },
-          { type: "stand", direction: "left", time: 800, },
-          { type: "stand", direction: "right", time: 800, },
-        ],
-        talking: [
-          {
-            events: [
-              { type: "textMessage", text: "I can't decide on my favorite toppings.", faceHero: "streetNpcB" },
-            ]
-          }
-        ]
-      },
-      streetNpcC: {
-        type: "Person",
-        x: utils.withGrid(22),
-        y: utils.withGrid(10),
-        src: "/images/characters/people/npc8.png",
-        talking: [
-          {
-            required: ["streetBattle"],
-            events: [
-              { type: "textMessage", text: "You are quite capable.", faceHero: "streetNpcC" },
-            ]
-          },
-          {
-            events: [
-              { type: "textMessage", text: "You should have just stayed home!", faceHero: "streetNpcC" },
-              { type: "battle", enemyId: "streetBattle" },
-              { type: "addStoryFlag", flag: "streetBattle"},
-            ]
-          },
-        ]
-      },
+      }
     },
     walls: function() {
       let walls = {};
@@ -621,65 +496,7 @@ window.OverworldMaps = {
         isPlayerControlled: true,
         x: utils.withGrid(30),
         y: utils.withGrid(10),
-      },
-      streetNpcA: {
-        type: "Person",
-        x: utils.withGrid(9),
-        y: utils.withGrid(11),
-        src: "/images/characters/people/npc2.png",
-        behaviorLoop: [
-          { type: "stand", direction: "right", time: 1400, },
-          { type: "stand", direction: "up", time: 900, },
-        ],
-        talking: [
-          {
-            events: [
-              { type: "textMessage", text: "All ambitious pizza chefs gather on Anchovy Avenue.", faceHero: "streetNpcA" },
-            ]
-          }
-        ]
-      },
-      streetNpcB: {
-        type: "Person",
-        x: utils.withGrid(31),
-        y: utils.withGrid(12),
-        src: "/images/characters/people/npc7.png",
-        behaviorLoop: [
-          { type: "stand", direction: "up", time: 400, },
-          { type: "stand", direction: "left", time: 800, },
-          { type: "stand", direction: "down", time: 400, },
-          { type: "stand", direction: "left", time: 800, },
-          { type: "stand", direction: "right", time: 800, },
-        ],
-        talking: [
-          {
-            events: [
-              { type: "textMessage", text: "I can't decide on my favorite toppings.", faceHero: "streetNpcB" },
-            ]
-          }
-        ]
-      },
-      streetNpcC: {
-        type: "Person",
-        x: utils.withGrid(22),
-        y: utils.withGrid(10),
-        src: "/images/characters/people/npc8.png",
-        talking: [
-          {
-            required: ["streetBattle"],
-            events: [
-              { type: "textMessage", text: "You are quite capable.", faceHero: "streetNpcC" },
-            ]
-          },
-          {
-            events: [
-              { type: "textMessage", text: "You should have just stayed home!", faceHero: "streetNpcC" },
-              { type: "battle", enemyId: "streetBattle" },
-              { type: "addStoryFlag", flag: "streetBattle"},
-            ]
-          },
-        ]
-      },
+      }
     },
     walls: function() {
       let walls = {};
@@ -787,65 +604,7 @@ window.OverworldMaps = {
         isPlayerControlled: true,
         x: utils.withGrid(30),
         y: utils.withGrid(10),
-      },
-      streetNpcA: {
-        type: "Person",
-        x: utils.withGrid(9),
-        y: utils.withGrid(11),
-        src: "/images/characters/people/npc2.png",
-        behaviorLoop: [
-          { type: "stand", direction: "right", time: 1400, },
-          { type: "stand", direction: "up", time: 900, },
-        ],
-        talking: [
-          {
-            events: [
-              { type: "textMessage", text: "All ambitious pizza chefs gather on Anchovy Avenue.", faceHero: "streetNpcA" },
-            ]
-          }
-        ]
-      },
-      streetNpcB: {
-        type: "Person",
-        x: utils.withGrid(31),
-        y: utils.withGrid(12),
-        src: "/images/characters/people/npc7.png",
-        behaviorLoop: [
-          { type: "stand", direction: "up", time: 400, },
-          { type: "stand", direction: "left", time: 800, },
-          { type: "stand", direction: "down", time: 400, },
-          { type: "stand", direction: "left", time: 800, },
-          { type: "stand", direction: "right", time: 800, },
-        ],
-        talking: [
-          {
-            events: [
-              { type: "textMessage", text: "I can't decide on my favorite toppings.", faceHero: "streetNpcB" },
-            ]
-          }
-        ]
-      },
-      streetNpcC: {
-        type: "Person",
-        x: utils.withGrid(22),
-        y: utils.withGrid(10),
-        src: "/images/characters/people/npc8.png",
-        talking: [
-          {
-            required: ["streetBattle"],
-            events: [
-              { type: "textMessage", text: "You are quite capable.", faceHero: "streetNpcC" },
-            ]
-          },
-          {
-            events: [
-              { type: "textMessage", text: "You should have just stayed home!", faceHero: "streetNpcC" },
-              { type: "battle", enemyId: "streetBattle" },
-              { type: "addStoryFlag", flag: "streetBattle"},
-            ]
-          },
-        ]
-      },
+      }
     },
     walls: function() {
       let walls = {};
@@ -927,77 +686,7 @@ window.OverworldMaps = {
         isPlayerControlled: true,
         x: utils.withGrid(5),
         y: utils.withGrid(8),
-      },
-      diningRoomNpcA: {
-        type: "Person",
-        x: utils.withGrid(12),
-        y: utils.withGrid(8),
-        src: "/images/characters/people/npc8.png",
-        talking: [
-          {
-            events: [
-              { 
-                type: "textMessage", 
-                text: "You think you have what it takes to cook here?!", 
-                faceHero: "diningRoomNpcA", 
-                resetTracker: true, 
-              },
-            ]
-          },
-        ]
-      },
-      diningRoomNpcB: {
-        type: "Person",
-        x: utils.withGrid(9),
-        y: utils.withGrid(5),
-        src: "/images/characters/people/npc4.png",
-        talking: [
-          {
-            events: [
-              { type: "textMessage", text: "People come from all over to dine here.", faceHero: "diningRoomNpcB" },
-            ]
-          },
-        ]
-      },
-      diningRoomNpcC: {
-        type: "Person",
-        x: utils.withGrid(2),
-        y: utils.withGrid(8),
-        src: "/images/characters/people/npc7.png",
-        behaviorLoop: [
-          { type: "stand", direction: "right", time: 800, },
-          { type: "stand", direction: "down", time: 700, },
-          { type: "stand", direction: "right", time: 800, },
-        ],
-        talking: [
-          {
-            events: [
-              { type: "textMessage", text: "I was so lucky to score a reservation!", faceHero: "diningRoomNpcC" },
-            ]
-          },
-        ]
-      },
-      diningRoomNpcD: {
-        type: "Person",
-        x: utils.withGrid(8),
-        y: utils.withGrid(9),
-        src: "/images/characters/people/npc1.png",
-        behaviorLoop: [
-          { type: "stand", direction: "right", time: 1200, },
-          { type: "stand", direction: "down", time: 900, },
-          { type: "stand", direction: "left", time: 800, },
-          { type: "stand", direction: "down", time: 700, },
-          { type: "stand", direction: "right", time: 400, },
-          { type: "stand", direction: "up", time: 800, },
-        ],
-        talking: [
-          {
-            events: [
-              { type: "textMessage", text: "I've been dreaming of this pizza for weeks!", faceHero: "diningRoomNpcD" },
-            ]
-          },
-        ]
-      },
+      }
     },
     cutsceneSpaces: {
       [utils.asGridCoord(7,3)]: [
@@ -1053,65 +742,7 @@ window.OverworldMaps = {
         isPlayerControlled: true,
         x: utils.withGrid(30),
         y: utils.withGrid(10),
-      },
-      streetNpcA: {
-        type: "Person",
-        x: utils.withGrid(9),
-        y: utils.withGrid(11),
-        src: "/images/characters/people/npc2.png",
-        behaviorLoop: [
-          { type: "stand", direction: "right", time: 1400, },
-          { type: "stand", direction: "up", time: 900, },
-        ],
-        talking: [
-          {
-            events: [
-              { type: "textMessage", text: "All ambitious pizza chefs gather on Anchovy Avenue.", faceHero: "streetNpcA" },
-            ]
-          }
-        ]
-      },
-      streetNpcB: {
-        type: "Person",
-        x: utils.withGrid(31),
-        y: utils.withGrid(12),
-        src: "/images/characters/people/npc7.png",
-        behaviorLoop: [
-          { type: "stand", direction: "up", time: 400, },
-          { type: "stand", direction: "left", time: 800, },
-          { type: "stand", direction: "down", time: 400, },
-          { type: "stand", direction: "left", time: 800, },
-          { type: "stand", direction: "right", time: 800, },
-        ],
-        talking: [
-          {
-            events: [
-              { type: "textMessage", text: "I can't decide on my favorite toppings.", faceHero: "streetNpcB" },
-            ]
-          }
-        ]
-      },
-      streetNpcC: {
-        type: "Person",
-        x: utils.withGrid(22),
-        y: utils.withGrid(10),
-        src: "/images/characters/people/npc8.png",
-        talking: [
-          {
-            required: ["streetBattle"],
-            events: [
-              { type: "textMessage", text: "You are quite capable.", faceHero: "streetNpcC" },
-            ]
-          },
-          {
-            events: [
-              { type: "textMessage", text: "You should have just stayed home!", faceHero: "streetNpcC" },
-              { type: "battle", enemyId: "streetBattle" },
-              { type: "addStoryFlag", flag: "streetBattle"},
-            ]
-          },
-        ]
-      },
+      }
     },
     walls: function() {
       let walls = {};

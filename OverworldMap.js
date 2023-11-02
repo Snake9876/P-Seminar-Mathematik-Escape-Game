@@ -257,7 +257,7 @@ window.OverworldMaps = {
               type: "changeMap",
               map: "Cafeteria",
               x: utils.withGrid(13),
-              y: utils.withGrid(9),
+              y: utils.withGrid(8),
               direction: "left",
               face: "up",
             }
@@ -365,7 +365,7 @@ window.OverworldMaps = {
               type: "changeMap",
               map: "Cafeteria",
               x: utils.withGrid(7),
-              y: utils.withGrid(3),
+              y: utils.withGrid(2),
               direction: "down",
               face: "left",
             }
@@ -392,8 +392,8 @@ window.OverworldMaps = {
             {
               type: "changeMap",
               map: "Quarters",
-              x: utils.withGrid(6),
-              y: utils.withGrid(10),
+              x: utils.withGrid(8),
+              y: utils.withGrid(6),
               direction: "up",
               face: "right",
             }
@@ -667,9 +667,23 @@ window.OverworldMaps = {
               type: "changeMap",
               map: "Comms",
               x: utils.withGrid(5),
-              y: utils.withGrid(1),
+              y: utils.withGrid(2),
               direction: "down",
               face: "left",
+            }
+          ]
+        }
+      ],
+      [utils.asGridCoord(5,9)]: [
+        {
+          events: [
+            {
+              type: "changeMap",
+              map: "Engine",
+              x: utils.withGrid(7),
+              y: utils.withGrid(22),
+              direction: "left",
+              face: "right",
             }
           ]
         }
@@ -689,7 +703,7 @@ window.OverworldMaps = {
       }
     },
     cutsceneSpaces: {
-      [utils.asGridCoord(7,3)]: [
+      [utils.asGridCoord(7,2)]: [
         {
           events: [
             {
@@ -703,7 +717,7 @@ window.OverworldMaps = {
           ]
         }
       ],
-      [utils.asGridCoord(13,9)]: [
+      [utils.asGridCoord(13,8)]: [
         {
           events: [
             {
@@ -720,11 +734,11 @@ window.OverworldMaps = {
     },
     walls: function() {
       let walls = {};
-      ["6,3","7,2","6,13","1,5","2,5","3,5","4,5","4,4","5,3","6,4","6,5","8,3",
-      "9,4","10,5","11,5","12,5","11,7","12,7","2,7","3,7","4,7","7,7","8,7","9,7",
-      "2,10","3,10","4,10","7,10","8,10","9,10","1,12","2,12","3,12","4,12","5,12",
-      "6,12","7,12","8,12","9,12","10,12","11,12","12,12","0,4","0,5","0,6","0,7",
-      "0,8","0,9","0,10","0,11","13,4","13,5","13,6","13,8", "14,9","13,10","13,11",
+      ["6,2","7,1","6,12","1,4","2,4","3,4","4,4","4,3","5,2","6,3","6,4","8,2",
+      "9,3","10,4","11,4","12,4","11,6","12,6","2,6","3,6","4,6","7,6","8,6","9,6",
+      "2,9","3,9","4,9","7,9","8,9","9,9","1,11","2,11","3,11","4,11","5,11",
+      "6,11","7,11","8,11","9,11","10,11","11,11","12,11","0,3","0,4","0,5","0,6",
+      "0,7","0,8","0,9","0,10","13,3","13,4","13,5","13,7", "14,8","13,9","13,10",
       ].forEach(coord => {
         let [x,y] = coord.split(",");
         walls[utils.asGridCoord(x,y)] = true;
@@ -746,10 +760,10 @@ window.OverworldMaps = {
     },
     walls: function() {
       let walls = {};
-      ["1,7","2,7","3,7","4,7","5,7","6,7",
-      "7,7","8,6","8,5","8,4","8,3","8,4",
-      "7,1","6,1","5,0","4,1","3,1","2,1",
-      "1,1","0,2","1,3","2,4","1,5","0,6",
+      ["1,8","2,8","3,8","4,8","5,8","6,8",
+      "7,8","8,7","8,6","8,5","8,4","8,3",
+      "7,2","6,2","5,1","4,2","3,2","2,2",
+      "1,2","0,3","1,4","2,5","1,6","0,7",
       ].forEach(coord => {
         let [x,y] = coord.split(",");
         walls[utils.asGridCoord(x,y)] = true;
@@ -757,7 +771,7 @@ window.OverworldMaps = {
       return walls;
     }(),
     cutsceneSpaces: {
-      [utils.asGridCoord(5,1)]: [
+      [utils.asGridCoord(5,2)]: [
         {
           events: [
             {
@@ -765,7 +779,101 @@ window.OverworldMaps = {
               map: "Hallway3",
               x: utils.withGrid(1),
               y: utils.withGrid(6),
-              direction: "right"
+              direction: "right",
+              face: "up",
+            }
+          ]
+        }
+      ]
+    }
+  },
+  Quarters: {
+    id: "Quarters",
+    lowerSrc: "/images/maps/QuartersLower.png",
+    upperSrc: "/images/maps/QuartersUpper.png",
+    configObjects: {
+      hero: {
+        type: "Person",
+        isPlayerControlled: true,
+        x: utils.withGrid(30),
+        y: utils.withGrid(10),
+      }
+    },
+    walls: function() {
+      let walls = {};
+      ["1,6","2,6","3,6","4,6","5,6","6,6",
+      "7,6","8,7","9,6","10,6","11,6","12,5",
+      "12,4","12,3","1,2","2,2","3,2","4,2",
+      "5,2","6,2","7,2","8,2","9,2","10,2",
+      "11,2","0,3","0,4","0,5",
+      ].forEach(coord => {
+        let [x,y] = coord.split(",");
+        walls[utils.asGridCoord(x,y)] = true;
+      })
+      return walls;
+    }(),
+    cutsceneSpaces: {
+      [utils.asGridCoord(8,6)]: [
+        {
+          events: [
+            {
+              type: "changeMap",
+              map: "Hallway2",
+              x: utils.withGrid(5),
+              y: utils.withGrid(5),
+              direction: "left"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  Engine: {
+    id: "Engine",
+    lowerSrc: "/images/maps/EngineLower.png",
+    upperSrc: "/images/maps/EngineUpper.png",
+    configObjects: {
+      hero: {
+        type: "Person",
+        isPlayerControlled: true,
+        x: utils.withGrid(30),
+        y: utils.withGrid(10),
+      }
+    },
+    walls: function() {
+      let walls = {};
+      ["2,27","3,27","4,27","5,27","6,27","7,26",
+      "7,25","7,24","7,23","8,22","7,21","7,20",
+      "7,19","7,18","7,17","7,16","7,15","7,14",
+      "7,13","7,12","7,11","7,10","7,9","7,8",
+      "7,7","7,6","7,5","7,4","7,3","6,2","5,2",
+      "4,2","3,2","2,2","1,3","1,4","2,4","2,5",
+      "3,4","3,5","4,4","4,5","5,4","5,5","1,7",
+      "2,8","2,9","3,8","3,9","4,8","4,9","5,8",
+      "5,9","1,10","1,11","2,12","2,13","3,12",
+      "3,13","4,12","4,13","5,12","5,13","1,14",
+      "1,15","2,16","2,17","3,16","3,17","4,16",
+      "4,17","5,16","5,17","1,18","1,19","2,20",
+      "2,21","3,20","3,21","4,20","4,21","5,20",
+      "5,21","1,22","1,23","2,24","2,25","3,24",
+      "3,25","4,24","4,25","5,24","5,25","1,26",
+      ].forEach(coord => {
+        let [x,y] = coord.split(",");
+        walls[utils.asGridCoord(x,y)] = true;
+      })
+      return walls;
+    }(),
+    cutsceneSpaces: {
+      [utils.asGridCoord(7,22)]: [
+        {
+          events: [
+            {
+              type: "changeMap",
+              map: "Hallway3",
+              x: utils.withGrid(5),
+              y: utils.withGrid(5),
+              direction: "left",
+              face: "right",
             }
           ]
         }

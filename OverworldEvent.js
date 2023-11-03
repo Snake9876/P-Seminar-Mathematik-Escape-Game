@@ -20,6 +20,31 @@ class OverworldEvent {
     resolve();
   }
 
+  delay(resolve) {
+    wait(this.event.time);
+    resolve();
+  }
+
+  effect(resolve) {
+    //boolean this.event.onRepeat
+
+    /*if(this.event.visual) {
+      switch (this.event.visual) {
+        case "rumble":
+          break;
+        case "alert":
+          break;
+      }
+    }*/
+
+    if (this.event.sound) {
+      const audio = new Audio(this.event.sound);
+      audio.play();
+    }
+
+    resolve();
+  }
+
   stand(resolve) {
     const who = this.map.gameObjects[ this.event.who ];
     who.startBehavior({
@@ -74,11 +99,6 @@ class OverworldEvent {
       obj.direction = utils.oppositeDirection(this.map.gameObjects["hero"].direction);
     }
 
-    if (this.event.sound) {
-      const audio = new Audio(this.event.sound);
-      audio.play();
-    }
-
     const message = new TextMessage({
       text: this.text,
       onComplete: () => resolve()
@@ -105,7 +125,7 @@ class OverworldEvent {
         obj.isMounted = false;
       })
 
-      const sceneTransition = new SceneTransition();
+      const sceneTransition = new ScreenEffects();
       sceneTransition.init(document.querySelector(".game-container"), () => {
 
         //Open Game-Over-Screen after 20 room changes

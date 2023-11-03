@@ -1,4 +1,4 @@
-class SceneTransition {
+class ScreenEffects {
   constructor() {
     this.element = null;
   }

@@ -20,3 +20,22 @@
   from { opacity: 1; }
   to { opacity: 0; }
 }
+
+@keyframes shake {
+  0% { transform: translate(0, 50%); scale: 3;}
+  10% { transform: translate(-2px, 50%); scale: 3;}
+  20% { transform: translate(2px, 50%); scale: 3;}
+  30% { transform: translate(-2px, 50%); scale: 3;}
+  40% { transform: translate(2px, 50%); scale: 3;}
+  50% { transform: translate(-2px, 50%); scale: 3;}
+  60% { transform: translate(2px, 50%); scale: 3;}
+  70% { transform: translate(-2px, 50%); scale: 3;}
+  80% { transform: translate(2px, 50%); scale: 3;}
+  90% { transform: translate(-2px, 50%); scale: 3;}
+  100% { transform: translate(0, 50%); scale: 3;}
+}
+
+.shake {
+  position: relative; 
+  animation: shake 0.5s ease-in-out;
+}

@@ -185,7 +185,7 @@ class Overworld {
 
   //Show the title screen
   this.titleScreen = new TitleScreen({
-    progress: this.progress
+    progress: this.progress,
   })
   const useSaveFile = await this.titleScreen.init(container);
 
@@ -223,6 +223,36 @@ class Overworld {
 
   //Kick off the game!
   this.startGameLoop();
+  if(this.titleScreen.isClosed) {
+    this.map.startCutscene([
+      { 
+        type: "effect", 
+        visual: "alert",
+        sound: "sounds/knocking.wav"
+      },
+      {
+        type: "stand",
+        who: "hero",
+        direction: "up",
+        time: 2000,
+      },
+      { 
+        type: "walk", 
+        who: "hero",
+        direction: "up",
+      },
+      { 
+        type: "walk", 
+        who: "hero",
+        direction: "up",
+      },
+      { 
+        type: "walk", 
+        who: "hero",
+        direction: "up",
+      }
+     ])
+  }
   this.timerLoop();
 
   // this.map.startCutscene([

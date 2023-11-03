@@ -2,6 +2,7 @@ class TitleScreen {
   constructor({ progress }) {
     this.playerName = null;
     this.progress = progress;
+    this.isClosed = false;
   }
 
   getOptions(resolve) {
@@ -42,6 +43,7 @@ class TitleScreen {
     this.playerName = document.getElementById('username-input').value || "Mathe-Held";
 
     //Close the menu
+    this.isClosed = true;
     this.keyboardMenu.end();
     this.element.remove();
   }

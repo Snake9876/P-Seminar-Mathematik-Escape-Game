@@ -20,22 +20,41 @@ class OverworldEvent {
     resolve();
   }
 
-  delay(resolve) {
-    wait(this.event.time);
-    resolve();
-  }
+  /*delay(resolve) {  
+    this.map.isCutscenePlaying = false;
+
+    setTimeout( () => {
+      resolve();
+      this.map.isCutscenePlaying = true;
+    }, 
+    this.event.time
+    );
+  }*/
 
   effect(resolve) {
-    //boolean this.event.onRepeat
-
-    /*if(this.event.visual) {
+    
+    if(this.event.visual) {
       switch (this.event.visual) {
         case "rumble":
+          const element = document.querySelector(".game-container");
+          element.classList.add("shake");
+        
+          setTimeout(function () {
+            element.classList.remove("shake");
+          }, this.event.time);
+
           break;
         case "alert":
+          const alert = new ScreenEffects();
+          //alert.init(document.querySelector(".game-container"), () => {
+          //  setTimeout(() => {}, this.event.time)
+          //});
+          console.log(alert);
+          alert.fadeOut();
+
           break;
       }
-    }*/
+    }
 
     if (this.event.sound) {
       const audio = new Audio(this.event.sound);

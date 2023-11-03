@@ -123,7 +123,7 @@ window.OverworldMaps = {
         type: "Person",
         isPlayerControlled: true,
         x: utils.withGrid(7),
-        y: utils.withGrid(7),
+        y: utils.withGrid(11),
         direction: "up",
       },
       kitchenNpcA: {
@@ -135,11 +135,7 @@ window.OverworldMaps = {
         talking: [
           {
             events: [
-              { type: "effect", sound: "sounds/chat.wav"},
-              { type: "delay", time: 2000},
-              { type: "effect", sound: "sounds/chat.wav"},
-              { type: "delay", time: 2000},
-              { type: "effect", sound: "sounds/chat.wav"},
+              { type: "effect", visual: "rumble"},
               { type: "textMessage", text: "This is a sound effect!", faceHero: "kitchenNpcA"},
               //{ type: "toggleOxygenBar" },
               //{ type: "addStoryFlag", flag: "GOT_ITEM_1" }

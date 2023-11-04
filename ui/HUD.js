@@ -1,6 +1,6 @@
 class HUD {
-  constructor({playerName, progress}) {
-    this.playerName = playerName;
+  constructor({progress}) {
+    this.playerName = "Mathe-Held";
     this.progress = progress;
     this.tracker;
     this.timerValue = this.progress.timerValue;

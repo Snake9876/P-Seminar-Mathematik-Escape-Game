@@ -202,6 +202,11 @@ class HudModals {
       container.appendChild(this.overlay)
       container.appendChild(this.mapElement);
 
+      this.closeButton = document.querySelector('.CloseButton');
+      this.closeButton.addEventListener('click', () => {
+        this.close();
+      })
+
     }
 
     else if (this.modalRef === "inventory") {
@@ -209,25 +214,29 @@ class HudModals {
       container.appendChild(this.inventoryElement);
       this.showItems();
 
+      this.closeButton = document.querySelector('.CloseButton');
+      this.closeButton.addEventListener('click', () => {
+        this.close();
+      })
+
     } 
 
     else if (this.modalRef === "notes") {
       container.appendChild(this.overlay)
       container.appendChild(this.notesElement);
       this.editDiv();
+
+      this.closeButton = document.querySelector('.CloseButton');
+      this.closeButton.addEventListener('click', () => {
+        this.close();
+      })
       
     } 
-
 
     utils.wait(200);
     this.esc = new KeyPressListener("Escape", () => {
       this.close();
     })
-    this.closeButton = document.querySelector('.CloseButton');
-    this.closeButton.addEventListener('click', () => {
-      this.close();
-    })
-
   }
 
 }

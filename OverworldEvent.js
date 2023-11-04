@@ -34,25 +34,29 @@ class OverworldEvent {
   effect(resolve) {
     
     if(this.event.visual) {
+      const container = document.querySelector(".game-container");
+
       switch (this.event.visual) {
         case "rumble":
-          const element = document.querySelector(".game-container");
-          element.classList.add("shake");
+          container.classList.add("shake");
         
           setTimeout(function () {
-            element.classList.remove("shake");
+            container.classList.remove("shake");
           }, this.event.time);
 
           break;
-        /*case "alert":
-          const alert = new ScreenEffects();
-          //alert.init(document.querySelector(".game-container"), () => {
-          //  setTimeout(() => {}, this.event.time)
-          //});
-          console.log(alert);
-          alert.fadeOut();
+        case "alarm":
+          const isAlarm = document.querySelector(".alarm");
+          if(isAlarm == null) {
+            const alarmElement = document.createElement('div');
+            alarmElement.classList.add("overlay", "alarm");
+            container.appendChild(alarmElement);
+          } else {
+            isAlarm.remove();
+          }
 
-          break;*/
+          
+          break;
       }
     }
 

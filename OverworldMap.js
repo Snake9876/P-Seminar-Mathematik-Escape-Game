@@ -96,7 +96,6 @@ class OverworldMap {
       return `${object.x},${object.y}` === `${nextCoords.x},${nextCoords.y}`
     });
     if (!this.isCutscenePlaying && match && match.talking.length) {
-      console.log(this.overworld.progress.storyFlags);
       const relevantScenario = match.talking.find(scenario => {
         return (scenario.required || []).every(sf => {
           return this.overworld.progress.storyFlags[sf]
@@ -141,12 +140,11 @@ window.OverworldMaps = {
         y: utils.withGrid(5),
         direction: "up",
         src: "/images/characters/people/npc8.png",
-        requiredFlags: ["SHOW_PERSON"],
         talking: [
           {
             required: ["SEEN_INTRO"],
             events: [
-              { type: "effect", visual: "rumble", time: 500},
+              { type: "effect", visual: "alarm"},
               { type: "textMessage", text: "U got the story flag! Congrats!", faceHero: "kitchenNpcA"},
               //{ type: "toggleOxygenBar" },
               //{ type: "addStoryFlag", flag: "GOT_ITEM_1" }
@@ -154,7 +152,7 @@ window.OverworldMaps = {
           },
           {
             events: [
-              { type: "effect", visual: "rumble", time: 500},
+              { type: "effect", visual: "alarm"},
               { type: "textMessage", text: "This is a sound effect!", faceHero: "kitchenNpcA"},
               //{ type: "toggleOxygenBar" },
               { type: "addStoryFlag", flag: "SEEN_INTRO" }

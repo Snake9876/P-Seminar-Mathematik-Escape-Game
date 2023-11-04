@@ -1,6 +1,6 @@
 class TitleScreen {
   constructor({ progress }) {
-    this.playerName = null;
+    this.playerName;
     this.progress = progress;
     this.isClosed = false;
   }

@@ -4,6 +4,7 @@ class Progress {
     this.startingHeroX = 0;
     this.startingHeroY = 0;
     this.startingHeroDirection = "down";
+    this.playerName = this.playerName;
     this.isTrackerEnabled = false;
     this.roomTracker = 0;
     this.isTimerEnabled = false;
@@ -27,6 +28,7 @@ class Progress {
       startingHeroX: this.startingHeroX,
       startingHeroY: this.startingHeroY,
       startingHeroDirection: this.startingHeroDirection,
+      playerName: this.playerName,
       isTrackerEnabled: this.isTrackerEnabled,
       roomTracker: this.roomTracker,
       isTimerEnabled: this.isTimerEnabled,
@@ -52,6 +54,7 @@ class Progress {
       this.startingHeroX = file.startingHeroX;
       this.startingHeroY = file.startingHeroY;
       this.startingHeroDirection = file.startingHeroDirection;
+      this.playerName = file.playerName;
       this.isTrackerEnabled = file.isTrackerEnabled;
       this.roomTracker = file.roomTracker;
       this.isTimerEnabled = file.isTimerEnabled;

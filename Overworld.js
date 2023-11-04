@@ -168,6 +168,8 @@ class Overworld {
   this.progress.startingHeroY = this.map.gameObjects.hero.y;
   this.progress.startingHeroDirection = this.map.gameObjects.hero.direction;
   
+  this.hud.playerName = this.progress.playerName || this.titleScreen.playerName;
+  
   if (this.progress.isTrackerEnabled) {
     this.progress.roomTracker = this.progress.roomTracker + 1;
     this.hud.updateFill(this.progress.roomTracker);
@@ -179,9 +181,8 @@ class Overworld {
  async init() {
 
   const container = document.querySelector(".game-container");
-
   //Create a new Progress tracker
-  this.progress = new Progress();
+  this.progress = new Progress({});
 
   //Show the title screen
   this.titleScreen = new TitleScreen({
@@ -206,13 +207,12 @@ class Overworld {
 
   //Load the UI
   this.hud = new HUD({
-    playerName: this.titleScreen.playerName,
     progress: this.progress,
   });
-  this.hud.init(container);
 
   //Start the first map
   this.startMap(window.OverworldMaps[this.progress.mapId], initialHeroState);
+  this.hud.init(container);
 
   //Create controls
   this.bindActionInput();
@@ -223,7 +223,12 @@ class Overworld {
 
   //Kick off the game!
   this.startGameLoop();
-  if(this.titleScreen.isClosed) {
+  if(this.titleScreen.isClosed && !useSaveFile) {
+    
+    if(this.titleScreen.playerName) {
+      this.progress.playerName = this.titleScreen.playerName;
+    }
+
     this.map.startCutscene([
       { 
         type: "effect", 

@@ -126,7 +126,7 @@ window.OverworldMaps = {
     id: "CommandBridge",
     lowerSrc: "/images/maps/CommandBridgeLower.png",
     upperSrc: "/images/maps/EmptyUpper.png",
-    minimapSrc: "/images/maps/CommsLower.png",
+    minimapSrc: "/images/icons/lung.png",
     configObjects: {
       hero: {
         type: "Person",
@@ -146,7 +146,7 @@ window.OverworldMaps = {
           {
             required: ["SEEN_INTRO"],
             events: [
-              { type: "effect", visual: "rumble"},
+              { type: "effect", visual: "rumble", time: 500},
               { type: "textMessage", text: "U got the story flag! Congrats!", faceHero: "kitchenNpcA"},
               //{ type: "toggleOxygenBar" },
               //{ type: "addStoryFlag", flag: "GOT_ITEM_1" }
@@ -154,7 +154,7 @@ window.OverworldMaps = {
           },
           {
             events: [
-              { type: "effect", visual: "rumble"},
+              { type: "effect", visual: "rumble", time: 500},
               { type: "textMessage", text: "This is a sound effect!", faceHero: "kitchenNpcA"},
               //{ type: "toggleOxygenBar" },
               { type: "addStoryFlag", flag: "SEEN_INTRO" }

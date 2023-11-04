@@ -59,16 +59,19 @@ class OverworldMap {
       let object = this.configObjects[key];
       object.id = key;
 
-      let instance;
-      if (object.type === "Person") {
-        instance = new Person(object);
+      if((this.configObjects[key].requiredFlags || []).every(sf => {
+        return this.overworld.progress.storyFlags[sf]
+      })) {
+
+        let instance;
+        if (object.type === "Person") {
+          instance = new Person(object);
+        }
+        this.gameObjects[key] = instance;
+        this.gameObjects[key].id = key;
+        instance.mount(this);
+
       }
-      /*if (object.type === "PizzaStone") {
-        instance = new PizzaStone(object);
-      }*/
-      this.gameObjects[key] = instance;
-      this.gameObjects[key].id = key;
-      instance.mount(this);
     })
   }
 
@@ -93,10 +96,10 @@ class OverworldMap {
       return `${object.x},${object.y}` === `${nextCoords.x},${nextCoords.y}`
     });
     if (!this.isCutscenePlaying && match && match.talking.length) {
-
+      console.log(this.overworld.progress.storyFlags);
       const relevantScenario = match.talking.find(scenario => {
         return (scenario.required || []).every(sf => {
-          return progress.storyFlags[sf]
+          return this.overworld.progress.storyFlags[sf]
         })
       })
       relevantScenario && this.startCutscene(relevantScenario.events)
@@ -107,9 +110,15 @@ class OverworldMap {
     const hero = this.gameObjects["hero"];
     const match = this.cutsceneSpaces[ `${hero.x},${hero.y}` ];
     if (!this.isCutscenePlaying && match) {
-      this.startCutscene( match[0].events )
+      const relevantScenario = match[0].scenarios.find(scenario => {
+        return (scenario.required || []).every(sf => {
+          return this.overworld.progress.storyFlags[sf]
+        })
+      })
+      relevantScenario && this.startCutscene(relevantScenario.events)
     }
   }
+
 }
 
 window.OverworldMaps = {
@@ -132,63 +141,80 @@ window.OverworldMaps = {
         y: utils.withGrid(5),
         direction: "up",
         src: "/images/characters/people/npc8.png",
+        requiredFlags: ["SHOW_PERSON"],
         talking: [
+          {
+            required: ["SEEN_INTRO"],
+            events: [
+              { type: "effect", visual: "rumble"},
+              { type: "textMessage", text: "U got the story flag! Congrats!", faceHero: "kitchenNpcA"},
+              //{ type: "toggleOxygenBar" },
+              //{ type: "addStoryFlag", flag: "GOT_ITEM_1" }
+            ]
+          },
           {
             events: [
               { type: "effect", visual: "rumble"},
               { type: "textMessage", text: "This is a sound effect!", faceHero: "kitchenNpcA"},
               //{ type: "toggleOxygenBar" },
-              //{ type: "addStoryFlag", flag: "GOT_ITEM_1" }
+              { type: "addStoryFlag", flag: "SEEN_INTRO" }
             ]
           }
         ]
       }
     },
     cutsceneSpaces: {
-      [utils.asGridCoord(6,10)]: [
-        {
-          events: [
-            { 
-              type: "changeMap", 
-              map: "Hallway1",
-              x: utils.withGrid(7),
-              y: utils.withGrid(6),
-              direction: "up",
-              face: "down",
-            }
-          ]
-        }
-      ],
-      [utils.asGridCoord(7,10)]: [
-        {
-          events: [
-            { 
-              type: "changeMap", 
-              map: "Hallway1",
-              x: utils.withGrid(6),
-              y: utils.withGrid(6),
-              direction: "up",
-              face: "down",
-            }
-          ]
-        }
-      ],
+      [utils.asGridCoord(6,10)]: [{
+        scenarios: [
+          {
+            events: [
+              { 
+                type: "changeMap", 
+                map: "Hallway1",
+                x: utils.withGrid(7),
+                y: utils.withGrid(6),
+                direction: "up",
+                face: "down",
+              },
+              {
+                type: "addStoryFlag",
+                flag: "SHOW_PERSON"
+              }
+            ]
+          }
+        ]
+      }],
       [utils.asGridCoord(7,10)]: [{
-        disqualify: ["SEEN_INTRO"],
-        events: [
-          { type: "textMessage", text: "1"},
-          { type: "textMessage", text: "2"},
-          { type: "textMessage", text: "3"},
-          { type: "textMessage", text: "4"}
-          /*{ type: "addStoryFlag", flag: "SEEN_INTRO"},
-          { type: "textMessage", text: "SYSTEMWARNUNG!! MULTIPLE ÄUSSERE BESCHÄDIGUNGEN."},
-          { type: "textMessage", text: "SAUERSTOFFKONZENTRATION: 95%, TENDENZ FALLEND."},
-          { type: "textMessage", text: "DU: Oh je! Anscheinend sind wir mit einem Asteroiden kollidiert!"},
-          { type: "textMessage", text: "Hätten wir bei der Berechnung des Kurses bloss nicht gerundet!"},
-          { type: "textMessage", text: "Aber das ist erstmal Nebensache! Ich muss nach den anderen sehen!"},
-          { type: "textMessage", text: "Ein System-Checkup in O2 sollte mir mehr verraten."},
-          { type: "textMessage", text: "Don't even get me started on the mushrooms."},
-          { type: "textMessage", text: "You will never make it in pizza!"}*/
+        scenarios: [
+          {
+            required: ["SEEN_INTRO"],
+            events: [
+              { type: "textMessage", text: "You already acquired this story flag!"}
+              /*{ type: "addStoryFlag", flag: "SEEN_INTRO"},
+              { type: "textMessage", text: "SYSTEMWARNUNG!! MULTIPLE ÄUSSERE BESCHÄDIGUNGEN."},
+              { type: "textMessage", text: "SAUERSTOFFKONZENTRATION: 95%, TENDENZ FALLEND."},
+              { type: "textMessage", text: "DU: Oh je! Anscheinend sind wir mit einem Asteroiden kollidiert!"},
+              { type: "textMessage", text: "Hätten wir bei der Berechnung des Kurses bloss nicht gerundet!"},
+              { type: "textMessage", text: "Aber das ist erstmal Nebensache! Ich muss nach den anderen sehen!"},
+              { type: "textMessage", text: "Ein System-Checkup in O2 sollte mir mehr verraten."},
+              { type: "textMessage", text: "Don't even get me started on the mushrooms."},
+              { type: "textMessage", text: "You will never make it in pizza!"}*/
+            ]
+          },
+          {
+            events: [
+              { type: "textMessage", text: "Received story flag!"},
+              { type: "addStoryFlag", flag: "SEEN_INTRO"},
+              /*{ type: "textMessage", text: "SYSTEMWARNUNG!! MULTIPLE ÄUSSERE BESCHÄDIGUNGEN."},
+              { type: "textMessage", text: "SAUERSTOFFKONZENTRATION: 95%, TENDENZ FALLEND."},
+              { type: "textMessage", text: "DU: Oh je! Anscheinend sind wir mit einem Asteroiden kollidiert!"},
+              { type: "textMessage", text: "Hätten wir bei der Berechnung des Kurses bloss nicht gerundet!"},
+              { type: "textMessage", text: "Aber das ist erstmal Nebensache! Ich muss nach den anderen sehen!"},
+              { type: "textMessage", text: "Ein System-Checkup in O2 sollte mir mehr verraten."},
+              { type: "textMessage", text: "Don't even get me started on the mushrooms."},
+              { type: "textMessage", text: "You will never make it in pizza!"}*/
+            ]
+          }
         ]
       }]
     },
@@ -251,90 +277,102 @@ window.OverworldMaps = {
       return walls;
     }(),
     cutsceneSpaces: {
-      [utils.asGridCoord(5,2)]: [
-        {
-          events: [
-            { 
-              type: "changeMap",
-              map: "Cafeteria",
-              x: utils.withGrid(14),
-              y: utils.withGrid(8),
-              direction: "left",
-              face: "up",
-            }
-          ]
-        }
-      ],
-      [utils.asGridCoord(6,6)]: [
-        {
-          events: [
-            {
-              type: "changeMap",
-              map: "CommandBridge",
-              x: utils.withGrid(7),
-              y: utils.withGrid(10),
-              direction: "up",
-              face: "down",
-            }
-          ]
-        }
-      ],
-      [utils.asGridCoord(7,6)]: [
-        {
-          events: [
-            {
-              type: "changeMap",
-              map: "CommandBridge",
-              x: utils.withGrid(6),
-              y: utils.withGrid(10),
-              direction: "up",
-              face: "down",
-            }
-          ]
-        }
-      ],
-      [utils.asGridCoord(8,1)]: [
-        {
-          events: [
-            {
-              type: "changeMap",
-              map: "Hallway2",
-              x: utils.withGrid(2),
-              y: utils.withGrid(8),
-              direction: "up",              
-              face: "up",
-            }
-          ]
-        }
-      ],
-      [utils.asGridCoord(9,1)]: [
-        {
-          events: [
-            {
-              type: "changeMap",
-              map: "Hallway2",
-              x: utils.withGrid(3),
-              y: utils.withGrid(8),
-              direction: "up",
-              face: "up",
-            }
-          ]
-        }
-      ],
-      [utils.asGridCoord(10,1)]: [
-        {
-          events: [
-            {
-              type: "changeMap",
-              map: "Hallway2",
-              x: utils.withGrid(4),
-              y: utils.withGrid(8),
-              direction: "up",
-              face: "up",
-            }
-          ]
-        }
-      ],
+      [utils.asGridCoord(5,2)]: [{
+        scenarios: [
+          {
+            events: [
+              { 
+                type: "changeMap",
+                map: "Cafeteria",
+                x: utils.withGrid(14),
+                y: utils.withGrid(8),
+                direction: "left",
+                face: "up",
+              }
+            ]
+          }
+        ]
+      }],
+      [utils.asGridCoord(6,6)]: [{
+        scenarios: [
+          {
+            events: [
+              {
+                type: "changeMap",
+                map: "CommandBridge",
+                x: utils.withGrid(7),
+                y: utils.withGrid(10),
+                direction: "up",
+                face: "down",
+              }
+            ]
+          }
+        ]
+      }],
+      [utils.asGridCoord(7,6)]: [{
+        scenarios: [
+          {
+            events: [
+              {
+                type: "changeMap",
+                map: "CommandBridge",
+                x: utils.withGrid(6),
+                y: utils.withGrid(10),
+                direction: "up",
+                face: "down",
+              }
+            ]
+          }
+        ]
+      }],
+      [utils.asGridCoord(8,1)]: [{
+        scenarios: [
+          {
+            events: [
+              {
+                type: "changeMap",
+                map: "Hallway2",
+                x: utils.withGrid(2),
+                y: utils.withGrid(8),
+                direction: "up",              
+                face: "up",
+              }
+            ]
+          }
+        ]
+      }],
+      [utils.asGridCoord(9,1)]: [{
+        scenarios: [
+          {
+            events: [
+              {
+                type: "changeMap",
+                map: "Hallway2",
+                x: utils.withGrid(3),
+                y: utils.withGrid(8),
+                direction: "up",
+                face: "up",
+              }
+            ]
+          }
+        ] 
+      }],
+      [utils.asGridCoord(10,1)]: [{
+        scenarios: [
+          {
+            events: [
+              {
+                type: "changeMap",
+                map: "Hallway2",
+                x: utils.withGrid(4),
+                y: utils.withGrid(8),
+                direction: "up",
+                face: "up",
+              }
+            ]
+          }
+        ]  
+      }],
     }
   },
   Hallway2: {
@@ -359,132 +397,150 @@ window.OverworldMaps = {
       return walls;
     }(),
     cutsceneSpaces: {
-      [utils.asGridCoord(1,7)]: [
-        {
-          events: [
-            { 
-              type: "changeMap",
-              map: "Cafeteria",
-              x: utils.withGrid(8),
-              y: utils.withGrid(2),
-              direction: "down",
-              face: "left",
-            }
-          ]
-        }
-      ],
-      [utils.asGridCoord(1,3)]: [
-        {
-          events: [
-            {
-              type: "changeMap",
-              map: "O2",
-              x: utils.withGrid(7),
-              y: utils.withGrid(10),
-              direction: "up",
-              face: "left",
-            }
-          ]
-        }
-      ],
-      [utils.asGridCoord(5,5)]: [
-        {
-          events: [
-            {
-              type: "changeMap",
-              map: "Quarters",
-              x: utils.withGrid(8),
-              y: utils.withGrid(6),
-              direction: "up",
-              face: "right",
-            }
-          ]
-        }
-      ],
-      [utils.asGridCoord(2,8)]: [
-        {
-          events: [
-            {
-              type: "changeMap",
-              map: "Hallway1",
-              x: utils.withGrid(8),
-              y: utils.withGrid(1),
-              direction: "down",
-              face: "down",
-            }
-          ]
-        }
-      ],
-      [utils.asGridCoord(3,8)]: [
-        {
-          events: [
-            {
-              type: "changeMap",
-              map: "Hallway1",
-              x: utils.withGrid(9),
-              y: utils.withGrid(1),
-              direction: "down",
-              face: "down",
-            }
-          ]
-        }
-      ],
-      [utils.asGridCoord(4,8)]: [
-        {
-          events: [
-            {
-              type: "changeMap",
-              map: "Hallway1",
-              x: utils.withGrid(10),
-              y: utils.withGrid(1),
-              direction: "down",
-              face: "down",
-            }
-          ]
-        }
-      ],
-      [utils.asGridCoord(2,1)]: [
-        {
-          events: [
-            {
-              type: "changeMap",
-              map: "Corner",
-              x: utils.withGrid(2),
-              y: utils.withGrid(5),
-              direction: "up",
-              face: "up",
-            }
-          ]
-        }
-      ],
-      [utils.asGridCoord(3,1)]: [
-        {
-          events: [
-            {
-              type: "changeMap",
-              map: "Corner",
-              x: utils.withGrid(3),
-              y: utils.withGrid(5),
-              direction: "up",
-              face: "up",
-            }
-          ]
-        }
-      ],
-      [utils.asGridCoord(4,1)]: [
-        {
-          events: [
-            {
-              type: "changeMap",
-              map: "Corner",
-              x: utils.withGrid(4),
-              y: utils.withGrid(5),
-              direction: "up",
-              face: "up",
-            }
-          ]
-        }
-      ]
+      [utils.asGridCoord(1,7)]: [{
+        scenarios: [
+          {
+            events: [
+              { 
+                type: "changeMap",
+                map: "Cafeteria",
+                x: utils.withGrid(8),
+                y: utils.withGrid(2),
+                direction: "down",
+                face: "left",
+              }
+            ]
+          }
+        ]   
+      }],
+      [utils.asGridCoord(1,3)]: [{
+        scenarios: [
+          {
+            events: [
+              {
+                type: "changeMap",
+                map: "O2",
+                x: utils.withGrid(7),
+                y: utils.withGrid(10),
+                direction: "up",
+                face: "left",
+              }
+            ]
+          }
+        ]     
+      }],
+      [utils.asGridCoord(5,5)]: [{
+        scenarios: [
+          {
+            events: [
+              {
+                type: "changeMap",
+                map: "Quarters",
+                x: utils.withGrid(8),
+                y: utils.withGrid(6),
+                direction: "up",
+                face: "right",
+              }
+            ]
+          }
+        ]  
+      }],
+      [utils.asGridCoord(2,8)]: [{
+        scenarios: [
+          {
+            events: [
+              {
+                type: "changeMap",
+                map: "Hallway1",
+                x: utils.withGrid(8),
+                y: utils.withGrid(1),
+                direction: "down",
+                face: "down",
+              }
+            ]
+          }
+        ]  
+      }],
+      [utils.asGridCoord(3,8)]: [{
+        scenarios: [
+          {
+            events: [
+              {
+                type: "changeMap",
+                map: "Hallway1",
+                x: utils.withGrid(9),
+                y: utils.withGrid(1),
+                direction: "down",
+                face: "down",
+              }
+            ]
+          }
+        ]
+      }],
+      [utils.asGridCoord(4,8)]: [{
+        scenarios: [
+          {
+            events: [
+              {
+                type: "changeMap",
+                map: "Hallway1",
+                x: utils.withGrid(10),
+                y: utils.withGrid(1),
+                direction: "down",
+                face: "down",
+              }
+            ]
+          }
+        ]   
+      }],
+      [utils.asGridCoord(2,1)]: [{
+        scenarios: [
+          {
+            events: [
+              {
+                type: "changeMap",
+                map: "Corner",
+                x: utils.withGrid(2),
+                y: utils.withGrid(5),
+                direction: "up",
+                face: "up",
+              }
+            ]
+          }
+        ]  
+      }],
+      [utils.asGridCoord(3,1)]: [{
+        scenarios: [
+          {
+            events: [
+              {
+                type: "changeMap",
+                map: "Corner",
+                x: utils.withGrid(3),
+                y: utils.withGrid(5),
+                direction: "up",
+                face: "up",
+              }
+            ]
+          }
+        ]      
+      }],
+      [utils.asGridCoord(4,1)]: [{
+        scenarios: [
+          {
+            events: [
+              {
+                type: "changeMap",
+                map: "Corner",
+                x: utils.withGrid(4),
+                y: utils.withGrid(5),
+                direction: "up",
+                face: "up",
+              }
+            ]
+          }
+        ]    
+      }]
     }
   },
   Corner: {
@@ -509,90 +565,102 @@ window.OverworldMaps = {
       return walls;
     }(),
     cutsceneSpaces: {
-      [utils.asGridCoord(2,5)]: [
-        {
-          events: [
+      [utils.asGridCoord(2,5)]: [{
+        scenarios: [
+          {
+            events: [
+              {
+                type: "changeMap",
+                map: "Hallway2",
+                x: utils.withGrid(2),
+                y: utils.withGrid(1),
+                direction: "down",
+                face: "down",
+              }
+            ]
+          }
+        ]       
+      }],
+      [utils.asGridCoord(3,5)]: [{
+        scenarios: [
+          {
+            events: [
+              {
+                type: "changeMap",
+                map: "Hallway2",
+                x: utils.withGrid(3),
+                y: utils.withGrid(1),
+                direction: "down",
+                face: "down", 
+              }
+            ]
+          }
+        ]
+      }],
+      [utils.asGridCoord(4,5)]: [{
+          scenarios: [
             {
-              type: "changeMap",
-              map: "Hallway2",
-              x: utils.withGrid(2),
-              y: utils.withGrid(1),
-              direction: "down",
-              face: "down",
+              events: [
+                {
+                  type: "changeMap",
+                  map: "Hallway2",
+                  x: utils.withGrid(4),
+                  y: utils.withGrid(1),
+                  direction: "down",
+                  face: "down",
+                }
+              ]
             }
-          ]
-        }
-      ],
-      [utils.asGridCoord(3,5)]: [
-        {
-          events: [
-            {
-              type: "changeMap",
-              map: "Hallway2",
-              x: utils.withGrid(3),
-              y: utils.withGrid(1),
-              direction: "down",
-              face: "down", 
-            }
-          ]
-        }
-      ],
-      [utils.asGridCoord(4,5)]: [
-        {
-          events: [
-            {
-              type: "changeMap",
-              map: "Hallway2",
-              x: utils.withGrid(4),
-              y: utils.withGrid(1),
-              direction: "down",
-              face: "down",
-            }
-          ]
-        }
-      ],
-      [utils.asGridCoord(1,2)]: [
-        {
-          events: [
-            {
-              type: "changeMap",
-              map: "Hallway3",
-              x: utils.withGrid(4),
-              y: utils.withGrid(15),
-              direction: "up",
-              face: "left",
-            }
-          ]
-        }
-      ],
-      [utils.asGridCoord(1,3)]: [
-        {
-          events: [
-            {
-              type: "changeMap",
-              map: "Hallway3",
-              x: utils.withGrid(3),
-              y: utils.withGrid(15),
-              direction: "up",
-              face: "left",
-            }
-          ]
-        }
-      ],
-      [utils.asGridCoord(1,4)]: [
-        {
-          events: [
-            {
-              type: "changeMap",
-              map: "Hallway3",
-              x: utils.withGrid(2),
-              y: utils.withGrid(15),
-              direction: "up",
-              face: "left",
-            }
-          ]
-        }
-      ]
+          ]    
+      }],
+      [utils.asGridCoord(1,2)]: [{
+        scenarios: [
+          {
+            events: [
+              {
+                type: "changeMap",
+                map: "Hallway3",
+                x: utils.withGrid(4),
+                y: utils.withGrid(15),
+                direction: "up",
+                face: "left",
+              }
+            ]
+          }
+        ]   
+      }],
+      [utils.asGridCoord(1,3)]: [{
+        scenarios: [
+          {
+            events: [
+              {
+                type: "changeMap",
+                map: "Hallway3",
+                x: utils.withGrid(3),
+                y: utils.withGrid(15),
+                direction: "up",
+                face: "left",
+              }
+            ]
+          }
+        ] 
+      }],
+      [utils.asGridCoord(1,4)]: [{
+        scenarios: [
+          {
+            events: [
+              {
+                type: "changeMap",
+                map: "Hallway3",
+                x: utils.withGrid(2),
+                y: utils.withGrid(15),
+                direction: "up",
+                face: "left",
+              }
+            ]
+          }
+        ]      
+      }]
     }
   },
   Hallway3: {
@@ -622,118 +690,134 @@ window.OverworldMaps = {
       return walls;
     }(),
     cutsceneSpaces: {
-      [utils.asGridCoord(2,15)]: [
-        {
-          events: [
-            {
-              type: "changeMap",
-              map: "Corner",
-              x: utils.withGrid(1),
-              y: utils.withGrid(4),
-              direction: "right",
-              face: "down",
-            }
-          ]
-        }
-      ],
-      [utils.asGridCoord(3,15)]: [
-        {
-          events: [
-            {
-              type: "changeMap",
-              map: "Corner",
-              x: utils.withGrid(1),
-              y: utils.withGrid(3),
-              direction: "right",
-              face: "down",
-            }
-          ]
-        }
-      ],
-      [utils.asGridCoord(4,15)]: [
-        {
-          events: [
-            {
-              type: "changeMap",
-              map: "Corner",
-              x: utils.withGrid(1),
-              y: utils.withGrid(2),
-              direction: "right",
-              face: "down", 
-            }
-          ]
-        }
-      ],
-      [utils.asGridCoord(1,9)]: [
-        {
-          events: [
-            {
-              type: "changeMap",
-              map: "Comms",
-              x: utils.withGrid(5),
-              y: utils.withGrid(2),
-              direction: "down",
-              face: "left",
-            }
-          ]
-        }
-      ],
-      [utils.asGridCoord(5,9)]: [
-        {
-          events: [
-            {
-              type: "changeMap",
-              map: "Engine",
-              x: utils.withGrid(7),
-              y: utils.withGrid(22),
-              direction: "left",
-              face: "right",
-            }
-          ]
-        }
-      ],
-      [utils.asGridCoord(1,6)]: [
-        {
-          events: [
-            {
-              type: "changeMap",
-              map: "Medbay",
-              x: utils.withGrid(7),
-              y: utils.withGrid(22),
-              direction: "left",
-              face: "left",
-            }
-          ]
-        }
-      ],
-      [utils.asGridCoord(1,12)]: [
-        {
-          events: [
-            {
-              type: "changeMap",
-              map: "Hallway4",
-              x: utils.withGrid(3),
-              y: utils.withGrid(8),
-              direction: "up",
-              face: "left",
-            }
-          ]
-        }
-      ],
-      [utils.asGridCoord(1,13)]: [
-        {
-          events: [
-            {
-              type: "changeMap",
-              map: "Hallway4",
-              x: utils.withGrid(2),
-              y: utils.withGrid(8),
-              direction: "up",
-              face: "left",
-            }
-          ]
-        }
-      ]
+      [utils.asGridCoord(2,15)]: [{
+        scenarios: [
+          {
+            events: [
+              {
+                type: "changeMap",
+                map: "Corner",
+                x: utils.withGrid(1),
+                y: utils.withGrid(4),
+                direction: "right",
+                face: "down",
+              }
+            ]
+          }
+        ]   
+      }],
+      [utils.asGridCoord(3,15)]: [{
+        scenarios: [
+          {
+            events: [
+              {
+                type: "changeMap",
+                map: "Corner",
+                x: utils.withGrid(1),
+                y: utils.withGrid(3),
+                direction: "right",
+                face: "down",
+              }
+            ]
+          }
+        ]    
+      }],
+      [utils.asGridCoord(4,15)]: [{
+        scenarios: [
+          {
+            events: [
+              {
+                type: "changeMap",
+                map: "Corner",
+                x: utils.withGrid(1),
+                y: utils.withGrid(2),
+                direction: "right",
+                face: "down", 
+              }
+            ]
+          }
+        ]  
+      }],
+      [utils.asGridCoord(1,9)]: [{
+        scenarios: [
+          {
+            events: [
+              {
+                type: "changeMap",
+                map: "Comms",
+                x: utils.withGrid(5),
+                y: utils.withGrid(2),
+                direction: "down",
+                face: "left",
+              }
+            ]
+          }
+        ] 
+      }],
+      [utils.asGridCoord(5,9)]: [{
+        scenarios: [
+          {
+            events: [
+              {
+                type: "changeMap",
+                map: "Engine",
+                x: utils.withGrid(7),
+                y: utils.withGrid(22),
+                direction: "left",
+                face: "right",
+              }
+            ]
+          }
+        ] 
+      }],
+      [utils.asGridCoord(1,6)]: [{
+        scenarios: [
+          {
+            events: [
+              {
+                type: "changeMap",
+                map: "Medbay",
+                x: utils.withGrid(7),
+                y: utils.withGrid(22),
+                direction: "left",
+                face: "left",
+              }
+            ]
+          }
+        ] 
+      }],
+      [utils.asGridCoord(1,12)]: [{
+        scenarios: [
+          {
+            events: [
+              {
+                type: "changeMap",
+                map: "Hallway4",
+                x: utils.withGrid(3),
+                y: utils.withGrid(8),
+                direction: "up",
+                face: "left",
+              }
+            ]
+          }
+        ]
+      }],
+      [utils.asGridCoord(1,13)]: [{
+        scenarios: [
+          {
+            events: [
+              {
+                type: "changeMap",
+                map: "Hallway4",
+                x: utils.withGrid(2),
+                y: utils.withGrid(8),
+                direction: "up",
+                face: "left",
+              }
+            ]
+          }
+        ]   
+      }]
     }
   },
   Hallway4: {
@@ -749,76 +833,86 @@ window.OverworldMaps = {
       }
     },
     cutsceneSpaces: {
-      [utils.asGridCoord(2,8)]: [
-        {
-          events: [
-            {
-              type: "changeMap",
-              map: "Hallway3",
-              x: utils.withGrid(1),
-              y: utils.withGrid(13),
-              direction: "right",
-              face: "down",
-            }
-          ]
-        }
-      ],
-      [utils.asGridCoord(3,8)]: [
-        {
-          events: [
-            {
-              type: "changeMap",
-              map: "Hallway3",
-              x: utils.withGrid(1),
-              y: utils.withGrid(12),
-              direction: "right",
-              face: "down",
-            }
-          ]
-        }
-      ],
-      [utils.asGridCoord(1,4)]: [
-        {
-          events: [
-            {
-              type: "changeMap",
-              map: "O2",
-              x: utils.withGrid(5),
-              y: utils.withGrid(2),
-              direction: "down",
-              face: "left",
-            }
-          ]
-        }
-      ],
-      [utils.asGridCoord(2,1)]: [
-        {
-          events: [
-            {
-              type: "changeMap",
-              map: "Cafeteria",
-              x: utils.withGrid(1),
-              y: utils.withGrid(6),
-              direction: "right",
-              face: "up",
-            }
-          ]
-        }
-      ],
-      [utils.asGridCoord(3,1)]: [
-        {
-          events: [
-            {
-              type: "changeMap",
-              map: "Cafeteria",
-              x: utils.withGrid(1),
-              y: utils.withGrid(7),
-              direction: "right",
-              face: "up",
-            }
-          ]
-        }
-      ]
+      [utils.asGridCoord(2,8)]: [{
+        scenarios: [
+          {
+            events: [
+              {
+                type: "changeMap",
+                map: "Hallway3",
+                x: utils.withGrid(1),
+                y: utils.withGrid(13),
+                direction: "right",
+                face: "down",
+              }
+            ]
+          }
+        ]   
+      }],
+      [utils.asGridCoord(3,8)]: [{
+        scenarios: [
+          {
+            events: [
+              {
+                type: "changeMap",
+                map: "Hallway3",
+                x: utils.withGrid(1),
+                y: utils.withGrid(12),
+                direction: "right",
+                face: "down",
+              }
+            ]
+          }
+        ]
+      }],
+      [utils.asGridCoord(1,4)]: [{
+        scenarios: [
+          {
+            events: [
+              {
+                type: "changeMap",
+                map: "O2",
+                x: utils.withGrid(5),
+                y: utils.withGrid(2),
+                direction: "down",
+                face: "left",
+              }
+            ]
+          }
+        ] 
+      }],
+      [utils.asGridCoord(2,1)]: [{
+        scenarios: [
+          {
+            events: [
+              {
+                type: "changeMap",
+                map: "Cafeteria",
+                x: utils.withGrid(1),
+                y: utils.withGrid(6),
+                direction: "right",
+                face: "up",
+              }
+            ]
+          }
+        ] 
+      }],
+      [utils.asGridCoord(3,1)]: [{
+        scenarios: [
+          {
+            events: [
+              {
+                type: "changeMap",
+                map: "Cafeteria",
+                x: utils.withGrid(1),
+                y: utils.withGrid(7),
+                direction: "right",
+                face: "up",
+              }
+            ]
+          }
+        ] 
+      }]
     },
     walls: function() {
       let walls = {};
@@ -846,62 +940,70 @@ window.OverworldMaps = {
       }
     },
     cutsceneSpaces: {
-      [utils.asGridCoord(8,2)]: [
-        {
-          events: [
-            {
-              type: "changeMap",
-              map: "Hallway2",
-              x: utils.withGrid(1),
-              y: utils.withGrid(7),
-              direction: "right",
-              face: "up",
-            }
-          ]
-        }
-      ],
-      [utils.asGridCoord(14,8)]: [
-        {
-          events: [
-            {
-              type: "changeMap",
-              map: "Hallway1",
-              x: utils.withGrid(5),
-              y: utils.withGrid(2),
-              direction: "down",
-              face: "right",
-            }
-          ]
-        }
-      ],
-      [utils.asGridCoord(1,6)]: [
-        {
-          events: [
-            {
-              type: "changeMap",
-              map: "Hallway4",
-              x: utils.withGrid(2),
-              y: utils.withGrid(1),
-              direction: "down",
-              face: "left",
-            }
-          ]
-        }
-      ],
-      [utils.asGridCoord(1,7)]: [
-        {
-          events: [
-            {
-              type: "changeMap",
-              map: "Hallway4",
-              x: utils.withGrid(3),
-              y: utils.withGrid(1),
-              direction: "down",
-              face: "left",
-            }
-          ]
-        }
-      ],
+      [utils.asGridCoord(8,2)]: [{
+        scenarios: [
+          {
+            events: [
+              {
+                type: "changeMap",
+                map: "Hallway2",
+                x: utils.withGrid(1),
+                y: utils.withGrid(7),
+                direction: "right",
+                face: "up",
+              }
+            ]
+          }
+        ]   
+      }],
+      [utils.asGridCoord(14,8)]: [{
+        scenarios: [
+          {
+            events: [
+              {
+                type: "changeMap",
+                map: "Hallway1",
+                x: utils.withGrid(5),
+                y: utils.withGrid(2),
+                direction: "down",
+                face: "right",
+              }
+            ]
+          }
+        ]
+      }],
+      [utils.asGridCoord(1,6)]: [{
+        scenarios: [
+          {
+            events: [
+              {
+                type: "changeMap",
+                map: "Hallway4",
+                x: utils.withGrid(2),
+                y: utils.withGrid(1),
+                direction: "down",
+                face: "left",
+              }
+            ]
+          }
+        ]
+      }],
+      [utils.asGridCoord(1,7)]: [{
+        scenarios: [
+          {
+            events: [
+              {
+                type: "changeMap",
+                map: "Hallway4",
+                x: utils.withGrid(3),
+                y: utils.withGrid(1),
+                direction: "down",
+                face: "left",
+              }
+            ]
+          }
+        ]  
+      }],
     },
     walls: function() {
       let walls = {};
@@ -945,20 +1047,22 @@ window.OverworldMaps = {
       return walls;
     }(),
     cutsceneSpaces: {
-      [utils.asGridCoord(5,2)]: [
-        {
-          events: [
-            {
-              type: "changeMap",
-              map: "Hallway3",
-              x: utils.withGrid(1),
-              y: utils.withGrid(9),
-              direction: "right",
-              face: "up",
-            }
-          ]
-        }
-      ]
+      [utils.asGridCoord(5,2)]: [{
+        scenarios: [
+          {
+            events: [
+              {
+                type: "changeMap",
+                map: "Hallway3",
+                x: utils.withGrid(1),
+                y: utils.withGrid(9),
+                direction: "right",
+                face: "up",
+              }
+            ]
+          }
+        ]
+      }]
     }
   },
   Quarters: {
@@ -987,19 +1091,21 @@ window.OverworldMaps = {
       return walls;
     }(),
     cutsceneSpaces: {
-      [utils.asGridCoord(8,6)]: [
-        {
-          events: [
-            {
-              type: "changeMap",
-              map: "Hallway2",
-              x: utils.withGrid(5),
-              y: utils.withGrid(5),
-              direction: "left"
-            }
-          ]
-        }
-      ]
+      [utils.asGridCoord(8,6)]: [{
+        scenarios: [
+          {
+            events: [
+              {
+                type: "changeMap",
+                map: "Hallway2",
+                x: utils.withGrid(5),
+                y: utils.withGrid(5),
+                direction: "left"
+              }
+            ]
+          }
+        ]
+      }]
     }
   },
   Engine: {
@@ -1038,20 +1144,22 @@ window.OverworldMaps = {
       return walls;
     }(),
     cutsceneSpaces: {
-      [utils.asGridCoord(7,22)]: [
-        {
-          events: [
-            {
-              type: "changeMap",
-              map: "Hallway3",
-              x: utils.withGrid(5),
-              y: utils.withGrid(9),
-              direction: "left",
-              face: "right",
-            }
-          ]
-        }
-      ]
+      [utils.asGridCoord(7,22)]: [{
+        scenarios: [
+          {
+            events: [
+              {
+                type: "changeMap",
+                map: "Hallway3",
+                x: utils.withGrid(5),
+                y: utils.withGrid(9),
+                direction: "left",
+                face: "right",
+              }
+            ]
+          }
+        ]
+      }]
     }
   },
 }

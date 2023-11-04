@@ -44,7 +44,7 @@ class OverworldEvent {
           }, this.event.time);
 
           break;
-        case "alert":
+        /*case "alert":
           const alert = new ScreenEffects();
           //alert.init(document.querySelector(".game-container"), () => {
           //  setTimeout(() => {}, this.event.time)
@@ -52,7 +52,7 @@ class OverworldEvent {
           console.log(alert);
           alert.fadeOut();
 
-          break;
+          break;*/
       }
     }
 

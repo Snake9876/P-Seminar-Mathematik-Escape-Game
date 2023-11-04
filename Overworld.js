@@ -227,8 +227,8 @@ class Overworld {
     this.map.startCutscene([
       { 
         type: "effect", 
-        visual: "alert",
-        sound: "sounds/knocking.wav"
+        visual: "rumble",
+        sound: "sounds/explosion.wav"
       },
       {
         type: "stand",

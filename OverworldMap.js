@@ -131,7 +131,7 @@ window.OverworldMaps = {
         type: "Person",
         isPlayerControlled: true,
         x: utils.withGrid(7),
-        y: utils.withGrid(11),
+        y: utils.withGrid(10),
         direction: "up",
       },
       kitchenNpcA: {
@@ -143,7 +143,7 @@ window.OverworldMaps = {
         talking: [
           {
             required: ["SEEN_INTRO"],
-            events: [
+            events: [,
               { type: "effect", visual: "alarm"},
               { type: "textMessage", text: "U got the story flag! Congrats!", faceHero: "kitchenNpcA"},
               //{ type: "toggleOxygenBar" },
@@ -165,7 +165,13 @@ window.OverworldMaps = {
       [utils.asGridCoord(6,10)]: [{
         scenarios: [
           {
+            required: ["SEEN_INTRO"],
             events: [
+              {
+                type: "effect",
+                visual: "alarm",
+                toggle: true,
+              },
               { 
                 type: "changeMap", 
                 map: "Hallway1",
@@ -175,8 +181,20 @@ window.OverworldMaps = {
                 face: "down",
               },
               {
-                type: "addStoryFlag",
-                flag: "SHOW_PERSON"
+                type: "removeStoryFlag",
+                flag: "SEEN_INTRO"
+              }
+            ]
+          },
+          {
+            events: [
+              { 
+                type: "changeMap", 
+                map: "Hallway1",
+                x: utils.withGrid(7),
+                y: utils.withGrid(6),
+                direction: "up",
+                face: "down",
               }
             ]
           }
@@ -187,30 +205,35 @@ window.OverworldMaps = {
           {
             required: ["SEEN_INTRO"],
             events: [
-              { type: "textMessage", text: "You already acquired this story flag!"}
-              /*{ type: "addStoryFlag", flag: "SEEN_INTRO"},
-              { type: "textMessage", text: "SYSTEMWARNUNG!! MULTIPLE ÄUSSERE BESCHÄDIGUNGEN."},
-              { type: "textMessage", text: "SAUERSTOFFKONZENTRATION: 95%, TENDENZ FALLEND."},
-              { type: "textMessage", text: "DU: Oh je! Anscheinend sind wir mit einem Asteroiden kollidiert!"},
-              { type: "textMessage", text: "Hätten wir bei der Berechnung des Kurses bloss nicht gerundet!"},
-              { type: "textMessage", text: "Aber das ist erstmal Nebensache! Ich muss nach den anderen sehen!"},
-              { type: "textMessage", text: "Ein System-Checkup in O2 sollte mir mehr verraten."},
-              { type: "textMessage", text: "Don't even get me started on the mushrooms."},
-              { type: "textMessage", text: "You will never make it in pizza!"}*/
+              {
+                type: "effect",
+                visual: "alarm",
+                toggle: true,
+              },
+              { 
+                type: "changeMap", 
+                map: "Hallway1",
+                x: utils.withGrid(6),
+                y: utils.withGrid(6),
+                direction: "up",
+                face: "down",
+              },
+              {
+                type: "removeStoryFlag",
+                flag: "SEEN_INTRO"
+              }
             ]
           },
           {
             events: [
-              { type: "textMessage", text: "Received story flag!"},
-              { type: "addStoryFlag", flag: "SEEN_INTRO"},
-              /*{ type: "textMessage", text: "SYSTEMWARNUNG!! MULTIPLE ÄUSSERE BESCHÄDIGUNGEN."},
-              { type: "textMessage", text: "SAUERSTOFFKONZENTRATION: 95%, TENDENZ FALLEND."},
-              { type: "textMessage", text: "DU: Oh je! Anscheinend sind wir mit einem Asteroiden kollidiert!"},
-              { type: "textMessage", text: "Hätten wir bei der Berechnung des Kurses bloss nicht gerundet!"},
-              { type: "textMessage", text: "Aber das ist erstmal Nebensache! Ich muss nach den anderen sehen!"},
-              { type: "textMessage", text: "Ein System-Checkup in O2 sollte mir mehr verraten."},
-              { type: "textMessage", text: "Don't even get me started on the mushrooms."},
-              { type: "textMessage", text: "You will never make it in pizza!"}*/
+              { 
+                type: "changeMap", 
+                map: "Hallway1",
+                x: utils.withGrid(6),
+                y: utils.withGrid(6),
+                direction: "up",
+                face: "down",
+              }
             ]
           }
         ]

@@ -234,23 +234,25 @@ class Overworld {
         type: "stand",
         who: "hero",
         direction: "up",
-        time: 500,
+        time: 100,
       },
       { 
         type: "effect", 
         visual: "rumble",
-        sound: "sounds/explosion.wav"
+        sound: "sounds/explosion.wav",
+        time: 500,
       },
       {
         type: "stand",
         who: "hero",
         direction: "up",
-        time: 2000,
+        time: 1500,
       },
       { 
         type: "effect", 
         visual: "alarm",
-        sound: "sounds/explosion.wav"
+        sound: "sounds/alarm.wav",
+        toggle: true,
       },
       { 
         type: "walk", 
@@ -266,7 +268,21 @@ class Overworld {
         type: "walk", 
         who: "hero",
         direction: "up",
-      }
+      },
+      { type: "textMessage", text: "SYSTEMWARNUNG!! MULTIPLE ÄUSSERE BESCHÄDIGUNGEN."},
+      { type: "textMessage", text: "SAUERSTOFFKONZENTRATION: 95%, TENDENZ FALLEND."},
+      {
+        type: "stand",
+        who: "hero",
+        direction: "up",
+        time: 1000,
+      },
+      { type: "textMessage", text: "DU: Oh je! Anscheinend sind wir mit einem Asteroiden kollidiert!"},
+      { type: "textMessage", text: "Hätten wir bei der Berechnung des Kurses bloss nicht gerundet!"},
+      { type: "textMessage", text: "Aber das ist erstmal Nebensache! Ich muss nach den anderen sehen!"},
+      { type: "textMessage", text: "Die Sauerstoffkonzentration fällt..."},
+      { type: "textMessage", text: "Ein System-Checkup in O2 sollte mir mehr verraten!"},
+      //Info-Modal { type: "openModal", fileRef: "HudModal", ModalRef: "info"}
      ])
   }
   this.timerLoop();

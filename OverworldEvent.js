@@ -38,23 +38,36 @@ class OverworldEvent {
 
       switch (this.event.visual) {
         case "rumble":
-          container.classList.add("shake");
-        
-          setTimeout(function () {
-            container.classList.remove("shake");
-          }, this.event.time);
+          container.classList.toggle("shake");
+
+          if(this.event.time) {
+            setTimeout(function () {
+              container.classList.toggle("shake");
+            }, this.event.time);
+          }
 
           break;
         case "alarm":
-          const isAlarm = document.querySelector(".alarm");
-          if(isAlarm == null) {
+          if(this.event.time) {
             const alarmElement = document.createElement('div');
             alarmElement.classList.add("overlay", "alarm");
             container.appendChild(alarmElement);
-          } else {
-            isAlarm.remove();
-          }
 
+            setTimeout(function () {
+              alarmElement.remove();
+            }, this.event.time);
+
+          } else if(this.event.toggle) {
+            const isAlarm = document.querySelector(".alarm");
+
+            if(isAlarm == null) {
+              const alarmElement = document.createElement('div');
+              alarmElement.classList.add("overlay", "alarm");
+              container.appendChild(alarmElement);
+            } else {
+              isAlarm.remove();
+            }
+          }
           
           break;
       }
@@ -191,6 +204,12 @@ class OverworldEvent {
 
   addStoryFlag(resolve) {
     this.map.overworld.progress.storyFlags[this.event.flag] = true;
+
+    resolve();
+  }
+
+  removeStoryFlag(resolve) {
+    this.map.overworld.progress.storyFlags[this.event.flag] = false;
 
     resolve();
   }

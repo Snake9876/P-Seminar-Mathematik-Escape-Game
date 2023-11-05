@@ -36,8 +36,7 @@
 }
 
 .shake {
-  position: relative; 
-  animation: shake 0.5s ease-in-out;
+  animation: shake 0.5s infinite;
 }
 
 @keyframes alarmEffect {
@@ -53,6 +52,6 @@
 }
 
 .alarm {
-  animation: alarmEffect 2s infinite; /* Adjust the duration as needed */
+  animation: alarmEffect 2s infinite;
   pointer-events: none;
 }

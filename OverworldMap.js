@@ -421,6 +421,41 @@ window.OverworldMaps = {
       [utils.asGridCoord(1,7)]: [{
         scenarios: [
           {
+            required: ["INTRO_Q2"],
+            events: [
+              { 
+                type: "changeMap",
+                map: "Cafeteria",
+                x: utils.withGrid(8),
+                y: utils.withGrid(2),
+                direction: "down",
+                face: "left",
+              },
+              { 
+                type: "walk", 
+                who: "hero",
+                direction: "up",
+              },
+              {
+                type: "stand",
+                who: "hero",
+                direction: "up",
+                time: 500,
+              },
+              { type: "textMessage", text: "Oh nein! Was ist denn hier passiert?!" },
+              { type: "textMessage", text: "Yuri! Bist du hier? Kannst du mich hören?" },
+              {
+                type: "stand",
+                who: "hero",
+                direction: "up",
+                time: 500,
+              },
+              { type: "textMessage", text: "Hilf mir... ich bin unter... großem Berg..." },
+
+
+            ]
+          },
+          {
             events: [
               { 
                 type: "changeMap",
@@ -1139,6 +1174,92 @@ window.OverworldMaps = {
         isPlayerControlled: true,
         x: utils.withGrid(30),
         y: utils.withGrid(10),
+      },
+      maintenanceMonitor: {
+        type: "Person",
+        x: utils.withGrid(9),
+        y: utils.withGrid(5),
+        direction: "up",
+        src: "/images/characters/people/gameObjects.png",
+        talking: [
+          {
+            required: ["INTRO_Q1"],
+            events: [
+              { type: "textMessage", text: "Wollen wir doch mal sehen, wo der Fehler liegt!" },
+              {
+                type: "stand",
+                who: "hero",
+                direction: "up",
+                time: 1000,
+              },
+              { type: "textMessage", text: "Oh verdammt! Anscheinend haben wir ein Leck in der Außenwand!" },
+              { type: "effect", sound: "sounds/alarm.wav"},
+              { type: "textMessage", text: "SAUERSTOFFKONZENTRATION: 70%, TENDENZ FALLEND." },
+              { type: "textMessage", text: "Mir wird langsam echt schwindlig..." },
+              { type: "textMessage", text: "Ich werde wohl meinen Raumanzug brauchen!" },
+              { type: "textMessage", text: "Besser ich füll meinen Vorrat vorher auf!" },
+
+              //Marker-Event { type: "marker", x:, y: },
+
+              { type: "removeStoryFlag", flag: "INTRO_Q1" },
+              { type: "addStoryFlag", flag: "Q1_IN_PROGRESS" },
+            ]
+          },
+        ]
+      },
+      oxygenRefill: {
+        type: "Person",
+        x: utils.withGrid(9),
+        y: utils.withGrid(5),
+        direction: "up",
+        src: "/images/characters/people/gameObjects.png",
+        talking: [
+          {
+            required: ["Q1_IN_PROGRESS"],
+            events: [
+              { type: "textMessage", text: "Aber wie lang reicht mir ein Vorrat?" },
+              { type: "openModal", fileRef: "questionModal", modalRef: "q1" },
+              /*Question-Modal 1 onComplete:
+                { type: "removeStoryFlag", flag: "Q1_IN_PROGRESS" },
+                { type: "addStoryFlag", flag: "INTRO_Q2" },
+                { type: "toggleOxygenBar" },
+                { type: "textMessage", text: "Sauerstoff aufgefüllt." },
+                {
+                type: "stand",
+                who: "hero",
+                direction: "up",
+                time: 500,
+                },
+                { type: "textMessage", text: "Also muss ich hier alle 20 Raumwechsel meine Vorräte wiederauffüllen!" },
+                {
+                type: "stand",
+                who: "hero",
+                direction: "up",
+                time: 1000,
+                },
+                { type: "effect", sound: "sounds/alarm.wav"},
+                { type: "textMessage", text: "STEUERTRIEBWERK AUSGEFALLEN. WARTUNG BENÖTIGT." },
+                {
+                type: "stand",
+                who: "hero",
+                direction: "up",
+                time: 500,
+                },
+                { type: "textMessage", text: "Auch das noch!" },
+                { type: "textMessage", text: "Wo ist unser Ingenieur Yuri, wenn man ihn braucht?" },
+                { type: "textMessage", text: "Wollte er sich nicht gerade einen Kaffee holen?" },
+              
+              */
+
+            ]
+          },
+          {
+            required: ["INTRO_Q2"],
+            events: [
+              { type: "textMessage", text: "Sauerstoff aufgefüllt.", resetTracker: true },
+            ]
+          }
+        ]
       }
     },
     walls: function() {
@@ -1168,7 +1289,20 @@ window.OverworldMaps = {
       [utils.asGridCoord(7,22)]: [{
         scenarios: [
           {
+            required: ["Q1_IN_PROGRESS"],
             events: [
+              { type: "textMessage", text: "Ich sollte vorher besser meinen Sauerstoffvorrat auffüllen!" },
+              { 
+                type: "walk", 
+                who: "hero",
+                direction: "down",
+              },
+
+            ]
+          },
+          {
+            events: [
+              
               {
                 type: "changeMap",
                 map: "Hallway3",

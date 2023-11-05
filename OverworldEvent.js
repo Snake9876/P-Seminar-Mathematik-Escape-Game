@@ -141,7 +141,7 @@ class OverworldEvent {
     })
     message.init( document.querySelector(".game-container") );
 
-    if (this.resetTracker) {
+    if (this.event.resetTracker) {
       this.map.overworld.progress.roomTracker = 0;
       this.map.overworld.hud.updateFill(0);
     }

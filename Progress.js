@@ -11,6 +11,10 @@ class Progress {
     this.timerValue = 10;
     this.storyFlags = {
       "SEEN_INTRO": true,
+      "INTRO_Q1": false,
+      "Q1_IN_PROGRESS": false,
+      "INTRO_Q2": false,
+      "Q2_IN_PROGRESS": false,
       "GOT_ITEM_1": false,
       "GOT_ITEM_2": false,
       "GOT_ITEM_3": false,

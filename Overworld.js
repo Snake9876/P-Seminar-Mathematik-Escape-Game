@@ -270,7 +270,7 @@ class Overworld {
         direction: "up",
       },
       { type: "textMessage", text: "SYSTEMWARNUNG!! MULTIPLE ÄUSSERE BESCHÄDIGUNGEN."},
-      { type: "textMessage", text: "SAUERSTOFFKONZENTRATION: 95%, TENDENZ FALLEND."},
+      { type: "textMessage", text: "SAUERSTOFFKONZENTRATION: 85%, TENDENZ FALLEND."},
       {
         type: "stand",
         who: "hero",
@@ -283,6 +283,7 @@ class Overworld {
       { type: "textMessage", text: "Die Sauerstoffkonzentration fällt..."},
       { type: "textMessage", text: "Ein System-Checkup in O2 sollte mir mehr verraten!"},
       //Info-Modal { type: "openModal", fileRef: "HudModal", ModalRef: "info"}
+      { type: "addStoryFlag", flag: "INTRO_Q1" }
      ])
   }
   this.timerLoop();

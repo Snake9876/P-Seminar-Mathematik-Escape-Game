@@ -224,12 +224,18 @@ class Overworld {
   //Kick off the game!
   this.startGameLoop();
   if(this.titleScreen.isClosed && !useSaveFile) {
-    
+
     if(this.titleScreen.playerName) {
       this.progress.playerName = this.titleScreen.playerName;
     }
 
     this.map.startCutscene([
+      {
+        type: "stand",
+        who: "hero",
+        direction: "up",
+        time: 500,
+      },
       { 
         type: "effect", 
         visual: "rumble",
@@ -240,6 +246,11 @@ class Overworld {
         who: "hero",
         direction: "up",
         time: 2000,
+      },
+      { 
+        type: "effect", 
+        visual: "alarm",
+        sound: "sounds/explosion.wav"
       },
       { 
         type: "walk", 

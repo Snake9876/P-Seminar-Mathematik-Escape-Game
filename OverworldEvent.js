@@ -136,6 +136,7 @@ class OverworldEvent {
     }
 
     const message = new TextMessage({
+      name: this.event.name,
       text: this.text,
       onComplete: () => resolve()
     })

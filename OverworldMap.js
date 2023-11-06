@@ -442,20 +442,25 @@ window.OverworldMaps = {
                 direction: "up",
                 time: 500,
               },
-              { type: "textMessage", text: "Oh nein! Was ist denn hier passiert?!" },
-              { type: "textMessage", text: "Yuri! Bist du hier? Kannst du mich hören?" },
+              { type: "textMessage", name: this.overworld.progress.playerName, text: "Oh nein! Was ist denn hier passiert?!" },
+              { type: "textMessage", name: this.overworld.progress.playerName, text: "Yuri! Bist du hier? Kannst du mich hören?" },
               {
                 type: "stand",
                 who: "hero",
                 direction: "up",
                 time: 500,
               },
-              { type: "textMessage", text: "Hilf mir... ich bin unter... großem Berg..." },
-
+              { type: "textMessage", name: "Yuri", text: "Hilf mir... ich bin unter... größtem Berg..." },
+              { type: "textMessage", name: this.overworld.progress.playerName, text: "Die Zeit reicht nicht aus, jeden Berg wegzuräumen." },
+              { type: "textMessage", name: this.overworld.progress.playerName, text: "Ich muss herausfinden, welcher der Größte ist!" },
+              { type: "textMessage", name: this.overworld.progress.playerName, text: "Aber warte, die Berge sehen doch fast wie Kegel aus!" },
+              { type: "textMessage", name: this.overworld.progress.playerName, text: "Ich brauche dafür nur einen Meterstab!" },
+              { type: "textMessage", name: this.overworld.progress.playerName, text: "Hatte ihn nicht ... zuletzt benutzt?" },
 
             ]
           },
           {
+            required: ["GOT_METERSTICK"],
             events: [
               { 
                 type: "changeMap",
@@ -993,6 +998,62 @@ window.OverworldMaps = {
         isPlayerControlled: true,
         x: utils.withGrid(5),
         y: utils.withGrid(8),
+      },
+      berg1: {
+        type: "Person",
+        x: utils.withGrid(11),
+        y: utils.withGrid(3),
+        direction: "down",
+        src: "/images/characters/people/gameObjects.png",
+        shadowImg: "/images/characters/noshadow.png",
+        talking: [
+          {
+            required: ["GOT_METERSTICK"],
+            events: [
+              { type: "textMessage", name: this.overworld.progress.playerName,
+                text: "Der Durchmesser der Grundfläche ist m..."
+              },
+              { type: "textMessage", name: this.overworld.progress.playerName,
+                text: "...und der Berg ist m hoch."
+              },
+              { type: "openModal", fileRef: "questionModal", modalRef: "q2-1"},
+              //Set-Timer -5min
+              //Remove
+              //Text-Message: Oh nein, das war der falsche Berg!
+            ]
+          }
+        ]
+      },
+      berg2: {
+        type: "Person",
+        x: utils.withGrid(11),
+        y: utils.withGrid(3),
+        direction: "down",
+        src: "/images/characters/people/gameObjects.png",
+        shadowImg: "/images/characters/noshadow.png",
+        talking: [
+          {
+            required: ["GOT_METERSTICK"],
+            events: [
+              { type: "textMessage", name: this.overworld.progress.playerName,
+                text: "Der Durchmesser der Grundfläche ist m..."
+              },
+              { type: "textMessage", name: this.overworld.progress.playerName,
+                text: "...und der Berg ist m hoch."
+              },
+              { type: "openModal", fileRef: "questionModal", modalRef: "q2-2"},
+              //Set-Timer -2min
+              //Change spirte to Yuri
+              //{ type: "addStoryFlag", flag: "COMPLETED_Q2" },
+              //{ type: "textMessage", name: this.overworld.progress.playerName, text: "Oh nein, Yuri!"},
+              //{ type: "textMessage", name: this.overworld.progress.playerName, text: "Er ist ohnmächtig und seine Vitalwerte sind miserabel!"},
+              //{ type: "textMessage", name: this.overworld.progress.playerName, text: "Noch ist er am Leben,..."},
+              //{ type: "textMessage", name: this.overworld.progress.playerName, text: "...aber er muss dringend zur Krankenstation gebracht werden!"},
+              //{ type: "textMessage", name: this.overworld.progress.playerName, text: "Ich muss Krankenschwester Bella finden!"},
+              //Wenn Bella --> Scene Transition zu Medbay, Yuri auf Krankentrage --> wird wach --> gibt Tipps
+            ]
+          }
+        ], 
       }
     },
     cutsceneSpaces: {

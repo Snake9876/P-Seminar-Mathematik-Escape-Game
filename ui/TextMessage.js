@@ -1,5 +1,6 @@
 class TextMessage {
-  constructor({ text, onComplete }) {
+  constructor({ name, text, onComplete }) {
+    this.name = name;
     this.text = text;
     this.onComplete = onComplete;
     this.element = null;
@@ -12,6 +13,7 @@ class TextMessage {
 
     this.element.innerHTML = (`
       <p class="TextMessage_p"></p>
+      <p class="SpeakerName">${this.name}</p>
       <button class="TextMessage_button">Next</button>
     `)
 

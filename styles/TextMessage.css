@@ -35,3 +35,16 @@
   right: 2px;
   bottom: 0;
 }
+
+.SpeakerName {
+  position: absolute;
+  left: 7%;
+  top:-10px;
+  scale: 200%;
+  white-space: nowrap;
+  background: var(--menu-font-color);
+  color: #fff;
+  font-size: 4px; /*This is only so small because the component is scaled 2x in battle which is weird */
+  padding: 1px;
+  margin: 0;
+}

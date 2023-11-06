@@ -269,8 +269,8 @@ class Overworld {
         who: "hero",
         direction: "up",
       },
-      { type: "textMessage", name: "Boardcomputer", text: "SYSTEMWARNUNG!! MULTIPLE ÄUSSERE BESCHÄDIGUNGEN."},
-      { type: "textMessage", name: "Boardcomputer", text: "SAUERSTOFFKONZENTRATION: 85%, TENDENZ FALLEND."},
+      { type: "textMessage", name: "Bordcomputer", text: "SYSTEMWARNUNG!! MULTIPLE ÄUSSERE BESCHÄDIGUNGEN."},
+      { type: "textMessage", name: "Bordcomputer", text: "SAUERSTOFFKONZENTRATION: 85%, TENDENZ FALLEND."},
       {
         type: "stand",
         who: "hero",

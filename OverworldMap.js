@@ -76,6 +76,7 @@ class OverworldMap {
   }
 
   async startCutscene(events) {
+    this.playerName = this.overworld.progress.playerName;
     this.isCutscenePlaying = true;
 
     for (let i=0; i<events.length; i++) {
@@ -442,8 +443,8 @@ window.OverworldMaps = {
                 direction: "up",
                 time: 500,
               },
-              { type: "textMessage", name: this.overworld.progress.playerName, text: "Oh nein! Was ist denn hier passiert?!" },
-              { type: "textMessage", name: this.overworld.progress.playerName, text: "Yuri! Bist du hier? Kannst du mich hören?" },
+              { type: "textMessage", name: this.playerName, text: "Oh nein! Was ist denn hier passiert?!" },
+              { type: "textMessage", name: this.playerName, text: "Yuri! Bist du hier? Kannst du mich hören?" },
               {
                 type: "stand",
                 who: "hero",
@@ -451,11 +452,11 @@ window.OverworldMaps = {
                 time: 500,
               },
               { type: "textMessage", name: "Yuri", text: "Hilf mir... ich bin unter... größtem Berg..." },
-              { type: "textMessage", name: this.overworld.progress.playerName, text: "Die Zeit reicht nicht aus, jeden Berg wegzuräumen." },
-              { type: "textMessage", name: this.overworld.progress.playerName, text: "Ich muss herausfinden, welcher der Größte ist!" },
-              { type: "textMessage", name: this.overworld.progress.playerName, text: "Aber warte, die Berge sehen doch fast wie Kegel aus!" },
-              { type: "textMessage", name: this.overworld.progress.playerName, text: "Ich brauche dafür nur einen Meterstab!" },
-              { type: "textMessage", name: this.overworld.progress.playerName, text: "Hatte ihn nicht ... zuletzt benutzt?" },
+              { type: "textMessage", name: this.playerName, text: "Die Zeit reicht nicht aus, jeden Berg wegzuräumen." },
+              { type: "textMessage", name: this.playerName, text: "Ich muss herausfinden, welcher der Größte ist!" },
+              { type: "textMessage", name: this.playerName, text: "Aber warte, die Berge sehen doch fast wie Kegel aus!" },
+              { type: "textMessage", name: this.playerName, text: "Ich brauche dafür nur einen Meterstab!" },
+              { type: "textMessage", name: this.playerName, text: "Hatte ihn nicht ... zuletzt benutzt?" },
 
             ]
           },
@@ -734,6 +735,34 @@ window.OverworldMaps = {
         isPlayerControlled: true,
         x: utils.withGrid(30),
         y: utils.withGrid(10),
+      },
+      EngineDoor: {
+        type: "Person",
+        x: utils.withGrid(5),
+        y: utils.withGrid(9),
+        direction: "down",
+        src: "/images/characters/people/doorRight.png",
+        shadowImg: "/images/characters/noshadow.png",
+        requiredFlags: ["ENGINE_DOOR_VIS"],
+        talking: [
+          {
+            required: ["INTRO_Q2"],
+            events: [
+              { type: "effect", sound: "knocking/chat.wav"},
+              { type: "textMessage", name: "", text: "*Es scheint niemand zu öffnen...*" },
+            ]
+          },
+          {
+            events: [
+              { type: "effect", sound: "knocking/chat.wav"},
+              { type: "textMessage", name: this.playerName, text: "Verdammt, verschlossen!" },
+              { type: "textMessage", name: this.playerName, text: "Dass das gerade jetzt passieren muss!" },
+              { type: "textMessage", text: "Wo ist unser Ingenieur Yuri, wenn man ihn braucht?" },
+              { type: "textMessage", text: "Wollte er sich nicht gerade einen Kaffee holen?" },
+              { type: "addStoryFlag", flag: "INTRO_Q2" }
+            ]
+          }
+        ]
       }
     },
     walls: function() {
@@ -1010,16 +1039,16 @@ window.OverworldMaps = {
           {
             required: ["GOT_METERSTICK"],
             events: [
-              { type: "textMessage", name: this.overworld.progress.playerName,
+              { type: "textMessage", name: this.playerName,
                 text: "Der Durchmesser der Grundfläche ist m..."
               },
-              { type: "textMessage", name: this.overworld.progress.playerName,
+              { type: "textMessage", name: this.playerName,
                 text: "...und der Berg ist m hoch."
               },
-              { type: "openModal", fileRef: "questionModal", modalRef: "q2-1"},
+              //Berg entfernen? { type: "openModal", fileRef: "questionModal", modalRef: "q2"} --> should reference object 1,
               //Set-Timer -5min
               //Remove
-              //Text-Message: Oh nein, das war der falsche Berg!
+              //{ type: "textMessage", name: this.playerName, text: "Oh nein, das war der falsche Berg!" },
             ]
           }
         ]
@@ -1035,26 +1064,39 @@ window.OverworldMaps = {
           {
             required: ["GOT_METERSTICK"],
             events: [
-              { type: "textMessage", name: this.overworld.progress.playerName,
+              { type: "textMessage", name: this.playerName,
                 text: "Der Durchmesser der Grundfläche ist m..."
               },
-              { type: "textMessage", name: this.overworld.progress.playerName,
+              { type: "textMessage", name: this.playerName,
                 text: "...und der Berg ist m hoch."
               },
-              { type: "openModal", fileRef: "questionModal", modalRef: "q2-2"},
-              //Set-Timer -2min
+              //Berg entfernen? { type: "openModal", fileRef: "questionModal", modalRef: "q2"} --> should reference object 2,
               //Change spirte to Yuri
               //{ type: "addStoryFlag", flag: "COMPLETED_Q2" },
-              //{ type: "textMessage", name: this.overworld.progress.playerName, text: "Oh nein, Yuri!"},
-              //{ type: "textMessage", name: this.overworld.progress.playerName, text: "Er ist ohnmächtig und seine Vitalwerte sind miserabel!"},
-              //{ type: "textMessage", name: this.overworld.progress.playerName, text: "Noch ist er am Leben,..."},
-              //{ type: "textMessage", name: this.overworld.progress.playerName, text: "...aber er muss dringend zur Krankenstation gebracht werden!"},
-              //{ type: "textMessage", name: this.overworld.progress.playerName, text: "Ich muss Krankenschwester Bella finden!"},
-              //Wenn Bella --> Scene Transition zu Medbay, Yuri auf Krankentrage --> wird wach --> gibt Tipps
+              //{ type: "textMessage", name: this.playerName, text: "Oh nein, Yuri!"},
+              //{ type: "textMessage", name: this.playerName, text: "Er ist ohnmächtig und seine Vitalwerte sind miserabel!"},
+              //{ type: "textMessage", name: this.playerName, text: "Noch ist er am Leben,..."},
+              //{ type: "textMessage", name: this.playerName, text: "...aber er muss dringend zur Krankenstation gebracht werden!"},
+              //{ type: "textMessage", name: this.playerName, text: "Ich muss Krankenschwester Bella finden!"},
             ]
           }
         ], 
-      }
+      },
+      BellaMedic: {
+        type: "Person",
+        x: utils.withGrid(3),
+        y: utils.withGrid(3),
+        direction: "down",
+        src: "/images/characters/people/bellaMedic.png",
+        requiredFlags: ["INTRO_Q3"],
+        talking: [
+          {
+            events: [
+              { type: "textMessage", name: "Bella", text: "Am besten setzt du einen Notruf ab!" },
+            ]
+          },
+        ]
+      },
     },
     cutsceneSpaces: {
       [utils.asGridCoord(8,2)]: [{
@@ -1218,6 +1260,306 @@ window.OverworldMaps = {
                 x: utils.withGrid(5),
                 y: utils.withGrid(5),
                 direction: "left"
+              }
+            ]
+          }
+        ]
+      }]
+    }
+  },
+  O2: {
+    id: "O2",
+    lowerSrc: "/images/maps/O2Lower.png",
+    upperSrc: "/images/maps/O2Upper.png",
+    configObjects: {
+      hero: {
+        type: "Person",
+        isPlayerControlled: true,
+        x: utils.withGrid(30),
+        y: utils.withGrid(10),
+      },
+      maintenanceMonitor: {
+        type: "Person",
+        x: utils.withGrid(9),
+        y: utils.withGrid(5),
+        direction: "up",
+        src: "/images/characters/people/gameObjects.png",
+        talking: [
+          {
+            required: ["INTRO_Q1"],
+            events: [
+              { type: "textMessage", name: this.playerName, text: "Wollen wir doch mal sehen, wo der Fehler liegt!" },
+              {
+                type: "stand",
+                who: "hero",
+                direction: "up",
+                time: 1000,
+              },
+              { type: "textMessage", name: this.playerName, text: "Oh verdammt! Anscheinend haben wir ein Leck in der Außenwand!" },
+              { type: "effect", sound: "sounds/alarm.wav"},
+              { type: "textMessage", name: "Bordcomputer", text: "SAUERSTOFFKONZENTRATION: 70%, TENDENZ FALLEND." },
+              { type: "textMessage", name: this.playerName, text: "Mir wird langsam echt schwindlig..." },
+              { type: "textMessage", name: this.playerName, text: "Ich werde wohl meinen Raumanzug brauchen!" },
+              { type: "textMessage", name: this.playerName, text: "Besser füll ich vorher meinen Vorrat noch auf!" },
+
+              //Marker-Event { type: "marker", x:, y: },
+
+              { type: "removeStoryFlag", flag: "INTRO_Q1" },
+              { type: "addStoryFlag", flag: "Q1_IN_PROGRESS" },
+            ]
+          },
+        ]
+      },
+      oxygenRefill: {
+        type: "Person",
+        x: utils.withGrid(9),
+        y: utils.withGrid(5),
+        direction: "up",
+        src: "/images/characters/people/gameObjects.png",
+        talking: [
+          {
+            required: ["Q1_IN_PROGRESS"],
+            events: [
+              { type: "textMessage", text: "Aber wie lang reicht mir ein Vorrat?" },
+              { type: "openModal", fileRef: "questionModal", modalRef: "q1" },
+              /*Question-Modal 1 onComplete:
+                { type: "removeStoryFlag", flag: "Q1_IN_PROGRESS" },
+                { type: "addStoryFlag", flag: "Q1_COMPLETED" },
+                { type: "addStoryFlag", flag: "GO_TO_ENGINE" },
+                "Q1_IN_PROGRESS"
+                { type: "toggleOxygenBar" },
+                { type: "textMessage", name: "Füllstation", text: "Sauerstoff aufgefüllt." },
+                {
+                type: "stand",
+                who: "hero",
+                direction: "up",
+                time: 500,
+                },
+                { type: "textMessage", name: this.playerName, text: "Also muss ich hier alle 20 Raumwechsel meine Vorräte wiederauffüllen!" },
+                {
+                type: "stand",
+                who: "hero",
+                direction: "up",
+                time: 1000,
+                },
+                { type: "effect", sound: "sounds/alarm.wav"},
+                { type: "textMessage", name: "Bordcomputer", text: "STEUERTRIEBWERK AUSGEFALLEN. WARTUNG BENÖTIGT." },
+                {
+                type: "stand",
+                who: "hero",
+                direction: "up",
+                time: 500,
+                },
+                { type: "textMessage", name: this.playerName, text: "Auch das noch!" },
+                { type: "textMessage", name: this.playerName, text: "Dann eben zum Maschinenraum!" },   
+              
+              */
+
+            ]
+          },
+          {
+            required: ["Q1_COMPLETED"],
+            events: [
+              { type: "textMessage", name:"Füllstation", text: "Sauerstoff aufgefüllt.", resetTracker: true },
+            ]
+          }
+        ]
+      }
+    },
+    walls: function() {
+      let walls = {};
+      [
+      ].forEach(coord => {
+        let [x,y] = coord.split(",");
+        walls[utils.asGridCoord(x,y)] = true;
+      })
+      return walls;
+    }(),
+    cutsceneSpaces: {
+      [utils.asGridCoord(7,22)]: [{
+        scenarios: [
+          {
+            required: ["Q1_IN_PROGRESS"],
+            events: [
+              { type: "textMessage", text: "Ich sollte vorher besser meinen Sauerstoffvorrat auffüllen!" },
+              { 
+                type: "walk", 
+                who: "hero",
+                direction: "down",
+              },
+
+            ]
+          },
+          {
+            required: ["Q1_COMPLETED"],
+            events: [
+              {
+                type: "changeMap",
+                map: "Hallway2",
+                x: utils.withGrid(1),
+                y: utils.withGrid(3),
+                direction: "right",
+                face: "up",
+              },
+              { type: "effect", sound: "sounds/alarm.wav"},
+              { type: "textMessage", name: "Bordcomputer", text: "SYSTEMWARNUNG!! RAUMSCHIFF AUF KOLLISIONSKURS." },
+              { type: "textMessage", name: this.playerName, text: "Auch das noch!" },
+              { type: "textMessage", name: this.playerName, text: "Dann eben zum Maschinenraum!" },   
+              { type: "removeStoryFlag", flag: "Q1_COMPLETED" }
+            ]
+          },
+          {
+            events: [
+              {
+                type: "changeMap",
+                map: "Hallway2",
+                x: utils.withGrid(1),
+                y: utils.withGrid(3),
+                direction: "right",
+                face: "up",
+              },
+            ]
+          }
+        ]
+      }],
+      [utils.asGridCoord(7,22)]: [{
+        scenarios: [
+          {
+            required: ["Q1_IN_PROGRESS"],
+            events: [
+              { type: "textMessage", text: "Ich sollte vorher besser meinen Sauerstoffvorrat auffüllen!" },
+              { 
+                type: "walk", 
+                who: "hero",
+                direction: "down",
+              },
+
+            ]
+          },
+          {
+            required: ["Q1_COMPLETED"],
+            events: [
+              {
+                type: "changeMap",
+                map: "Hallway4",
+                x: utils.withGrid(1),
+                y: utils.withGrid(4),
+                direction: "right",
+                face: "down",
+              },
+              { type: "effect", sound: "sounds/alarm.wav"},
+              { type: "textMessage", name: "Bordcomputer", text: "SYSTEMWARNUNG!! RAUMSCHIFF AUF KOLLISIONSKURS." },
+              { type: "textMessage", name: this.playerName, text: "Auch das noch!" },
+              { type: "textMessage", name: this.playerName, text: "Dann eben zum Maschinenraum!" },   
+              { type: "removeStoryFlag", flag: "Q1_COMPLETED" }
+            ]
+          },
+          {
+            events: [
+              {
+                type: "changeMap",
+                map: "Hallway4",
+                x: utils.withGrid(1),
+                y: utils.withGrid(4),
+                direction: "right",
+                face: "down",
+              },
+            ]
+          }
+        ]
+      }]
+    }
+  },
+  Medbay: {
+    id: "Medbay",
+    lowerSrc: "/images/maps/MedbayLower.png",
+    upperSrc: "/images/maps/MedbayUpper.png",
+    configObjects: {
+      hero: {
+        type: "Person",
+        isPlayerControlled: true,
+        x: utils.withGrid(30),
+        y: utils.withGrid(10),
+      },
+      BellaMedic: {
+        type: "Person",
+        x: utils.withGrid(3),
+        y: utils.withGrid(3),
+        direction: "down",
+        src: "/images/characters/people/bellaMedic.png",
+        talking: [
+          {
+            required: ["COMPLETED_Q2"],
+            events: [
+              { type: "textMessage", name: "Bella", text: "Oh? Hallo " + this.playerName + " !" },
+              { type: "textMessage", name: "Bella", text: "Was ist denn passiert?"},
+              { type: "textMessage", name: "Bella", text: "Ich hab eine Explosion gehört!"},
+              {
+                type: "stand",
+                who: "hero",
+                direction: "up",
+                time: 2000,
+              },
+              { type: "textMessage", name: "Bella", text: "Hm, verstehe..."},
+              {
+                type: "stand",
+                who: "hero",
+                direction: "up",
+                time: 2000,
+              },
+              { type: "textMessage", name: "Bella", text: "Oh nein, wie schrecklich!" },
+              { type: "textMessage", name: "Bella", text: "Bring mich bitte zu ihm!" },
+              {
+                type: "stand",
+                who: "hero",
+                direction: "up",
+                time: 1000,
+              },
+              { type: "addStoryFlag", flag: "TALKED_TO_MEDIC" },
+              {
+                type: "changeMap",
+                map: "Cafeteria",
+                x: utils.withGrid(1),
+                y: utils.withGrid(6),
+                direction: "right",
+                face: "up",
+              },
+              { type: "textMessage", name: "Bella", text: "So, das wird ihn eine Zeit lang stabilisieren." },
+              { type: "textMessage", name: "Bella", text: "Aber eine Dauerlösung ist das nicht!" },
+              { type: "textMessage", name: this.playerName, text: "Kann ich denn schon mit ihm sprechen?" },
+              { type: "textMessage", name: "Bella", text: "Noch ist er bewusstlos..." },
+              { type: "textMessage", name: "Bella", text: "Setze in der Zwischenzeit einen Notruf ab!" },
+              { type: "textMessage", name: this.playerName, text: "Gute Idee! Ich beeile mich!" },
+              { type: "addStoryFlag", flag: "INTRO_Q3" },
+            ]
+          },
+        ]
+      },
+    },
+    walls: function() {
+      let walls = {};
+      ["1,10","2,10","3,10","4,10","5,10","6,10",
+      "7,9","6,8","5,8","7,7","6,6","5,6","7,5","6,4","5,4","7,3",
+      "6,2","5,2","4,1","3,2","2,2","1,2",
+      "0,3","1,4","2,4","0,5","1,6","2,6","0,7","1,8","2,8","0,9"
+      ].forEach(coord => {
+        let [x,y] = coord.split(",");
+        walls[utils.asGridCoord(x,y)] = true;
+      })
+      return walls;
+    }(),
+    cutsceneSpaces: {
+      [utils.asGridCoord(4,2)]: [{
+        scenarios: [
+          {
+            events: [
+              {
+                type: "changeMap",
+                map: "Hallway3",
+                x: utils.withGrid(1),
+                y: utils.withGrid(6),
+                direction: "right",
+                face: "up",
               }
             ]
           }

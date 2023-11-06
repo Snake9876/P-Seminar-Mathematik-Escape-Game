@@ -10,20 +10,25 @@ class Progress {
     this.isTimerEnabled = false;
     this.timerValue = 10;
     this.storyFlags = {
+      //Story-Flags
       "SEEN_INTRO": true,
       "INTRO_Q1": false,
       "Q1_IN_PROGRESS": false,
+      "Q1_COMPLETED": false,
       "INTRO_Q2": false,
-      "Q2_IN_PROGRESS": false,
-      "MEASURED_RUBBLE_PILE1": false,
-      "MEASURED_RUBBLE_PILE2": false,
-      "GOT_METERSTICK": false,
       "COMPLETED_Q2": false,
+      "INTRO_Q3": false,
+
+      //Item-Flags
+      "GOT_METERSTICK": false,
       "GOT_ITEM_2": false,
       "GOT_ITEM_3": false,
       "GOT_ITEM_4": false,
       "GOT_ITEM_5": false,
       "GOT_ITEM_6": false,
+
+      //Door-Flags
+      "ENGINE_DOOR_VIS": true,
     };
     this.saveFileKey = "EscapeGame_SaveFile1";
   }

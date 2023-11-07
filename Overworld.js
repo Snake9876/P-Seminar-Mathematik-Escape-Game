@@ -283,7 +283,7 @@ class Overworld {
       { type: "textMessage", name: this.progress.playerName, text: "Die Sauerstoffkonzentration fällt..."},
       { type: "textMessage", name: this.progress.playerName, text: "Ein System-Checkup in O2 sollte mir mehr verraten!"},
       //Info-Modal { type: "openModal", fileRef: "HudModal", ModalRef: "info"}
-      { type: "addStoryFlag", flag: "INTRO_Q1" }
+      { type: "addStoryFlag", flag: "Q1_INTRO" }
      ])
   }
   this.timerLoop();

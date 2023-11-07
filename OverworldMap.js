@@ -422,7 +422,7 @@ window.OverworldMaps = {
       [utils.asGridCoord(1,7)]: [{
         scenarios: [
           {
-            required: ["INTRO_Q2"],
+            required: ["Q2_INTRO"],
             events: [
               { 
                 type: "changeMap",
@@ -746,10 +746,10 @@ window.OverworldMaps = {
         requiredFlags: ["ENGINE_DOOR_VIS"],
         talking: [
           {
-            required: ["INTRO_Q2"],
+            required: ["Q2_INTRO"],
             events: [
               { type: "effect", sound: "knocking/chat.wav"},
-              { type: "textMessage", name: "", text: "*Es scheint niemand zu öffnen...*" },
+              { type: "textMessage", name: "", text: "*Es scheint niemand zu antworten...*" },
             ]
           },
           {
@@ -759,7 +759,7 @@ window.OverworldMaps = {
               { type: "textMessage", name: this.playerName, text: "Dass das gerade jetzt passieren muss!" },
               { type: "textMessage", text: "Wo ist unser Ingenieur Yuri, wenn man ihn braucht?" },
               { type: "textMessage", text: "Wollte er sich nicht gerade einen Kaffee holen?" },
-              { type: "addStoryFlag", flag: "INTRO_Q2" }
+              { type: "addStoryFlag", flag: "Q2_INTRO" }
             ]
           }
         ]
@@ -830,6 +830,27 @@ window.OverworldMaps = {
       }],
       [utils.asGridCoord(1,9)]: [{
         scenarios: [
+          {
+            required: ["Q4_INTRO"],
+            events: [
+              {
+                type: "changeMap",
+                map: "Comms",
+                x: utils.withGrid(5),
+                y: utils.withGrid(2),
+                direction: "down",
+                face: "left",
+              },
+              {
+                type: "stand",
+                who: "hero",
+                direction: "down",
+                time: 500,
+              },
+              { type: "textMessage", name: this.playerName, text: "Na toll! Ich bin also wieder auf mich allein gestellt."},
+              { type: "textMessage", name: this.playerName, text: "Na gut, ich werde das schon hinkriegen!"},
+            ]
+          },
           {
             events: [
               {
@@ -1045,10 +1066,17 @@ window.OverworldMaps = {
               { type: "textMessage", name: this.playerName,
                 text: "...und der Berg ist m hoch."
               },
-              //Berg entfernen? { type: "openModal", fileRef: "questionModal", modalRef: "q2"} --> should reference object 1,
-              //Set-Timer -5min
-              //Remove
-              //{ type: "textMessage", name: this.playerName, text: "Oh nein, das war der falsche Berg!" },
+              /*Aufgabe-2:
+
+              { type: "openModal", fileRef: "questionModal", modalRef: "q2"} --> should reference object 1,
+
+              On complete:
+
+              Berg entfernen? 
+              Set-Timer -3min
+              Dismount spirte
+              { type: "textMessage", name: this.playerName, text: "Oh nein, das war der falsche Berg!" },
+              */
             ]
           }
         ]
@@ -1070,14 +1098,21 @@ window.OverworldMaps = {
               { type: "textMessage", name: this.playerName,
                 text: "...und der Berg ist m hoch."
               },
-              //Berg entfernen? { type: "openModal", fileRef: "questionModal", modalRef: "q2"} --> should reference object 2,
+              /*Aufgabe-2:
+
+              { type: "openModal", fileRef: "questionModal", modalRef: "q2"} --> should reference object 2,
+
+              On complete:
+
+              Berg entfernen? 
+              Dismount spirte
               //Change spirte to Yuri
-              //{ type: "addStoryFlag", flag: "COMPLETED_Q2" },
+              //{ type: "addStoryFlag", flag: "Q2_COMPLETED" },
               //{ type: "textMessage", name: this.playerName, text: "Oh nein, Yuri!"},
               //{ type: "textMessage", name: this.playerName, text: "Er ist ohnmächtig und seine Vitalwerte sind miserabel!"},
               //{ type: "textMessage", name: this.playerName, text: "Noch ist er am Leben,..."},
               //{ type: "textMessage", name: this.playerName, text: "...aber er muss dringend zur Krankenstation gebracht werden!"},
-              //{ type: "textMessage", name: this.playerName, text: "Ich muss Krankenschwester Bella finden!"},
+              //{ type: "textMessage", name: this.playerName, text: "Ich muss Krankenschwester Bella finden!"},              
             ]
           }
         ], 
@@ -1088,8 +1123,21 @@ window.OverworldMaps = {
         y: utils.withGrid(3),
         direction: "down",
         src: "/images/characters/people/bellaMedic.png",
-        requiredFlags: ["INTRO_Q3"],
+        requiredFlags: ["Q4_INTRO"],
         talking: [
+          {
+            required: ["Q4_COMPLETED"],
+            events: [
+              { type: "textMessage", name: "Bella", text: "Hallo " + this.playerName + "!" },
+              { type: "textMessage", name: "Bella", text: "Hast du den Notruf abgesetzt?" },
+              { type: "textMessage", name: this.playerName, text: "Hallo Bella! Es kam etwas dazwischen, aber ja." },
+              { type: "textMessage", name: this.playerName, text: "Kann ich jetzt mit Yuri sprechen?" },
+              { type: "textMessage", name: "Yuri", text: "Ob du das kannst, weiß ich nicht..." },
+              { type: "textMessage", name: "Yuri", text: "...aber du darfst." },
+              { type: "textMessage", name: this.playerName, text: "Gott sei Dank, geht's dir gut!" },
+              { type: "textMessage", name: this.playerName, text: "Du kannst ja schon wieder Witze reißen!" },
+            ]
+          },
           {
             events: [
               { type: "textMessage", name: "Bella", text: "Am besten setzt du einen Notruf ab!" },
@@ -1191,6 +1239,180 @@ window.OverworldMaps = {
         isPlayerControlled: true,
         x: utils.withGrid(30),
         y: utils.withGrid(10),
+      },
+      CommsPanel: {
+        type: "Person",
+        x: utils.withGrid(5),
+        y: utils.withGrid(9),
+        direction: "down",
+        src: "/images/characters/people/doorRight.png",
+        shadowImg: "/images/characters/noshadow.png",
+        talking: [
+          {      
+            required: ["Q4_IN_PROGRESS"],    
+            events: [
+              { type: "textMessage", name: this.playerName, text: "Ich muss also eine Gegenfunktion aufstellen, um ein reines Signal zu erhalten!" },
+              { type: "effect", sound: "sounds/chat.wav" },
+              /*Aufgabe-4:
+
+              { type: "openModal", fileRef: "questionModal", modalRef: "q4" },
+
+              On complete:
+
+              { type:"addStoryFlag", flag: "Q4_COMPLETE" },
+              { type:"removeStoryFlag", flag "Q4_IN_PROGRESS" },
+              { type: "textMessage", name: this.playerName, text: "Ok, wir haben wieder ein Signal!" },
+              {
+                type: "stand",
+                who: "hero",
+                direction: "up",
+                time: 1000
+              },
+              { type: "textMessage", name: this.playerName, text: "Der Notruf ist abgesetzt." },
+              { type: "textMessage", name: this.playerName, text: "Mal sehen, ob Yuri schon wach ist." },
+              */
+            ]
+          },
+          {
+            required: ["Q4_INTRO"],
+            events: [
+              { type: "effect", sound: "sounds/chat.wav" },
+              {
+                type: "stand",
+                who: "hero",
+                direction: "up",
+                time: 1000
+              },
+              { type: "textMessage", name: this.playerName, text: "Mist! Auch das noch!" },
+              { type: "textMessage", name: this.playerName, text: "Anscheinend wurde unsere Antenne in der Kollision beschädigt." },
+              { type: "textMessage", name: this.playerName, text: "Wenigstens nimmt sie noch Signale auf..." },
+              { type: "textMessage", name: this.playerName, text: "...sie scheinen verzerrt zu sein!" },
+              { type: "textMessage", name: this.playerName, text: "Vielleicht kann ich sie reparieren!" },
+              { type: "textMessage", name: this.playerName, text: "Irgendwas muss mir hier doch weiterhelfen können!" },
+            ]
+          }
+        ]
+      },
+      Bookshelf: {
+        type: "Person",
+        x: utils.withGrid(5),
+        y: utils.withGrid(9),
+        direction: "down",
+        src: "/images/characters/people/doorRight.png",
+        shadowImg: "/images/characters/noshadow.png",
+        talking: [
+          {   
+            required: ["Q4_IN_PROGRESS"],
+            events: [
+              { type: "Textmessage", name: this.playerName, text: "In dem Buch steht..." },
+              {
+                type: "stand",
+                who: "hero",
+                direction: "up",
+                time: 1000
+              },
+              { type: "Textmessage", name: this.playerName, text: "... das Störsignal mit einer Gegenfunktion destruktiv interferieren..." },
+              {
+                type: "stand",
+                who: "hero",
+                direction: "up",
+                time: 500
+              },
+              { type: "Textmessage", name: this.playerName, text: "...gleiche Frequenz..." },
+              {
+                type: "stand",
+                who: "hero",
+                direction: "up",
+                time: 500
+              },
+              { type: "Textmessage", name: this.playerName, text: "...gleiche Verschiebung in x- und y-Richtung..." },
+              {
+                type: "stand",
+                who: "hero",
+                direction: "up",
+                time: 500
+              },
+              { type: "Textmessage", name: this.playerName, text: "...umgekehrte Amplitude..." },
+              {
+                type: "stand",
+                who: "hero",
+                direction: "up",
+                time: 500
+              },
+              { type: "Textmessage", name: this.playerName, text: "Damit sollte es gehen!" },
+            ]
+          },
+          {      
+            events: [
+              { type: "Textmessage", name: this.playerName, text: "Hm, wo haben wir es denn?" },
+              {
+                type: "stand",
+                who: "hero",
+                direction: "up",
+                time: 500
+              },
+              { type: "Textmessage", name: this.playerName, text: "Einführung in elektrische Schaltkreise..." },
+              {
+                type: "stand",
+                who: "hero",
+                direction: "up",
+                time: 500
+              },
+              { type: "Textmessage", name: this.playerName, text: "Einführung in elektrische Schaltkreise..." },
+              {
+                type: "stand",
+                who: "hero",
+                direction: "up",
+                time: 500
+              },
+              { type: "Textmessage", name: this.playerName, text: "50 Rezepte für die Weihnachtszeit..." },
+              { type: "Textmessage", name: this.playerName, text: "Warum steht das hier?" },
+              {
+                type: "stand",
+                who: "hero",
+                direction: "up",
+                time: 500
+              },
+              { type: "Textmessage", name: this.playerName, text: "Aha! Signaltheorie!" },
+              {
+                type: "stand",
+                who: "hero",
+                direction: "up",
+                time: 1000
+              },
+              { type: "Textmessage", name: this.playerName, text: "... das Störsignal mit einer Gegenfunktion destruktiv interferieren..." },
+              {
+                type: "stand",
+                who: "hero",
+                direction: "up",
+                time: 500
+              },
+              { type: "Textmessage", name: this.playerName, text: "...gleiche Frequenz..." },
+              {
+                type: "stand",
+                who: "hero",
+                direction: "up",
+                time: 500
+              },
+              { type: "Textmessage", name: this.playerName, text: "...gleiche Verschiebung in x- und y-Richtung..." },
+              {
+                type: "stand",
+                who: "hero",
+                direction: "up",
+                time: 500
+              },
+              { type: "Textmessage", name: this.playerName, text: "...umgekehrte Amplitude..." },
+              {
+                type: "stand",
+                who: "hero",
+                direction: "up",
+                time: 500
+              },
+              { type: "Textmessage", name: this.playerName, text: "Damit sollte es gehen!" },
+              { type: "addStoryFlag", flag: "Q4_IN_PROGRESS" }
+            ]
+          }
+        ]
       }
     },
     walls: function() {
@@ -1286,8 +1508,9 @@ window.OverworldMaps = {
         src: "/images/characters/people/gameObjects.png",
         talking: [
           {
-            required: ["INTRO_Q1"],
+            required: ["Q1_INTRO"],
             events: [
+              { type: "effect", sound: "sounds/chat.wav" },
               { type: "textMessage", name: this.playerName, text: "Wollen wir doch mal sehen, wo der Fehler liegt!" },
               {
                 type: "stand",
@@ -1304,7 +1527,7 @@ window.OverworldMaps = {
 
               //Marker-Event { type: "marker", x:, y: },
 
-              { type: "removeStoryFlag", flag: "INTRO_Q1" },
+              { type: "removeStoryFlag", flag: "Q1_INTRO" },
               { type: "addStoryFlag", flag: "Q1_IN_PROGRESS" },
             ]
           },
@@ -1320,40 +1543,45 @@ window.OverworldMaps = {
           {
             required: ["Q1_IN_PROGRESS"],
             events: [
-              { type: "textMessage", text: "Aber wie lang reicht mir ein Vorrat?" },
+              { type: "textMessage", text: "Aber wie lang reicht mir ein Vorrat?" },  
+              /*Aufgabe-1:
+
               { type: "openModal", fileRef: "questionModal", modalRef: "q1" },
-              /*Question-Modal 1 onComplete:
-                { type: "removeStoryFlag", flag: "Q1_IN_PROGRESS" },
-                { type: "addStoryFlag", flag: "Q1_COMPLETED" },
-                { type: "addStoryFlag", flag: "GO_TO_ENGINE" },
-                "Q1_IN_PROGRESS"
-                { type: "toggleOxygenBar" },
-                { type: "textMessage", name: "Füllstation", text: "Sauerstoff aufgefüllt." },
-                {
-                type: "stand",
-                who: "hero",
-                direction: "up",
-                time: 500,
-                },
-                { type: "textMessage", name: this.playerName, text: "Also muss ich hier alle 20 Raumwechsel meine Vorräte wiederauffüllen!" },
-                {
-                type: "stand",
-                who: "hero",
-                direction: "up",
-                time: 1000,
-                },
-                { type: "effect", sound: "sounds/alarm.wav"},
-                { type: "textMessage", name: "Bordcomputer", text: "STEUERTRIEBWERK AUSGEFALLEN. WARTUNG BENÖTIGT." },
-                {
-                type: "stand",
-                who: "hero",
-                direction: "up",
-                time: 500,
-                },
-                { type: "textMessage", name: this.playerName, text: "Auch das noch!" },
-                { type: "textMessage", name: this.playerName, text: "Dann eben zum Maschinenraum!" },   
               
-              */
+              On complete:
+
+              { type: "effect", sound: "knocking/chat.wav"},
+              { type: "removeStoryFlag", flag: "Q1_IN_PROGRESS" },
+              { type: "addStoryFlag", flag: "Q1_COMPLETED" },
+              { type: "addStoryFlag", flag: "GO_TO_ENGINE" },
+              "Q1_IN_PROGRESS"
+              { type: "toggleOxygenBar" },
+              { type: "textMessage", name: "Füllstation", text: "Sauerstoff aufgefüllt." },
+              {
+              type: "stand",
+              who: "hero",
+              direction: "up",
+              time: 500,
+              },
+              { type: "textMessage", name: this.playerName, text: "Also muss ich hier alle 20 Raumwechsel meine Vorräte wiederauffüllen!" },
+              {
+              type: "stand",
+              who: "hero",
+              direction: "up",
+              time: 1000,
+              },
+              { type: "effect", sound: "sounds/alarm.wav"},
+              { type: "textMessage", name: "Bordcomputer", text: "STEUERTRIEBWERK AUSGEFALLEN. WARTUNG BENÖTIGT." },
+              {
+              type: "stand",
+              who: "hero",
+              direction: "up",
+              time: 500,
+              },
+              { type: "textMessage", name: this.playerName, text: "Auch das noch!" },
+              { type: "textMessage", name: this.playerName, text: "Dann eben zum Maschinenraum!" },   
+            
+            */
 
             ]
           },
@@ -1403,6 +1631,7 @@ window.OverworldMaps = {
               },
               { type: "effect", sound: "sounds/alarm.wav"},
               { type: "textMessage", name: "Bordcomputer", text: "SYSTEMWARNUNG!! RAUMSCHIFF AUF KOLLISIONSKURS." },
+              { type: "textMessage", name: "Bordcomputer", text: "AUFPRALL IN T-MINUS ... MINUTEN." },
               { type: "textMessage", name: this.playerName, text: "Auch das noch!" },
               { type: "textMessage", name: this.playerName, text: "Dann eben zum Maschinenraum!" },   
               { type: "removeStoryFlag", flag: "Q1_COMPLETED" }
@@ -1489,7 +1718,7 @@ window.OverworldMaps = {
         src: "/images/characters/people/bellaMedic.png",
         talking: [
           {
-            required: ["COMPLETED_Q2"],
+            required: ["Q2_COMPLETED"],
             events: [
               { type: "textMessage", name: "Bella", text: "Oh? Hallo " + this.playerName + " !" },
               { type: "textMessage", name: "Bella", text: "Was ist denn passiert?"},
@@ -1524,13 +1753,30 @@ window.OverworldMaps = {
                 direction: "right",
                 face: "up",
               },
+              { 
+                type: "stand",
+                who: "hero",
+                direction: "left",
+                time: 1000,
+              },
+              { type: "textMessage", name: "Bella", text: "" },
+              { type: "textMessage", name: this.playerName, text: "Kann ich dir irgendwie helfen?" },
+              { type: "textMessage", name: "Bella", text: "Ja, du kannst ..." },
+              /*Aufgabe-3:
+              
+              { type: "openModal", fileRef: "questionModal", modalRef: "q3"}
+
+              On complete:
+
               { type: "textMessage", name: "Bella", text: "So, das wird ihn eine Zeit lang stabilisieren." },
               { type: "textMessage", name: "Bella", text: "Aber eine Dauerlösung ist das nicht!" },
               { type: "textMessage", name: this.playerName, text: "Kann ich denn schon mit ihm sprechen?" },
               { type: "textMessage", name: "Bella", text: "Noch ist er bewusstlos..." },
               { type: "textMessage", name: "Bella", text: "Setze in der Zwischenzeit einen Notruf ab!" },
               { type: "textMessage", name: this.playerName, text: "Gute Idee! Ich beeile mich!" },
-              { type: "addStoryFlag", flag: "INTRO_Q3" },
+              { type: "addStoryFlag", flag: "Q4_INTRO" },
+
+              */
             ]
           },
         ]
@@ -1586,7 +1832,7 @@ window.OverworldMaps = {
         src: "/images/characters/people/gameObjects.png",
         talking: [
           {
-            required: ["INTRO_Q1"],
+            required: ["Q1_INTRO"],
             events: [
               { type: "textMessage", text: "Wollen wir doch mal sehen, wo der Fehler liegt!" },
               {
@@ -1604,7 +1850,7 @@ window.OverworldMaps = {
 
               //Marker-Event { type: "marker", x:, y: },
 
-              { type: "removeStoryFlag", flag: "INTRO_Q1" },
+              { type: "removeStoryFlag", flag: "Q1_INTRO" },
               { type: "addStoryFlag", flag: "Q1_IN_PROGRESS" },
             ]
           },
@@ -1624,7 +1870,7 @@ window.OverworldMaps = {
               { type: "openModal", fileRef: "questionModal", modalRef: "q1" },
               /*Question-Modal 1 onComplete:
                 { type: "removeStoryFlag", flag: "Q1_IN_PROGRESS" },
-                { type: "addStoryFlag", flag: "INTRO_Q2" },
+                { type: "addStoryFlag", flag: "Q2_INTRO" },
                 { type: "toggleOxygenBar" },
                 { type: "textMessage", text: "Sauerstoff aufgefüllt." },
                 {
@@ -1657,7 +1903,7 @@ window.OverworldMaps = {
             ]
           },
           {
-            required: ["INTRO_Q2"],
+            required: ["Q2_INTRO"],
             events: [
               { type: "textMessage", text: "Sauerstoff aufgefüllt.", resetTracker: true },
             ]

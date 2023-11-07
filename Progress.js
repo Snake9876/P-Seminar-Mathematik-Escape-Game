@@ -12,12 +12,21 @@ class Progress {
     this.storyFlags = {
       //Story-Flags
       "SEEN_INTRO": true,
-      "INTRO_Q1": false,
+      //O2-Task
+      "Q1_INTRO": false,
       "Q1_IN_PROGRESS": false,
       "Q1_COMPLETED": false,
-      "INTRO_Q2": false,
-      "COMPLETED_Q2": false,
-      "INTRO_Q3": false,
+      //Cafeteria-Task (Rubble)
+      "Q2_INTRO": false,
+      "Q2_COMPLETED": false,
+      //Cafeteria-Task (Medic)
+      "Q4_INTRO": false,
+      "Q4_IN_PROGRESS": false,
+      "Q4_COMPLETED": false,
+      //Comms-Task
+      "Q4_INTRO": false,
+      "Q4_IN_PROGRESS": false,
+      "Q4_COMPLETED": false,
 
       //Item-Flags
       "GOT_METERSTICK": false,

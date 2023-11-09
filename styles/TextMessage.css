@@ -9,6 +9,7 @@
   border-top: 1px solid var(--menu-border-color);
   color: var(--menu-font-color);
   z-index: 20;
+  text-align: justify;
 }
 .TextMessage_p {
   margin: 0;
@@ -38,13 +39,12 @@
 
 .SpeakerName {
   position: absolute;
-  left: 7%;
-  top:-10px;
-  scale: 200%;
+  left: 0;
   white-space: nowrap;
+  top:-14px;
   background: var(--menu-font-color);
   color: #fff;
-  font-size: 4px; /*This is only so small because the component is scaled 2x in battle which is weird */
-  padding: 1px;
+  font-size: 9px;
+  padding: 2px;
   margin: 0;
 }

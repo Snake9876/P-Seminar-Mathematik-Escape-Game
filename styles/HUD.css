@@ -134,10 +134,10 @@
   height: 32px;
   background: url("/images/ui/timer-background.png") no-repeat no-repeat;
   image-rendering: pixelated;
-  top: 20px;
+  top: 15px;
   right: 20px;
 }
 
 .TimerContent {
-  
+font-size: 8px;
 }

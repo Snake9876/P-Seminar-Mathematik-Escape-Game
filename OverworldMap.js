@@ -1112,7 +1112,7 @@ window.OverworldMaps = {
               //{ type: "textMessage", name: this.playerName, text: "Er ist ohnmächtig und seine Vitalwerte sind miserabel!"},
               //{ type: "textMessage", name: this.playerName, text: "Noch ist er am Leben,..."},
               //{ type: "textMessage", name: this.playerName, text: "...aber er muss dringend zur Krankenstation gebracht werden!"},
-              //{ type: "textMessage", name: this.playerName, text: "Ich muss Krankenschwester Bella finden!"},              
+              //{ type: "textMessage", name: this.playerName, text: "Ich muss Krankenschwester Bella finden!"},  */           
             ]
           }
         ], 

@@ -9,6 +9,7 @@
   border-top: 1px solid var(--menu-border-color);
   color: var(--menu-font-color);
   z-index: 20;
+  text-align: justify;
 }
 .TextMessage_p {
   margin: 0;

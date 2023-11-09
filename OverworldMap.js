@@ -755,7 +755,7 @@ window.OverworldMaps = {
           {
             events: [
               { type: "effect", sound: "knocking/chat.wav"},
-              { type: "textMessage", name: this.playerName, text: "Verdammt, verschlossen!" },
+              { type: "textMessage", name: this.playerName, text: "Verdammt, sie klemmt!" },
               { type: "textMessage", name: this.playerName, text: "Dass das gerade jetzt passieren muss!" },
               { type: "textMessage", text: "Wo ist unser Ingenieur Yuri, wenn man ihn braucht?" },
               { type: "textMessage", text: "Wollte er sich nicht gerade einen Kaffee holen?" },
@@ -1135,9 +1135,36 @@ window.OverworldMaps = {
               { type: "textMessage", name: "Yuri", text: "Ob du das kannst, weiß ich nicht..." },
               { type: "textMessage", name: "Yuri", text: "...aber du darfst." },
               { type: "textMessage", name: this.playerName, text: "Gott sei Dank, geht's dir gut!" },
-              { type: "textMessage", name: this.playerName, text: "Du kannst ja schon wieder Witze reißen!" },
+              { type: "textMessage", name: "Yuri", text: "So leicht lass ich mich nicht unterkriegen!" },
+              { type: "textMessage", name: this.playerName, text: "Ha! Ein guter Witz nach dem anderen!" },
+              { type: "textMessage", name: "Yuri", text: "Hey! ...Touché..." },
+              { type: "textMessage", name: "Yuri", text: "Was ist überhaupt los?" },
+              { type: "textMessage", name: this.playerName, text: "Durch die Kollision ist wohl die Steuerung ausgefallen..." },
+              { type: "textMessage", name: this.playerName, text: "...und nun klemmt die Tür zum..." },
+              { type: "textMessage", name: "Yuri", text: "BITTE WAS?!" },
+              { type: "textMessage", name: "Yuri", text: "Und was machen wir dann noch hier?" },
+              { type: "textMessage", name: "Yuri", text: "Wir könnten jeden Moment wieder mit etwas zusammenstoßen!" },
+              { type: "textMessage", name: this.playerName, text: "Das ist es ja, wir befinden uns bereits auf Kollisionskurs..." },
+              { type: "textMessage", name: "Yuri", text: "BITTE WAS?!!!" },
+              { type: "textMessage", name: "Yuri", text: "Wir dürfen keine Zeit verlieee..." },
+              { type: "textMessage", name: "Bella", text: "Yuri! Dein Bein ist doch gebrochen!" },
+              { type: "textMessage", name: "Yuri", text: "Verdammt! Du muss wohl hier bleiben." },
+              { type: "textMessage", name: "Yuri", text: "Du sagtest du Tür klemmt? Neben meinem Bett liegt eine Brechstange." },
+              { type: "textMessage", name: "Yuri", text: "Damit sollte es klappen" },
+              { type: "textMessage", name: this.playerName, text: "Warte, wieso...?" },
+              { type: "textMessage", name: "Yuri", text: "Man kann nie wissen..." },
+              { type: "textMessage", name: this.playerName, text: "Aber...?" },
+              { type: "textMessage", name: "Yuri", text: "KLEMMT JETZT DIE VERDAMMTE TÜR, ODER NICHT?!" },
+              { type: "textMessage", name: this.playerName, text: "Ich bin schon auf dem Weg!" },
+              { type: "addStoryFlag", flag: "Q5_INTRO" }
             ]
-          },
+          }, 
+          {
+            required: ["Q5_INTRO"],
+            events: [
+              { type: "textMessage", name: "Yuri", text: "Was stehst du hier noch rum? Geh schon!" },
+            ]
+          }, 
           {
             events: [
               { type: "textMessage", name: "Bella", text: "Am besten setzt du einen Notruf ab!" },
@@ -1249,7 +1276,7 @@ window.OverworldMaps = {
         shadowImg: "/images/characters/noshadow.png",
         talking: [
           {      
-            required: ["Q4_IN_PROGRESS"],    
+            required: ["GOT_TEXTBOOK", "Q4_IN_PROGRESS"],    
             events: [
               { type: "textMessage", name: this.playerName, text: "Ich muss also eine Gegenfunktion aufstellen, um ein reines Signal zu erhalten!" },
               { type: "effect", sound: "sounds/chat.wav" },
@@ -1302,7 +1329,7 @@ window.OverworldMaps = {
         shadowImg: "/images/characters/noshadow.png",
         talking: [
           {   
-            required: ["Q4_IN_PROGRESS"],
+            required: ["GOT_TEXTBOOK"],
             events: [
               { type: "Textmessage", name: this.playerName, text: "In dem Buch steht..." },
               {
@@ -1343,6 +1370,7 @@ window.OverworldMaps = {
             ]
           },
           {      
+            required: ["Q4_IN_PROGRESS"],
             events: [
               { type: "Textmessage", name: this.playerName, text: "Hm, wo haben wir es denn?" },
               {
@@ -1409,7 +1437,8 @@ window.OverworldMaps = {
                 time: 500
               },
               { type: "Textmessage", name: this.playerName, text: "Damit sollte es gehen!" },
-              { type: "addStoryFlag", flag: "Q4_IN_PROGRESS" }
+              { type: "addStoryFlag", flag: "GOT_TEXTBOOK" },
+              { type:"addStoryFlag", flag: "Q4_IN_PROGRESS" },
             ]
           }
         ]

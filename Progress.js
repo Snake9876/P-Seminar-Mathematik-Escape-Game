@@ -20,9 +20,8 @@ class Progress {
       "Q2_INTRO": false,
       "Q2_COMPLETED": false,
       //Cafeteria-Task (Medic)
-      "Q4_INTRO": false,
-      "Q4_IN_PROGRESS": false,
-      "Q4_COMPLETED": false,
+      "Q3_INTRO": false,
+      "Q3_COMPLETED": false,
       //Comms-Task
       "Q4_INTRO": false,
       "Q4_IN_PROGRESS": false,
@@ -30,9 +29,9 @@ class Progress {
 
       //Item-Flags
       "GOT_METERSTICK": false,
-      "GOT_ITEM_2": false,
-      "GOT_ITEM_3": false,
-      "GOT_ITEM_4": false,
+      "GOT_TEXTBOOK": false,
+      "GOT_CROWBAR": false,
+      "GOT_KEYCARD": false,
       "GOT_ITEM_5": false,
       "GOT_ITEM_6": false,
 

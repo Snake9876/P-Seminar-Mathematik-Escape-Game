@@ -26,6 +26,10 @@ class Progress {
       "Q4_INTRO": false,
       "Q4_IN_PROGRESS": false,
       "Q4_COMPLETED": false,
+      //Cargo-Task
+      "Q5_INTRO": false,
+      "Q5_IN_PROGRESS": false,
+      "Q5_COMPLETED": false,
 
       //Item-Flags
       "GOT_METERSTICK": false,
@@ -36,6 +40,7 @@ class Progress {
       "GOT_ITEM_6": false,
 
       //Door-Flags
+      "QUARTERS_DOOR_VIS": true,  
       "ENGINE_DOOR_VIS": true,
     };
     this.saveFileKey = "EscapeGame_SaveFile1";

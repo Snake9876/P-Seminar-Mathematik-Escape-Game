@@ -407,6 +407,28 @@ window.OverworldMaps = {
         isPlayerControlled: true,
         x: utils.withGrid(30),
         y: utils.withGrid(10),
+      },
+      QuartersDoor: {
+        type: "Person",
+        x: utils.withGrid(5),
+        y: utils.withGrid(5),
+        direction: "down",
+        src: "/images/characters/people/doorRight.png",
+        shadowImg: "/images/characters/noshadow.png",
+        requiredFlags: ["QUARTERS_DOOR_VIS"],
+        talking: [
+          {
+            events: [
+              { type: "effect", sound: "knocking/chat.wav"},
+              { type: "textMessage", name: this.playerName, type: "Natürlich ist diese Tür auch verschlossen."},
+              { type: "textMessage", name: this.playerName, type: "Was auch sonst?"},
+              { type: "textMessage", name: this.playerName, type: "Deshalb hab ich um Schlüsselkarten für alle gebeten."},
+              { type: "textMessage", name: this.playerName, type: "Aber auf mich hört ja niemand!" },
+              { type: "textMessage", name: this.playerName, type: "Wahrscheinlich hat Han sie wie immer im Frachtraum liegen lassen!" },
+              { type: "addStoryFlag", flag: "Q5_IN_PROGRESS" },
+            ]
+          }
+        ]
       }
     },
     walls: function() {
@@ -1861,82 +1883,24 @@ window.OverworldMaps = {
         src: "/images/characters/people/gameObjects.png",
         talking: [
           {
-            required: ["Q1_INTRO"],
+            required: ["Q6_INTRO"],
             events: [
-              { type: "textMessage", text: "Wollen wir doch mal sehen, wo der Fehler liegt!" },
-              {
-                type: "stand",
-                who: "hero",
-                direction: "up",
-                time: 1000,
-              },
-              { type: "textMessage", text: "Oh verdammt! Anscheinend haben wir ein Leck in der Außenwand!" },
-              { type: "effect", sound: "sounds/alarm.wav"},
-              { type: "textMessage", text: "SAUERSTOFFKONZENTRATION: 70%, TENDENZ FALLEND." },
-              { type: "textMessage", text: "Mir wird langsam echt schwindlig..." },
-              { type: "textMessage", text: "Ich werde wohl meinen Raumanzug brauchen!" },
-              { type: "textMessage", text: "Besser ich füll meinen Vorrat vorher auf!" },
+              /*Aufgabe-6:
 
-              //Marker-Event { type: "marker", x:, y: },
+              { type: "openModal", fileRef: "questionModal", modalRef: "q6"},
 
-              { type: "removeStoryFlag", flag: "Q1_INTRO" },
-              { type: "addStoryFlag", flag: "Q1_IN_PROGRESS" },
-            ]
-          },
-        ]
-      },
-      oxygenRefill: {
-        type: "Person",
-        x: utils.withGrid(9),
-        y: utils.withGrid(5),
-        direction: "up",
-        src: "/images/characters/people/gameObjects.png",
-        talking: [
-          {
-            required: ["Q1_IN_PROGRESS"],
-            events: [
-              { type: "textMessage", text: "Aber wie lang reicht mir ein Vorrat?" },
-              { type: "openModal", fileRef: "questionModal", modalRef: "q1" },
-              /*Question-Modal 1 onComplete:
-                { type: "removeStoryFlag", flag: "Q1_IN_PROGRESS" },
-                { type: "addStoryFlag", flag: "Q2_INTRO" },
-                { type: "toggleOxygenBar" },
-                { type: "textMessage", text: "Sauerstoff aufgefüllt." },
-                {
-                type: "stand",
-                who: "hero",
-                direction: "up",
-                time: 500,
-                },
-                { type: "textMessage", text: "Also muss ich hier alle 20 Raumwechsel meine Vorräte wiederauffüllen!" },
-                {
-                type: "stand",
-                who: "hero",
-                direction: "up",
-                time: 1000,
-                },
-                { type: "effect", sound: "sounds/alarm.wav"},
-                { type: "textMessage", text: "STEUERTRIEBWERK AUSGEFALLEN. WARTUNG BENÖTIGT." },
-                {
-                type: "stand",
-                who: "hero",
-                direction: "up",
-                time: 500,
-                },
-                { type: "textMessage", text: "Auch das noch!" },
-                { type: "textMessage", text: "Wo ist unser Ingenieur Yuri, wenn man ihn braucht?" },
-                { type: "textMessage", text: "Wollte er sich nicht gerade einen Kaffee holen?" },
-              
+              On complete:
+
+              { type: "effect", visual: "rumble", toggle: "true" },
+              { type: "textMessage", name:"Bordcomputer", text: "SYSTEMWARNUNG!! EINTRITT IN ASTEROIDENGÜRTEL."},
+              { type: "textMessage", name:"Bordcomputer", text: "BERECHNUNG EINES NEUEN KURSES ERFORDERLICH."},
+              { type: "textMessage", name: this.playerName, text: "Jetzt muss es schnell gehen!"},
+              { type: "textMessage", name: this.playerName, text: "Zurück zur Steuereinheit!"},
+              { type: "addStoryFlag", flag: "Q7_INTRO" }
+
               */
-
             ]
           },
-          {
-            required: ["Q2_INTRO"],
-            events: [
-              { type: "textMessage", text: "Sauerstoff aufgefüllt.", resetTracker: true },
-            ]
-          }
         ]
       }
     },
@@ -1994,5 +1958,110 @@ window.OverworldMaps = {
         ]
       }]
     }
+  },
+  Cargo: {
+    id: "Cargo",
+    lowerSrc: "/images/maps/CargoLower.png",
+    upperSrc: "/images/maps/CargoUpper.png",
+    minimapSrc: "/images/icons/lung.png",
+    configObjects: {
+      hero: {
+        type: "Person",
+        isPlayerControlled: true,
+        x: utils.withGrid(7),
+        y: utils.withGrid(10),
+        direction: "up",
+      }
+    },
+    cutsceneSpaces: {
+      [utils.asGridCoord(6,10)]: [{
+        scenarios: [
+          {
+            required: ["SEEN_INTRO"],
+            events: [
+              {
+                type: "effect",
+                visual: "alarm",
+                toggle: true,
+              },
+              { 
+                type: "changeMap", 
+                map: "Hallway1",
+                x: utils.withGrid(7),
+                y: utils.withGrid(6),
+                direction: "up",
+                face: "down",
+              },
+              {
+                type: "removeStoryFlag",
+                flag: "SEEN_INTRO"
+              }
+            ]
+          },
+          {
+            events: [
+              { 
+                type: "changeMap", 
+                map: "Hallway1",
+                x: utils.withGrid(7),
+                y: utils.withGrid(6),
+                direction: "up",
+                face: "down",
+              }
+            ]
+          }
+        ]
+      }],
+      [utils.asGridCoord(7,10)]: [{
+        scenarios: [
+          {
+            required: ["SEEN_INTRO"],
+            events: [
+              {
+                type: "effect",
+                visual: "alarm",
+                toggle: true,
+              },
+              { 
+                type: "changeMap", 
+                map: "Hallway1",
+                x: utils.withGrid(6),
+                y: utils.withGrid(6),
+                direction: "up",
+                face: "down",
+              },
+              {
+                type: "removeStoryFlag",
+                flag: "SEEN_INTRO"
+              }
+            ]
+          },
+          {
+            events: [
+              { 
+                type: "changeMap", 
+                map: "Hallway1",
+                x: utils.withGrid(6),
+                y: utils.withGrid(6),
+                direction: "up",
+                face: "down",
+              }
+            ]
+          }
+        ]
+      }]
+    },
+    walls: function() {
+      let walls = {};
+      ["1,3","2,4","3,4","4,5","5,4","6,4","7,4","8,4","9,5",
+      "10,4","11,4","12,3","13,4","13,5",
+      "13,6","13,7","13,8","13,9","1,10","2,10","3,10","4,10","5,10","6,11",
+      "7,11","8,10","9,10","10,10","11,10","12,10","0,4","0,5","1,6","2,7","1,8","0,9",
+      ].forEach(coord => {
+        let [x,y] = coord.split(",");
+        walls[utils.asGridCoord(x,y)] = true;
+      })
+      return walls;
+    }(),
   },
 }

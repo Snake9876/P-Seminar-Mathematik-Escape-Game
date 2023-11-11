@@ -1,6 +1,7 @@
 class HUD {
-  constructor({progress}) {
+  constructor({ map, progress }) {
     this.playerName = "Mathe-Held";
+    this.map = map;
     this.progress = progress;
     this.tracker;
     this.timerValue = this.progress.timerValue;
@@ -66,12 +67,22 @@ class HUD {
     `);
 
     //Timer turns red on second 1,3 and 5 
-    if (this.timerValue === 5 || 
-        this.timerValue === 3 ||
-        this.timerValue === 1) {
-      this.timerContent.style.color = '#600';
-    } else {
-      this.timerContent.style.color = '#000';
+    switch (this.timerValue) {
+      case 5:
+        /*this.map.startCutscene([
+          { type: "effect", visual: "rumble", toggle: "true" }
+        ]);*/
+        this.timerContent.style.color = '#600';
+
+        break;
+      case 4: case 2: case 0: 
+        this.timerContent.style.color = '#000';
+
+        break;
+      case 3: case 1: 
+        this.timerContent.style.color = '#600';
+
+        break;
     }
 
   }

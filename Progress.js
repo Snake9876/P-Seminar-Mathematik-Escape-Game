@@ -30,6 +30,14 @@ class Progress {
       "Q5_INTRO": false,
       "Q5_IN_PROGRESS": false,
       "Q5_COMPLETED": false,
+      //Engine-Task
+      "Q6_INTRO": false,
+      "Q6_IN_PROGRESS": false,
+      "Q6_COMPLETED": false,
+      //CommandBridge-Task
+      "Q7_INTRO": false,
+      "Q7_IN_PROGRESS": false,
+      "Q7_COMPLETED": false,
 
       //Item-Flags
       "GOT_METERSTICK": false,

@@ -53,11 +53,14 @@ class Overworld {
   } 
 
   if (this.progress.timerValue < 0) {
+    const container = document.querySelector('.game-container');
+
     this.map.isPaused = true;
     this.gameOverScreen = new GameOverScreen({
       progress: this.map.overworld.progress
     })
-    this.gameOverScreen.init(document.querySelector('.game-container'));
+    this.gameOverScreen.init(container);
+
     return
   }
 
@@ -207,6 +210,7 @@ class Overworld {
 
   //Load the UI
   this.hud = new HUD({
+    map: this.map,
     progress: this.progress,
   });
 

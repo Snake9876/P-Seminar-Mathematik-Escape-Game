@@ -135,28 +135,58 @@ window.OverworldMaps = {
         y: utils.withGrid(10),
         direction: "up",
       },
-      kitchenNpcA: {
+      controlsLeft: {
         type: "Person",
-        x: utils.withGrid(9),
-        y: utils.withGrid(5),
-        direction: "up",
-        src: "/images/characters/people/npc8.png",
+        x: utils.withGrid(6),
+        y: utils.withGrid(4),
+        direction: "down",
+        src: "/images/characters/people/gameObjects.png",
+        shadowImg: "images/characters/noshadow.png",
         talking: [
           {
-            required: ["SEEN_INTRO"],
-            events: [,
-              { type: "effect", visual: "alarm"},
-              { type: "textMessage", text: "U got the story flag! Congrats!", faceHero: "kitchenNpcA"},
-              //{ type: "toggleOxygenBar" },
-              //{ type: "addStoryFlag", flag: "GOT_ITEM_1" }
+            required: ["Q7_INTRO"],
+            events: [
+              { type: "textMessage", name: "", text: "Es scheint nichts zu passieren*"},
+              /*Aufgabe-7:
+
+              { type: "openModal", fileRef: "questionModal", modalRef: "q7"},
+              Graph interpolieren --> Punkte sind gegeben, muss zusätzlich einige Eigenschaften aufweisen!
+
+              On complete:
+
+              Berg entfernen? 
+              Set-Timer -3min
+              Dismount spirte
+              { type: "textMessage", name: this.playerName, text: "Oh nein, das war der falsche Berg!" },
+              */
             ]
           },
           {
             events: [
-              { type: "effect", visual: "alarm"},
-              { type: "textMessage", text: "This is a sound effect!", faceHero: "kitchenNpcA"},
-              //{ type: "toggleOxygenBar" },
-              { type: "addStoryFlag", flag: "SEEN_INTRO" }
+              { type: "toggleTimer" },
+              { type: "textMessage", name: "", text: "Es scheint nichts zu passieren*"},
+            ]
+          }
+        ]
+      },
+      controlsRight: {
+        type: "Person",
+        x: utils.withGrid(7),
+        y: utils.withGrid(4),
+        direction: "right",
+        src: "/images/characters/people/gameObjects.png",
+        shadowImg: "images/characters/noshadow.png",
+        talking: [
+          {
+            required: ["Q7_INTRO"],
+            events: [
+              { type: "textMessage", name: "", text: "Es scheint nichts zu passieren*"},
+            ]
+          },
+          {
+            events: [
+              { type: "toggleTimer" },
+              { type: "textMessage", name: "", text: "Es scheint nichts zu passieren*"},
             ]
           }
         ]
@@ -242,7 +272,7 @@ window.OverworldMaps = {
     },
     walls: function() {
       let walls = {};
-      ["1,3","2,4","3,4","4,5","5,4","6,4","7,4","8,4","9,5",
+      ["1,3","2,4","3,4","4,5","5,4","8,4","9,5",
       "10,4","11,4","12,3","13,4","13,5",
       "13,6","13,7","13,8","13,9","1,10","2,10","3,10","4,10","5,10","6,11",
       "7,11","8,10","9,10","10,10","11,10","12,10","0,4","0,5","1,6","2,7","1,8","0,9",

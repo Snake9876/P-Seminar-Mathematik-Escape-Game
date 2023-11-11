@@ -20,7 +20,7 @@ class GameOverScreen {
     this.element = document.createElement("div");
     this.element.classList.add("GameOverScreen");
     this.element.innerHTML = (`
-      <img class="GameOverScreen_logo" src="/images/ui/logo.png" alt="Pizza Legends" />
+      <img class="GameOverScreen_logo" src="/images/ui/gameover.png" alt="Pizza Legends" />
     `)
   }
 

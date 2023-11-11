@@ -20,23 +20,35 @@ class Progress {
       "Q2_INTRO": false,
       "Q2_COMPLETED": false,
       //Cafeteria-Task (Medic)
-      "Q4_INTRO": false,
-      "Q4_IN_PROGRESS": false,
-      "Q4_COMPLETED": false,
+      "Q3_INTRO": false,
+      "Q3_COMPLETED": false,
       //Comms-Task
       "Q4_INTRO": false,
       "Q4_IN_PROGRESS": false,
       "Q4_COMPLETED": false,
+      //Cargo-Task
+      "Q5_INTRO": false,
+      "Q5_IN_PROGRESS": false,
+      "Q5_COMPLETED": false,
+      //Engine-Task
+      "Q6_INTRO": false,
+      "Q6_IN_PROGRESS": false,
+      "Q6_COMPLETED": false,
+      //CommandBridge-Task
+      "Q7_INTRO": false,
+      "Q7_IN_PROGRESS": false,
+      "Q7_COMPLETED": false,
 
       //Item-Flags
       "GOT_METERSTICK": false,
-      "GOT_ITEM_2": false,
-      "GOT_ITEM_3": false,
-      "GOT_ITEM_4": false,
+      "GOT_TEXTBOOK": false,
+      "GOT_CROWBAR": false,
+      "GOT_KEYCARD": false,
       "GOT_ITEM_5": false,
       "GOT_ITEM_6": false,
 
       //Door-Flags
+      "QUARTERS_DOOR_VIS": true,  
       "ENGINE_DOOR_VIS": true,
     };
     this.saveFileKey = "EscapeGame_SaveFile1";

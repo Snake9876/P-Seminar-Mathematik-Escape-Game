@@ -47,12 +47,26 @@ class QuestionModals {
         </div>
       `)
     }
-
     
-    
-
     //Question 2
     else if (this.modalRef === "q2") {
+      /*this.mapElement = document.createElement('div');
+      this.mapElement.classList.add('Modal');
+      this.mapElement.setAttribute('id', 'map-modal')
+      this.mapElement.innerHTML = (`
+        <div class="ModalHeader">
+          <div class="Title">
+            Map Modal
+          </div>
+        </div>
+        <div class="ModalContent">
+          <img src=${this.minimapSrc}>
+        </div>
+      `);*/
+    }
+
+    //Question 3
+    else if (this.modalRef === "q3") {
       /*this.mapElement = document.createElement('div');
       this.mapElement.classList.add('Modal');
       this.mapElement.setAttribute('id', 'map-modal')

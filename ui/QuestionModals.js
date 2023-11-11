@@ -82,6 +82,74 @@ class QuestionModals {
       `);*/
     }
 
+    //Question 4
+    else if (this.modalRef === "q4") {
+      /*this.mapElement = document.createElement('div');
+      this.mapElement.classList.add('Modal');
+      this.mapElement.setAttribute('id', 'map-modal')
+      this.mapElement.innerHTML = (`
+        <div class="ModalHeader">
+          <div class="Title">
+            Map Modal
+          </div>
+        </div>
+        <div class="ModalContent">
+          <img src=${this.minimapSrc}>
+        </div>
+      `);*/
+    }
+
+    //Question 5
+    else if (this.modalRef === "q5") {
+      /*this.mapElement = document.createElement('div');
+      this.mapElement.classList.add('Modal');
+      this.mapElement.setAttribute('id', 'map-modal')
+      this.mapElement.innerHTML = (`
+        <div class="ModalHeader">
+          <div class="Title">
+            Map Modal
+          </div>
+        </div>
+        <div class="ModalContent">
+          <img src=${this.minimapSrc}>
+        </div>
+      `);*/
+    }
+
+    //Question 6
+    else if (this.modalRef === "q6") {
+      /*this.mapElement = document.createElement('div');
+      this.mapElement.classList.add('Modal');
+      this.mapElement.setAttribute('id', 'map-modal')
+      this.mapElement.innerHTML = (`
+        <div class="ModalHeader">
+          <div class="Title">
+            Map Modal
+          </div>
+        </div>
+        <div class="ModalContent">
+          <img src=${this.minimapSrc}>
+        </div>
+      `);*/
+    }
+
+    //Question 7
+    else if (this.modalRef === "q7") {
+      /*this.mapElement = document.createElement('div');
+      this.mapElement.classList.add('Modal');
+      this.mapElement.setAttribute('id', 'map-modal')
+      this.mapElement.innerHTML = (`
+        <div class="ModalHeader">
+          <div class="Title">
+            Map Modal
+          </div>
+        </div>
+        <div class="ModalContent">
+          <img src=${this.minimapSrc}>
+        </div>
+      `);*/
+    }
+
   }   
 
   //Modal methods

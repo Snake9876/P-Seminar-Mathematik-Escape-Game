@@ -147,7 +147,6 @@ window.OverworldMaps = {
         direction: "down",
         src: "/images/characters/people/gameObjects.png",
         shadowImg: "images/characters/noshadow.png",
-        hide: true,
         talking: [
           {
             required: ["Q7_INTRO"],
@@ -182,7 +181,6 @@ window.OverworldMaps = {
         direction: "right",
         src: "/images/characters/people/gameObjects.png",
         shadowImg: "images/characters/noshadow.png",
-        hide: false,
         talking: [
           {
             required: ["Q7_INTRO"],
@@ -197,41 +195,7 @@ window.OverworldMaps = {
             ]
           }
         ]
-      },
-      testNPC: {
-        type: "Person",
-        x: utils.withGrid(8),
-        y: utils.withGrid(4),
-        direction: "down",
-        src: "/images/characters/people/npc8.png",
-        shadowImg: "images/characters/shadow.png",
-        talking: [
-          {
-            events: [
-              { type: "textMessage", name: "Test", text: "This is a test."},
-              { 
-                type: "updateObject", 
-                update: {
-                  id: "controlsRight",
-                  spriteSrc: "/images/characters/people/npc8.png",
-                }
-              },
-              /*Aufgabe-7:
-
-              { type: "openModal", fileRef: "questionModal", modalRef: "q7"},
-              Graph interpolieren --> Punkte sind gegeben, muss zusätzlich einige Eigenschaften aufweisen!
-
-              On complete:
-
-              Berg entfernen? 
-              Set-Timer -3min
-              Dismount spirte
-              { type: "textMessage", name: this.playerName, text: "Oh nein, das war der falsche Berg!" },
-              */
-            ]
-          }
-        ]
-      },
+      }
     },
     cutsceneSpaces: {
       [utils.asGridCoord(6,10)]: [{

@@ -20,6 +20,28 @@ class OverworldEvent {
     resolve();
   }
 
+  updateObject(resolve) {
+    this.obj = this.map.configObjects[this.event.update.id];
+    this.hero = this.map.gameObjects["hero"];
+
+    if(this.event.update.hide !== 'undefined') {
+      this.obj.hide = this.event.update.hide;
+    }
+
+    if(this.event.update.spriteSrc !== 'undefined') {
+      this.obj.src = this.event.update.spriteSrc;
+    }
+
+    //Reload map
+    this.map.overworld.startMap( window.OverworldMaps[this.map.mapId], {
+      x: this.hero.x,
+      y: this.hero.y,
+      direction: this.hero.direction,
+    });
+
+    resolve();
+  }
+
   /*delay(resolve) {  
     this.map.isCutscenePlaying = false;
 

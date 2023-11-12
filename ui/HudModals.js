@@ -1,6 +1,7 @@
 class HudModals {
-  constructor({modalRef, minimapSrc, progress, onComplete}) {
-    this.modalRef = modalRef || null;
+  constructor({map, modalRef, minimapSrc, progress, onComplete}) {
+    this.map = map;
+    this.modalRef = modalRef;
     this.minimapSrc = minimapSrc || null;
     this.progress = progress;
     this.onComplete = onComplete;

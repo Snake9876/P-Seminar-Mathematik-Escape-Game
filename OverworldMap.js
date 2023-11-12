@@ -1630,45 +1630,7 @@ window.OverworldMaps = {
             required: ["Q1_IN_PROGRESS"],
             events: [
               { type: "textMessage", text: "Aber wie lang reicht mir ein Vorrat?" },  
-              /*Aufgabe-1:
-
               { type: "openModal", fileRef: "questionModal", modalRef: "q1" },
-              
-              On complete:
-
-              { type: "effect", sound: "knocking/chat.wav"},
-              { type: "removeStoryFlag", flag: "Q1_IN_PROGRESS" },
-              { type: "addStoryFlag", flag: "Q1_COMPLETED" },
-              { type: "addStoryFlag", flag: "GO_TO_ENGINE" },
-              "Q1_IN_PROGRESS"
-              { type: "toggleOxygenBar" },
-              { type: "textMessage", name: "Füllstation", text: "Sauerstoff aufgefüllt." },
-              {
-              type: "stand",
-              who: "hero",
-              direction: "up",
-              time: 500,
-              },
-              { type: "textMessage", name: this.playerName, text: "Also muss ich hier alle 20 Raumwechsel meine Vorräte wiederauffüllen!" },
-              {
-              type: "stand",
-              who: "hero",
-              direction: "up",
-              time: 1000,
-              },
-              { type: "effect", sound: "sounds/alarm.wav"},
-              { type: "textMessage", name: "Bordcomputer", text: "STEUERTRIEBWERK AUSGEFALLEN. WARTUNG BENÖTIGT." },
-              {
-              type: "stand",
-              who: "hero",
-              direction: "up",
-              time: 500,
-              },
-              { type: "textMessage", name: this.playerName, text: "Auch das noch!" },
-              { type: "textMessage", name: this.playerName, text: "Dann eben zum Maschinenraum!" },   
-            
-            */
-
             ]
           },
           {

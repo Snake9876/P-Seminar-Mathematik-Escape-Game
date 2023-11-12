@@ -1,9 +1,12 @@
 class QuestionModals {
-  constructor({modalRef, minimapSrc, progress, onComplete}) {
+  constructor({map, modalRef, minimapSrc, progress, onComplete}) {
+    this.map = map;
     this.modalRef = modalRef || null;
     this.minimapSrc = minimapSrc || null;
     this.progress = progress;
-    this.onComplete = onComplete;
+    this.coreOnComplete = onComplete;
+    this.answer = null;
+    this.solution = null;
   }
 
   createElement() {
@@ -17,19 +20,25 @@ class QuestionModals {
     if (this.modalRef === "q1") {
       this.questionElement = document.createElement("div");
       this.questionElement.classList.add('Modal');
-      this.questionElement.setAttribute('id', 'q1-modal')
+      this.questionElement.setAttribute('id', 'q1-modal');
       this.questionElement.innerHTML = (`
         <div class="ModalHeader">
           <div class="Title">
-            Störsignal
+            Sauerstoffvorrat
           </div>
           <button class="CloseButton">&times;</button>
         </div>
         <div class="ModalContent">
           <img id="O2-img" src="/images/questions/Sauerstoffflasche.jpg">
-          <h4>Stelle das zweite Signal so ein, dass es mit der Sinusfunkton destruktiv interferiert und gib die Funktion unten an.</h4>
-          <p>G<sub>f</sub>= 2*sin(3/4*(x-1))</p>
-          <script type="text/javascript" src="https://cdn.geogebra.org/apps/deployggb.js"></script>
+          <p>Lorem</p>
+          <input class="inputBar" type="text" placeholder="Antwort" id="answer-field1" maxlength="20">
+          <button class="checkButton">Check</button>
+        </div>
+      `);
+
+    }
+
+    /* <script type="text/javascript" src="https://cdn.geogebra.org/apps/deployggb.js"></script>
           <script type="text/javascript">
             var ggbApplet = new GGBApplet({
                 "width": 600,
@@ -41,118 +50,147 @@ class QuestionModals {
                 }
             });
             ggbApplet.inject();
-          </script>
-          <input class="input-long" type="text" id="answer-field1" maxlength="20" oninput="limitInput(this)">
-          <button class="button_a" id="check-a1" onclick="checkAnswer(1, '-2*sin(3/4*(x-1))')">Check</button>
-        </div>
-      `)
-    }
+          </script> */
+
+
+
     
     //Question 2
     else if (this.modalRef === "q2") {
-      /*this.mapElement = document.createElement('div');
-      this.mapElement.classList.add('Modal');
-      this.mapElement.setAttribute('id', 'map-modal')
-      this.mapElement.innerHTML = (`
+      this.questionElement = document.createElement("div");
+      this.questionElement.classList.add('Modal');
+      this.questionElement.setAttribute('id', 'q1-modal');
+      this.questionElement.innerHTML = (`
         <div class="ModalHeader">
           <div class="Title">
-            Map Modal
+            Sauerstoffvorrat
           </div>
+          <button class="CloseButton">&times;</button>
         </div>
         <div class="ModalContent">
-          <img src=${this.minimapSrc}>
+          <img id="O2-img" src="/images/questions/Sauerstoffflasche.jpg">
+          <p>Lorem</p>
+          <input class="inputBar" type="text" placeholder="Antwort" id="answer-field1" maxlength="20">
+          <button class="checkButton">Check</button>
         </div>
-      `);*/
+      `);
+
     }
 
     //Question 3
     else if (this.modalRef === "q3") {
-      /*this.mapElement = document.createElement('div');
-      this.mapElement.classList.add('Modal');
-      this.mapElement.setAttribute('id', 'map-modal')
-      this.mapElement.innerHTML = (`
+      this.questionElement = document.createElement("div");
+      this.questionElement.classList.add('Modal');
+      this.questionElement.setAttribute('id', 'q1-modal');
+      this.questionElement.innerHTML = (`
         <div class="ModalHeader">
           <div class="Title">
-            Map Modal
+            Sauerstoffvorrat
           </div>
+          <button class="CloseButton">&times;</button>
         </div>
         <div class="ModalContent">
-          <img src=${this.minimapSrc}>
+          <img id="O2-img" src="/images/questions/Sauerstoffflasche.jpg">
+          <p>Lorem</p>
+          <input class="inputBar" type="text" placeholder="Antwort" id="answer-field1" maxlength="20">
+          <button class="checkButton">Check</button>
         </div>
-      `);*/
+      `);
+
     }
 
     //Question 4
     else if (this.modalRef === "q4") {
-      /*this.mapElement = document.createElement('div');
-      this.mapElement.classList.add('Modal');
-      this.mapElement.setAttribute('id', 'map-modal')
-      this.mapElement.innerHTML = (`
+      this.questionElement = document.createElement("div");
+      this.questionElement.classList.add('Modal');
+      this.questionElement.setAttribute('id', 'q1-modal');
+      this.questionElement.innerHTML = (`
         <div class="ModalHeader">
           <div class="Title">
-            Map Modal
+            Sauerstoffvorrat
           </div>
+          <button class="CloseButton">&times;</button>
         </div>
         <div class="ModalContent">
-          <img src=${this.minimapSrc}>
+          <img id="O2-img" src="/images/questions/Sauerstoffflasche.jpg">
+          <p>Lorem</p>
+          <input class="inputBar" type="text" placeholder="Antwort" id="answer-field1" maxlength="20">
+          <button class="checkButton">Check</button>
         </div>
-      `);*/
+      `);
+
     }
 
     //Question 5
     else if (this.modalRef === "q5") {
-      /*this.mapElement = document.createElement('div');
-      this.mapElement.classList.add('Modal');
-      this.mapElement.setAttribute('id', 'map-modal')
-      this.mapElement.innerHTML = (`
+      this.questionElement = document.createElement("div");
+      this.questionElement.classList.add('Modal');
+      this.questionElement.setAttribute('id', 'q1-modal');
+      this.questionElement.innerHTML = (`
         <div class="ModalHeader">
           <div class="Title">
-            Map Modal
+            Sauerstoffvorrat
           </div>
+          <button class="CloseButton">&times;</button>
         </div>
         <div class="ModalContent">
-          <img src=${this.minimapSrc}>
+          <img id="O2-img" src="/images/questions/Sauerstoffflasche.jpg">
+          <p>Lorem</p>
+          <input class="inputBar" type="text" placeholder="Antwort" id="answer-field1" maxlength="20">
+          <button class="checkButton">Check</button>
         </div>
-      `);*/
+      `);
+
     }
 
     //Question 6
     else if (this.modalRef === "q6") {
-      /*this.mapElement = document.createElement('div');
-      this.mapElement.classList.add('Modal');
-      this.mapElement.setAttribute('id', 'map-modal')
-      this.mapElement.innerHTML = (`
+      this.questionElement = document.createElement("div");
+      this.questionElement.classList.add('Modal');
+      this.questionElement.setAttribute('id', 'q1-modal');
+      this.questionElement.innerHTML = (`
         <div class="ModalHeader">
           <div class="Title">
-            Map Modal
+            Sauerstoffvorrat
           </div>
+          <button class="CloseButton">&times;</button>
         </div>
         <div class="ModalContent">
-          <img src=${this.minimapSrc}>
+          <img id="O2-img" src="/images/questions/Sauerstoffflasche.jpg">
+          <p>Lorem</p>
+          <input class="inputBar" type="text" placeholder="Antwort" id="answer-field1" maxlength="20">
+          <button class="checkButton">Check</button>
         </div>
-      `);*/
+      `);
+
     }
 
     //Question 7
     else if (this.modalRef === "q7") {
-      /*this.mapElement = document.createElement('div');
-      this.mapElement.classList.add('Modal');
-      this.mapElement.setAttribute('id', 'map-modal')
-      this.mapElement.innerHTML = (`
+      this.questionElement = document.createElement("div");
+      this.questionElement.classList.add('Modal');
+      this.questionElement.setAttribute('id', 'q1-modal');
+      this.questionElement.innerHTML = (`
         <div class="ModalHeader">
           <div class="Title">
-            Map Modal
+            Sauerstoffvorrat
           </div>
+          <button class="CloseButton">&times;</button>
         </div>
         <div class="ModalContent">
-          <img src=${this.minimapSrc}>
+          <img id="O2-img" src="/images/questions/Sauerstoffflasche.jpg">
+          <p>Lorem</p>
+          <input class="inputBar" type="text" placeholder="Antwort" id="answer-field1" maxlength="20">
+          <button class="checkButton">Check</button>
         </div>
-      `);*/
+      `);
+
     }
 
   }   
 
   //Modal methods
+
   close() {
     //Closes modal
     this.element = document.querySelector('.Modal');
@@ -166,11 +204,223 @@ class QuestionModals {
 
   }
 
+  checkAnswer(ans, sol) {
+    let isAnswerCorrect = false;
+
+    if(ans === sol) {
+      isAnswerCorrect = true;
+    } 
+
+    return isAnswerCorrect
+
+  }
+
+  disableQuestion() {
+    //Disables question
+    this.checkButton.innerHTML = ('Correct!');
+    this.checkButton.setAttribute('disabled', 'disabled');
+    this.inputBar.remove();
+
+  }
+
+  onComplete() {
+    this.coreOnComplete();
+  }
+
       
   async init(container) {
     this.createElement();
     container.appendChild(this.overlay)
     container.appendChild(this.questionElement);
+
+
+    this.checkButton = document.querySelector('.checkButton');
+    this.inputBar = document.querySelector('.inputBar');
+    this.checkButton.addEventListener('click', () => {
+      
+      this.answer = document.querySelector('.inputBar').value;
+
+      //Check if there is an input
+      if(this.answer) { 
+        //Save old onComplete callback
+        
+        switch(this.modalRef) {
+          case 'q1':
+            this.solution = "20";
+
+            //Check if Question was correct
+            if(this.checkAnswer(this.answer, this.solution)) {
+              this.disableQuestion();
+
+              //Overwrite onComplete callback
+              this.onComplete = () => {
+                this.coreOnComplete();
+                
+                setTimeout(() => {
+                  this.map.startCutscene([
+                    { type: "effect", sound: "sounds/chat.wav"},
+                    { type: "toggleOxygenBar" },
+                    { type: "textMessage", name: "Füllstation", text: "Sauerstoff aufgefüllt." },
+                    {
+                    type: "stand",
+                    who: "hero",
+                    direction: "up",
+                    time: 500,
+                    },
+                    { type: "textMessage", name: this.progress.playerName, text: "Also muss ich hier alle 20 Raumwechsel meine Vorräte wiederauffüllen!" },
+                    {
+                    type: "stand",
+                    who: "hero",
+                    direction: "up",
+                    time: 1000,
+                    },
+                    { type: "effect", sound: "sounds/alarm.wav"},
+                    { type: "textMessage", name: "Bordcomputer", text: "STEUERTRIEBWERK AUSGEFALLEN. WARTUNG BENÖTIGT." },
+                    {
+                    type: "stand",
+                    who: "hero",
+                    direction: "up",
+                    time: 500,
+                    },
+                    { type: "textMessage", name: this.progress.playerName, text: "Auch das noch!" },
+                    { type: "textMessage", name: this.progress.playerName, text: "Dann eben zum Maschinenraum!" },
+                  ])
+                }, 250);
+              }
+            } else {
+              this.checkButton.innerHTML = ('Incorrect!');
+      
+              setTimeout(() => {
+                this.checkButton.innerHTML = ('Check');
+              }, 2000);
+            }
+
+            break;
+          case 'q2':
+            this.solution = "20";
+
+            //Check if Question was correct
+            if(this.checkAnswer(this.answer, this.solution)) {
+              this.disableQuestion();
+
+              //Overwrite onComplete callback
+              this.onComplete = () => {
+                this.coreOnComplete();
+                //Custom event 2
+              }
+            } else {
+              this.checkButton.innerHTML = ('Incorrect!');
+      
+              setTimeout(() => {
+                this.checkButton.innerHTML = ('Check');
+              }, 2000);
+            }
+
+            break;
+          case 'q3':
+            this.solution = "20";
+
+            //Check if Question was correct
+            if(this.checkAnswer(this.answer, this.solution)) {
+              this.disableQuestion();
+
+              //Overwrite onComplete callback
+              this.onComplete = () => {
+                this.coreOnComplete();
+                //Custom event 3
+              }
+            } else {
+              this.checkButton.innerHTML = ('Incorrect!');
+      
+              setTimeout(() => {
+                this.checkButton.innerHTML = ('Check');
+              }, 2000);
+            }
+
+            break;
+          case 'q4':
+            this.solution = "20";
+
+            //Check if Question was correct
+            if(this.checkAnswer(this.answer, this.solution)) {
+              this.disableQuestion();
+
+              //Overwrite onComplete callback
+              this.onComplete = () => {
+                this.coreOnComplete();
+                //Custom event 4
+              }
+            } else {
+              this.checkButton.innerHTML = ('Incorrect!');
+      
+              setTimeout(() => {
+                this.checkButton.innerHTML = ('Check');
+              }, 2000);
+            }
+
+            break;
+          case 'q5':
+            this.solution = "20";
+
+            //Check if Question was correct
+            if(this.checkAnswer(this.answer, this.solution)) {
+              this.disableQuestion();
+
+              //Overwrite onComplete callback
+              this.onComplete = () => {
+                this.coreOnComplete();
+                //Custom event 5
+              }
+            } else {
+              this.checkButton.innerHTML = ('Incorrect!');
+      
+              setTimeout(() => {
+                this.checkButton.innerHTML = ('Check');
+              }, 2000);
+            }
+
+            break;
+          case 'q6':  
+            this.solution = "20";
+
+            //Check if Question was correct
+            if(this.checkAnswer(this.answer, this.solution)) {
+              this.disableQuestion();
+
+              //Overwrite onComplete callback
+              this.onComplete = () => {
+                this.coreOnComplete;
+                //Custom event 6
+              }
+            }
+
+            break;
+          case 'q7':
+            this.solution = "20";
+
+            //Check if Question was correct
+            if(this.checkAnswer(this.answer, this.solution)) {
+              this.disableQuestion();
+
+              //Overwrite onComplete callback
+              this.onComplete = () => {
+                this.coreOnComplete;
+                //Custom event 7
+              }
+            } else {
+              this.checkButton.innerHTML = ('Incorrect!');
+      
+              setTimeout(() => {
+                this.checkButton.innerHTML = ('Check');
+              }, 2000);
+            }
+
+            break;
+        }
+      } 
+
+    })
+    
 
     utils.wait(200);
     this.esc = new KeyPressListener("Escape", () => {

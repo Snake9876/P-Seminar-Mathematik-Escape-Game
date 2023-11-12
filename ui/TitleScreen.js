@@ -33,14 +33,14 @@ class TitleScreen {
     this.element.innerHTML = (`
       <img class="TitleScreen_logo" src="/images/ui/logo.png" alt="Pizza Legends" />
       <div class="username-container">
-        <input type="text" id="username-input" placeholder="Name">
+        <input type="text" class="inputBar" placeholder="Name">
       </div>
     `)
   }
 
   close() {
     //Save the player name
-    this.playerName = document.getElementById('username-input').value || "Mathe-Held";
+    this.playerName = document.querySelector('.inputBar').value || "Mathe-Held";
 
     //Close the menu
     this.isClosed = true;

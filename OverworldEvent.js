@@ -213,6 +213,7 @@ class OverworldEvent {
     this.map.isPaused = true;
 
     const modal = new this.classMap[this.event.fileRef]({
+      map: this.map,
       modalRef: this.event.modalRef,
       minimapSrc: this.map.minimap.src,
       progress: this.map.overworld.progress,

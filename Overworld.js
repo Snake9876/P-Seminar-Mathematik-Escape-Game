@@ -75,57 +75,123 @@ class Overworld {
   })
   new KeyPressListener("Escape", () => {
     if (!this.map.isCutscenePlaying) {
-     this.map.startCutscene([
-       { 
-         type: "openModal", 
-         fileRef: "HudModal",
-         modalRef: "menu"
-       }
-     ])
+      this.map.startCutscene([
+        { 
+          type: "openModal", 
+          fileRef: "HudModal",
+          modalRef: "menu"
+        }
+      ])
     }
   })
   new KeyPressListener("m", () => {
     if (!this.map.isCutscenePlaying) {
-     this.map.startCutscene([
-      { 
-        type: "openModal", 
-        fileRef: "HudModal",
-        modalRef: "map"
-      }
-     ])
+      this.map.startCutscene([
+        { 
+          type: "openModal", 
+          fileRef: "HudModal",
+          modalRef: "map"
+        }
+      ])
     }
   })
   new KeyPressListener("i", () => {
     if (!this.map.isCutscenePlaying) {
-     this.map.startCutscene([
-      { 
-        type: "openModal", 
-        fileRef: "HudModal",
-        modalRef: "inventory"
-      }
-     ])
+      this.map.startCutscene([
+        { 
+          type: "openModal", 
+          fileRef: "HudModal",
+          modalRef: "inventory"
+        }
+      ])
     }
   })
   new KeyPressListener("n", () => {
     if (!this.map.isCutscenePlaying) {
-     this.map.startCutscene([
-      { 
-        type: "openModal", 
-        fileRef: "HudModal",
-        modalRef: "notes"
-      }
-     ])
+      this.map.startCutscene([
+        { 
+          type: "openModal", 
+          fileRef: "HudModal",
+          modalRef: "notes"
+        }
+      ])
     }
   })
   new KeyPressListener("1", () => {
     if (!this.map.isCutscenePlaying) {
-     this.map.startCutscene([
-      { 
-        type: "openModal", 
-        fileRef: "QuestionModal",
-        modalRef: "q1"
-      }
-     ])
+      this.map.startCutscene([
+        { 
+          type: "openModal", 
+          fileRef: "QuestionModal",
+          modalRef: "q1"
+        }
+      ])
+    }
+  })
+  new KeyPressListener("2", () => {
+    if (!this.map.isCutscenePlaying) {
+      this.map.startCutscene([
+        { 
+          type: "openModal", 
+          fileRef: "QuestionModal",
+          modalRef: "q2"
+        }
+      ])
+    }
+  })
+  new KeyPressListener("3", () => {
+    if (!this.map.isCutscenePlaying) {
+      this.map.startCutscene([
+        { 
+          type: "openModal", 
+          fileRef: "QuestionModal",
+          modalRef: "q3"
+        }
+      ])
+    }
+  })
+  new KeyPressListener("4", () => {
+    if (!this.map.isCutscenePlaying) {
+      this.map.startCutscene([
+        { 
+          type: "openModal", 
+          fileRef: "QuestionModal",
+          modalRef: "q4"
+        }
+      ])
+    }
+  })
+  new KeyPressListener("5", () => {
+    if (!this.map.isCutscenePlaying) {
+      this.map.startCutscene([
+        { 
+          type: "openModal", 
+          fileRef: "QuestionModal",
+          modalRef: "q5"
+        }
+      ])
+    }
+  })
+  new KeyPressListener("6", () => {
+    if (!this.map.isCutscenePlaying) {
+      this.map.startCutscene([
+        { 
+          type: "openModal", 
+          fileRef: "QuestionModal",
+          modalRef: "q6"
+        }
+      ])
+    }
+  })
+  new KeyPressListener("7", () => {
+    if (!this.map.isCutscenePlaying) {
+      this.map.startCutscene([
+        { 
+          type: "openModal", 
+          fileRef: "QuestionModal",
+          modalRef: "q7"
+        }
+      ])
     }
   })
 

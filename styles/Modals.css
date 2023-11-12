@@ -125,21 +125,32 @@
     z-index: 50;
   }
 
-  .button_a {
-    background-color: #3498db;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    margin-top: 10px;
-    cursor: pointer;
-    border-radius: 15px; /* Rounded corners */
-  }
+  .checkButton {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    text-align:left;
+    -webkit-appearance: none;
+    border:0;
+    background: none;
+    height: 20px;
+    cursor:pointer;
+    font-family:inherit;
+    padding:0;
+    padding-left: 1em;
+    font-size: 10px;
+   }
 
-  .button_a.correct {
+   .checkButton:focus {
+    background: var(--menu-selected-background);
+    outline: 0;
+   }
+
+  .checkButton.correct {
     background-color: #2ecc71; /* Green color for correct answer */
   }
 
-  .button_a.wrong {
+  .checkButton.wrong {
     background-color: #e74c3c; /* Red color for wrong answer */
   }
 

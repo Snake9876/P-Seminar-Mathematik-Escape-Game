@@ -42,11 +42,12 @@
   font-size: 0.2em;
 }
 
-#username-input {
+.inputBar {
   position: absolute;
   left: 100px;
   width: 150px;
   height: 15px;
+  bottom: 60px;
   background-color: #000;
   border-color: #fff;
   border-width: 1px;

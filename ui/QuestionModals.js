@@ -55,11 +55,33 @@ class QuestionModals {
 
 
     
-    //Question 2
-    else if (this.modalRef === "q2") {
+    //Question 2.1
+    else if (this.modalRef === "q21") {
       this.questionElement = document.createElement("div");
       this.questionElement.classList.add('Modal');
-      this.questionElement.setAttribute('id', 'q1-modal');
+      this.questionElement.setAttribute('id', 'q21-modal');
+      this.questionElement.innerHTML = (`
+        <div class="ModalHeader">
+          <div class="Title">
+            Sauerstoffvorrat
+          </div>
+          <button class="CloseButton">&times;</button>
+        </div>
+        <div class="ModalContent">
+          <img id="O2-img" src="/images/questions/Sauerstoffflasche.jpg">
+          <p>Lorem</p>
+          <input class="inputBar" type="text" placeholder="Antwort" id="answer-field1" maxlength="20">
+          <button class="checkButton">Check</button>
+        </div>
+      `);
+
+    }
+
+    //Question 2.2
+    else if (this.modalRef === "q22") {
+      this.questionElement = document.createElement("div");
+      this.questionElement.classList.add('Modal');
+      this.questionElement.setAttribute('id', 'q22-modal');
       this.questionElement.innerHTML = (`
         <div class="ModalHeader">
           <div class="Title">
@@ -81,7 +103,7 @@ class QuestionModals {
     else if (this.modalRef === "q3") {
       this.questionElement = document.createElement("div");
       this.questionElement.classList.add('Modal');
-      this.questionElement.setAttribute('id', 'q1-modal');
+      this.questionElement.setAttribute('id', 'q3-modal');
       this.questionElement.innerHTML = (`
         <div class="ModalHeader">
           <div class="Title">
@@ -103,7 +125,7 @@ class QuestionModals {
     else if (this.modalRef === "q4") {
       this.questionElement = document.createElement("div");
       this.questionElement.classList.add('Modal');
-      this.questionElement.setAttribute('id', 'q1-modal');
+      this.questionElement.setAttribute('id', 'q4-modal');
       this.questionElement.innerHTML = (`
         <div class="ModalHeader">
           <div class="Title">
@@ -125,7 +147,7 @@ class QuestionModals {
     else if (this.modalRef === "q5") {
       this.questionElement = document.createElement("div");
       this.questionElement.classList.add('Modal');
-      this.questionElement.setAttribute('id', 'q1-modal');
+      this.questionElement.setAttribute('id', 'q5-modal');
       this.questionElement.innerHTML = (`
         <div class="ModalHeader">
           <div class="Title">
@@ -147,7 +169,7 @@ class QuestionModals {
     else if (this.modalRef === "q6") {
       this.questionElement = document.createElement("div");
       this.questionElement.classList.add('Modal');
-      this.questionElement.setAttribute('id', 'q1-modal');
+      this.questionElement.setAttribute('id', 'q6-modal');
       this.questionElement.innerHTML = (`
         <div class="ModalHeader">
           <div class="Title">
@@ -169,7 +191,7 @@ class QuestionModals {
     else if (this.modalRef === "q7") {
       this.questionElement = document.createElement("div");
       this.questionElement.classList.add('Modal');
-      this.questionElement.setAttribute('id', 'q1-modal');
+      this.questionElement.setAttribute('id', 'q7-modal');
       this.questionElement.innerHTML = (`
         <div class="ModalHeader">
           <div class="Title">
@@ -258,6 +280,7 @@ class QuestionModals {
                 
                 setTimeout(() => {
                   this.map.startCutscene([
+                    //Custom event 1
                     { type: "effect", sound: "sounds/chat.wav"},
                     { type: "toggleOxygenBar" },
                     { type: "textMessage", name: "Füllstation", text: "Sauerstoff aufgefüllt." },
@@ -296,7 +319,7 @@ class QuestionModals {
             }
 
             break;
-          case 'q2':
+          case 'q21':
             this.solution = "20";
 
             //Check if Question was correct
@@ -306,7 +329,48 @@ class QuestionModals {
               //Overwrite onComplete callback
               this.onComplete = () => {
                 this.coreOnComplete();
-                //Custom event 2
+                
+                setTimeout(() => {
+                  this.map.startCutscene([
+                    //Custom event 2.1
+                    { type: "updateObject", hide: true },
+                    //Remove 2min from timer
+                    { type: "textMessage", name: this.progress.playerName, text: "Oh nein, das war der falsche Berg!" },
+                  ])
+                }, 250);
+              }
+            } else {
+              this.checkButton.innerHTML = ('Incorrect!');
+      
+              setTimeout(() => {
+                this.checkButton.innerHTML = ('Check');
+              }, 2000);
+            }
+
+            break;
+          case 'q22':
+            this.solution = "20";
+
+            //Check if Question was correct
+            if(this.checkAnswer(this.answer, this.solution)) {
+              this.disableQuestion();
+
+              //Overwrite onComplete callback
+              this.onComplete = () => {
+                this.coreOnComplete();
+                
+                setTimeout(() => {
+                  this.map.startCutscene([
+                    //Custom event 2.2
+                    { type: "updateObject", spriteSrc: "images/characters/people/engineer.png" },
+                    { type: "addStoryFlag", flag: "Q2_COMPLETED" },
+                    { type: "textMessage", name: this.progress.playerName, text: "Oh nein, Yuri!"},
+                    { type: "textMessage", name: this.progress.playerName, text: "Er ist ohnmächtig und seine Vitalwerte sind miserabel!"},
+                    { type: "textMessage", name: this.progress.playerName, text: "Noch ist er am Leben,..."},
+                    { type: "textMessage", name: this.progress.playerName, text: "...aber er muss dringend zur Krankenstation gebracht werden!"},
+                    { type: "textMessage", name: this.progress.playerName, text: "Ich muss Krankenschwester Bella finden!"},
+                  ])
+                }, 250);
               }
             } else {
               this.checkButton.innerHTML = ('Incorrect!');
@@ -327,7 +391,19 @@ class QuestionModals {
               //Overwrite onComplete callback
               this.onComplete = () => {
                 this.coreOnComplete();
-                //Custom event 3
+
+                setTimeout(() => {
+                  this.map.startCutscene([
+                    //Custom event 3
+                    { type: "textMessage", name: "Bella", text: "So, das wird ihn eine Zeit lang stabilisieren." },
+                    { type: "textMessage", name: "Bella", text: "Aber eine Dauerlösung ist das nicht!" },
+                    { type: "textMessage", name: this.progress.playerName, text: "Kann ich denn schon mit ihm sprechen?" },
+                    { type: "textMessage", name: "Bella", text: "Noch ist er bewusstlos..." },
+                    { type: "textMessage", name: "Bella", text: "Setze in der Zwischenzeit einen Notruf ab!" },
+                    { type: "textMessage", name: this.progress.playerName, text: "Gute Idee! Ich beeile mich!" },
+                    { type: "addStoryFlag", flag: "Q4_INTRO" },
+                  ])
+                }, 250);
               }
             } else {
               this.checkButton.innerHTML = ('Incorrect!');
@@ -348,7 +424,23 @@ class QuestionModals {
               //Overwrite onComplete callback
               this.onComplete = () => {
                 this.coreOnComplete();
-                //Custom event 4
+                
+                setTimeout(() => {
+                  this.map.startCutscene([
+                    //Custom event 4
+                    { type: "addStoryFlag", flag: "Q4_COMPLETE" },
+                    { type: "removeStoryFlag", flag: "Q4_IN_PROGRESS" },
+                    { type: "textMessage", name: this.playerName, text: "Ok, wir haben wieder ein Signal!" },
+                    {
+                      type: "stand",
+                      who: "hero",
+                      direction: "up",
+                      time: 1000
+                    },
+                    { type: "textMessage", name: this.playerName, text: "Der Notruf ist abgesetzt." },
+                    { type: "textMessage", name: this.playerName, text: "Mal sehen, ob Yuri schon wach ist." },
+                  ])
+                }, 250);
               }
             } else {
               this.checkButton.innerHTML = ('Incorrect!');
@@ -369,7 +461,12 @@ class QuestionModals {
               //Overwrite onComplete callback
               this.onComplete = () => {
                 this.coreOnComplete();
-                //Custom event 5
+                
+                setTimeout(() => {
+                  this.map.startCutscene([
+                    //Custom event 5
+                  ])
+                }, 250);
               }
             } else {
               this.checkButton.innerHTML = ('Incorrect!');
@@ -390,7 +487,18 @@ class QuestionModals {
               //Overwrite onComplete callback
               this.onComplete = () => {
                 this.coreOnComplete;
-                //Custom event 6
+                
+                setTimeout(() => {
+                  this.map.startCutscene([
+                    //Custom event 6
+                    { type: "effect", visual: "rumble", toggle: "true" },
+                    { type: "textMessage", name:"Bordcomputer", text: "SYSTEMWARNUNG!! EINTRITT IN ASTEROIDENGÜRTEL."},
+                    { type: "textMessage", name:"Bordcomputer", text: "BERECHNUNG EINES NEUEN KURSES ERFORDERLICH."},
+                    { type: "textMessage", name: this.progress.playerName, text: "Jetzt muss es schnell gehen!"},
+                    { type: "textMessage", name: this.progress.playerName, text: "Zurück zur Steuereinheit!"},
+                    { type: "addStoryFlag", flag: "Q7_INTRO" }
+                  ])
+                }, 250);
               }
             }
 
@@ -405,7 +513,23 @@ class QuestionModals {
               //Overwrite onComplete callback
               this.onComplete = () => {
                 this.coreOnComplete;
-                //Custom event 7
+                
+                setTimeout(() => {
+                  this.map.startCutscene([
+                    //Custom event 7
+                    //Graph interpolieren --> Punkte sind gegeben, muss zusätzlich einige Eigenschaften aufweisen!
+                    { 
+                      type: "changeMap", 
+                      map: "CommandBridge",
+                      x: utils.withGrid(7),
+                      y: utils.withGrid(10),
+                      direction: "up",
+                      face: "up",
+                    },
+                    //open Win Screen
+
+                  ])
+                }, 250);
               }
             } else {
               this.checkButton.innerHTML = ('Incorrect!');

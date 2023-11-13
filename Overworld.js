@@ -134,7 +134,18 @@ class Overworld {
         { 
           type: "openModal", 
           fileRef: "QuestionModal",
-          modalRef: "q2"
+          modalRef: "q21"
+        }
+      ])
+    }
+  })
+  new KeyPressListener("8", () => {
+    if (!this.map.isCutscenePlaying) {
+      this.map.startCutscene([
+        { 
+          type: "openModal", 
+          fileRef: "QuestionModal",
+          modalRef: "q22"
         }
       ])
     }

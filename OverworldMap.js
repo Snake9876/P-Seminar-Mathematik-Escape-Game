@@ -152,18 +152,7 @@ window.OverworldMaps = {
             required: ["Q7_INTRO"],
             events: [
               { type: "textMessage", name: "", text: "Es scheint nichts zu passieren*"},
-              /*Aufgabe-7:
-
               { type: "openModal", fileRef: "questionModal", modalRef: "q7"},
-              Graph interpolieren --> Punkte sind gegeben, muss zusätzlich einige Eigenschaften aufweisen!
-
-              On complete:
-
-              Berg entfernen? 
-              Set-Timer -3min
-              Dismount spirte
-              { type: "textMessage", name: this.playerName, text: "Oh nein, das war der falsche Berg!" },
-              */
             ]
           },
           {
@@ -1123,17 +1112,7 @@ window.OverworldMaps = {
               { type: "textMessage", name: this.playerName,
                 text: "...und der Berg ist m hoch."
               },
-              /*Aufgabe-2:
-
-              { type: "openModal", fileRef: "questionModal", modalRef: "q2"} --> should reference object 1,
-
-              On complete:
-
-              Berg entfernen? 
-              Set-Timer -3min
-              Dismount spirte
-              { type: "textMessage", name: this.playerName, text: "Oh nein, das war der falsche Berg!" },
-              */
+              { type: "openModal", fileRef: "questionModal", modalRef: "q21"},
             ]
           }
         ]
@@ -1155,21 +1134,7 @@ window.OverworldMaps = {
               { type: "textMessage", name: this.playerName,
                 text: "...und der Berg ist m hoch."
               },
-              /*Aufgabe-2:
-
-              { type: "openModal", fileRef: "questionModal", modalRef: "q2"} --> should reference object 2,
-
-              On complete:
-
-              Berg entfernen? 
-              Dismount spirte
-              //Change spirte to Yuri
-              //{ type: "addStoryFlag", flag: "Q2_COMPLETED" },
-              //{ type: "textMessage", name: this.playerName, text: "Oh nein, Yuri!"},
-              //{ type: "textMessage", name: this.playerName, text: "Er ist ohnmächtig und seine Vitalwerte sind miserabel!"},
-              //{ type: "textMessage", name: this.playerName, text: "Noch ist er am Leben,..."},
-              //{ type: "textMessage", name: this.playerName, text: "...aber er muss dringend zur Krankenstation gebracht werden!"},
-              //{ type: "textMessage", name: this.playerName, text: "Ich muss Krankenschwester Bella finden!"},  */           
+              { type: "openModal", fileRef: "questionModal", modalRef: "q22"},         
             ]
           }
         ], 
@@ -1337,24 +1302,7 @@ window.OverworldMaps = {
             events: [
               { type: "textMessage", name: this.playerName, text: "Ich muss also eine Gegenfunktion aufstellen, um ein reines Signal zu erhalten!" },
               { type: "effect", sound: "sounds/chat.wav" },
-              /*Aufgabe-4:
-
               { type: "openModal", fileRef: "questionModal", modalRef: "q4" },
-
-              On complete:
-
-              { type:"addStoryFlag", flag: "Q4_COMPLETE" },
-              { type:"removeStoryFlag", flag "Q4_IN_PROGRESS" },
-              { type: "textMessage", name: this.playerName, text: "Ok, wir haben wieder ein Signal!" },
-              {
-                type: "stand",
-                who: "hero",
-                direction: "up",
-                time: 1000
-              },
-              { type: "textMessage", name: this.playerName, text: "Der Notruf ist abgesetzt." },
-              { type: "textMessage", name: this.playerName, text: "Mal sehen, ob Yuri schon wach ist." },
-              */
             ]
           },
           {
@@ -1810,21 +1758,7 @@ window.OverworldMaps = {
               { type: "textMessage", name: "Bella", text: "" },
               { type: "textMessage", name: this.playerName, text: "Kann ich dir irgendwie helfen?" },
               { type: "textMessage", name: "Bella", text: "Ja, du kannst ..." },
-              /*Aufgabe-3:
-              
               { type: "openModal", fileRef: "questionModal", modalRef: "q3"}
-
-              On complete:
-
-              { type: "textMessage", name: "Bella", text: "So, das wird ihn eine Zeit lang stabilisieren." },
-              { type: "textMessage", name: "Bella", text: "Aber eine Dauerlösung ist das nicht!" },
-              { type: "textMessage", name: this.playerName, text: "Kann ich denn schon mit ihm sprechen?" },
-              { type: "textMessage", name: "Bella", text: "Noch ist er bewusstlos..." },
-              { type: "textMessage", name: "Bella", text: "Setze in der Zwischenzeit einen Notruf ab!" },
-              { type: "textMessage", name: this.playerName, text: "Gute Idee! Ich beeile mich!" },
-              { type: "addStoryFlag", flag: "Q4_INTRO" },
-
-              */
             ]
           },
         ]
@@ -1882,20 +1816,7 @@ window.OverworldMaps = {
           {
             required: ["Q6_INTRO"],
             events: [
-              /*Aufgabe-6:
-
               { type: "openModal", fileRef: "questionModal", modalRef: "q6"},
-
-              On complete:
-
-              { type: "effect", visual: "rumble", toggle: "true" },
-              { type: "textMessage", name:"Bordcomputer", text: "SYSTEMWARNUNG!! EINTRITT IN ASTEROIDENGÜRTEL."},
-              { type: "textMessage", name:"Bordcomputer", text: "BERECHNUNG EINES NEUEN KURSES ERFORDERLICH."},
-              { type: "textMessage", name: this.playerName, text: "Jetzt muss es schnell gehen!"},
-              { type: "textMessage", name: this.playerName, text: "Zurück zur Steuereinheit!"},
-              { type: "addStoryFlag", flag: "Q7_INTRO" }
-
-              */
             ]
           },
         ]

@@ -175,7 +175,7 @@ class OverworldEvent {
 
     const face = this.map.gameObjects[ 'hero' ].direction;
 
-    if (face != (this.event.face || "down")) {
+    if (face != (this.event.face || 'down')) {
       resolve()
     } else {
 

@@ -22,7 +22,9 @@
   background: transparent;
   border: 0;
   bottom: -15px;
+  font-size: 1ex;
 }
+
 .TitleScreen button {
   color: #fff;
   justify-content: center;
@@ -38,8 +40,8 @@
   text-align: center;
 }
 
-.TitleScreen .KeyboardMenu .DescriptionBox p {
-  font-size: 0.2em;
+.TitleScreen .DescriptionBox p {
+  font-size: 7px;
 }
 
 .inputBar {

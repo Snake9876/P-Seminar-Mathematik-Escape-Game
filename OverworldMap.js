@@ -130,7 +130,7 @@ window.OverworldMaps = {
   CommandBridge: {
     id: "CommandBridge",
     lowerSrc: "/images/maps/CommandBridgeLower.png",
-    upperSrc: "/images/maps/EmptyUpper.png",
+    upperSrc: "/images/maps/CommandBridgeUpper.png",
     minimapSrc: "/images/icons/lung.png",
     configObjects: {
       hero: {
@@ -152,7 +152,18 @@ window.OverworldMaps = {
             required: ["Q7_INTRO"],
             events: [
               { type: "textMessage", name: "", text: "Es scheint nichts zu passieren*"},
+              /*Aufgabe-7:
+
               { type: "openModal", fileRef: "questionModal", modalRef: "q7"},
+              Graph interpolieren --> Punkte sind gegeben, muss zusätzlich einige Eigenschaften aufweisen!
+
+              On complete:
+
+              Berg entfernen? 
+              Set-Timer -3min
+              Dismount spirte
+              { type: "textMessage", name: this.playerName, text: "Oh nein, das war der falsche Berg!" },
+              */
             ]
           },
           {
@@ -293,19 +304,48 @@ window.OverworldMaps = {
         type: "Person",
         x: utils.withGrid(11),
         y: utils.withGrid(3),
-        direction: "down",
-        src: "/images/characters/people/doorRight.png",
+        direction: "right",
+        src: "/images/characters/people/door.png",
         shadowImg: "/images/characters/noshadow.png",
         talking: [
           {
             events: [
-              { type: "effect", sound: "knocking/chat.wav"},
-              { type: "textMessage", 
+              { type: "effect", sound: "sounds/knocking.wav"},
+              {
+                type: "stand",
+                who: "hero",
+                direction: "right",
+                time: 1000,
+              },
+              { type: "textMessage", name: "???",
               randomText: [
                 "AEIOU, DU GEHOERST AUCH MIT DAZU!", 
                 "Geranienauflauf", 
                 "Lorem ipsum sit dolor amet"
               ]},
+            ]
+          }
+        ]
+      },
+      CargoDoor: {
+        type: "Person",
+        x: utils.withGrid(1),
+        y: utils.withGrid(4),
+        direction: "left",
+        src: "/images/characters/people/door.png",
+        shadowImg: "/images/characters/noshadow.png",
+        talking: [
+          {
+            events: [
+              { type: "effect", sound: "sounds/knocking.wav"},
+              {
+                type: "stand",
+                who: "hero",
+                direction: "left",
+                time: 1000,
+              },
+              { type: "textMessage", 
+              text: "*Es scheint niemand zu antworten..."},
             ]
           }
         ]
@@ -315,7 +355,7 @@ window.OverworldMaps = {
       let walls = {};
       ["2,6","3,6","4,6","5,6","6,7","7,7","8,6","9,6","10,6",
       "11,5","11,4","11,3","11,2","11,1",
-      "10,0","9,0","8,0","7,1","7,2","6,2","5,1","4,2","3,2","2,2","1,3","1,4","1,5",
+      "10,0","9,0","8,0","7,1","7,2","6,2","5,1","4,2","3,2","2,2","1,3","1,5",
       ].forEach(coord => {
         let [x,y] = coord.split(",");
         walls[utils.asGridCoord(x,y)] = true;
@@ -436,20 +476,33 @@ window.OverworldMaps = {
         type: "Person",
         x: utils.withGrid(5),
         y: utils.withGrid(5),
-        direction: "down",
-        src: "/images/characters/people/doorRight.png",
+        direction: "right",
+        src: "/images/characters/people/door.png",
         shadowImg: "/images/characters/noshadow.png",
-        requiredFlags: ["QUARTERS_DOOR_VIS"],
+        hide: false,
         talking: [
           {
+            required: ["Q5_INTRO"],
             events: [
-              { type: "effect", sound: "knocking/chat.wav"},
-              { type: "textMessage", name: this.playerName, type: "Natürlich ist diese Tür auch verschlossen."},
-              { type: "textMessage", name: this.playerName, type: "Was auch sonst?"},
-              { type: "textMessage", name: this.playerName, type: "Deshalb hab ich um Schlüsselkarten für alle gebeten."},
-              { type: "textMessage", name: this.playerName, type: "Aber auf mich hört ja niemand!" },
-              { type: "textMessage", name: this.playerName, type: "Wahrscheinlich hat Han sie wie immer im Frachtraum liegen lassen!" },
+              { type: "effect", sound: "sounds/knocking.wav"},
+              { type: "textMessage", name: this.playerName, text: "Natürlich ist diese Tür auch verschlossen."},
+              { type: "textMessage", name: this.playerName, text: "Was auch sonst?"},
+              { type: "textMessage", name: this.playerName, text: "Deshalb hab ich um Schlüsselkarten für alle gebeten."},
+              { type: "textMessage", name: this.playerName, text: "Aber auf mich hört ja niemand!" },
+              { type: "textMessage", name: this.playerName, text: "Wahrscheinlich hat Han sie wie immer im Frachtraum liegen lassen!" },
               { type: "addStoryFlag", flag: "Q5_IN_PROGRESS" },
+            ]
+          },
+          {
+            events: [
+              { type: "effect", sound: "sounds/knocking.wav"},
+              {
+                type: "stand",
+                who: "hero",
+                direction: "right",
+                time: 1000,
+              },
+              { type: "textMessage", name: this.playerName, text: "*Es scheint niemand zu antworten...*"}
             ]
           }
         ]
@@ -457,7 +510,7 @@ window.OverworldMaps = {
     },
     walls: function() {
       let walls = {};
-      ["2,9","3,9","4,9","1,8","0,7","1,6","1,5","1,4","0,3","1,1","2,0","3,0","4,0","4,0","5,1","5,2","5,3","6,5","5,6","5,7","5,8",
+      ["2,9","3,9","4,9","1,8","0,7","1,6","1,5","1,4","0,3","1,1","1,2","2,0","3,0","4,0","4,0","5,1","5,2","5,3","5,4","6,5","5,6","5,7","5,8",
       ].forEach(coord => {
         let [x,y] = coord.split(",");
         walls[utils.asGridCoord(x,y)] = true;
@@ -518,6 +571,18 @@ window.OverworldMaps = {
                 face: "left",
               }
             ]
+          },
+          {
+            events: [
+              { 
+                type: "changeMap",
+                map: "Cafeteria",
+                x: utils.withGrid(8),
+                y: utils.withGrid(2),
+                direction: "down",
+                face: "left",
+              }
+            ]
           }
         ]   
       }],
@@ -528,9 +593,9 @@ window.OverworldMaps = {
               {
                 type: "changeMap",
                 map: "O2",
-                x: utils.withGrid(7),
-                y: utils.withGrid(10),
-                direction: "up",
+                x: utils.withGrid(5),
+                y: utils.withGrid(2),
+                direction: "down",
                 face: "left",
               }
             ]
@@ -544,7 +609,7 @@ window.OverworldMaps = {
               {
                 type: "changeMap",
                 map: "Quarters",
-                x: utils.withGrid(8),
+                x: utils.withGrid(9),
                 y: utils.withGrid(6),
                 direction: "up",
                 face: "right",
@@ -728,9 +793,9 @@ window.OverworldMaps = {
               {
                 type: "changeMap",
                 map: "Hallway3",
-                x: utils.withGrid(4),
-                y: utils.withGrid(15),
-                direction: "up",
+                x: utils.withGrid(2),
+                y: utils.withGrid(1),
+                direction: "down",
                 face: "left",
               }
             ]
@@ -745,8 +810,8 @@ window.OverworldMaps = {
                 type: "changeMap",
                 map: "Hallway3",
                 x: utils.withGrid(3),
-                y: utils.withGrid(15),
-                direction: "up",
+                y: utils.withGrid(1),
+                direction: "down",
                 face: "left",
               }
             ]
@@ -760,9 +825,9 @@ window.OverworldMaps = {
               {
                 type: "changeMap",
                 map: "Hallway3",
-                x: utils.withGrid(2),
-                y: utils.withGrid(15),
-                direction: "up",
+                x: utils.withGrid(4),
+                y: utils.withGrid(1),
+                direction: "down",
                 face: "left",
               }
             ]
@@ -784,41 +849,72 @@ window.OverworldMaps = {
       },
       EngineDoor: {
         type: "Person",
-        x: utils.withGrid(5),
+        x: utils.withGrid(1),
         y: utils.withGrid(9),
-        direction: "down",
-        src: "/images/characters/people/doorRight.png",
+        direction: "left",
+        src: "/images/characters/people/door.png",
         shadowImg: "/images/characters/noshadow.png",
-        requiredFlags: ["ENGINE_DOOR_VIS"],
+        hide: false,
         talking: [
           {
             required: ["Q2_INTRO"],
             events: [
-              { type: "effect", sound: "knocking/chat.wav"},
-              { type: "textMessage", name: "", text: "*Es scheint niemand zu antworten...*" },
+              { type: "effect", sound: "sounds/knocking.wav"},
+              {
+                type: "stand",
+                who: "hero",
+                direction: "right",
+                time: 1000,
+              },
+              { type: "textMessage", text: "Wo ist unser Ingenieur Yuri, wenn man ihn braucht?" },
+              { type: "textMessage", text: "Wollte er sich nicht gerade einen Kaffee holen?" },
             ]
           },
           {
+            required: ["Q1_COMPLETED"],
             events: [
-              { type: "effect", sound: "knocking/chat.wav"},
+              { type: "effect", sound: "sounds/knocking.wav"},
+              {
+                type: "stand",
+                who: "hero",
+                direction: "right",
+                time: 1000,
+              },
               { type: "textMessage", name: this.playerName, text: "Verdammt, sie klemmt!" },
               { type: "textMessage", name: this.playerName, text: "Dass das gerade jetzt passieren muss!" },
               { type: "textMessage", text: "Wo ist unser Ingenieur Yuri, wenn man ihn braucht?" },
               { type: "textMessage", text: "Wollte er sich nicht gerade einen Kaffee holen?" },
               { type: "addStoryFlag", flag: "Q2_INTRO" }
             ]
-          }
+          },
+          {
+            events: [
+              { type: "effect", sound: "sounds/knocking.wav"},
+              /*{
+                type: "stand",
+                who: "hero",
+                direction: "right",
+                time: 1000,
+              },
+              { type: "textMessage", name: "", text: "*Es scheint niemand zu antworten...*" },*/
+              { 
+                type: "updateObject", 
+                update: {
+                  id: "EngineDoor",
+                  hide: true,
+                }
+              }
+            ]
+          },
         ]
       }
     },
     walls: function() {
       let walls = {};
-      ["1,15","2,16","3,16","4,16","5,15",
-      "5,14","5,13","5,12","5,11","5,10",
-      "6,9","5,8","5,7","5,6","5,5","6,4",
-      "6,3","5,2","4,2","3,2","2,2","1,2",
-      "0,3","0,4","1,5","0,6","1,7","1,8",
-      "0,9","1,10","1,11","0,12","0,13","1,14",
+      ["1,16","2,17","3,17","4,17","5,16",
+      "5,15","5,14","5,13","6,12","5,11","5,10","5,9","6,8","5,7","5,6","5,5","6,4","6,3","5,2","5,1",
+      "2,0","3,0","4,0",
+      "1,15","1,14","1,13","1,12","1,11","1,10","0,9","1,8","1,7","1,6","1,5","1,4","1,3","1,2","1,1",
       ].forEach(coord => {
         let [x,y] = coord.split(",");
         walls[utils.asGridCoord(x,y)] = true;
@@ -826,7 +922,7 @@ window.OverworldMaps = {
       return walls;
     }(),
     cutsceneSpaces: {
-      [utils.asGridCoord(2,15)]: [{
+      [utils.asGridCoord(2,1)]: [{
         scenarios: [
           {
             events: [
@@ -834,15 +930,15 @@ window.OverworldMaps = {
                 type: "changeMap",
                 map: "Corner",
                 x: utils.withGrid(1),
-                y: utils.withGrid(4),
+                y: utils.withGrid(2),
                 direction: "right",
-                face: "down",
+                face: "up",
               }
             ]
           }
         ]   
       }],
-      [utils.asGridCoord(3,15)]: [{
+      [utils.asGridCoord(3,1)]: [{
         scenarios: [
           {
             events: [
@@ -852,13 +948,13 @@ window.OverworldMaps = {
                 x: utils.withGrid(1),
                 y: utils.withGrid(3),
                 direction: "right",
-                face: "down",
+                face: "up",
               }
             ]
           }
         ]    
       }],
-      [utils.asGridCoord(4,15)]: [{
+      [utils.asGridCoord(4,1)]: [{
         scenarios: [
           {
             events: [
@@ -866,15 +962,15 @@ window.OverworldMaps = {
                 type: "changeMap",
                 map: "Corner",
                 x: utils.withGrid(1),
-                y: utils.withGrid(2),
+                y: utils.withGrid(4),
                 direction: "right",
-                face: "down", 
+                face: "up", 
               }
             ]
           }
         ]  
       }],
-      [utils.asGridCoord(1,9)]: [{
+      [utils.asGridCoord(5,8)]: [{
         scenarios: [
           {
             required: ["Q4_INTRO"],
@@ -882,10 +978,10 @@ window.OverworldMaps = {
               {
                 type: "changeMap",
                 map: "Comms",
-                x: utils.withGrid(5),
+                x: utils.withGrid(6),
                 y: utils.withGrid(2),
                 direction: "down",
-                face: "left",
+                face: "right",
               },
               {
                 type: "stand",
@@ -902,16 +998,16 @@ window.OverworldMaps = {
               {
                 type: "changeMap",
                 map: "Comms",
-                x: utils.withGrid(5),
+                x: utils.withGrid(6),
                 y: utils.withGrid(2),
                 direction: "down",
-                face: "left",
+                face: "right",
               }
             ]
           }
         ] 
       }],
-      [utils.asGridCoord(5,9)]: [{
+      [utils.asGridCoord(1,9)]: [{
         scenarios: [
           {
             events: [
@@ -921,55 +1017,55 @@ window.OverworldMaps = {
                 x: utils.withGrid(7),
                 y: utils.withGrid(22),
                 direction: "left",
-                face: "right",
+                face: "left",
               }
             ]
           }
         ] 
       }],
-      [utils.asGridCoord(1,6)]: [{
+      [utils.asGridCoord(5,12)]: [{
         scenarios: [
           {
             events: [
               {
                 type: "changeMap",
                 map: "Medbay",
-                x: utils.withGrid(7),
-                y: utils.withGrid(22),
-                direction: "left",
-                face: "left",
+                x: utils.withGrid(5),
+                y: utils.withGrid(2),
+                direction: "down",
+                face: "right",
               }
             ]
           }
         ] 
       }],
-      [utils.asGridCoord(1,12)]: [{
+      [utils.asGridCoord(5,3)]: [{
         scenarios: [
           {
             events: [
               {
                 type: "changeMap",
                 map: "Hallway4",
-                x: utils.withGrid(3),
-                y: utils.withGrid(8),
-                direction: "up",
-                face: "left",
+                x: utils.withGrid(1),
+                y: utils.withGrid(3),
+                direction: "right",
+                face: "right",
               }
             ]
           }
         ]
       }],
-      [utils.asGridCoord(1,13)]: [{
+      [utils.asGridCoord(5,4)]: [{
         scenarios: [
           {
             events: [
               {
                 type: "changeMap",
                 map: "Hallway4",
-                x: utils.withGrid(2),
-                y: utils.withGrid(8),
-                direction: "up",
-                face: "left",
+                x: utils.withGrid(1),
+                y: utils.withGrid(4),
+                direction: "right",
+                face: "right",
               }
             ]
           }
@@ -990,37 +1086,21 @@ window.OverworldMaps = {
       }
     },
     cutsceneSpaces: {
-      [utils.asGridCoord(2,8)]: [{
+      [utils.asGridCoord(1,3)]: [{
         scenarios: [
           {
             events: [
               {
                 type: "changeMap",
                 map: "Hallway3",
-                x: utils.withGrid(1),
-                y: utils.withGrid(13),
-                direction: "right",
-                face: "down",
+                x: utils.withGrid(5),
+                y: utils.withGrid(3),
+                direction: "left",
+                face: "left",
               }
             ]
           }
         ]   
-      }],
-      [utils.asGridCoord(3,8)]: [{
-        scenarios: [
-          {
-            events: [
-              {
-                type: "changeMap",
-                map: "Hallway3",
-                x: utils.withGrid(1),
-                y: utils.withGrid(12),
-                direction: "right",
-                face: "down",
-              }
-            ]
-          }
-        ]
       }],
       [utils.asGridCoord(1,4)]: [{
         scenarios: [
@@ -1028,17 +1108,33 @@ window.OverworldMaps = {
             events: [
               {
                 type: "changeMap",
+                map: "Hallway3",
+                x: utils.withGrid(5),
+                y: utils.withGrid(4),
+                direction: "left",
+                face: "left",
+              }
+            ]
+          }
+        ]
+      }],
+      [utils.asGridCoord(5,2)]: [{
+        scenarios: [
+          {
+            events: [
+              {
+                type: "changeMap",
                 map: "O2",
                 x: utils.withGrid(5),
-                y: utils.withGrid(2),
-                direction: "down",
-                face: "left",
+                y: utils.withGrid(7),
+                direction: "up",
+                face: "up",
               }
             ]
           }
         ] 
       }],
-      [utils.asGridCoord(2,1)]: [{
+      [utils.asGridCoord(9,3)]: [{
         scenarios: [
           {
             events: [
@@ -1048,13 +1144,13 @@ window.OverworldMaps = {
                 x: utils.withGrid(1),
                 y: utils.withGrid(6),
                 direction: "right",
-                face: "up",
+                face: "right",
               }
             ]
           }
         ] 
       }],
-      [utils.asGridCoord(3,1)]: [{
+      [utils.asGridCoord(9,4)]: [{
         scenarios: [
           {
             events: [
@@ -1064,7 +1160,7 @@ window.OverworldMaps = {
                 x: utils.withGrid(1),
                 y: utils.withGrid(7),
                 direction: "right",
-                face: "up",
+                face: "right",
               }
             ]
           }
@@ -1073,10 +1169,10 @@ window.OverworldMaps = {
     },
     walls: function() {
       let walls = {};
-      ["2,9","3,9","4,8","4,7","4,6","4,5",
-      "4,4","4,3","4,2","4,1","3,0","2,0",
-      "1,1","1,2","1,3","0,4","1,5","1,6",
-      "1,7","1,8",
+      ["1,5","2,5","3,5","4,5","5,5","6,5","7,5","8,5","9,5",
+      "10,4","10,3",
+      "1,2","2,2","3,2","4,2","5,1","6,2","7,2","8,2","9,2",
+      "0,4","0,3",
       ].forEach(coord => {
         let [x,y] = coord.split(",");
         walls[utils.asGridCoord(x,y)] = true;
@@ -1097,7 +1193,7 @@ window.OverworldMaps = {
       },
       berg1: {
         type: "Person",
-        x: utils.withGrid(11),
+        x: utils.withGrid(2),
         y: utils.withGrid(3),
         direction: "down",
         src: "/images/characters/people/gameObjects.png",
@@ -1112,14 +1208,24 @@ window.OverworldMaps = {
               { type: "textMessage", name: this.playerName,
                 text: "...und der Berg ist m hoch."
               },
-              { type: "openModal", fileRef: "questionModal", modalRef: "q21"},
+              /*Aufgabe-2:
+
+              { type: "openModal", fileRef: "questionModal", modalRef: "q2"} --> should reference object 1,
+
+              On complete:
+
+              Berg entfernen? 
+              Set-Timer -3min
+              Dismount spirte
+              { type: "textMessage", name: this.playerName, text: "Oh nein, das war der falsche Berg!" },
+              */
             ]
           }
         ]
       },
       berg2: {
         type: "Person",
-        x: utils.withGrid(11),
+        x: utils.withGrid(2),
         y: utils.withGrid(3),
         direction: "down",
         src: "/images/characters/people/gameObjects.png",
@@ -1134,7 +1240,21 @@ window.OverworldMaps = {
               { type: "textMessage", name: this.playerName,
                 text: "...und der Berg ist m hoch."
               },
-              { type: "openModal", fileRef: "questionModal", modalRef: "q22"},         
+              /*Aufgabe-2:
+
+              { type: "openModal", fileRef: "questionModal", modalRef: "q2"} --> should reference object 2,
+
+              On complete:
+
+              Berg entfernen? 
+              Dismount spirte
+              //Change spirte to Yuri
+              //{ type: "addStoryFlag", flag: "Q2_COMPLETED" },
+              //{ type: "textMessage", name: this.playerName, text: "Oh nein, Yuri!"},
+              //{ type: "textMessage", name: this.playerName, text: "Er ist ohnmächtig und seine Vitalwerte sind miserabel!"},
+              //{ type: "textMessage", name: this.playerName, text: "Noch ist er am Leben,..."},
+              //{ type: "textMessage", name: this.playerName, text: "...aber er muss dringend zur Krankenstation gebracht werden!"},
+              //{ type: "textMessage", name: this.playerName, text: "Ich muss Krankenschwester Bella finden!"},  */           
             ]
           }
         ], 
@@ -1194,6 +1314,28 @@ window.OverworldMaps = {
           },
         ]
       },
+      Book: {
+        type: "Person",
+        x: utils.withGrid(12),
+        y: utils.withGrid(3),
+        direction: "left",
+        src: "/images/characters/people/gameObjects.png",
+        shadowImg: "/images/characters/noshadow.png",
+        talking: [
+          {
+            events: [
+              {
+                type: "updateObject",
+                update: {
+                  id: "Book",
+                  hide: true,
+                }
+              }, 
+              { addStoryFlag: "", flag: "GOT_TEXTBOOK" }
+            ]
+          },
+        ]
+      }
     },
     cutsceneSpaces: {
       [utils.asGridCoord(8,2)]: [{
@@ -1235,9 +1377,9 @@ window.OverworldMaps = {
               {
                 type: "changeMap",
                 map: "Hallway4",
-                x: utils.withGrid(2),
-                y: utils.withGrid(1),
-                direction: "down",
+                x: utils.withGrid(9),
+                y: utils.withGrid(3),
+                direction: "left",
                 face: "left",
               }
             ]
@@ -1251,9 +1393,9 @@ window.OverworldMaps = {
               {
                 type: "changeMap",
                 map: "Hallway4",
-                x: utils.withGrid(3),
-                y: utils.withGrid(1),
-                direction: "down",
+                x: utils.withGrid(9),
+                y: utils.withGrid(4),
+                direction: "left",
                 face: "left",
               }
             ]
@@ -1269,8 +1411,8 @@ window.OverworldMaps = {
       "9,2","8,1","6,2","5,3","5,4","4,4","3,4",
       "2,4","1,5","0,6","0,7","1,8","1,9","1,10",
       "3,9","4,9","5,9","3,6","4,6","5,6","8,6",
-      "9,6","10,6","8,9","9,9","10,9","11,4",
-      "12,4","13,4","12,6","13,6","7,3","7,4",
+      "9,6","10,6","8,9","9,9","10,9",
+      "11,3","13,3","12,6","13,6","7,3","7,4",
       ].forEach(coord => {
         let [x,y] = coord.split(",");
         walls[utils.asGridCoord(x,y)] = true;
@@ -1294,7 +1436,7 @@ window.OverworldMaps = {
         x: utils.withGrid(5),
         y: utils.withGrid(9),
         direction: "down",
-        src: "/images/characters/people/doorRight.png",
+        src: "/images/characters/people/door.png",
         shadowImg: "/images/characters/noshadow.png",
         talking: [
           {      
@@ -1302,7 +1444,24 @@ window.OverworldMaps = {
             events: [
               { type: "textMessage", name: this.playerName, text: "Ich muss also eine Gegenfunktion aufstellen, um ein reines Signal zu erhalten!" },
               { type: "effect", sound: "sounds/chat.wav" },
+              /*Aufgabe-4:
+
               { type: "openModal", fileRef: "questionModal", modalRef: "q4" },
+
+              On complete:
+
+              { type:"addStoryFlag", flag: "Q4_COMPLETE" },
+              { type:"removeStoryFlag", flag "Q4_IN_PROGRESS" },
+              { type: "textMessage", name: this.playerName, text: "Ok, wir haben wieder ein Signal!" },
+              {
+                type: "stand",
+                who: "hero",
+                direction: "up",
+                time: 1000
+              },
+              { type: "textMessage", name: this.playerName, text: "Der Notruf ist abgesetzt." },
+              { type: "textMessage", name: this.playerName, text: "Mal sehen, ob Yuri schon wach ist." },
+              */
             ]
           },
           {
@@ -1330,7 +1489,7 @@ window.OverworldMaps = {
         x: utils.withGrid(5),
         y: utils.withGrid(9),
         direction: "down",
-        src: "/images/characters/people/doorRight.png",
+        src: "/images/characters/people/door.png",
         shadowImg: "/images/characters/noshadow.png",
         talking: [
           {   
@@ -1451,10 +1610,10 @@ window.OverworldMaps = {
     },
     walls: function() {
       let walls = {};
-      ["1,8","2,8","3,8","4,8","5,8","6,8",
-      "7,8","8,7","8,6","8,5","8,4","8,3",
-      "7,2","6,2","5,1","4,2","3,2","2,2",
-      "1,2","0,3","1,4","2,5","1,6","0,7",
+      ["2,8","3,8","4,8","5,8","6,8","7,8","8,8",
+      "9,3","9,4","9,5","9,6","9,7",
+      "2,2","3,2","4,2","5,2","6,1","7,2","8,2",
+      "1,3","2,4","3,5","2,6","1,7",
       ].forEach(coord => {
         let [x,y] = coord.split(",");
         walls[utils.asGridCoord(x,y)] = true;
@@ -1462,16 +1621,16 @@ window.OverworldMaps = {
       return walls;
     }(),
     cutsceneSpaces: {
-      [utils.asGridCoord(5,2)]: [{
+      [utils.asGridCoord(6,2)]: [{
         scenarios: [
           {
             events: [
               {
                 type: "changeMap",
                 map: "Hallway3",
-                x: utils.withGrid(1),
-                y: utils.withGrid(9),
-                direction: "right",
+                x: utils.withGrid(5),
+                y: utils.withGrid(8),
+                direction: "left",
                 face: "up",
               }
             ]
@@ -1494,11 +1653,10 @@ window.OverworldMaps = {
     },
     walls: function() {
       let walls = {};
-      ["1,6","2,6","3,6","4,6","5,6","6,6",
-      "7,6","8,7","9,6","10,6","11,6","12,5",
-      "12,4","12,3","1,2","2,2","3,2","4,2",
-      "5,2","6,2","7,2","8,2","9,2","10,2",
-      "11,2","0,3","0,4","0,5",
+      ["2,6","3,6","4,6","5,6","6,6","7,6","8,6","9,7","10,6","11,6","12,6",
+      "13,5","13,4","13,3",
+      "2,2","3,2","4,2","5,2","6,2","7,2","8,2","9,2","10,2","11,2","12,2",
+      "1,3","1,4","1,5",
       ].forEach(coord => {
         let [x,y] = coord.split(",");
         walls[utils.asGridCoord(x,y)] = true;
@@ -1506,7 +1664,7 @@ window.OverworldMaps = {
       return walls;
     }(),
     cutsceneSpaces: {
-      [utils.asGridCoord(8,6)]: [{
+      [utils.asGridCoord(9,6)]: [{
         scenarios: [
           {
             events: [
@@ -1515,7 +1673,8 @@ window.OverworldMaps = {
                 map: "Hallway2",
                 x: utils.withGrid(5),
                 y: utils.withGrid(5),
-                direction: "left"
+                direction: "left",
+                face: "down"
               }
             ]
           }
@@ -1536,8 +1695,8 @@ window.OverworldMaps = {
       },
       maintenanceMonitor: {
         type: "Person",
-        x: utils.withGrid(9),
-        y: utils.withGrid(5),
+        x: utils.withGrid(3),
+        y: utils.withGrid(2),
         direction: "up",
         src: "/images/characters/people/gameObjects.png",
         talking: [
@@ -1569,8 +1728,8 @@ window.OverworldMaps = {
       },
       oxygenRefill: {
         type: "Person",
-        x: utils.withGrid(9),
-        y: utils.withGrid(5),
+        x: utils.withGrid(7),
+        y: utils.withGrid(3),
         direction: "up",
         src: "/images/characters/people/gameObjects.png",
         talking: [
@@ -1592,7 +1751,10 @@ window.OverworldMaps = {
     },
     walls: function() {
       let walls = {};
-      [
+      ["2,7","3,7","4,7","5,8","6,7","7,7","8,7",
+      "9,3","9,4","9,5","9,6",
+      "2,2","3,2","4,2","5,1","6,2","7,2","8,2",
+      "1,3","1,4","1,5","1,6",
       ].forEach(coord => {
         let [x,y] = coord.split(",");
         walls[utils.asGridCoord(x,y)] = true;
@@ -1600,7 +1762,7 @@ window.OverworldMaps = {
       return walls;
     }(),
     cutsceneSpaces: {
-      [utils.asGridCoord(7,22)]: [{
+      [utils.asGridCoord(5,2)]: [{
         scenarios: [
           {
             required: ["Q1_IN_PROGRESS"],
@@ -1647,7 +1809,7 @@ window.OverworldMaps = {
           }
         ]
       }],
-      [utils.asGridCoord(7,22)]: [{
+      [utils.asGridCoord(5,7)]: [{
         scenarios: [
           {
             required: ["Q1_IN_PROGRESS"],
@@ -1667,9 +1829,9 @@ window.OverworldMaps = {
               {
                 type: "changeMap",
                 map: "Hallway4",
-                x: utils.withGrid(1),
-                y: utils.withGrid(4),
-                direction: "right",
+                x: utils.withGrid(5),
+                y: utils.withGrid(2),
+                direction: "down",
                 face: "down",
               },
               { type: "effect", sound: "sounds/alarm.wav"},
@@ -1684,9 +1846,9 @@ window.OverworldMaps = {
               {
                 type: "changeMap",
                 map: "Hallway4",
-                x: utils.withGrid(1),
-                y: utils.withGrid(4),
-                direction: "right",
+                x: utils.withGrid(5),
+                y: utils.withGrid(2),
+                direction: "down",
                 face: "down",
               },
             ]
@@ -1758,7 +1920,21 @@ window.OverworldMaps = {
               { type: "textMessage", name: "Bella", text: "" },
               { type: "textMessage", name: this.playerName, text: "Kann ich dir irgendwie helfen?" },
               { type: "textMessage", name: "Bella", text: "Ja, du kannst ..." },
+              /*Aufgabe-3:
+              
               { type: "openModal", fileRef: "questionModal", modalRef: "q3"}
+
+              On complete:
+
+              { type: "textMessage", name: "Bella", text: "So, das wird ihn eine Zeit lang stabilisieren." },
+              { type: "textMessage", name: "Bella", text: "Aber eine Dauerlösung ist das nicht!" },
+              { type: "textMessage", name: this.playerName, text: "Kann ich denn schon mit ihm sprechen?" },
+              { type: "textMessage", name: "Bella", text: "Noch ist er bewusstlos..." },
+              { type: "textMessage", name: "Bella", text: "Setze in der Zwischenzeit einen Notruf ab!" },
+              { type: "textMessage", name: this.playerName, text: "Gute Idee! Ich beeile mich!" },
+              { type: "addStoryFlag", flag: "Q4_INTRO" },
+
+              */
             ]
           },
         ]
@@ -1766,10 +1942,10 @@ window.OverworldMaps = {
     },
     walls: function() {
       let walls = {};
-      ["1,10","2,10","3,10","4,10","5,10","6,10",
-      "7,9","6,8","5,8","7,7","6,6","5,6","7,5","6,4","5,4","7,3",
-      "6,2","5,2","4,1","3,2","2,2","1,2",
-      "0,3","1,4","2,4","0,5","1,6","2,6","0,7","1,8","2,8","0,9"
+      ["2,10","3,10","4,10","5,10","6,10","7,10","8,10",
+      "9,3","8,4","7,4","9,5","8,6","7,6","9,7","8,8","7,8","9,9",
+      "2,2","3,2","4,2","5,1","6,2","7,2","8,2",
+      "1,3","2,4","3,4","1,5","2,6","3,6","1,7","2,8","3,8","1,9",
       ].forEach(coord => {
         let [x,y] = coord.split(",");
         walls[utils.asGridCoord(x,y)] = true;
@@ -1777,16 +1953,16 @@ window.OverworldMaps = {
       return walls;
     }(),
     cutsceneSpaces: {
-      [utils.asGridCoord(4,2)]: [{
+      [utils.asGridCoord(5,2)]: [{
         scenarios: [
           {
             events: [
               {
                 type: "changeMap",
                 map: "Hallway3",
-                x: utils.withGrid(1),
-                y: utils.withGrid(6),
-                direction: "right",
+                x: utils.withGrid(5),
+                y: utils.withGrid(12),
+                direction: "left",
                 face: "up",
               }
             ]
@@ -1816,7 +1992,20 @@ window.OverworldMaps = {
           {
             required: ["Q6_INTRO"],
             events: [
+              /*Aufgabe-6:
+
               { type: "openModal", fileRef: "questionModal", modalRef: "q6"},
+
+              On complete:
+
+              { type: "effect", visual: "rumble", toggle: "true" },
+              { type: "textMessage", name:"Bordcomputer", text: "SYSTEMWARNUNG!! EINTRITT IN ASTEROIDENGÜRTEL."},
+              { type: "textMessage", name:"Bordcomputer", text: "BERECHNUNG EINES NEUEN KURSES ERFORDERLICH."},
+              { type: "textMessage", name: this.playerName, text: "Jetzt muss es schnell gehen!"},
+              { type: "textMessage", name: this.playerName, text: "Zurück zur Steuereinheit!"},
+              { type: "addStoryFlag", flag: "Q7_INTRO" }
+
+              */
             ]
           },
         ]
@@ -1849,26 +2038,14 @@ window.OverworldMaps = {
       [utils.asGridCoord(7,22)]: [{
         scenarios: [
           {
-            required: ["Q1_IN_PROGRESS"],
-            events: [
-              { type: "textMessage", text: "Ich sollte vorher besser meinen Sauerstoffvorrat auffüllen!" },
-              { 
-                type: "walk", 
-                who: "hero",
-                direction: "down",
-              },
-
-            ]
-          },
-          {
             events: [
               
               {
                 type: "changeMap",
                 map: "Hallway3",
-                x: utils.withGrid(5),
+                x: utils.withGrid(1),
                 y: utils.withGrid(9),
-                direction: "left",
+                direction: "right",
                 face: "right",
               }
             ]

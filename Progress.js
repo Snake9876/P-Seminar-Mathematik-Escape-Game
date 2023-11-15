@@ -46,12 +46,6 @@ class Progress {
       "GOT_KEYCARD": false,
       "GOT_ITEM_5": false,
       "GOT_ITEM_6": false,
-
-      "TEST_FLAG": false,
-
-      //Door-Flags
-      "QUARTERS_DOOR_VIS": true,  
-      "ENGINE_DOOR_VIS": true,
     };
     this.saveFileKey = "EscapeGame_SaveFile1";
   }

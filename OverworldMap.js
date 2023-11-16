@@ -131,7 +131,7 @@ window.OverworldMaps = {
     id: "CommandBridge",
     lowerSrc: "/images/maps/CommandBridgeLower.png",
     upperSrc: "/images/maps/CommandBridgeUpper.png",
-    minimapSrc: "/images/icons/lung.png",
+    minimapSrc: "/images/ui/minimaps/CommandBridgeMinimap.png",
     configObjects: {
       hero: {
         type: "Person",
@@ -292,7 +292,7 @@ window.OverworldMaps = {
     id: "Hallway1",
     lowerSrc: "/images/maps/Hallway1Lower.png",
     upperSrc: "/images/maps/Hallway1Upper.png",
-    minimapSrc: "/images/maps/Hallway3Lower.png",
+    minimapSrc: "/images/ui/minimaps/Hallway1Minimap.png",
     configObjects: {
       hero: {
         type: "Person",
@@ -465,6 +465,7 @@ window.OverworldMaps = {
     id: "Hallway2",
     lowerSrc: "/images/maps/Hallway2Lower.png",
     upperSrc: "/images/maps/Hallway2Upper.png",
+    minimapSrc: "/images/ui/minimaps/Hallway2Minimap.png",
     configObjects: {
       hero: {
         type: "Person",
@@ -720,6 +721,7 @@ window.OverworldMaps = {
     id: "Corner",
     lowerSrc: "/images/maps/CornerLower.png",
     upperSrc: "/images/maps/CornerUpper.png",
+    minimapSrc: "/images/ui/minimaps/CornerMinimap.png",
     configObjects: {
       hero: {
         type: "Person",
@@ -840,6 +842,7 @@ window.OverworldMaps = {
     id: "Hallway3",
     lowerSrc: "/images/maps/Hallway3Lower.png",
     upperSrc: "/images/maps/Hallway3Upper.png",
+    minimapSrc: "/images/ui/minimaps/Hallway3Minimap.png",
     configObjects: {
       hero: {
         type: "Person",
@@ -1077,6 +1080,7 @@ window.OverworldMaps = {
     id: "Hallway4",
     lowerSrc: "/images/maps/Hallway4Lower.png",
     upperSrc: "/images/maps/Hallway4Upper.png",
+    minimapSrc: "/images/ui/minimaps/Hallway4Minimap.png",
     configObjects: {
       hero: {
         type: "Person",
@@ -1184,6 +1188,7 @@ window.OverworldMaps = {
     id: "Cafeteria",
     lowerSrc: "/images/maps/CafeteriaLower.png",
     upperSrc: "/images/maps/CafeteriaUpper.png",
+    minimapSrc: "/images/ui/minimaps/CafeteriaMinimap.png",
     configObjects: {
       hero: {
         type: "Person",
@@ -1331,7 +1336,7 @@ window.OverworldMaps = {
                   hide: true,
                 }
               }, 
-              { addStoryFlag: "", flag: "GOT_TEXTBOOK" }
+              { type: "addStoryFlag", flag: "GOT_TEXTBOOK" }
             ]
           },
         ]
@@ -1424,6 +1429,7 @@ window.OverworldMaps = {
     id: "Comms",
     lowerSrc: "/images/maps/CommsLower.png",
     upperSrc: "/images/maps/CommsUpper.png",
+    minimapSrc: "/images/ui/minimaps/CommsMinimap.png",
     configObjects: {
       hero: {
         type: "Person",
@@ -1643,6 +1649,7 @@ window.OverworldMaps = {
     id: "Quarters",
     lowerSrc: "/images/maps/QuartersLower.png",
     upperSrc: "/images/maps/QuartersUpper.png",
+    minimapSrc: "/images/ui/minimaps/QuartersMinimap.png",
     configObjects: {
       hero: {
         type: "Person",
@@ -1686,6 +1693,7 @@ window.OverworldMaps = {
     id: "O2",
     lowerSrc: "/images/maps/O2Lower.png",
     upperSrc: "/images/maps/O2Upper.png",
+    minimapSrc: "/images/ui/minimaps/O2Minimap.png",
     configObjects: {
       hero: {
         type: "Person",
@@ -1744,6 +1752,29 @@ window.OverworldMaps = {
             required: ["Q1_COMPLETED"],
             events: [
               { type: "textMessage", name:"Füllstation", text: "Sauerstoff aufgefüllt.", resetTracker: true },
+            ]
+          }
+        ]
+      },
+      O2Door: {
+        type: "Person",
+        x: utils.withGrid(1),
+        y: utils.withGrid(4),
+        direction: "left",
+        src: "/images/characters/people/door.png",
+        shadowImg: "/images/characters/noshadow.png",
+        talking: [
+          {
+            events: [
+              { type: "effect", sound: "sounds/knocking.wav"},
+              {
+                type: "stand",
+                who: "hero",
+                direction: "left",
+                time: 1000,
+              },
+              { type: "textMessage", 
+              text: "*Es scheint niemand zu antworten..."},
             ]
           }
         ]
@@ -1861,6 +1892,7 @@ window.OverworldMaps = {
     id: "Medbay",
     lowerSrc: "/images/maps/MedbayLower.png",
     upperSrc: "/images/maps/MedbayUpper.png",
+    minimapSrc: "/images/ui/minimaps/MedbayMinimap.png",
     configObjects: {
       hero: {
         type: "Person",
@@ -1975,6 +2007,7 @@ window.OverworldMaps = {
     id: "Engine",
     lowerSrc: "/images/maps/EngineLower.png",
     upperSrc: "/images/maps/EngineUpper.png",
+    minimapSrc: "/images/ui/minimaps/EngineMinimap.png",
     configObjects: {
       hero: {
         type: "Person",
@@ -2058,6 +2091,7 @@ window.OverworldMaps = {
     id: "Cargo",
     lowerSrc: "/images/maps/CargoLower.png",
     upperSrc: "/images/maps/CargoUpper.png",
+    minimapSrc: "/images/ui/minimaps/CargoMinimap.png",
     minimapSrc: "/images/icons/lung.png",
     configObjects: {
       hero: {

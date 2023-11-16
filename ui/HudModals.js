@@ -35,7 +35,7 @@ class HudModals {
           </div>
           <button class="CloseButton">&times;</button>
         </div>
-        <div class="ModalContent">
+        <div class="ModalContent" id="minimap">
           <img src=${this.minimapSrc}>
         </div>
       `);
@@ -138,10 +138,10 @@ class HudModals {
   showItems() {
     //Shows items in inventory modal on obtaining the corresponding item flag
     let itemList = {
-      "GOT_ITEM_1": document.getElementById('item-1'),
-      "GOT_ITEM_2": document.getElementById('item-2'),
-      "GOT_ITEM_3": document.getElementById('item-3'),
-      "GOT_ITEM_4": document.getElementById('item-4'),
+      "GOT_METERSTICK": document.getElementById('item-1'),
+      "GOT_TEXTBOOK": document.getElementById('item-2'),
+      "GOT_CROWBAR": document.getElementById('item-3'),
+      "GOT_KEYCARD": document.getElementById('item-4'),
       "GOT_ITEM_5": document.getElementById('item-5'),
       "GOT_ITEM_6": document.getElementById('item-6')
     }

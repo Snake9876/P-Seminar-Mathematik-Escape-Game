@@ -84,6 +84,25 @@
     border-bottom: 1px solid #A48465;
   }
   
+
+/*Map*/
+
+  #map-modal {
+    width: 200px;
+    height: 170px;
+    z-index: 100;
+  }
+
+  #minimap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+    width: 150px;
+    image-rendering: pixelated;
+  }
+
+
   
 /*Inventory*/
   #inv-background {

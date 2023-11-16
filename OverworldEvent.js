@@ -184,8 +184,9 @@ class OverworldEvent {
         obj.isMounted = false;
       })
 
+      const container = document.querySelector('.game-container');
       const sceneTransition = new ScreenEffects();
-      sceneTransition.init(document.querySelector(".game-container"), () => {
+      sceneTransition.init(container, () => {
 
         //Open Game-Over-Screen after 20 room changes
         if (this.map.overworld.progress.roomTracker >= 20) {
@@ -193,7 +194,7 @@ class OverworldEvent {
           this.gameOverScreen = new GameOverScreen({
             progress: this.map.overworld.progress
           })
-          this.gameOverScreen.init(document.querySelector('.game-container'));
+          this.gameOverScreen.init(container);
         } else {
           this.map.overworld.startMap( window.OverworldMaps[this.event.map], {
             x: this.event.x,

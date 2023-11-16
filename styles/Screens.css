@@ -1,4 +1,4 @@
-.TitleScreen {
+.Screen {
   position: absolute;
   left: 0;
   right: 0;
@@ -8,14 +8,14 @@
   z-index:50;
 }
 
-.TitleScreen_logo {
+.Screen_logo {
   display: block;
   margin: 0 auto;
   width: 128px;
   image-rendering: pixelated;
 }
 
-.TitleScreen .KeyboardMenu {
+.Screen .KeyboardMenu {
   position: relative;
   width: 100px;
   margin: 0 auto;
@@ -25,7 +25,7 @@
   font-size: 1ex;
 }
 
-.TitleScreen button {
+.Screen button {
   color: #fff;
   justify-content: center;
   padding:0;
@@ -33,14 +33,14 @@
   height: 18px;
 }
 
-.TitleScreen .DescriptionBox {
+.Screen .DescriptionBox {
   background: transparent;
   color: #fff;
   border: 0;
   text-align: center;
 }
 
-.TitleScreen .DescriptionBox p {
+.Screen .DescriptionBox p {
   font-size: 7px;
 }
 

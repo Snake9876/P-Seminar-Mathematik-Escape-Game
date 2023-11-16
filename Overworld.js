@@ -52,13 +52,14 @@ class Overworld {
     this.hud.updateTimer(this.progress.timerValue);
   } 
 
-  if (this.progress.timerValue < 0) {
-    const container = document.querySelector('.game-container');
+  const container = document.querySelector('.game-container');
 
+  if (this.progress.timerValue < 0) {
     this.map.isPaused = true;
     this.gameOverScreen = new GameOverScreen({
       progress: this.map.overworld.progress
     })
+
     this.gameOverScreen.init(container);
 
     return

@@ -168,7 +168,7 @@ window.OverworldMaps = {
           },
           {
             events: [
-              { type: "toggleTimer" },
+              { type: "toggleOxygenBar" },
               { type: "textMessage", name: "", text: "Es scheint nichts zu passieren*"},
             ]
           }

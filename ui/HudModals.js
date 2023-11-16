@@ -19,7 +19,7 @@ class HudModals {
       this.menuElement.classList.add('Modal');
       this.menuElement.setAttribute('id', 'menu-modal')
       this.menuElement.innerHTML = (`
-        <h2>Pause Menu</h2>
+        <h2>Menu</h2>
       `)
     }
     
@@ -108,38 +108,23 @@ class HudModals {
     if (pageKey === "root") {
       return [
         {
-          label: "Save",
-          description: "Save your progress",
+          label: "Speichern",
+          description: "Speicherpunkt setzen",
           handler: () => {
             this.progress.save();
             this.close();
           }
         },
         {
-          label: "Title Screen",
-          description: "Go back to the title screen",
-          handler: () => {
-            //Deactivate old objects
-            Object.values(this.map.gameObjects).forEach(obj => {
-              obj.isMounted = false;
-            })
-            /*this.titleScreen = new TitleScreen({
-              progress: this.progress
-            });
-
-            this.titleScreen.init(document.querySelector('.game-container'));*/
-          }
-        },
-        {
           label: "GitHub",
-          description: "Visit our GitHub Page",
+          description: "GitHub Repository",
           handler: () => {
             window.open('https://github.com/Snake9876/P-Seminar-Mathematik-Escape-Game', '_blank').focus();
           }
         },
         {
-          label: "Close",
-          description: "Close the pause menu",
+          label: "Schließen",
+          description: "Menu schließen",
           handler: () => {
             this.close();
           }

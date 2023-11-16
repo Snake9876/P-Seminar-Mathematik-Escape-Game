@@ -1,4 +1,4 @@
-class GameOverScreen {
+class WinScreen {
   constructor() {
     this.isClosed = false;
   }
@@ -20,7 +20,7 @@ class GameOverScreen {
     this.element = document.createElement("div");
     this.element.classList.add("Screen");
     this.element.innerHTML = (`
-      <img class="Screen_logo" src="/images/ui/gameover.png" />
+      <img class="Screen_logo" src="/images/ui/win.png" />
     `)
   }
 

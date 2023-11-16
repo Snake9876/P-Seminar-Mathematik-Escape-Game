@@ -10,7 +10,7 @@ class TitleScreen {
     return [
       { 
         label: "Neues Spiel",
-        description: "Starte ein neues Spiel!",
+        description: "Starte ein neues Spiel",
         handler: () => {
           this.close();
           resolve();
@@ -18,7 +18,7 @@ class TitleScreen {
       },
       safeFile ? {
         label: "Spiel fortsetzen",
-        description: "Vom letzten Speicherpunkt fortsetzen!",
+        description: "Vom letzten Speicherpunkt fortsetzen",
         handler: () => {
           this.close();
           resolve(safeFile);
@@ -29,9 +29,9 @@ class TitleScreen {
 
   createElement() {
     this.element = document.createElement("div");
-    this.element.classList.add("TitleScreen");
+    this.element.classList.add("Screen");
     this.element.innerHTML = (`
-      <img class="TitleScreen_logo" src="/images/ui/logo.png" alt="Pizza Legends" />
+      <img class="Screen_logo" src="/images/ui/logo.png" alt="Pizza Legends" />
       <div class="username-container">
         <input type="text" class="inputBar" placeholder="Name">
       </div>

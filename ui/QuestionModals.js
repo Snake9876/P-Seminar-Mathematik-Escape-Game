@@ -63,15 +63,13 @@ class QuestionModals {
       this.questionElement.innerHTML = (`
         <div class="ModalHeader">
           <div class="Title">
-            Sauerstoffvorrat
+          Schutthaufen
           </div>
           <button class="CloseButton">&times;</button>
         </div>
         <div class="ModalContent">
-          <img id="O2-img" src="/images/questions/Sauerstoffflasche.jpg">
           <p>Lorem</p>
-          <input class="inputBar" type="text" placeholder="Antwort" id="answer-field1" maxlength="20">
-          <button class="checkButton">Check</button>
+          <button class="checkButton">Entfernen</button>
         </div>
       `);
 
@@ -85,15 +83,13 @@ class QuestionModals {
       this.questionElement.innerHTML = (`
         <div class="ModalHeader">
           <div class="Title">
-            Sauerstoffvorrat
+            Schutthaufen
           </div>
           <button class="CloseButton">&times;</button>
         </div>
         <div class="ModalContent">
-          <img id="O2-img" src="/images/questions/Sauerstoffflasche.jpg">
           <p>Lorem</p>
-          <input class="inputBar" type="text" placeholder="Antwort" id="answer-field1" maxlength="20">
-          <button class="checkButton">Check</button>
+          <button class="checkButton">Entfernen</button>
         </div>
       `);
 
@@ -115,7 +111,7 @@ class QuestionModals {
           <img id="O2-img" src="/images/questions/Sauerstoffflasche.jpg">
           <p>Lorem</p>
           <input class="inputBar" type="text" placeholder="Antwort" id="answer-field1" maxlength="20">
-          <button class="checkButton">Check</button>
+          <button class="checkButton">Entfernen</button>
         </div>
       `);
 
@@ -259,290 +255,304 @@ class QuestionModals {
     this.checkButton = document.querySelector('.checkButton');
     this.inputBar = document.querySelector('.inputBar');
     this.checkButton.addEventListener('click', () => {
-      
-      this.answer = document.querySelector('.inputBar').value;
-
-      //Check if there is an input
-      if(this.answer) { 
-        //Save old onComplete callback
         
-        switch(this.modalRef) {
-          case 'q1':
-            this.solution = "20";
+      switch(this.modalRef) {
+        case 'q1':
+          this.solution = "20";
+          this.answer = document.querySelector('.inputBar').value;
 
-            //Check if Question was correct
-            if(this.checkAnswer(this.answer, this.solution)) {
-              this.disableQuestion();
+          //Check if Question was correct
+          if(this.checkAnswer(this.answer, this.solution)) {
+            this.disableQuestion();
 
-              //Overwrite onComplete callback
-              this.onComplete = () => {
-                this.coreOnComplete();
-                
-                setTimeout(() => {
-                  this.map.startCutscene([
-                    //Custom event 1
-                    { type: "effect", sound: "sounds/chat.wav"},
-                    { type: "toggleOxygenBar" },
-                    { type: "textMessage", name: "Füllstation", text: "Sauerstoff aufgefüllt." },
-                    {
+            //Overwrite onComplete callback
+            this.onComplete = () => {
+              this.coreOnComplete();
+              
+              setTimeout(() => {
+                this.map.startCutscene([
+                  //Custom event 1
+                  { type: "effect", sound: "sounds/chat.wav"},
+                  { type: "toggleOxygenBar" },
+                  { type: "textMessage", name: "Füllstation", text: "Sauerstoff aufgefüllt." },
+                  {
+                  type: "stand",
+                  who: "hero",
+                  direction: "up",
+                  time: 500,
+                  },
+                  { type: "textMessage", name: this.progress.playerName, text: "Also muss ich hier alle 20 Raumwechsel meine Vorräte wiederauffüllen!" },
+                  {
+                  type: "stand",
+                  who: "hero",
+                  direction: "up",
+                  time: 1000,
+                  },
+                  { type: "effect", sound: "sounds/alarm.wav"},
+                  { type: "textMessage", name: "Bordcomputer", text: "STEUERTRIEBWERK AUSGEFALLEN. WARTUNG BENÖTIGT." },
+                  {
+                  type: "stand",
+                  who: "hero",
+                  direction: "up",
+                  time: 500,
+                  },
+                  { type: "textMessage", name: this.progress.playerName, text: "Auch das noch!" },
+                  { type: "textMessage", name: this.progress.playerName, text: "Dann eben zum Maschinenraum!" },
+                ])
+              }, 250);
+            }
+          } else {
+            this.checkButton.innerHTML = ('Incorrect!');
+    
+            setTimeout(() => {
+              this.checkButton.innerHTML = ('Check');
+            }, 2000);
+          }
+
+          break;
+        case 'q21':
+          this.solution = true;
+          this.answer = true;
+
+          //Check if Question was correct
+          if(this.checkAnswer(this.answer, this.solution)) {
+            this.checkButton.innerHTML = ('Correct!');
+            this.checkButton.setAttribute('disabled', 'disabled');
+
+            //Overwrite onComplete callback
+            this.onComplete = () => {
+              this.coreOnComplete();
+              
+              setTimeout(() => {
+                this.map.startCutscene([
+                  //Custom event 2.1
+                  {
+                    type: "updateObject",
+                    update: {
+                      id: "Schutthaufen",
+                      hide: true,
+                    }
+                  }, 
+                  //Remove 2min from timer
+                  { type: "textMessage", name: "playerName", text: "Oh nein, das war der falsche Berg!" },
+                ])
+              }, 250);
+            }
+          } else {
+            this.checkButton.innerHTML = ('Incorrect!');
+    
+            setTimeout(() => {
+              this.checkButton.innerHTML = ('Check');
+            }, 2000);
+          }
+
+          break;
+        case 'q22':
+          this.solution = true;
+          this.answer = true;
+
+          //Check if Question was correct
+          if(this.checkAnswer(this.answer, this.solution)) {
+            this.checkButton.innerHTML = ('Correct!');
+            this.checkButton.setAttribute('disabled', 'disabled');
+
+            //Overwrite onComplete callback
+            this.onComplete = () => {
+              this.coreOnComplete();
+              
+              setTimeout(() => {
+                this.map.startCutscene([
+                  //Custom event 2.2
+                  {
+                    type: "updateObject",
+                    update: {
+                      id: "Yuri",
+                      spriteSrc: "images/gameObjects/people/yuriEngineer.png",
+                    }
+                  }, 
+                  { type: "addStoryFlag", flag: "Q2_COMPLETED" },
+                  { type: "textMessage", name: "playerName", text: "Oh nein, Yuri!"},
+                  { type: "textMessage", name: "playerName", text: "Er ist ohnmächtig und seine Vitalwerte sind miserabel!"},
+                  { type: "textMessage", name: "playerName", text: "Noch ist er am Leben,..."},
+                  { type: "textMessage", name: "playerName", text: "...aber er muss dringend zur Krankenstation gebracht werden!"},
+                  { type: "textMessage", name: "playerName", text: "Ich muss Krankenschwester Bella finden!"},
+                ])
+              }, 250);
+            }
+          } else {
+            this.checkButton.innerHTML = ('Incorrect!');
+    
+            setTimeout(() => {
+              this.checkButton.innerHTML = ('Check');
+            }, 2000);
+          }
+
+          break;
+        case 'q3':
+          this.solution = "20";
+          this.answer = document.querySelector('.inputBar').value;
+
+          //Check if Question was correct
+          if(this.checkAnswer(this.answer, this.solution)) {
+            this.disableQuestion();
+
+            //Overwrite onComplete callback
+            this.onComplete = () => {
+              this.coreOnComplete();
+
+              setTimeout(() => {
+                this.map.startCutscene([
+                  //Custom event 3
+                  { type: "textMessage", name: "Bella", text: "So, das wird ihn eine Zeit lang stabilisieren." },
+                  { type: "textMessage", name: "Bella", text: "Aber eine Dauerlösung ist das nicht!" },
+                  { type: "textMessage", name: this.progress.playerName, text: "Kann ich denn schon mit ihm sprechen?" },
+                  { type: "textMessage", name: "Bella", text: "Noch ist er bewusstlos..." },
+                  { type: "textMessage", name: "Bella", text: "Setze in der Zwischenzeit einen Notruf ab!" },
+                  { type: "textMessage", name: this.progress.playerName, text: "Gute Idee! Ich beeile mich!" },
+                  { type: "addStoryFlag", flag: "Q4_INTRO" },
+                ])
+              }, 250);
+            }
+          } else {
+            this.checkButton.innerHTML = ('Incorrect!');
+    
+            setTimeout(() => {
+              this.checkButton.innerHTML = ('Check');
+            }, 2000);
+          }
+
+          break;
+        case 'q4':
+          this.solution = "20";
+          this.answer = document.querySelector('.inputBar').value;
+
+          //Check if Question was correct
+          if(this.checkAnswer(this.answer, this.solution)) {
+            this.disableQuestion();
+
+            //Overwrite onComplete callback
+            this.onComplete = () => {
+              this.coreOnComplete();
+              
+              setTimeout(() => {
+                this.map.startCutscene([
+                  //Custom event 4
+                  { type: "addStoryFlag", flag: "Q4_COMPLETE" },
+                  { type: "removeStoryFlag", flag: "Q4_IN_PROGRESS" },
+                  { type: "textMessage", name: this.playerName, text: "Ok, wir haben wieder ein Signal!" },
+                  {
                     type: "stand",
                     who: "hero",
                     direction: "up",
-                    time: 500,
-                    },
-                    { type: "textMessage", name: this.progress.playerName, text: "Also muss ich hier alle 20 Raumwechsel meine Vorräte wiederauffüllen!" },
-                    {
-                    type: "stand",
-                    who: "hero",
-                    direction: "up",
-                    time: 1000,
-                    },
-                    { type: "effect", sound: "sounds/alarm.wav"},
-                    { type: "textMessage", name: "Bordcomputer", text: "STEUERTRIEBWERK AUSGEFALLEN. WARTUNG BENÖTIGT." },
-                    {
-                    type: "stand",
-                    who: "hero",
-                    direction: "up",
-                    time: 500,
-                    },
-                    { type: "textMessage", name: this.progress.playerName, text: "Auch das noch!" },
-                    { type: "textMessage", name: this.progress.playerName, text: "Dann eben zum Maschinenraum!" },
-                  ])
-                }, 250);
-              }
-            } else {
-              this.checkButton.innerHTML = ('Incorrect!');
-      
+                    time: 1000
+                  },
+                  { type: "textMessage", name: this.playerName, text: "Der Notruf ist abgesetzt." },
+                  { type: "textMessage", name: this.playerName, text: "Mal sehen, ob Yuri schon wach ist." },
+                ])
+              }, 250);
+            }
+          } else {
+            this.checkButton.innerHTML = ('Incorrect!');
+    
+            setTimeout(() => {
+              this.checkButton.innerHTML = ('Check');
+            }, 2000);
+          }
+
+          break;
+        case 'q5':
+          this.solution = "20";
+          this.answer = document.querySelector('.inputBar').value;
+
+          //Check if Question was correct
+          if(this.checkAnswer(this.answer, this.solution)) {
+            this.disableQuestion();
+
+            //Overwrite onComplete callback
+            this.onComplete = () => {
+              this.coreOnComplete();
+              
               setTimeout(() => {
-                this.checkButton.innerHTML = ('Check');
-              }, 2000);
+                this.map.startCutscene([
+                  //Custom event 5
+                ])
+              }, 250);
             }
+          } else {
+            this.checkButton.innerHTML = ('Incorrect!');
+    
+            setTimeout(() => {
+              this.checkButton.innerHTML = ('Check');
+            }, 2000);
+          }
 
-            break;
-          case 'q21':
-            this.solution = "20";
+          break;
+        case 'q6':  
+          this.solution = "20";
+          this.answer = document.querySelector('.inputBar').value;
 
-            //Check if Question was correct
-            if(this.checkAnswer(this.answer, this.solution)) {
-              this.disableQuestion();
+          //Check if Question was correct
+          if(this.checkAnswer(this.answer, this.solution)) {
+            this.disableQuestion();
 
-              //Overwrite onComplete callback
-              this.onComplete = () => {
-                this.coreOnComplete();
-                
-                setTimeout(() => {
-                  this.map.startCutscene([
-                    //Custom event 2.1
-                    { type: "updateObject", hide: true },
-                    //Remove 2min from timer
-                    { type: "textMessage", name: this.progress.playerName, text: "Oh nein, das war der falsche Berg!" },
-                  ])
-                }, 250);
-              }
-            } else {
-              this.checkButton.innerHTML = ('Incorrect!');
-      
+            //Overwrite onComplete callback
+            this.onComplete = () => {
+              this.coreOnComplete;
+              
               setTimeout(() => {
-                this.checkButton.innerHTML = ('Check');
-              }, 2000);
+                this.map.startCutscene([
+                  //Custom event 6
+                  { type: "effect", visual: "rumble", toggle: "true" },
+                  { type: "textMessage", name:"Bordcomputer", text: "SYSTEMWARNUNG!! EINTRITT IN ASTEROIDENGÜRTEL."},
+                  { type: "textMessage", name:"Bordcomputer", text: "BERECHNUNG EINES NEUEN KURSES ERFORDERLICH."},
+                  { type: "textMessage", name: this.progress.playerName, text: "Jetzt muss es schnell gehen!"},
+                  { type: "textMessage", name: this.progress.playerName, text: "Zurück zur Steuereinheit!"},
+                  { type: "addStoryFlag", flag: "Q7_INTRO" }
+                ])
+              }, 250);
             }
+          }
 
-            break;
-          case 'q22':
-            this.solution = "20";
+          break;
+        case 'q7':
+          this.solution = "20";
+          this.answer = document.querySelector('.inputBar').value;
 
-            //Check if Question was correct
-            if(this.checkAnswer(this.answer, this.solution)) {
-              this.disableQuestion();
+          //Check if Question was correct
+          if(this.checkAnswer(this.answer, this.solution)) {
+            this.disableQuestion();
 
-              //Overwrite onComplete callback
-              this.onComplete = () => {
-                this.coreOnComplete();
-                
-                setTimeout(() => {
-                  this.map.startCutscene([
-                    //Custom event 2.2
-                    { type: "updateObject", spriteSrc: "images/characters/people/engineer.png" },
-                    { type: "addStoryFlag", flag: "Q2_COMPLETED" },
-                    { type: "textMessage", name: this.progress.playerName, text: "Oh nein, Yuri!"},
-                    { type: "textMessage", name: this.progress.playerName, text: "Er ist ohnmächtig und seine Vitalwerte sind miserabel!"},
-                    { type: "textMessage", name: this.progress.playerName, text: "Noch ist er am Leben,..."},
-                    { type: "textMessage", name: this.progress.playerName, text: "...aber er muss dringend zur Krankenstation gebracht werden!"},
-                    { type: "textMessage", name: this.progress.playerName, text: "Ich muss Krankenschwester Bella finden!"},
-                  ])
-                }, 250);
-              }
-            } else {
-              this.checkButton.innerHTML = ('Incorrect!');
-      
+            //Overwrite onComplete callback
+            this.onComplete = () => {
+              this.coreOnComplete;
+
+              const container = document.querySelector('.game-container');
+              const sceneTransition = new ScreenEffects();
+              
               setTimeout(() => {
-                this.checkButton.innerHTML = ('Check');
-              }, 2000);
+  
+                sceneTransition.init(container, () => {
+          
+                  this.map.isPaused = true;
+                  this.winScreen = new WinScreen();
+                  this.winScreen.init(container);
+              
+                  sceneTransition.fadeOut();
+          
+                })
+
+              }, 250);
             }
+          } else {
+            this.checkButton.innerHTML = ('Incorrect!');
+    
+            setTimeout(() => {
+              this.checkButton.innerHTML = ('Check');
+            }, 2000);
+          }
 
-            break;
-          case 'q3':
-            this.solution = "20";
-
-            //Check if Question was correct
-            if(this.checkAnswer(this.answer, this.solution)) {
-              this.disableQuestion();
-
-              //Overwrite onComplete callback
-              this.onComplete = () => {
-                this.coreOnComplete();
-
-                setTimeout(() => {
-                  this.map.startCutscene([
-                    //Custom event 3
-                    { type: "textMessage", name: "Bella", text: "So, das wird ihn eine Zeit lang stabilisieren." },
-                    { type: "textMessage", name: "Bella", text: "Aber eine Dauerlösung ist das nicht!" },
-                    { type: "textMessage", name: this.progress.playerName, text: "Kann ich denn schon mit ihm sprechen?" },
-                    { type: "textMessage", name: "Bella", text: "Noch ist er bewusstlos..." },
-                    { type: "textMessage", name: "Bella", text: "Setze in der Zwischenzeit einen Notruf ab!" },
-                    { type: "textMessage", name: this.progress.playerName, text: "Gute Idee! Ich beeile mich!" },
-                    { type: "addStoryFlag", flag: "Q4_INTRO" },
-                  ])
-                }, 250);
-              }
-            } else {
-              this.checkButton.innerHTML = ('Incorrect!');
-      
-              setTimeout(() => {
-                this.checkButton.innerHTML = ('Check');
-              }, 2000);
-            }
-
-            break;
-          case 'q4':
-            this.solution = "20";
-
-            //Check if Question was correct
-            if(this.checkAnswer(this.answer, this.solution)) {
-              this.disableQuestion();
-
-              //Overwrite onComplete callback
-              this.onComplete = () => {
-                this.coreOnComplete();
-                
-                setTimeout(() => {
-                  this.map.startCutscene([
-                    //Custom event 4
-                    { type: "addStoryFlag", flag: "Q4_COMPLETE" },
-                    { type: "removeStoryFlag", flag: "Q4_IN_PROGRESS" },
-                    { type: "textMessage", name: this.playerName, text: "Ok, wir haben wieder ein Signal!" },
-                    {
-                      type: "stand",
-                      who: "hero",
-                      direction: "up",
-                      time: 1000
-                    },
-                    { type: "textMessage", name: this.playerName, text: "Der Notruf ist abgesetzt." },
-                    { type: "textMessage", name: this.playerName, text: "Mal sehen, ob Yuri schon wach ist." },
-                  ])
-                }, 250);
-              }
-            } else {
-              this.checkButton.innerHTML = ('Incorrect!');
-      
-              setTimeout(() => {
-                this.checkButton.innerHTML = ('Check');
-              }, 2000);
-            }
-
-            break;
-          case 'q5':
-            this.solution = "20";
-
-            //Check if Question was correct
-            if(this.checkAnswer(this.answer, this.solution)) {
-              this.disableQuestion();
-
-              //Overwrite onComplete callback
-              this.onComplete = () => {
-                this.coreOnComplete();
-                
-                setTimeout(() => {
-                  this.map.startCutscene([
-                    //Custom event 5
-                  ])
-                }, 250);
-              }
-            } else {
-              this.checkButton.innerHTML = ('Incorrect!');
-      
-              setTimeout(() => {
-                this.checkButton.innerHTML = ('Check');
-              }, 2000);
-            }
-
-            break;
-          case 'q6':  
-            this.solution = "20";
-
-            //Check if Question was correct
-            if(this.checkAnswer(this.answer, this.solution)) {
-              this.disableQuestion();
-
-              //Overwrite onComplete callback
-              this.onComplete = () => {
-                this.coreOnComplete;
-                
-                setTimeout(() => {
-                  this.map.startCutscene([
-                    //Custom event 6
-                    { type: "effect", visual: "rumble", toggle: "true" },
-                    { type: "textMessage", name:"Bordcomputer", text: "SYSTEMWARNUNG!! EINTRITT IN ASTEROIDENGÜRTEL."},
-                    { type: "textMessage", name:"Bordcomputer", text: "BERECHNUNG EINES NEUEN KURSES ERFORDERLICH."},
-                    { type: "textMessage", name: this.progress.playerName, text: "Jetzt muss es schnell gehen!"},
-                    { type: "textMessage", name: this.progress.playerName, text: "Zurück zur Steuereinheit!"},
-                    { type: "addStoryFlag", flag: "Q7_INTRO" }
-                  ])
-                }, 250);
-              }
-            }
-
-            break;
-          case 'q7':
-            this.solution = "20";
-
-            //Check if Question was correct
-            if(this.checkAnswer(this.answer, this.solution)) {
-              this.disableQuestion();
-
-              //Overwrite onComplete callback
-              this.onComplete = () => {
-                this.coreOnComplete;
-                
-                setTimeout(() => {
-                  this.map.startCutscene([
-                    //Custom event 7
-                    //Graph interpolieren --> Punkte sind gegeben, muss zusätzlich einige Eigenschaften aufweisen!
-                    { 
-                      type: "changeMap", 
-                      map: "CommandBridge",
-                      x: utils.withGrid(7),
-                      y: utils.withGrid(10),
-                      direction: "up",
-                      face: "up",
-                    },
-                    //open Win Screen
-
-                  ])
-                }, 250);
-              }
-            } else {
-              this.checkButton.innerHTML = ('Incorrect!');
-      
-              setTimeout(() => {
-                this.checkButton.innerHTML = ('Check');
-              }, 2000);
-            }
-
-            break;
-        }
-      } 
-
+          break;
+      }
     })
     
 

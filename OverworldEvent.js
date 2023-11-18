@@ -2,8 +2,6 @@ class OverworldEvent {
   constructor({ map, event }) {
     this.map = map;
     this.event = event;
-    this.updateTracker = this.event.updateTracker || 0;
-    this.resetTracker = this.event.resetTracker || false;
     this.classMap = {
       "HudModal": HudModals,
       "QuestionModal": QuestionModals,

@@ -154,18 +154,7 @@ window.OverworldMaps = {
             required: ["Q7_INTRO"],
             events: [
               { type: "textMessage", name: "playerName", text: "Es scheint nichts zu passieren*"},
-              /*Aufgabe-7:
-
               { type: "openModal", fileRef: "questionModal", modalRef: "q7"},
-              Graph interpolieren --> Punkte sind gegeben, muss zusätzlich einige Eigenschaften aufweisen!
-
-              On complete:
-
-              Berg entfernen? 
-              Set-Timer -3min
-              Dismount spirte
-              { type: "textMessage", name: "playerName", text: "Oh nein, das war der falsche Berg!" },
-              */
             ]
           },
           {
@@ -1231,7 +1220,7 @@ window.OverworldMaps = {
           }
         ]
       },
-      berg2: {
+      Schutthaufen: {
         type: "Person",
         x: utils.withGrid(2),
         y: utils.withGrid(3),
@@ -1248,21 +1237,7 @@ window.OverworldMaps = {
               { type: "textMessage", name: "playerName",
                 text: "...und der Berg ist m hoch."
               },
-              /*Aufgabe-2:
-
-              { type: "openModal", fileRef: "questionModal", modalRef: "q2"} --> should reference object 2,
-
-              On complete:
-
-              Berg entfernen? 
-              Dismount spirte
-              //Change spirte to Yuri
-              //{ type: "addStoryFlag", flag: "Q2_COMPLETED" },
-              //{ type: "textMessage", name: "playerName", text: "Oh nein, Yuri!"},
-              //{ type: "textMessage", name: "playerName", text: "Er ist ohnmächtig und seine Vitalwerte sind miserabel!"},
-              //{ type: "textMessage", name: "playerName", text: "Noch ist er am Leben,..."},
-              //{ type: "textMessage", name: "playerName", text: "...aber er muss dringend zur Krankenstation gebracht werden!"},
-              //{ type: "textMessage", name: "playerName", text: "Ich muss Krankenschwester Bella finden!"},  */           
+              { type: "openModal", fileRef: "questionModal", modalRef: "q2"}          
             ]
           }
         ], 
@@ -1330,8 +1305,45 @@ window.OverworldMaps = {
         src: "/images/gameObjects/objects/bookItem.png",
         shadowImg: false,
         talking: [
-          {
+          {      
+            required: ["Q4_IN_PROGRESS"],
             events: [
+              { type: "Textmessage", name: "playerName", text: "Hm, wo haben wir es denn?" },
+              {
+                type: "stand",
+                who: "hero",
+                direction: "up",
+                time: 500
+              },
+              { type: "Textmessage", name: "playerName", text: "Einführung in elektrische Schaltkreise..." },
+              {
+                type: "stand",
+                who: "hero",
+                direction: "up",
+                time: 500
+              },
+              { type: "Textmessage", name: "playerName", text: "Einführung in elektrische Schaltkreise..." },
+              {
+                type: "stand",
+                who: "hero",
+                direction: "up",
+                time: 500
+              },
+              { type: "Textmessage", name: "playerName", text: "50 Rezepte für die Weihnachtszeit..." },
+              { type: "Textmessage", name: "playerName", text: "Warum steht das hier?" },
+              {
+                type: "stand",
+                who: "hero",
+                direction: "up",
+                time: 500
+              },
+              { type: "Textmessage", name: "playerName", text: "Aha! Signaltheorie!" },
+              {
+                type: "stand",
+                who: "hero",
+                direction: "up",
+                time: 500
+              },
               {
                 type: "updateObject",
                 update: {
@@ -1339,9 +1351,46 @@ window.OverworldMaps = {
                   spriteSrc: "/images/gameObjects/shadows/noshadow.png",
                 }
               }, 
-              { type: "addStoryFlag", flag: "GOT_TEXTBOOK" }
+              { type: "addStoryFlag", flag: "GOT_TEXTBOOK" },
+              { type:"addStoryFlag", flag: "Q4_IN_PROGRESS" },
+              {
+                type: "stand",
+                who: "hero",
+                direction: "up",
+                time: 250
+              },
+              { type: "Textmessage", name: "playerName", text: "... das Störsignal mit einer Gegenfunktion destruktiv interferieren..." },
+              {
+                type: "stand",
+                who: "hero",
+                direction: "up",
+                time: 500
+              },
+              { type: "Textmessage", name: "playerName", text: "...gleiche Frequenz..." },
+              {
+                type: "stand",
+                who: "hero",
+                direction: "up",
+                time: 500
+              },
+              { type: "Textmessage", name: "playerName", text: "...gleiche Verschiebung in x- und y-Richtung..." },
+              {
+                type: "stand",
+                who: "hero",
+                direction: "up",
+                time: 500
+              },
+              { type: "Textmessage", name: "playerName", text: "...umgekehrte Amplitude..." },
+              {
+                type: "stand",
+                who: "hero",
+                direction: "up",
+                time: 500
+              },
+              { type: "Textmessage", name: "playerName", text: "Damit sollte es gehen!" },
+              
             ]
-          },
+          }
         ]
       }
     },
@@ -1489,129 +1538,6 @@ window.OverworldMaps = {
               { type: "textMessage", name: "playerName", text: "...sie scheinen verzerrt zu sein!" },
               { type: "textMessage", name: "playerName", text: "Vielleicht kann ich sie reparieren!" },
               { type: "textMessage", name: "playerName", text: "Irgendwas muss mir hier doch weiterhelfen können!" },
-            ]
-          }
-        ]
-      },
-      Bookshelf: {
-        type: "Person",
-        x: utils.withGrid(5),
-        y: utils.withGrid(9),
-        direction: "down",
-        src: "/images/gameObjects/objects/door.png",
-        shadowImg: false,
-        talking: [
-          {   
-            required: ["GOT_TEXTBOOK"],
-            events: [
-              { type: "Textmessage", name: "playerName", text: "In dem Buch steht..." },
-              {
-                type: "stand",
-                who: "hero",
-                direction: "up",
-                time: 1000
-              },
-              { type: "Textmessage", name: "playerName", text: "... das Störsignal mit einer Gegenfunktion destruktiv interferieren..." },
-              {
-                type: "stand",
-                who: "hero",
-                direction: "up",
-                time: 500
-              },
-              { type: "Textmessage", name: "playerName", text: "...gleiche Frequenz..." },
-              {
-                type: "stand",
-                who: "hero",
-                direction: "up",
-                time: 500
-              },
-              { type: "Textmessage", name: "playerName", text: "...gleiche Verschiebung in x- und y-Richtung..." },
-              {
-                type: "stand",
-                who: "hero",
-                direction: "up",
-                time: 500
-              },
-              { type: "Textmessage", name: "playerName", text: "...umgekehrte Amplitude..." },
-              {
-                type: "stand",
-                who: "hero",
-                direction: "up",
-                time: 500
-              },
-              { type: "Textmessage", name: "playerName", text: "Damit sollte es gehen!" },
-            ]
-          },
-          {      
-            required: ["Q4_IN_PROGRESS"],
-            events: [
-              { type: "Textmessage", name: "playerName", text: "Hm, wo haben wir es denn?" },
-              {
-                type: "stand",
-                who: "hero",
-                direction: "up",
-                time: 500
-              },
-              { type: "Textmessage", name: "playerName", text: "Einführung in elektrische Schaltkreise..." },
-              {
-                type: "stand",
-                who: "hero",
-                direction: "up",
-                time: 500
-              },
-              { type: "Textmessage", name: "playerName", text: "Einführung in elektrische Schaltkreise..." },
-              {
-                type: "stand",
-                who: "hero",
-                direction: "up",
-                time: 500
-              },
-              { type: "Textmessage", name: "playerName", text: "50 Rezepte für die Weihnachtszeit..." },
-              { type: "Textmessage", name: "playerName", text: "Warum steht das hier?" },
-              {
-                type: "stand",
-                who: "hero",
-                direction: "up",
-                time: 500
-              },
-              { type: "Textmessage", name: "playerName", text: "Aha! Signaltheorie!" },
-              {
-                type: "stand",
-                who: "hero",
-                direction: "up",
-                time: 1000
-              },
-              { type: "Textmessage", name: "playerName", text: "... das Störsignal mit einer Gegenfunktion destruktiv interferieren..." },
-              {
-                type: "stand",
-                who: "hero",
-                direction: "up",
-                time: 500
-              },
-              { type: "Textmessage", name: "playerName", text: "...gleiche Frequenz..." },
-              {
-                type: "stand",
-                who: "hero",
-                direction: "up",
-                time: 500
-              },
-              { type: "Textmessage", name: "playerName", text: "...gleiche Verschiebung in x- und y-Richtung..." },
-              {
-                type: "stand",
-                who: "hero",
-                direction: "up",
-                time: 500
-              },
-              { type: "Textmessage", name: "playerName", text: "...umgekehrte Amplitude..." },
-              {
-                type: "stand",
-                who: "hero",
-                direction: "up",
-                time: 500
-              },
-              { type: "Textmessage", name: "playerName", text: "Damit sollte es gehen!" },
-              { type: "addStoryFlag", flag: "GOT_TEXTBOOK" },
-              { type:"addStoryFlag", flag: "Q4_IN_PROGRESS" },
             ]
           }
         ]

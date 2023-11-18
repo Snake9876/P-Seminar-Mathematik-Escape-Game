@@ -88,6 +88,7 @@ class HudModals {
     else if (this.modalRef === "notes") {
       this.notesElement = document.createElement("div");
       this.notesElement.classList.add("Modal");
+      this.notesElement.setAttribute('id', 'notes-modal')
       this.notesElement.innerHTML = (`
         <div class="ModalHeader">
           <div class="Title">

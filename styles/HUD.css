@@ -10,7 +10,6 @@
   image-rendering: pixelated;
   background-image: url(/images/ui/button-array.png);
   background-size: cover;
-  z-index: 10;
 }
 
 .ButtonContainer {

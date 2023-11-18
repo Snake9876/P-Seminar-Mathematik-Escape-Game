@@ -120,6 +120,11 @@
     height: 100%;
   }
 
+  .hoverElement:hover {
+    opacity: 0.5;
+    background-color: #89cff0;
+  }
+
   #Brücke {
     position: absolute;
     right: 17px;
@@ -226,6 +231,12 @@
 
 
 /*Inventory*/
+  #inv-modal {
+    width: 200px;
+    height: 170px;
+    z-index: 100;
+  }
+
   #inv-background {
     background-image: url(/images/ui/inventory-background.png);
     background-size: cover;
@@ -254,8 +265,14 @@
   
   
 /*Notes*/
+  #notes-modal {
+    width: 200px;
+    height: 170px;
+    z-index: 100;
+  }
+
   #editable-div {
-    height: 300px;
+    font-size: 5px;
     overflow: auto;
   }
 

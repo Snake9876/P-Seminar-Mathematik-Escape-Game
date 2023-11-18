@@ -1993,7 +1993,7 @@ window.OverworldMaps = {
             events: [
               {
                 type: "changeMap",
-                map: "Hinterer",
+                map: "Korridor",
                 x: utils.withGrid(5),
                 y: utils.withGrid(12),
                 direction: "left",

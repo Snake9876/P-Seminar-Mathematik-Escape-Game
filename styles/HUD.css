@@ -8,7 +8,7 @@
   right: 100px;
   bottom: 0;
   image-rendering: pixelated;
-  background-image: url(/images/ui/button-array.png);
+  background-image: url(/images/ui/hud/button-array.png);
   background-size: cover;
 }
 
@@ -83,7 +83,7 @@
   scale: 150%;
   width: 67px;
   height: 14px;
-  background: url("/images/ui/oxygen-bar.png") no-repeat no-repeat;
+  background: url(/images/ui/hud/oxygen-bar.png) no-repeat no-repeat;
   position: absolute;
   image-rendering: pixelated;
   top: 20px;
@@ -131,7 +131,7 @@
   scale: 150%;
   width: 48px;
   height: 32px;
-  background: url("/images/ui/timer-background.png") no-repeat no-repeat;
+  background: url(/images/ui/hud/timer-background.png) no-repeat no-repeat;
   image-rendering: pixelated;
   top: 15px;
   right: 20px;

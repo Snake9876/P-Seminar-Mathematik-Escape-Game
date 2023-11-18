@@ -8,8 +8,8 @@ class GameObject {
     this.direction = config.direction || "down";
     this.sprite = new Sprite({
       gameObject: this,
-      src: config.src || "/images/characters/people/hero.png",
-      shadowImg: config.shadowImg || "/images/characters/shadow.png",
+      src: config.src || "/images/gameObjects/people/hero.png",
+      shadowImg: config.shadowImg == false ? "/images/gameObjects/shadows/noshadow.png" : "/images/gameObjects/shadows/shadow.png",
     });
 
     //These happen once on map startup.

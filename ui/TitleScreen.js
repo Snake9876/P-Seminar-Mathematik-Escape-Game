@@ -31,7 +31,7 @@ class TitleScreen {
     this.element = document.createElement("div");
     this.element.classList.add("Screen");
     this.element.innerHTML = (`
-      <img class="Screen_logo" src="/images/ui/logo.png" alt="Pizza Legends" />
+      <img class="Screen_logo" src="/images/ui/screens/logo.png" />
       <div class="username-container">
         <input type="text" class="inputBar" placeholder="Name">
       </div>

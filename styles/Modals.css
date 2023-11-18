@@ -238,7 +238,7 @@
   }
 
   #inv-background {
-    background-image: url(/images/ui/inventory-background.png);
+    background-image: url(/images/ui/hud/inventory-background.png);
     background-size: cover;
     image-rendering: pixelated;
     padding: 15px;
@@ -263,27 +263,27 @@
   }
 
   #item-1 {
-    background-image: url(/images/icons/meterstick.png);
+    background-image: url(/images/ui/icons/meterstick.png);
   }
 
   #item-2 {
-    background-image: url(/images/icons/book.png);
+    background-image: url(/images/ui/icons/book.png);
   }
 
   #item-3 {
-    background-image: url(/images/icons/meddevice.png);
+    background-image: url(/images/ui/icons/meddevice.png);
   }
 
   #item-4 {
-    background-image: url(/images/icons/keycard.png);
+    background-image: url(/images/ui/icons/keycard.png);
   }
 
   #item-5 {
-    background-image: url(/images/icons/crowbar.png);
+    background-image: url(/images/ui/icons/crowbar.png);
   }
 
   #item-6 {
-    background-image: url(/images/icons/book.png);
+    background-image: url(/images/ui/icons/book.png);
   }
   
   

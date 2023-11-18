@@ -147,8 +147,8 @@ window.OverworldMaps = {
         x: utils.withGrid(6),
         y: utils.withGrid(4),
         direction: "down",
-        src: "/images/characters/people/gameObjects.png",
-        shadowImg: "images/characters/noshadow.png",
+        src: "/images/gameObjects/objects/keyboard.png",
+        shadowImg: false,
         talking: [
           {
             required: ["Q7_INTRO"],
@@ -182,8 +182,8 @@ window.OverworldMaps = {
         x: utils.withGrid(7),
         y: utils.withGrid(4),
         direction: "right",
-        src: "/images/characters/people/gameObjects.png",
-        shadowImg: "images/characters/noshadow.png",
+        src: "/images/gameObjects/objects/keyboard.png",
+        shadowImg: false,
         talking: [
           {
             required: ["Q7_INTRO"],
@@ -308,8 +308,8 @@ window.OverworldMaps = {
         x: utils.withGrid(11),
         y: utils.withGrid(3),
         direction: "right",
-        src: "/images/characters/people/door.png",
-        shadowImg: "/images/characters/noshadow.png",
+        src: "/images/gameObjects/objects/door.png",
+        shadowImg: false,
         talking: [
           {
             events: [
@@ -335,8 +335,8 @@ window.OverworldMaps = {
         x: utils.withGrid(1),
         y: utils.withGrid(4),
         direction: "left",
-        src: "/images/characters/people/door.png",
-        shadowImg: "/images/characters/noshadow.png",
+        src: "/images/gameObjects/objects/door.png",
+        shadowImg: false,
         talking: [
           {
             events: [
@@ -481,8 +481,8 @@ window.OverworldMaps = {
         x: utils.withGrid(5),
         y: utils.withGrid(5),
         direction: "right",
-        src: "/images/characters/people/door.png",
-        shadowImg: "/images/characters/noshadow.png",
+        src: "/images/gameObjects/objects/door.png",
+        shadowImg: false,
         hide: false,
         talking: [
           {
@@ -858,8 +858,8 @@ window.OverworldMaps = {
         x: utils.withGrid(1),
         y: utils.withGrid(9),
         direction: "left",
-        src: "/images/characters/people/door.png",
-        shadowImg: "/images/characters/noshadow.png",
+        src: "/images/gameObjects/objects/door.png",
+        shadowImg: false,
         hide: false,
         talking: [
           {
@@ -1204,8 +1204,8 @@ window.OverworldMaps = {
         x: utils.withGrid(3),
         y: utils.withGrid(5),
         direction: "down",
-        src: "/images/characters/people/rubblePile.png",
-        shadowImg: "/images/characters/noshadow.png",
+        src: "/images/gameObjects/objects/rubblePile.png",
+        shadowImg: false,
         talking: [
           {
             required: ["GOT_METERSTICK"],
@@ -1236,8 +1236,8 @@ window.OverworldMaps = {
         x: utils.withGrid(2),
         y: utils.withGrid(3),
         direction: "down",
-        src: "/images/characters/people/gameObjects.png",
-        shadowImg: "/images/characters/noshadow.png",
+        src: "/images/gameObjects/objects/rubblePile.png",
+        shadowImg: false,
         talking: [
           {
             required: ["GOT_METERSTICK"],
@@ -1272,7 +1272,8 @@ window.OverworldMaps = {
         x: utils.withGrid(3),
         y: utils.withGrid(3),
         direction: "down",
-        src: "/images/characters/people/bellaMedic.png",
+        src: "/images/gameObjects/people/bellaMedic.png",
+        shadowImg: true,
         requiredFlags: ["Q4_INTRO"],
         talking: [
           {
@@ -1325,9 +1326,9 @@ window.OverworldMaps = {
         type: "Person",
         x: utils.withGrid(12),
         y: utils.withGrid(3),
-        direction: "left",
-        src: "/images/characters/people/gameObjects.png",
-        shadowImg: "/images/characters/noshadow.png",
+        direction: "down",
+        src: "/images/gameObjects/objects/bookItem.png",
+        shadowImg: false,
         talking: [
           {
             events: [
@@ -1335,7 +1336,7 @@ window.OverworldMaps = {
                 type: "updateObject",
                 update: {
                   id: "Book",
-                  spriteSrc: "/images/characters/noshadow.png",
+                  spriteSrc: "/images/gameObjects/shadows/noshadow.png",
                 }
               }, 
               { type: "addStoryFlag", flag: "GOT_TEXTBOOK" }
@@ -1444,8 +1445,8 @@ window.OverworldMaps = {
         x: utils.withGrid(5),
         y: utils.withGrid(9),
         direction: "down",
-        src: "/images/characters/people/door.png",
-        shadowImg: "/images/characters/noshadow.png",
+        src: "/images/gameObjects/objects/door.png",
+        shadowImg: false,
         talking: [
           {      
             required: ["GOT_TEXTBOOK", "Q4_IN_PROGRESS"],    
@@ -1497,8 +1498,8 @@ window.OverworldMaps = {
         x: utils.withGrid(5),
         y: utils.withGrid(9),
         direction: "down",
-        src: "/images/characters/people/door.png",
-        shadowImg: "/images/characters/noshadow.png",
+        src: "/images/gameObjects/objects/door.png",
+        shadowImg: false,
         talking: [
           {   
             required: ["GOT_TEXTBOOK"],
@@ -1663,9 +1664,9 @@ window.OverworldMaps = {
     walls: function() {
       let walls = {};
       ["2,6","3,6","4,6","5,6","6,6","7,6","8,6","9,7","10,6","11,6","12,6",
-      "13,5","13,4","13,3",
-      "2,2","3,2","4,2","5,2","6,2","7,2","8,2","9,2","10,2","11,2","12,2",
-      "1,3","1,4","1,5",
+      "13,5","13,4",
+      "2,3","3,3","4,3","5,3","6,3","7,3","8,3","9,3","10,3","11,4","12,4",
+      "1,4","1,5",
       ].forEach(coord => {
         let [x,y] = coord.split(",");
         walls[utils.asGridCoord(x,y)] = true;
@@ -1708,8 +1709,8 @@ window.OverworldMaps = {
         x: utils.withGrid(3),
         y: utils.withGrid(2),
         direction: "down",
-        src: "/images/characters/people/monitor.png",
-        shadowImg: "/images/characters/noshadow.png",
+        src: "/images/gameObjects/objects/monitor.png",
+        shadowImg: false,
         talking: [
           {
             required: ["Q1_INTRO"],
@@ -1742,8 +1743,8 @@ window.OverworldMaps = {
         x: utils.withGrid(7),
         y: utils.withGrid(3),
         direction: "down",
-        src: "/images/characters/people/oxygenContainer.png",
-        shadowImg: "/images/characters/noshadow.png",
+        src: "/images/gameObjects/objects/oxygenContainer.png",
+        shadowImg: false,
         talking: [
           {
             required: ["Q1_IN_PROGRESS"],
@@ -1765,8 +1766,8 @@ window.OverworldMaps = {
         x: utils.withGrid(1),
         y: utils.withGrid(4),
         direction: "left",
-        src: "/images/characters/people/door.png",
-        shadowImg: "/images/characters/noshadow.png",
+        src: "/images/gameObjects/objects/door.png",
+        shadowImg: false,
         talking: [
           {
             events: [
@@ -1909,35 +1910,30 @@ window.OverworldMaps = {
         x: utils.withGrid(3),
         y: utils.withGrid(3),
         direction: "down",
-        src: "/images/characters/people/bellaMedic.png",
+        src: "/images/gameObjects/people/bellaMedic.png",
+        shadowImg: true,
         talking: [
           {
-            required: ["Q2_COMPLETED"],
+            //required: ["Q2_COMPLETED"],
             events: [
-              { type: "textMessage", name: "Bella", text: "Oh? Hallo!" },
+              { type: "textMessage", name: "Bella", text: "Oh? Hallo!", faceHero: "BellaMedic" },
               { type: "textMessage", name: "Bella", text: "Was ist denn passiert?"},
               { type: "textMessage", name: "Bella", text: "Ich hab einen lauten Knall gehört!"},
               {
                 type: "stand",
                 who: "hero",
-                direction: "up",
+                direction: "left",
                 time: 2000,
               },
               { type: "textMessage", name: "Bella", text: "Hm, verstehe..."},
               {
                 type: "stand",
                 who: "hero",
-                direction: "up",
-                time: 2000,
+                direction: "left",
+                time: 1000,
               },
               { type: "textMessage", name: "Bella", text: "Oh nein, wie schrecklich!" },
               { type: "textMessage", name: "Bella", text: "Bring mich bitte zu ihm!" },
-              {
-                type: "stand",
-                who: "hero",
-                direction: "up",
-                time: 1000,
-              },
               { type: "addStoryFlag", flag: "TALKED_TO_MEDIC" },
               {
                 type: "changeMap",
@@ -2024,7 +2020,8 @@ window.OverworldMaps = {
         x: utils.withGrid(9),
         y: utils.withGrid(5),
         direction: "up",
-        src: "/images/characters/people/gameObjects.png",
+        src: "/images/gameObjects/objects/monitor.png",
+        shadowImg: false,
         talking: [
           {
             required: ["Q6_INTRO"],
@@ -2096,7 +2093,6 @@ window.OverworldMaps = {
     lowerSrc: "/images/maps/CargoLower.png",
     upperSrc: "/images/maps/CargoUpper.png",
     minimapSrc: "/images/ui/minimaps/CargoMinimap.png",
-    minimapSrc: "/images/icons/lung.png",
     configObjects: {
       hero: {
         type: "Person",

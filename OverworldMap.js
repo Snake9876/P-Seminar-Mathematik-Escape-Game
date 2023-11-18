@@ -1201,10 +1201,10 @@ window.OverworldMaps = {
       },
       berg1: {
         type: "Person",
-        x: utils.withGrid(2),
-        y: utils.withGrid(3),
+        x: utils.withGrid(3),
+        y: utils.withGrid(5),
         direction: "down",
-        src: "/images/characters/people/gameObjects.png",
+        src: "/images/characters/people/rubblePile.png",
         shadowImg: "/images/characters/noshadow.png",
         talking: [
           {

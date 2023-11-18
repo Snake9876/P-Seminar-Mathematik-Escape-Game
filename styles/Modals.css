@@ -201,7 +201,7 @@
     position: absolute;
     right: 41px;
     top: 33px;
-    width: 44px;
+    width: 45px;
     height: 4px;
   }
 
@@ -257,10 +257,33 @@
   .ItemContainer {
     width: 40px;
     height: 40px;
-    background-image: url(/images/icons/lung.png);
     background-size: cover;
     image-rendering: pixelated;
     opacity: 0;
+  }
+
+  #item-1 {
+    background-image: url(/images/icons/meterstick.png);
+  }
+
+  #item-2 {
+    background-image: url(/images/icons/book.png);
+  }
+
+  #item-3 {
+    background-image: url(/images/icons/meddevice.png);
+  }
+
+  #item-4 {
+    background-image: url(/images/icons/keycard.png);
+  }
+
+  #item-5 {
+    background-image: url(/images/icons/crowbar.png);
+  }
+
+  #item-6 {
+    background-image: url(/images/icons/book.png);
   }
   
   

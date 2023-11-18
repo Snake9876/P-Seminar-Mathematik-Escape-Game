@@ -1335,7 +1335,7 @@ window.OverworldMaps = {
                 type: "updateObject",
                 update: {
                   id: "Book",
-                  hide: true,
+                  spriteSrc: "/images/characters/noshadow.png",
                 }
               }, 
               { type: "addStoryFlag", flag: "GOT_TEXTBOOK" }

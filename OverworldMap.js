@@ -1199,7 +1199,7 @@ window.OverworldMaps = {
         x: utils.withGrid(5),
         y: utils.withGrid(8),
       },
-      berg1: {
+      Yuri: {
         type: "Person",
         x: utils.withGrid(3),
         y: utils.withGrid(5),
@@ -1707,8 +1707,9 @@ window.OverworldMaps = {
         type: "Person",
         x: utils.withGrid(3),
         y: utils.withGrid(2),
-        direction: "up",
-        src: "/images/characters/people/gameObjects.png",
+        direction: "down",
+        src: "/images/characters/people/monitor.png",
+        shadowImg: "/images/characters/noshadow.png",
         talking: [
           {
             required: ["Q1_INTRO"],
@@ -1736,12 +1737,13 @@ window.OverworldMaps = {
           },
         ]
       },
-      oxygenRefill: {
+      oxygenContainer: {
         type: "Person",
         x: utils.withGrid(7),
         y: utils.withGrid(3),
-        direction: "up",
-        src: "/images/characters/people/gameObjects.png",
+        direction: "down",
+        src: "/images/characters/people/oxygenContainer.png",
+        shadowImg: "/images/characters/noshadow.png",
         talking: [
           {
             required: ["Q1_IN_PROGRESS"],

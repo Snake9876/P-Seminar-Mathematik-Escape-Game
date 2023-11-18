@@ -234,6 +234,7 @@ class Overworld {
 
  startMap(mapConfig, heroInitialState=null) {
   this.map = new OverworldMap(mapConfig);
+  this.map.playerName = this.progress.playerName;
   this.map.overworld = this;
   this.map.mountObjects();
 
@@ -359,11 +360,11 @@ class Overworld {
         direction: "up",
         time: 1000,
       },
-      { type: "textMessage", name: this.progress.playerName, text: "Oh je! Anscheinend sind wir mit einem Asteroiden kollidiert!"},
-      { type: "textMessage", name: this.progress.playerName, text: "Hätten wir bei der Berechnung des Kurses bloss nicht gerundet!"},
-      { type: "textMessage", name: this.progress.playerName, text: "Aber das ist erstmal Nebensache! Ich muss nach den anderen sehen!"},
-      { type: "textMessage", name: this.progress.playerName, text: "Die Sauerstoffkonzentration fällt..."},
-      { type: "textMessage", name: this.progress.playerName, text: "Ein System-Checkup in O2 sollte mir mehr verraten!"},
+      { type: "textMessage", name: "playerName", text: "Oh je! Anscheinend sind wir mit einem Asteroiden kollidiert!"},
+      { type: "textMessage", name: "playerName", text: "Hätten wir bei der Berechnung des Kurses bloss nicht gerundet!"},
+      { type: "textMessage", name: "playerName", text: "Aber das ist erstmal Nebensache! Ich muss nach den anderen sehen!"},
+      { type: "textMessage", name: "playerName", text: "Die Sauerstoffkonzentration fällt..."},
+      { type: "textMessage", name: "playerName", text: "Ein System-Checkup in O2 sollte mir mehr verraten!"},
       //Info-Modal { type: "openModal", fileRef: "HudModal", ModalRef: "info"}
       { type: "addStoryFlag", flag: "Q1_INTRO" }
      ])

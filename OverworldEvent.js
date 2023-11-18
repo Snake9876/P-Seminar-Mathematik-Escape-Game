@@ -145,7 +145,7 @@ class OverworldEvent {
 
   textMessage(resolve) {
 
-    if(this.event.randomText) {
+      if(this.event.randomText) {
       this.random = Math.floor(Math.random()*this.event.randomText.length);
       this.text = this.event.randomText[this.random];      
     } else {
@@ -158,7 +158,7 @@ class OverworldEvent {
     }
 
     const message = new TextMessage({
-      name: this.event.name,
+      name: this.event.name === "playerName" ? this.map.overworld.progress.playerName : this.event.name,
       text: this.text,
       onComplete: () => resolve()
     })

@@ -4,7 +4,8 @@ class OverworldMap {
     this.gameObjects = {}; // Live objects are in here
     this.configObjects = config.configObjects; // Configuration content
 
-    
+    this.playerName = null;
+
     this.cutsceneSpaces = config.cutsceneSpaces || {};
     this.walls = config.walls || {}
     
@@ -21,6 +22,7 @@ class OverworldMap {
 
     this.isCutscenePlaying = false;
     this.isPaused = false;
+
   }
 
   drawLowerImage(ctx, cameraPerson) {
@@ -78,10 +80,10 @@ class OverworldMap {
 
       }
     })
+
   }
 
   async startCutscene(events) {
-    this.playerName = this.overworld.progress.playerName;
     this.isCutscenePlaying = true;
 
     for (let i=0; i<events.length; i++) {
@@ -127,8 +129,8 @@ class OverworldMap {
 }
 
 window.OverworldMaps = {
-  CommandBridge: {
-    id: "CommandBridge",
+  Brücke: {
+    id: "Brücke",
     lowerSrc: "/images/maps/CommandBridgeLower.png",
     upperSrc: "/images/maps/CommandBridgeUpper.png",
     minimapSrc: "/images/ui/minimaps/CommandBridgeMinimap.png",
@@ -151,7 +153,7 @@ window.OverworldMaps = {
           {
             required: ["Q7_INTRO"],
             events: [
-              { type: "textMessage", name: "", text: "Es scheint nichts zu passieren*"},
+              { type: "textMessage", name: "playerName", text: "Es scheint nichts zu passieren*"},
               /*Aufgabe-7:
 
               { type: "openModal", fileRef: "questionModal", modalRef: "q7"},
@@ -162,13 +164,14 @@ window.OverworldMaps = {
               Berg entfernen? 
               Set-Timer -3min
               Dismount spirte
-              { type: "textMessage", name: this.playerName, text: "Oh nein, das war der falsche Berg!" },
+              { type: "textMessage", name: "playerName", text: "Oh nein, das war der falsche Berg!" },
               */
             ]
           },
           {
             events: [
               { type: "toggleOxygenBar" },
+              { type: "textMessage", name: "playerName", text: "Es scheint nichts zu passieren*"},
               { type: "textMessage", name: "", text: "Es scheint nichts zu passieren*"},
             ]
           }
@@ -210,7 +213,7 @@ window.OverworldMaps = {
               },
               { 
                 type: "changeMap", 
-                map: "Hallway1",
+                map: "Lobby",
                 x: utils.withGrid(7),
                 y: utils.withGrid(6),
                 direction: "up",
@@ -226,7 +229,7 @@ window.OverworldMaps = {
             events: [
               { 
                 type: "changeMap", 
-                map: "Hallway1",
+                map: "Lobby",
                 x: utils.withGrid(7),
                 y: utils.withGrid(6),
                 direction: "up",
@@ -248,7 +251,7 @@ window.OverworldMaps = {
               },
               { 
                 type: "changeMap", 
-                map: "Hallway1",
+                map: "Lobby",
                 x: utils.withGrid(6),
                 y: utils.withGrid(6),
                 direction: "up",
@@ -264,7 +267,7 @@ window.OverworldMaps = {
             events: [
               { 
                 type: "changeMap", 
-                map: "Hallway1",
+                map: "Lobby",
                 x: utils.withGrid(6),
                 y: utils.withGrid(6),
                 direction: "up",
@@ -288,8 +291,8 @@ window.OverworldMaps = {
       return walls;
     }(),
   },
-  Hallway1: {
-    id: "Hallway1",
+  Lobby: {
+    id: "Lobby",
     lowerSrc: "/images/maps/Hallway1Lower.png",
     upperSrc: "/images/maps/Hallway1Upper.png",
     minimapSrc: "/images/ui/minimaps/Hallway1Minimap.png",
@@ -385,7 +388,7 @@ window.OverworldMaps = {
             events: [
               {
                 type: "changeMap",
-                map: "CommandBridge",
+                map: "Brücke",
                 x: utils.withGrid(7),
                 y: utils.withGrid(10),
                 direction: "up",
@@ -401,7 +404,7 @@ window.OverworldMaps = {
             events: [
               {
                 type: "changeMap",
-                map: "CommandBridge",
+                map: "Brücke",
                 x: utils.withGrid(6),
                 y: utils.withGrid(10),
                 direction: "up",
@@ -417,7 +420,7 @@ window.OverworldMaps = {
             events: [
               {
                 type: "changeMap",
-                map: "Hallway2",
+                map: "Westflügel",
                 x: utils.withGrid(2),
                 y: utils.withGrid(8),
                 direction: "up",              
@@ -433,7 +436,7 @@ window.OverworldMaps = {
             events: [
               {
                 type: "changeMap",
-                map: "Hallway2",
+                map: "Westflügel",
                 x: utils.withGrid(3),
                 y: utils.withGrid(8),
                 direction: "up",
@@ -449,7 +452,7 @@ window.OverworldMaps = {
             events: [
               {
                 type: "changeMap",
-                map: "Hallway2",
+                map: "Westflügel",
                 x: utils.withGrid(4),
                 y: utils.withGrid(8),
                 direction: "up",
@@ -461,8 +464,8 @@ window.OverworldMaps = {
       }],
     }
   },
-  Hallway2: {
-    id: "Hallway2",
+  Westflügel: {
+    id: "Westflügel",
     lowerSrc: "/images/maps/Hallway2Lower.png",
     upperSrc: "/images/maps/Hallway2Upper.png",
     minimapSrc: "/images/ui/minimaps/Hallway2Minimap.png",
@@ -486,11 +489,11 @@ window.OverworldMaps = {
             required: ["Q5_INTRO"],
             events: [
               { type: "effect", sound: "sounds/knocking.wav"},
-              { type: "textMessage", name: this.playerName, text: "Natürlich ist diese Tür auch verschlossen."},
-              { type: "textMessage", name: this.playerName, text: "Was auch sonst?"},
-              { type: "textMessage", name: this.playerName, text: "Deshalb hab ich um Schlüsselkarten für alle gebeten."},
-              { type: "textMessage", name: this.playerName, text: "Aber auf mich hört ja niemand!" },
-              { type: "textMessage", name: this.playerName, text: "Wahrscheinlich hat Han sie wie immer im Frachtraum liegen lassen!" },
+              { type: "textMessage", name: "playerName", text: "Natürlich ist diese Tür auch verschlossen."},
+              { type: "textMessage", name: "playerName", text: "Was auch sonst?"},
+              { type: "textMessage", name: "playerName", text: "Deshalb hab ich um Schlüsselkarten für alle gebeten."},
+              { type: "textMessage", name: "playerName", text: "Aber auf mich hört ja niemand!" },
+              { type: "textMessage", name: "playerName", text: "Wahrscheinlich hat Han sie wie immer im Frachtraum liegen lassen!" },
               { type: "addStoryFlag", flag: "Q5_IN_PROGRESS" },
             ]
           },
@@ -503,7 +506,7 @@ window.OverworldMaps = {
                 direction: "right",
                 time: 1000,
               },
-              { type: "textMessage", name: this.playerName, text: "*Es scheint niemand zu antworten...*"}
+              { type: "textMessage", name: "playerName", text: "*Es scheint niemand zu antworten...*"}
             ]
           }
         ]
@@ -543,8 +546,8 @@ window.OverworldMaps = {
                 direction: "up",
                 time: 500,
               },
-              { type: "textMessage", name: this.playerName, text: "Oh nein! Was ist denn hier passiert?!" },
-              { type: "textMessage", name: this.playerName, text: "Yuri! Bist du hier? Kannst du mich hören?" },
+              { type: "textMessage", name: "playerName", text: "Oh nein! Was ist denn hier passiert?!" },
+              { type: "textMessage", name: "playerName", text: "Yuri! Bist du hier? Kannst du mich hören?" },
               {
                 type: "stand",
                 who: "hero",
@@ -552,11 +555,11 @@ window.OverworldMaps = {
                 time: 500,
               },
               { type: "textMessage", name: "Yuri", text: "Hilf mir... ich bin unter... größtem Berg..." },
-              { type: "textMessage", name: this.playerName, text: "Die Zeit reicht nicht aus, jeden Berg wegzuräumen." },
-              { type: "textMessage", name: this.playerName, text: "Ich muss herausfinden, welcher der Größte ist!" },
-              { type: "textMessage", name: this.playerName, text: "Aber warte, die Berge sehen doch fast wie Kegel aus!" },
-              { type: "textMessage", name: this.playerName, text: "Ich brauche dafür nur einen Meterstab!" },
-              { type: "textMessage", name: this.playerName, text: "Hatte ihn nicht ... zuletzt benutzt?" },
+              { type: "textMessage", name: "playerName", text: "Die Zeit reicht nicht aus, jeden Berg wegzuräumen." },
+              { type: "textMessage", name: "playerName", text: "Ich muss herausfinden, welcher der Größte ist!" },
+              { type: "textMessage", name: "playerName", text: "Aber warte, die Berge sehen doch fast wie Kegel aus!" },
+              { type: "textMessage", name: "playerName", text: "Ich brauche dafür nur einen Meterstab!" },
+              { type: "textMessage", name: "playerName", text: "Hatte ihn nicht ... zuletzt benutzt?" },
 
             ]
           },
@@ -609,7 +612,7 @@ window.OverworldMaps = {
             events: [
               {
                 type: "changeMap",
-                map: "Quarters",
+                map: "Quartiere",
                 x: utils.withGrid(9),
                 y: utils.withGrid(6),
                 direction: "up",
@@ -625,7 +628,7 @@ window.OverworldMaps = {
             events: [
               {
                 type: "changeMap",
-                map: "Hallway1",
+                map: "Lobby",
                 x: utils.withGrid(8),
                 y: utils.withGrid(1),
                 direction: "down",
@@ -641,7 +644,7 @@ window.OverworldMaps = {
             events: [
               {
                 type: "changeMap",
-                map: "Hallway1",
+                map: "Lobby",
                 x: utils.withGrid(9),
                 y: utils.withGrid(1),
                 direction: "down",
@@ -657,7 +660,7 @@ window.OverworldMaps = {
             events: [
               {
                 type: "changeMap",
-                map: "Hallway1",
+                map: "Lobby",
                 x: utils.withGrid(10),
                 y: utils.withGrid(1),
                 direction: "down",
@@ -673,7 +676,7 @@ window.OverworldMaps = {
             events: [
               {
                 type: "changeMap",
-                map: "Corner",
+                map: "Ecke",
                 x: utils.withGrid(2),
                 y: utils.withGrid(5),
                 direction: "up",
@@ -689,7 +692,7 @@ window.OverworldMaps = {
             events: [
               {
                 type: "changeMap",
-                map: "Corner",
+                map: "Ecke",
                 x: utils.withGrid(3),
                 y: utils.withGrid(5),
                 direction: "up",
@@ -705,7 +708,7 @@ window.OverworldMaps = {
             events: [
               {
                 type: "changeMap",
-                map: "Corner",
+                map: "Ecke",
                 x: utils.withGrid(4),
                 y: utils.withGrid(5),
                 direction: "up",
@@ -717,8 +720,8 @@ window.OverworldMaps = {
       }]
     }
   },
-  Corner: {
-    id: "Corner",
+  Ecke: {
+    id: "Ecke",
     lowerSrc: "/images/maps/CornerLower.png",
     upperSrc: "/images/maps/CornerUpper.png",
     minimapSrc: "/images/ui/minimaps/CornerMinimap.png",
@@ -746,7 +749,7 @@ window.OverworldMaps = {
             events: [
               {
                 type: "changeMap",
-                map: "Hallway2",
+                map: "Westflügel",
                 x: utils.withGrid(2),
                 y: utils.withGrid(1),
                 direction: "down",
@@ -762,7 +765,7 @@ window.OverworldMaps = {
             events: [
               {
                 type: "changeMap",
-                map: "Hallway2",
+                map: "Westflügel",
                 x: utils.withGrid(3),
                 y: utils.withGrid(1),
                 direction: "down",
@@ -778,7 +781,7 @@ window.OverworldMaps = {
               events: [
                 {
                   type: "changeMap",
-                  map: "Hallway2",
+                  map: "Westflügel",
                   x: utils.withGrid(4),
                   y: utils.withGrid(1),
                   direction: "down",
@@ -794,7 +797,7 @@ window.OverworldMaps = {
             events: [
               {
                 type: "changeMap",
-                map: "Hallway3",
+                map: "Korridor",
                 x: utils.withGrid(2),
                 y: utils.withGrid(1),
                 direction: "down",
@@ -810,7 +813,7 @@ window.OverworldMaps = {
             events: [
               {
                 type: "changeMap",
-                map: "Hallway3",
+                map: "Korridor",
                 x: utils.withGrid(3),
                 y: utils.withGrid(1),
                 direction: "down",
@@ -826,7 +829,7 @@ window.OverworldMaps = {
             events: [
               {
                 type: "changeMap",
-                map: "Hallway3",
+                map: "Korridor",
                 x: utils.withGrid(4),
                 y: utils.withGrid(1),
                 direction: "down",
@@ -838,8 +841,8 @@ window.OverworldMaps = {
       }]
     }
   },
-  Hallway3: {
-    id: "Hallway3",
+  Korridor: {
+    id: "Korridor",
     lowerSrc: "/images/maps/Hallway3Lower.png",
     upperSrc: "/images/maps/Hallway3Upper.png",
     minimapSrc: "/images/ui/minimaps/Hallway3Minimap.png",
@@ -883,8 +886,8 @@ window.OverworldMaps = {
                 direction: "right",
                 time: 1000,
               },
-              { type: "textMessage", name: this.playerName, text: "Verdammt, sie klemmt!" },
-              { type: "textMessage", name: this.playerName, text: "Dass das gerade jetzt passieren muss!" },
+              { type: "textMessage", name: "playerName", text: "Verdammt, sie klemmt!" },
+              { type: "textMessage", name: "playerName", text: "Dass das gerade jetzt passieren muss!" },
               { type: "textMessage", text: "Wo ist unser Ingenieur Yuri, wenn man ihn braucht?" },
               { type: "textMessage", text: "Wollte er sich nicht gerade einen Kaffee holen?" },
               { type: "addStoryFlag", flag: "Q2_INTRO" }
@@ -914,10 +917,10 @@ window.OverworldMaps = {
     },
     walls: function() {
       let walls = {};
-      ["1,16","2,17","3,17","4,17","5,16",
-      "5,15","5,14","5,13","6,12","5,11","5,10","5,9","6,8","5,7","5,6","5,5","6,4","6,3","5,2","5,1",
+      ["0,16","1,17","2,17","3,17","4,17","5,17","6,16",
+      "6,15","6,14","5,13","6,12","5,11","5,10","5,9","6,8","5,7","5,6","5,5","6,4","6,3","5,2","5,1",
       "2,0","3,0","4,0",
-      "1,15","1,14","1,13","1,12","1,11","1,10","0,9","1,8","1,7","1,6","1,5","1,4","1,3","1,2","1,1",
+      "0,15","0,14","1,13","1,12","1,11","1,10","0,9","1,8","1,7","1,6","1,5","1,4","1,3","1,2","1,1",
       ].forEach(coord => {
         let [x,y] = coord.split(",");
         walls[utils.asGridCoord(x,y)] = true;
@@ -931,7 +934,7 @@ window.OverworldMaps = {
             events: [
               {
                 type: "changeMap",
-                map: "Corner",
+                map: "Ecke",
                 x: utils.withGrid(1),
                 y: utils.withGrid(2),
                 direction: "right",
@@ -947,7 +950,7 @@ window.OverworldMaps = {
             events: [
               {
                 type: "changeMap",
-                map: "Corner",
+                map: "Ecke",
                 x: utils.withGrid(1),
                 y: utils.withGrid(3),
                 direction: "right",
@@ -963,7 +966,7 @@ window.OverworldMaps = {
             events: [
               {
                 type: "changeMap",
-                map: "Corner",
+                map: "Ecke",
                 x: utils.withGrid(1),
                 y: utils.withGrid(4),
                 direction: "right",
@@ -980,7 +983,7 @@ window.OverworldMaps = {
             events: [
               {
                 type: "changeMap",
-                map: "Comms",
+                map: "Nachrichtenzentrale",
                 x: utils.withGrid(6),
                 y: utils.withGrid(2),
                 direction: "down",
@@ -992,15 +995,15 @@ window.OverworldMaps = {
                 direction: "down",
                 time: 500,
               },
-              { type: "textMessage", name: this.playerName, text: "Na toll! Ich bin also wieder auf mich allein gestellt."},
-              { type: "textMessage", name: this.playerName, text: "Na gut, ich werde das schon hinkriegen!"},
+              { type: "textMessage", name: "playerName", text: "Na toll! Ich bin also wieder auf mich allein gestellt."},
+              { type: "textMessage", name: "playerName", text: "Na gut, ich werde das schon hinkriegen!"},
             ]
           },
           {
             events: [
               {
                 type: "changeMap",
-                map: "Comms",
+                map: "Nachrichtenzentrale",
                 x: utils.withGrid(6),
                 y: utils.withGrid(2),
                 direction: "down",
@@ -1016,7 +1019,7 @@ window.OverworldMaps = {
             events: [
               {
                 type: "changeMap",
-                map: "Engine",
+                map: "Maschinenraum",
                 x: utils.withGrid(7),
                 y: utils.withGrid(22),
                 direction: "left",
@@ -1032,7 +1035,7 @@ window.OverworldMaps = {
             events: [
               {
                 type: "changeMap",
-                map: "Medbay",
+                map: "Krankenstation",
                 x: utils.withGrid(5),
                 y: utils.withGrid(2),
                 direction: "down",
@@ -1048,7 +1051,7 @@ window.OverworldMaps = {
             events: [
               {
                 type: "changeMap",
-                map: "Hallway4",
+                map: "Ostflügel",
                 x: utils.withGrid(1),
                 y: utils.withGrid(3),
                 direction: "right",
@@ -1064,7 +1067,7 @@ window.OverworldMaps = {
             events: [
               {
                 type: "changeMap",
-                map: "Hallway4",
+                map: "Ostflügel",
                 x: utils.withGrid(1),
                 y: utils.withGrid(4),
                 direction: "right",
@@ -1076,8 +1079,8 @@ window.OverworldMaps = {
       }]
     }
   },
-  Hallway4: {
-    id: "Hallway4",
+  Ostflügel: {
+    id: "Ostflügel",
     lowerSrc: "/images/maps/Hallway4Lower.png",
     upperSrc: "/images/maps/Hallway4Upper.png",
     minimapSrc: "/images/ui/minimaps/Hallway4Minimap.png",
@@ -1096,7 +1099,7 @@ window.OverworldMaps = {
             events: [
               {
                 type: "changeMap",
-                map: "Hallway3",
+                map: "Korridor",
                 x: utils.withGrid(5),
                 y: utils.withGrid(3),
                 direction: "left",
@@ -1112,7 +1115,7 @@ window.OverworldMaps = {
             events: [
               {
                 type: "changeMap",
-                map: "Hallway3",
+                map: "Korridor",
                 x: utils.withGrid(5),
                 y: utils.withGrid(4),
                 direction: "left",
@@ -1207,10 +1210,10 @@ window.OverworldMaps = {
           {
             required: ["GOT_METERSTICK"],
             events: [
-              { type: "textMessage", name: this.playerName,
+              { type: "textMessage", name: "playerName",
                 text: "Der Durchmesser der Grundfläche ist m..."
               },
-              { type: "textMessage", name: this.playerName,
+              { type: "textMessage", name: "playerName",
                 text: "...und der Berg ist m hoch."
               },
               /*Aufgabe-2:
@@ -1222,7 +1225,7 @@ window.OverworldMaps = {
               Berg entfernen? 
               Set-Timer -3min
               Dismount spirte
-              { type: "textMessage", name: this.playerName, text: "Oh nein, das war der falsche Berg!" },
+              { type: "textMessage", name: "playerName", text: "Oh nein, das war der falsche Berg!" },
               */
             ]
           }
@@ -1239,10 +1242,10 @@ window.OverworldMaps = {
           {
             required: ["GOT_METERSTICK"],
             events: [
-              { type: "textMessage", name: this.playerName,
+              { type: "textMessage", name: "playerName",
                 text: "Der Durchmesser der Grundfläche ist m..."
               },
-              { type: "textMessage", name: this.playerName,
+              { type: "textMessage", name: "playerName",
                 text: "...und der Berg ist m hoch."
               },
               /*Aufgabe-2:
@@ -1255,11 +1258,11 @@ window.OverworldMaps = {
               Dismount spirte
               //Change spirte to Yuri
               //{ type: "addStoryFlag", flag: "Q2_COMPLETED" },
-              //{ type: "textMessage", name: this.playerName, text: "Oh nein, Yuri!"},
-              //{ type: "textMessage", name: this.playerName, text: "Er ist ohnmächtig und seine Vitalwerte sind miserabel!"},
-              //{ type: "textMessage", name: this.playerName, text: "Noch ist er am Leben,..."},
-              //{ type: "textMessage", name: this.playerName, text: "...aber er muss dringend zur Krankenstation gebracht werden!"},
-              //{ type: "textMessage", name: this.playerName, text: "Ich muss Krankenschwester Bella finden!"},  */           
+              //{ type: "textMessage", name: "playerName", text: "Oh nein, Yuri!"},
+              //{ type: "textMessage", name: "playerName", text: "Er ist ohnmächtig und seine Vitalwerte sind miserabel!"},
+              //{ type: "textMessage", name: "playerName", text: "Noch ist er am Leben,..."},
+              //{ type: "textMessage", name: "playerName", text: "...aber er muss dringend zur Krankenstation gebracht werden!"},
+              //{ type: "textMessage", name: "playerName", text: "Ich muss Krankenschwester Bella finden!"},  */           
             ]
           }
         ], 
@@ -1275,34 +1278,33 @@ window.OverworldMaps = {
           {
             required: ["Q4_COMPLETED"],
             events: [
-              { type: "textMessage", name: "Bella", text: "Hallo " + this.playerName + "!" },
               { type: "textMessage", name: "Bella", text: "Hast du den Notruf abgesetzt?" },
-              { type: "textMessage", name: this.playerName, text: "Hallo Bella! Es kam etwas dazwischen, aber ja." },
-              { type: "textMessage", name: this.playerName, text: "Kann ich jetzt mit Yuri sprechen?" },
+              { type: "textMessage", name: "playerName", text: "Hallo Bella! Es kam etwas dazwischen, aber ja." },
+              { type: "textMessage", name: "playerName", text: "Kann ich jetzt mit Yuri sprechen?" },
               { type: "textMessage", name: "Yuri", text: "Ob du das kannst, weiß ich nicht..." },
               { type: "textMessage", name: "Yuri", text: "...aber du darfst." },
-              { type: "textMessage", name: this.playerName, text: "Gott sei Dank, geht's dir gut!" },
+              { type: "textMessage", name: "playerName", text: "Gott sei Dank, geht's dir gut!" },
               { type: "textMessage", name: "Yuri", text: "So leicht lass ich mich nicht unterkriegen!" },
-              { type: "textMessage", name: this.playerName, text: "Ha! Ein guter Witz nach dem anderen!" },
+              { type: "textMessage", name: "playerName", text: "Ha! Ein guter Witz nach dem anderen!" },
               { type: "textMessage", name: "Yuri", text: "Hey! ...Touché..." },
               { type: "textMessage", name: "Yuri", text: "Was ist überhaupt los?" },
-              { type: "textMessage", name: this.playerName, text: "Durch die Kollision ist wohl die Steuerung ausgefallen..." },
-              { type: "textMessage", name: this.playerName, text: "...und nun klemmt die Tür zum..." },
+              { type: "textMessage", name: "playerName", text: "Durch die Kollision ist wohl die Steuerung ausgefallen..." },
+              { type: "textMessage", name: "playerName", text: "...und nun klemmt die Tür zum..." },
               { type: "textMessage", name: "Yuri", text: "BITTE WAS?!" },
               { type: "textMessage", name: "Yuri", text: "Und was machen wir dann noch hier?" },
               { type: "textMessage", name: "Yuri", text: "Wir könnten jeden Moment wieder mit etwas zusammenstoßen!" },
-              { type: "textMessage", name: this.playerName, text: "Das ist es ja, wir befinden uns bereits auf Kollisionskurs..." },
+              { type: "textMessage", name: "playerName", text: "Das ist es ja, wir befinden uns bereits auf Kollisionskurs..." },
               { type: "textMessage", name: "Yuri", text: "BITTE WAS?!!!" },
               { type: "textMessage", name: "Yuri", text: "Wir dürfen keine Zeit verlieee..." },
               { type: "textMessage", name: "Bella", text: "Yuri! Dein Bein ist doch gebrochen!" },
               { type: "textMessage", name: "Yuri", text: "Verdammt! Du muss wohl hier bleiben." },
               { type: "textMessage", name: "Yuri", text: "Du sagtest du Tür klemmt? Neben meinem Bett liegt eine Brechstange." },
               { type: "textMessage", name: "Yuri", text: "Damit sollte es klappen" },
-              { type: "textMessage", name: this.playerName, text: "Warte, wieso...?" },
+              { type: "textMessage", name: "playerName", text: "Warte, wieso...?" },
               { type: "textMessage", name: "Yuri", text: "Man kann nie wissen..." },
-              { type: "textMessage", name: this.playerName, text: "Aber...?" },
+              { type: "textMessage", name: "playerName", text: "Aber...?" },
               { type: "textMessage", name: "Yuri", text: "KLEMMT JETZT DIE VERDAMMTE TÜR, ODER NICHT?!" },
-              { type: "textMessage", name: this.playerName, text: "Ich bin schon auf dem Weg!" },
+              { type: "textMessage", name: "playerName", text: "Ich bin schon auf dem Weg!" },
               { type: "addStoryFlag", flag: "Q5_INTRO" }
             ]
           }, 
@@ -1349,7 +1351,7 @@ window.OverworldMaps = {
             events: [
               {
                 type: "changeMap",
-                map: "Hallway2",
+                map: "Westflügel",
                 x: utils.withGrid(1),
                 y: utils.withGrid(7),
                 direction: "right",
@@ -1365,7 +1367,7 @@ window.OverworldMaps = {
             events: [
               {
                 type: "changeMap",
-                map: "Hallway1",
+                map: "Lobby",
                 x: utils.withGrid(5),
                 y: utils.withGrid(2),
                 direction: "down",
@@ -1381,7 +1383,7 @@ window.OverworldMaps = {
             events: [
               {
                 type: "changeMap",
-                map: "Hallway4",
+                map: "Ostflügel",
                 x: utils.withGrid(9),
                 y: utils.withGrid(3),
                 direction: "left",
@@ -1397,7 +1399,7 @@ window.OverworldMaps = {
             events: [
               {
                 type: "changeMap",
-                map: "Hallway4",
+                map: "Ostflügel",
                 x: utils.withGrid(9),
                 y: utils.withGrid(4),
                 direction: "left",
@@ -1425,8 +1427,8 @@ window.OverworldMaps = {
       return walls;
     }(),
   },
-  Comms: {
-    id: "Comms",
+  Nachrichtenzentrale: {
+    id: "Nachrichtenzentrale",
     lowerSrc: "/images/maps/CommsLower.png",
     upperSrc: "/images/maps/CommsUpper.png",
     minimapSrc: "/images/ui/minimaps/CommsMinimap.png",
@@ -1448,7 +1450,7 @@ window.OverworldMaps = {
           {      
             required: ["GOT_TEXTBOOK", "Q4_IN_PROGRESS"],    
             events: [
-              { type: "textMessage", name: this.playerName, text: "Ich muss also eine Gegenfunktion aufstellen, um ein reines Signal zu erhalten!" },
+              { type: "textMessage", name: "playerName", text: "Ich muss also eine Gegenfunktion aufstellen, um ein reines Signal zu erhalten!" },
               { type: "effect", sound: "sounds/chat.wav" },
               /*Aufgabe-4:
 
@@ -1458,15 +1460,15 @@ window.OverworldMaps = {
 
               { type:"addStoryFlag", flag: "Q4_COMPLETE" },
               { type:"removeStoryFlag", flag "Q4_IN_PROGRESS" },
-              { type: "textMessage", name: this.playerName, text: "Ok, wir haben wieder ein Signal!" },
+              { type: "textMessage", name: "playerName", text: "Ok, wir haben wieder ein Signal!" },
               {
                 type: "stand",
                 who: "hero",
                 direction: "up",
                 time: 1000
               },
-              { type: "textMessage", name: this.playerName, text: "Der Notruf ist abgesetzt." },
-              { type: "textMessage", name: this.playerName, text: "Mal sehen, ob Yuri schon wach ist." },
+              { type: "textMessage", name: "playerName", text: "Der Notruf ist abgesetzt." },
+              { type: "textMessage", name: "playerName", text: "Mal sehen, ob Yuri schon wach ist." },
               */
             ]
           },
@@ -1480,12 +1482,12 @@ window.OverworldMaps = {
                 direction: "up",
                 time: 1000
               },
-              { type: "textMessage", name: this.playerName, text: "Mist! Auch das noch!" },
-              { type: "textMessage", name: this.playerName, text: "Anscheinend wurde unsere Antenne in der Kollision beschädigt." },
-              { type: "textMessage", name: this.playerName, text: "Wenigstens nimmt sie noch Signale auf..." },
-              { type: "textMessage", name: this.playerName, text: "...sie scheinen verzerrt zu sein!" },
-              { type: "textMessage", name: this.playerName, text: "Vielleicht kann ich sie reparieren!" },
-              { type: "textMessage", name: this.playerName, text: "Irgendwas muss mir hier doch weiterhelfen können!" },
+              { type: "textMessage", name: "playerName", text: "Mist! Auch das noch!" },
+              { type: "textMessage", name: "playerName", text: "Anscheinend wurde unsere Antenne in der Kollision beschädigt." },
+              { type: "textMessage", name: "playerName", text: "Wenigstens nimmt sie noch Signale auf..." },
+              { type: "textMessage", name: "playerName", text: "...sie scheinen verzerrt zu sein!" },
+              { type: "textMessage", name: "playerName", text: "Vielleicht kann ich sie reparieren!" },
+              { type: "textMessage", name: "playerName", text: "Irgendwas muss mir hier doch weiterhelfen können!" },
             ]
           }
         ]
@@ -1501,112 +1503,112 @@ window.OverworldMaps = {
           {   
             required: ["GOT_TEXTBOOK"],
             events: [
-              { type: "Textmessage", name: this.playerName, text: "In dem Buch steht..." },
+              { type: "Textmessage", name: "playerName", text: "In dem Buch steht..." },
               {
                 type: "stand",
                 who: "hero",
                 direction: "up",
                 time: 1000
               },
-              { type: "Textmessage", name: this.playerName, text: "... das Störsignal mit einer Gegenfunktion destruktiv interferieren..." },
+              { type: "Textmessage", name: "playerName", text: "... das Störsignal mit einer Gegenfunktion destruktiv interferieren..." },
               {
                 type: "stand",
                 who: "hero",
                 direction: "up",
                 time: 500
               },
-              { type: "Textmessage", name: this.playerName, text: "...gleiche Frequenz..." },
+              { type: "Textmessage", name: "playerName", text: "...gleiche Frequenz..." },
               {
                 type: "stand",
                 who: "hero",
                 direction: "up",
                 time: 500
               },
-              { type: "Textmessage", name: this.playerName, text: "...gleiche Verschiebung in x- und y-Richtung..." },
+              { type: "Textmessage", name: "playerName", text: "...gleiche Verschiebung in x- und y-Richtung..." },
               {
                 type: "stand",
                 who: "hero",
                 direction: "up",
                 time: 500
               },
-              { type: "Textmessage", name: this.playerName, text: "...umgekehrte Amplitude..." },
+              { type: "Textmessage", name: "playerName", text: "...umgekehrte Amplitude..." },
               {
                 type: "stand",
                 who: "hero",
                 direction: "up",
                 time: 500
               },
-              { type: "Textmessage", name: this.playerName, text: "Damit sollte es gehen!" },
+              { type: "Textmessage", name: "playerName", text: "Damit sollte es gehen!" },
             ]
           },
           {      
             required: ["Q4_IN_PROGRESS"],
             events: [
-              { type: "Textmessage", name: this.playerName, text: "Hm, wo haben wir es denn?" },
+              { type: "Textmessage", name: "playerName", text: "Hm, wo haben wir es denn?" },
               {
                 type: "stand",
                 who: "hero",
                 direction: "up",
                 time: 500
               },
-              { type: "Textmessage", name: this.playerName, text: "Einführung in elektrische Schaltkreise..." },
+              { type: "Textmessage", name: "playerName", text: "Einführung in elektrische Schaltkreise..." },
               {
                 type: "stand",
                 who: "hero",
                 direction: "up",
                 time: 500
               },
-              { type: "Textmessage", name: this.playerName, text: "Einführung in elektrische Schaltkreise..." },
+              { type: "Textmessage", name: "playerName", text: "Einführung in elektrische Schaltkreise..." },
               {
                 type: "stand",
                 who: "hero",
                 direction: "up",
                 time: 500
               },
-              { type: "Textmessage", name: this.playerName, text: "50 Rezepte für die Weihnachtszeit..." },
-              { type: "Textmessage", name: this.playerName, text: "Warum steht das hier?" },
+              { type: "Textmessage", name: "playerName", text: "50 Rezepte für die Weihnachtszeit..." },
+              { type: "Textmessage", name: "playerName", text: "Warum steht das hier?" },
               {
                 type: "stand",
                 who: "hero",
                 direction: "up",
                 time: 500
               },
-              { type: "Textmessage", name: this.playerName, text: "Aha! Signaltheorie!" },
+              { type: "Textmessage", name: "playerName", text: "Aha! Signaltheorie!" },
               {
                 type: "stand",
                 who: "hero",
                 direction: "up",
                 time: 1000
               },
-              { type: "Textmessage", name: this.playerName, text: "... das Störsignal mit einer Gegenfunktion destruktiv interferieren..." },
+              { type: "Textmessage", name: "playerName", text: "... das Störsignal mit einer Gegenfunktion destruktiv interferieren..." },
               {
                 type: "stand",
                 who: "hero",
                 direction: "up",
                 time: 500
               },
-              { type: "Textmessage", name: this.playerName, text: "...gleiche Frequenz..." },
+              { type: "Textmessage", name: "playerName", text: "...gleiche Frequenz..." },
               {
                 type: "stand",
                 who: "hero",
                 direction: "up",
                 time: 500
               },
-              { type: "Textmessage", name: this.playerName, text: "...gleiche Verschiebung in x- und y-Richtung..." },
+              { type: "Textmessage", name: "playerName", text: "...gleiche Verschiebung in x- und y-Richtung..." },
               {
                 type: "stand",
                 who: "hero",
                 direction: "up",
                 time: 500
               },
-              { type: "Textmessage", name: this.playerName, text: "...umgekehrte Amplitude..." },
+              { type: "Textmessage", name: "playerName", text: "...umgekehrte Amplitude..." },
               {
                 type: "stand",
                 who: "hero",
                 direction: "up",
                 time: 500
               },
-              { type: "Textmessage", name: this.playerName, text: "Damit sollte es gehen!" },
+              { type: "Textmessage", name: "playerName", text: "Damit sollte es gehen!" },
               { type: "addStoryFlag", flag: "GOT_TEXTBOOK" },
               { type:"addStoryFlag", flag: "Q4_IN_PROGRESS" },
             ]
@@ -1633,7 +1635,7 @@ window.OverworldMaps = {
             events: [
               {
                 type: "changeMap",
-                map: "Hallway3",
+                map: "Korridor",
                 x: utils.withGrid(5),
                 y: utils.withGrid(8),
                 direction: "left",
@@ -1645,8 +1647,8 @@ window.OverworldMaps = {
       }]
     }
   },
-  Quarters: {
-    id: "Quarters",
+  Quartiere: {
+    id: "Quartiere",
     lowerSrc: "/images/maps/QuartersLower.png",
     upperSrc: "/images/maps/QuartersUpper.png",
     minimapSrc: "/images/ui/minimaps/QuartersMinimap.png",
@@ -1677,7 +1679,7 @@ window.OverworldMaps = {
             events: [
               {
                 type: "changeMap",
-                map: "Hallway2",
+                map: "Westflügel",
                 x: utils.withGrid(5),
                 y: utils.withGrid(5),
                 direction: "left",
@@ -1712,19 +1714,19 @@ window.OverworldMaps = {
             required: ["Q1_INTRO"],
             events: [
               { type: "effect", sound: "sounds/chat.wav" },
-              { type: "textMessage", name: this.playerName, text: "Wollen wir doch mal sehen, wo der Fehler liegt!" },
+              { type: "textMessage", name: "playerName", text: "Wollen wir doch mal sehen, wo der Fehler liegt!" },
               {
                 type: "stand",
                 who: "hero",
                 direction: "up",
                 time: 1000,
               },
-              { type: "textMessage", name: this.playerName, text: "Oh verdammt! Anscheinend haben wir ein Leck in der Außenwand!" },
+              { type: "textMessage", name: "playerName", text: "Oh verdammt! Anscheinend haben wir ein Leck in der Außenwand!" },
               { type: "effect", sound: "sounds/alarm.wav"},
               { type: "textMessage", name: "Bordcomputer", text: "SAUERSTOFFKONZENTRATION: 70%, TENDENZ FALLEND." },
-              { type: "textMessage", name: this.playerName, text: "Mir wird langsam echt schwindlig..." },
-              { type: "textMessage", name: this.playerName, text: "Ich werde wohl meinen Raumanzug brauchen!" },
-              { type: "textMessage", name: this.playerName, text: "Besser füll ich vorher meinen Vorrat noch auf!" },
+              { type: "textMessage", name: "playerName", text: "Mir wird langsam echt schwindlig..." },
+              { type: "textMessage", name: "playerName", text: "Ich werde wohl meinen Raumanzug brauchen!" },
+              { type: "textMessage", name: "playerName", text: "Besser füll ich vorher meinen Vorrat noch auf!" },
 
               //Marker-Event { type: "marker", x:, y: },
 
@@ -1744,7 +1746,7 @@ window.OverworldMaps = {
           {
             required: ["Q1_IN_PROGRESS"],
             events: [
-              { type: "textMessage", text: "Aber wie lang reicht mir ein Vorrat?" },  
+              { type: "textMessage", name: "playerName", text: "Aber wie lang reicht mir ein Vorrat?" },  
               { type: "openModal", fileRef: "questionModal", modalRef: "q1" },
             ]
           },
@@ -1798,7 +1800,7 @@ window.OverworldMaps = {
           {
             required: ["Q1_IN_PROGRESS"],
             events: [
-              { type: "textMessage", text: "Ich sollte vorher besser meinen Sauerstoffvorrat auffüllen!" },
+              { type: "textMessage", name: "playerName", text: "Ich sollte vorher besser meinen Sauerstoffvorrat auffüllen!" },
               { 
                 type: "walk", 
                 who: "hero",
@@ -1812,7 +1814,7 @@ window.OverworldMaps = {
             events: [
               {
                 type: "changeMap",
-                map: "Hallway2",
+                map: "Westflügel",
                 x: utils.withGrid(1),
                 y: utils.withGrid(3),
                 direction: "right",
@@ -1821,8 +1823,8 @@ window.OverworldMaps = {
               { type: "effect", sound: "sounds/alarm.wav"},
               { type: "textMessage", name: "Bordcomputer", text: "SYSTEMWARNUNG!! RAUMSCHIFF AUF KOLLISIONSKURS." },
               { type: "textMessage", name: "Bordcomputer", text: "AUFPRALL IN T-MINUS ... MINUTEN." },
-              { type: "textMessage", name: this.playerName, text: "Auch das noch!" },
-              { type: "textMessage", name: this.playerName, text: "Dann eben zum Maschinenraum!" },   
+              { type: "textMessage", name: "playerName", text: "Auch das noch!" },
+              { type: "textMessage", name: "playerName", text: "Dann eben zum Maschinenraum!" },   
               { type: "removeStoryFlag", flag: "Q1_COMPLETED" }
             ]
           },
@@ -1830,7 +1832,7 @@ window.OverworldMaps = {
             events: [
               {
                 type: "changeMap",
-                map: "Hallway2",
+                map: "Westflügel",
                 x: utils.withGrid(1),
                 y: utils.withGrid(3),
                 direction: "right",
@@ -1845,11 +1847,11 @@ window.OverworldMaps = {
           {
             required: ["Q1_IN_PROGRESS"],
             events: [
-              { type: "textMessage", text: "Ich sollte vorher besser meinen Sauerstoffvorrat auffüllen!" },
+              { type: "textMessage", name: "playerName", text: "Ich sollte vorher besser meinen Sauerstoffvorrat auffüllen!" },
               { 
                 type: "walk", 
                 who: "hero",
-                direction: "down",
+                direction: "up",
               },
 
             ]
@@ -1859,7 +1861,7 @@ window.OverworldMaps = {
             events: [
               {
                 type: "changeMap",
-                map: "Hallway4",
+                map: "Ostflügel",
                 x: utils.withGrid(5),
                 y: utils.withGrid(2),
                 direction: "down",
@@ -1867,8 +1869,8 @@ window.OverworldMaps = {
               },
               { type: "effect", sound: "sounds/alarm.wav"},
               { type: "textMessage", name: "Bordcomputer", text: "SYSTEMWARNUNG!! RAUMSCHIFF AUF KOLLISIONSKURS." },
-              { type: "textMessage", name: this.playerName, text: "Auch das noch!" },
-              { type: "textMessage", name: this.playerName, text: "Dann eben zum Maschinenraum!" },   
+              { type: "textMessage", name: "playerName", text: "Auch das noch!" },
+              { type: "textMessage", name: "playerName", text: "Dann eben zum Maschinenraum!" },   
               { type: "removeStoryFlag", flag: "Q1_COMPLETED" }
             ]
           },
@@ -1876,7 +1878,7 @@ window.OverworldMaps = {
             events: [
               {
                 type: "changeMap",
-                map: "Hallway4",
+                map: "Ostflügel",
                 x: utils.withGrid(5),
                 y: utils.withGrid(2),
                 direction: "down",
@@ -1888,8 +1890,8 @@ window.OverworldMaps = {
       }]
     }
   },
-  Medbay: {
-    id: "Medbay",
+  Krankenstation: {
+    id: "Krankenstation",
     lowerSrc: "/images/maps/MedbayLower.png",
     upperSrc: "/images/maps/MedbayUpper.png",
     minimapSrc: "/images/ui/minimaps/MedbayMinimap.png",
@@ -1910,9 +1912,9 @@ window.OverworldMaps = {
           {
             required: ["Q2_COMPLETED"],
             events: [
-              { type: "textMessage", name: "Bella", text: "Oh? Hallo " + this.playerName + " !" },
+              { type: "textMessage", name: "Bella", text: "Oh? Hallo!" },
               { type: "textMessage", name: "Bella", text: "Was ist denn passiert?"},
-              { type: "textMessage", name: "Bella", text: "Ich hab eine Explosion gehört!"},
+              { type: "textMessage", name: "Bella", text: "Ich hab einen lauten Knall gehört!"},
               {
                 type: "stand",
                 who: "hero",
@@ -1950,7 +1952,7 @@ window.OverworldMaps = {
                 time: 1000,
               },
               { type: "textMessage", name: "Bella", text: "" },
-              { type: "textMessage", name: this.playerName, text: "Kann ich dir irgendwie helfen?" },
+              { type: "textMessage", name: "playerName", text: "Kann ich dir irgendwie helfen?" },
               { type: "textMessage", name: "Bella", text: "Ja, du kannst ..." },
               /*Aufgabe-3:
               
@@ -1960,10 +1962,10 @@ window.OverworldMaps = {
 
               { type: "textMessage", name: "Bella", text: "So, das wird ihn eine Zeit lang stabilisieren." },
               { type: "textMessage", name: "Bella", text: "Aber eine Dauerlösung ist das nicht!" },
-              { type: "textMessage", name: this.playerName, text: "Kann ich denn schon mit ihm sprechen?" },
+              { type: "textMessage", name: "playerName", text: "Kann ich denn schon mit ihm sprechen?" },
               { type: "textMessage", name: "Bella", text: "Noch ist er bewusstlos..." },
               { type: "textMessage", name: "Bella", text: "Setze in der Zwischenzeit einen Notruf ab!" },
-              { type: "textMessage", name: this.playerName, text: "Gute Idee! Ich beeile mich!" },
+              { type: "textMessage", name: "playerName", text: "Gute Idee! Ich beeile mich!" },
               { type: "addStoryFlag", flag: "Q4_INTRO" },
 
               */
@@ -1991,7 +1993,7 @@ window.OverworldMaps = {
             events: [
               {
                 type: "changeMap",
-                map: "Hallway3",
+                map: "Hinterer",
                 x: utils.withGrid(5),
                 y: utils.withGrid(12),
                 direction: "left",
@@ -2003,8 +2005,8 @@ window.OverworldMaps = {
       }]
     }
   },
-  Engine: {
-    id: "Engine",
+  Maschinenraum: {
+    id: "Maschinenraum",
     lowerSrc: "/images/maps/EngineLower.png",
     upperSrc: "/images/maps/EngineUpper.png",
     minimapSrc: "/images/ui/minimaps/EngineMinimap.png",
@@ -2034,8 +2036,8 @@ window.OverworldMaps = {
               { type: "effect", visual: "rumble", toggle: "true" },
               { type: "textMessage", name:"Bordcomputer", text: "SYSTEMWARNUNG!! EINTRITT IN ASTEROIDENGÜRTEL."},
               { type: "textMessage", name:"Bordcomputer", text: "BERECHNUNG EINES NEUEN KURSES ERFORDERLICH."},
-              { type: "textMessage", name: this.playerName, text: "Jetzt muss es schnell gehen!"},
-              { type: "textMessage", name: this.playerName, text: "Zurück zur Steuereinheit!"},
+              { type: "textMessage", name: "playerName", text: "Jetzt muss es schnell gehen!"},
+              { type: "textMessage", name: "playerName", text: "Zurück zur Steuereinheit!"},
               { type: "addStoryFlag", flag: "Q7_INTRO" }
 
               */
@@ -2075,7 +2077,7 @@ window.OverworldMaps = {
               
               {
                 type: "changeMap",
-                map: "Hallway3",
+                map: "Korridor",
                 x: utils.withGrid(1),
                 y: utils.withGrid(9),
                 direction: "right",
@@ -2087,8 +2089,8 @@ window.OverworldMaps = {
       }]
     }
   },
-  Cargo: {
-    id: "Cargo",
+  Hangar: {
+    id: "Hangar",
     lowerSrc: "/images/maps/CargoLower.png",
     upperSrc: "/images/maps/CargoUpper.png",
     minimapSrc: "/images/ui/minimaps/CargoMinimap.png",
@@ -2115,7 +2117,7 @@ window.OverworldMaps = {
               },
               { 
                 type: "changeMap", 
-                map: "Hallway1",
+                map: "Lobby",
                 x: utils.withGrid(7),
                 y: utils.withGrid(6),
                 direction: "up",
@@ -2131,7 +2133,7 @@ window.OverworldMaps = {
             events: [
               { 
                 type: "changeMap", 
-                map: "Hallway1",
+                map: "Lobby",
                 x: utils.withGrid(7),
                 y: utils.withGrid(6),
                 direction: "up",
@@ -2153,7 +2155,7 @@ window.OverworldMaps = {
               },
               { 
                 type: "changeMap", 
-                map: "Hallway1",
+                map: "Lobby",
                 x: utils.withGrid(6),
                 y: utils.withGrid(6),
                 direction: "up",
@@ -2169,7 +2171,7 @@ window.OverworldMaps = {
             events: [
               { 
                 type: "changeMap", 
-                map: "Hallway1",
+                map: "Lobby",
                 x: utils.withGrid(6),
                 y: utils.withGrid(6),
                 direction: "up",

@@ -25,6 +25,7 @@ class HudModals {
     
     //Map
     else if (this.modalRef === "map") {
+      this.mapRef = this.map.mapId;
       this.mapElement = document.createElement('div');
       this.mapElement.classList.add('Modal');
       this.mapElement.setAttribute('id', 'map-modal')
@@ -35,8 +36,23 @@ class HudModals {
           </div>
           <button class="CloseButton">&times;</button>
         </div>
-        <div class="ModalContent" id="minimap">
-          <img src=${this.minimapSrc}>
+        <div class="ModalContent" id="minimap" style="background-image: url(${this.minimapSrc});">
+          <div class="hoverContainer">
+            <div class="hoverElement" id="Brücke"></div>
+            <div class="hoverElement" id="Cafeteria"></div>
+            <div class="hoverElement" id="O2"></div>
+            <div class="hoverElement" id="Quartiere"></div>
+            <div class="hoverElement" id="Krankenstation"></div>
+            <div class="hoverElement" id="Hangar"></div>
+            <div class="hoverElement" id="Nachrichtenzentrale"></div>
+            <div class="hoverElement" id="Maschinenraum"></div>
+            <div class="hoverElement" id="Lobby"></div>
+            <div class="hoverElement" id="Westflügel"></div>
+            <div class="hoverElement" id="Ecke"></div>
+            <div class="hoverElement" id="Ostflügel"></div>
+            <div class="hoverElement" id="Korridor"></div>
+          </div>
+          <p class="mapDesc">${this.mapRef}</p>
         </div>
       `);
     }
@@ -154,6 +170,7 @@ class HudModals {
 
   }
 
+  //Notes
   editDiv() {
     const editableDiv = document.getElementById("editable-div");
         
@@ -167,6 +184,7 @@ class HudModals {
     if (savedContent) {
         editableDiv.innerHTML = savedContent;
     }
+
   }
       
   async init(container) {
@@ -188,6 +206,18 @@ class HudModals {
       container.appendChild(this.overlay)
       container.appendChild(this.mapElement);
 
+      this.hoverElement = document.querySelectorAll('.hoverElement');
+      this.mapDesc = document.querySelector('.mapDesc');
+      this.hoverElement.forEach(element => {
+        element.onmouseover = () => {
+          this.mapDesc.innerHTML = element.id;
+        }
+
+        element.onmouseout = () => {
+          this.mapDesc.innerHTML = (this.map.mapId);
+        }
+      })
+    
       this.closeButton = document.querySelector('.CloseButton');
       this.closeButton.addEventListener('click', () => {
         this.close();

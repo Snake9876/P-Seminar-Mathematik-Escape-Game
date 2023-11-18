@@ -20,7 +20,7 @@ class WinScreen {
     this.element = document.createElement("div");
     this.element.classList.add("Screen");
     this.element.innerHTML = (`
-      <img class="Screen_logo" src="/images/ui/win.png" />
+      <img class="Screen_logo" src="/images/ui/winscreen.png" />
     `)
   }
 

@@ -1194,10 +1194,10 @@ window.OverworldMaps = {
         y: utils.withGrid(5),
         direction: "down",
         src: "/images/gameObjects/objects/rubblePile.png",
-        shadowImg: false,
+        shadowImg: true,
         talking: [
           {
-            required: ["GOT_METERSTICK"],
+            required: ["Q2_INTRO", "GOT_METERSTICK"],
             events: [
               { type: "textMessage", name: "playerName",
                 text: "Der Durchmesser der Grundfläche ist m..."
@@ -1205,17 +1205,8 @@ window.OverworldMaps = {
               { type: "textMessage", name: "playerName",
                 text: "...und der Berg ist m hoch."
               },
-              /*Aufgabe-2:
-
-              { type: "openModal", fileRef: "questionModal", modalRef: "q2"} --> should reference object 1,
-
-              On complete:
-
-              Berg entfernen? 
-              Set-Timer -3min
-              Dismount spirte
-              { type: "textMessage", name: "playerName", text: "Oh nein, das war der falsche Berg!" },
-              */
+              { type: "openModal", fileRef: "QuestionModal", modalRef: "q22"} 
+              
             ]
           }
         ]
@@ -1237,16 +1228,16 @@ window.OverworldMaps = {
               { type: "textMessage", name: "playerName",
                 text: "...und der Berg ist m hoch."
               },
-              { type: "openModal", fileRef: "questionModal", modalRef: "q2"}          
+              { type: "openModal", fileRef: "QuestionModal", modalRef: "q21"}          
             ]
           }
         ], 
       },
       BellaMedic: {
         type: "Person",
-        x: utils.withGrid(3),
-        y: utils.withGrid(3),
-        direction: "down",
+        x: utils.withGrid(4),
+        y: utils.withGrid(5),
+        direction: "left",
         src: "/images/gameObjects/people/bellaMedic.png",
         shadowImg: true,
         requiredFlags: ["Q4_INTRO"],
@@ -1306,38 +1297,31 @@ window.OverworldMaps = {
         shadowImg: false,
         talking: [
           {      
-            required: ["Q4_IN_PROGRESS"],
+            //required: ["Q4_IN_PROGRESS"],
             events: [
-              { type: "Textmessage", name: "playerName", text: "Hm, wo haben wir es denn?" },
+              { type: "textMessage", name: "playerName", text: "Hm, wo haben wir es denn?" },
               {
                 type: "stand",
                 who: "hero",
                 direction: "up",
                 time: 500
               },
-              { type: "Textmessage", name: "playerName", text: "Einführung in elektrische Schaltkreise..." },
+              { type: "textMessage", name: "playerName", text: "Einführung in elektrische Schaltkreise..." },
               {
                 type: "stand",
                 who: "hero",
                 direction: "up",
                 time: 500
               },
-              { type: "Textmessage", name: "playerName", text: "Einführung in elektrische Schaltkreise..." },
+              { type: "textMessage", name: "playerName", text: "50 Rezepte für die Weihnachtszeit..." },
+              { type: "textMessage", name: "playerName", text: "Warum steht das hier?" },
               {
                 type: "stand",
                 who: "hero",
                 direction: "up",
                 time: 500
               },
-              { type: "Textmessage", name: "playerName", text: "50 Rezepte für die Weihnachtszeit..." },
-              { type: "Textmessage", name: "playerName", text: "Warum steht das hier?" },
-              {
-                type: "stand",
-                who: "hero",
-                direction: "up",
-                time: 500
-              },
-              { type: "Textmessage", name: "playerName", text: "Aha! Signaltheorie!" },
+              { type: "textMessage", name: "playerName", text: "Aha! Signaltheorie!" },
               {
                 type: "stand",
                 who: "hero",
@@ -1359,35 +1343,35 @@ window.OverworldMaps = {
                 direction: "up",
                 time: 250
               },
-              { type: "Textmessage", name: "playerName", text: "... das Störsignal mit einer Gegenfunktion destruktiv interferieren..." },
+              { type: "textMessage", name: "playerName", text: "... das Störsignal mit einer Gegenfunktion destruktiv interferieren..." },
               {
                 type: "stand",
                 who: "hero",
                 direction: "up",
                 time: 500
               },
-              { type: "Textmessage", name: "playerName", text: "...gleiche Frequenz..." },
+              { type: "textMessage", name: "playerName", text: "...gleiche Frequenz..." },
               {
                 type: "stand",
                 who: "hero",
                 direction: "up",
                 time: 500
               },
-              { type: "Textmessage", name: "playerName", text: "...gleiche Verschiebung in x- und y-Richtung..." },
+              { type: "textMessage", name: "playerName", text: "...gleiche Verschiebung in x- und y-Richtung..." },
               {
                 type: "stand",
                 who: "hero",
                 direction: "up",
                 time: 500
               },
-              { type: "Textmessage", name: "playerName", text: "...umgekehrte Amplitude..." },
+              { type: "textMessage", name: "playerName", text: "...umgekehrte Amplitude..." },
               {
                 type: "stand",
                 who: "hero",
                 direction: "up",
                 time: 500
               },
-              { type: "Textmessage", name: "playerName", text: "Damit sollte es gehen!" },
+              { type: "textMessage", name: "playerName", text: "Damit sollte es gehen!" },
               
             ]
           }
@@ -1491,10 +1475,10 @@ window.OverworldMaps = {
       },
       CommsPanel: {
         type: "Person",
-        x: utils.withGrid(5),
-        y: utils.withGrid(9),
+        x: utils.withGrid(4),
+        y: utils.withGrid(2),
         direction: "down",
-        src: "/images/gameObjects/objects/door.png",
+        src: "/images/gameObjects/objects/disabledMonitor.png",
         shadowImg: false,
         talking: [
           {      
@@ -1860,14 +1844,14 @@ window.OverworldMaps = {
               },
               { type: "textMessage", name: "Bella", text: "Oh nein, wie schrecklich!" },
               { type: "textMessage", name: "Bella", text: "Bring mich bitte zu ihm!" },
-              { type: "addStoryFlag", flag: "TALKED_TO_MEDIC" },
+              { type: "addStoryFlag", flag: "Q4_INTRO" },
               {
                 type: "changeMap",
                 map: "Cafeteria",
-                x: utils.withGrid(1),
-                y: utils.withGrid(6),
-                direction: "right",
-                face: "up",
+                x: utils.withGrid(5),
+                y: utils.withGrid(5),
+                direction: "left",
+                face: "left",
               },
               { 
                 type: "stand",

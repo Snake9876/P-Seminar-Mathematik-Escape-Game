@@ -1,6 +1,7 @@
 class OverworldEvent {
-  constructor({ map, event }) {
+  constructor({ map, hud, event }) {
     this.map = map;
+    this.hud = hud;
     this.event = event;
     this.classMap = {
       "HudModal": HudModals,
@@ -9,11 +10,21 @@ class OverworldEvent {
   }
 
   toggleOxygenBar(resolve) {
+    //Inject oxygen bar into DOM
+    const container = document.querySelector(".game-container");
+    this.hud.injectBar(container);
+
+    //Kick off tracker increase
     this.map.overworld.progress.isTrackerEnabled = this.event.bool || !this.map.overworld.progress.isTrackerEnabled;
     resolve();
   }
 
   toggleTimer(resolve) {
+    //Inject timer into DOM
+    const container = document.querySelector(".game-container");
+    this.hud.injectTimer(container);
+
+    //Kick off timer
     this.map.overworld.progress.isTimerEnabled = this.event.bool || !this.map.overworld.progress.isTimerEnabled;
     resolve();
   }

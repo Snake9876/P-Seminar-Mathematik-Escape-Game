@@ -130,12 +130,14 @@ class QuestionModals {
           <button class="CloseButton">&times;</button>
         </div>
         <div class="ModalContent">
-          <img id="O2-img" src="/images/questions/Sauerstoffflasche.jpg">
+          <div class="geogebraContainer">
+            <iframe id="ggb-frame" scrolling="no" title="GeoGebraApplet" src="https://www.geogebra.org/calculator/ryzddfdd" ></iframe>
+          </div>
           <p>Lorem</p>
           <input class="inputBar" type="text" placeholder="Antwort" id="answer-field1" maxlength="20">
           <button class="checkButton">Check</button>
         </div>
-      `);
+      `)
 
     }
 
@@ -275,6 +277,9 @@ class QuestionModals {
                   { type: "effect", sound: "sounds/chat.wav"},
                   { type: "toggleOxygenBar" },
                   { type: "textMessage", name: "Füllstation", text: "Sauerstoff aufgefüllt." },
+                  { type: "removeStoryFlag", flag: "Q1_IN_PROGRESS" },
+                  { type: "addStoryFlag", flag: "O2_ENABLED" },
+                  { type: "addStoryFlag", flag: "Q1_COMPLETED" },
                   {
                     type: "stand",
                     who: "hero",

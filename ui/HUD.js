@@ -37,8 +37,6 @@ class HUD {
         <rect x=0 y=4 width="100%" height=1 fill="#00b3ff" />
       </svg>
     `);
-    
-    this.fill = this.oxygenBarElement.querySelectorAll(".OxygenContainer > rect");
 
     //Timer
     this.timerElement = document.createElement("div");
@@ -55,6 +53,7 @@ class HUD {
     //Update oxygen percent fills
     this.tracker = value || 0;
     this.percentage = (1-(Math.floor(this.tracker/4)/5)) * 100;
+    this.fill = document.querySelectorAll(".OxygenContainer > rect");
     this.fill.forEach(rect => rect.style.width = `${this.percentage}%`);
 
   }
@@ -101,9 +100,28 @@ class HUD {
   init(container) {
     this.createElement();
     container.append(this.buttonArrayElement);
+
+    if(this.progress.isTrackerEnabled) {
+      container.append(this.oxygenBarElement);
+      this.updateFill();
+    
+    }
+
+    if(this.progress.isTimerEnabled) {
+      container.append(this.timerElement);
+
+    }
+
+  }
+
+  injectBar(container) {
     container.append(this.oxygenBarElement);
-    container.append(this.timerElement);
     this.updateFill();
+
+  }
+
+  injectTimer(container) {
+    container.append(this.timerElement);
 
   }
 

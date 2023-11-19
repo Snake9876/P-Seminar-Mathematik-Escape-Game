@@ -8,7 +8,7 @@ class Progress {
     this.isTrackerEnabled = false;
     this.roomTracker = 0;
     this.isTimerEnabled = false;
-    this.timerValue = 10;
+    this.timerValue = 1200;
     this.storyFlags = {
       //Story-Flags
       "SEEN_INTRO": true,
@@ -46,6 +46,7 @@ class Progress {
       "GOT_KEYCARD": false,
       "GOT_ITEM_5": false,
       "GOT_ITEM_6": false,
+      "O2_ENABLED": false,
     };
     this.saveFileKey = "EscapeGame_SaveFile1";
   }

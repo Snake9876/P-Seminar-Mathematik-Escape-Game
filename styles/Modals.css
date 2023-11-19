@@ -347,3 +347,23 @@
     border-radius: 5px;
     width: 150px;
   }
+
+  .geogebraContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0;
+    overflow: hidden;
+    border: 0px;
+
+  }
+
+  @media screen and (-webkit-min-device-pixel-ratio:0) {
+    #ggb-frame {
+      width: 280px;
+      border: 0px;
+      zoom: 1.8;
+      scale: 25%;
+    }
+  }

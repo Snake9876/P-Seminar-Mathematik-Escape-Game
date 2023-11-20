@@ -868,6 +868,22 @@ window.OverworldMaps = {
             ]
           }
         ]      
+      }],
+      [utils.asGridCoord(5,4)]: [{
+        scenarios: [
+          {
+            events: [
+              {
+                type: "changeMap",
+                map: "Hangar",
+                x: utils.withGrid(13),
+                y: utils.withGrid(15),
+                direction: "up",
+                face: "right",
+              }
+            ]
+          }
+        ]      
       }]
     }
   },
@@ -1586,7 +1602,7 @@ window.OverworldMaps = {
       },
       CommsPanel: {
         type: "Person",
-        x: utils.withGrid(4),
+        x: utils.withGrid(5),
         y: utils.withGrid(2),
         direction: "down",
         src: "/images/gameObjects/objects/disabledMonitor.png",
@@ -1641,9 +1657,9 @@ window.OverworldMaps = {
     walls: function() {
       let walls = {};
       ["2,8","3,8","4,8","5,8","6,8","7,8","8,8",
-      "9,3","9,4","9,5","9,6","9,7",
-      "2,2","3,2","4,2","5,2","6,1","7,2","8,2",
-      "1,3","2,4","3,5","2,6","1,7",
+      "8,3","9,4","9,5","9,6","9,7",
+      "2,3","3,3","4,3","5,2","6,1","7,2",
+      "1,3","1,4","2,5","3,5","2,6","1,7",
       ].forEach(coord => {
         let [x,y] = coord.split(",");
         walls[utils.asGridCoord(x,y)] = true;
@@ -2165,79 +2181,105 @@ window.OverworldMaps = {
         x: utils.withGrid(7),
         y: utils.withGrid(10),
         direction: "up",
-      }
-    },
-    cutsceneSpaces: {
-      [utils.asGridCoord(6,10)]: [{
-        scenarios: [
+      },
+      CargoDoor: {
+        type: "Person",
+        x: utils.withGrid(3),
+        y: utils.withGrid(5),
+        direction: "up",
+        src: "/images/gameObjects/objects/door.png",
+        shadowImg: false,
+        talking: [
           {
-            required: ["SEEN_INTRO"],
+            required: ["Q5_INTRO"],
             events: [
+              { type: "effect", sound: "sounds/knocking.wav"},
               {
-                type: "effect",
-                visual: "alarm",
-                toggle: true,
+                type: "stand",
+                who: "hero",
+                direction: "left",
+                time: 1000,
               },
-              { 
-                type: "changeMap", 
-                map: "Lobby",
-                x: utils.withGrid(7),
-                y: utils.withGrid(6),
-                direction: "up",
-                face: "down",
-              },
-              {
-                type: "removeStoryFlag",
-                flag: "SEEN_INTRO"
-              }
+              { type: "textMessage", name: "playerName", text: "Langsam ist das echt nicht mehr witzig!"},
+              { type: "textMessage", name: "playerName", text: "Wie war der Code noch gleich?"},
+              { type: "textMessage", name: "playerName", text: "Zum Glück kann sich Berny sowas nicht merken..."},
+              { type: "textMessage", name: "playerName", text: "... er hat einen Zettel dafür!"},
+              { type: "textMessage", name: "playerName", text: "Der muss doch hier irgendwo im Hangar sein!"},
             ]
           },
           {
             events: [
-              { 
-                type: "changeMap", 
-                map: "Lobby",
-                x: utils.withGrid(7),
-                y: utils.withGrid(6),
+              { type: "effect", sound: "sounds/knocking.wav"},
+              {
+                type: "stand",
+                who: "hero",
                 direction: "up",
-                face: "down",
-              }
+                time: 1000,
+              },
+              { type: "textMessage", 
+              text: "*Es scheint niemand zu antworten..."},
             ]
           }
         ]
-      }],
-      [utils.asGridCoord(7,10)]: [{
-        scenarios: [
+      },
+      keypad: {
+        type: "Person",
+        x: utils.withGrid(4),
+        y: utils.withGrid(5),
+        direction: "right",
+        src: "/images/gameObjects/objects/keypad.png",
+        shadowImg: false,
+        talking: [
           {
-            required: ["SEEN_INTRO"],
             events: [
-              {
-                type: "effect",
-                visual: "alarm",
-                toggle: true,
-              },
-              { 
-                type: "changeMap", 
-                map: "Lobby",
-                x: utils.withGrid(6),
-                y: utils.withGrid(6),
-                direction: "up",
-                face: "down",
-              },
-              {
-                type: "removeStoryFlag",
-                flag: "SEEN_INTRO"
-              }
+              { type: "openModal", fileRef: "QuestionModal", modalRef: "q5" } 
+            ]
+          }
+        ]
+      },
+      note: {
+        type: "Person",
+        x: utils.withGrid(8),
+        y: utils.withGrid(7),
+        direction: "right",
+        src: "/images/gameObjects/objects/note.png",
+        requiredFlags: ["Q5_INTRO"],
+        shadowImg: false,
+        talking: [
+          {
+            required: ["Q5_IN_PROGRESS"],
+            events: [
+              { type: "textMessage", name: "playerName",
+              text: "Hier steht ich muss ..."},
             ]
           },
           {
             events: [
+              { type: "textMessage", name: "",
+              text: "*Im Container befindet sich ein Zettel..."},
+              { type: "textMessage", name: "playerName",
+              text: "Da ist er ja!"},
+              { type: "textMessage", name: "playerName",
+              text: "Wie lautet jetzt der Code?"},
+              { type: "textMessage", name: "playerName",
+              text: "Hmm, hier steht ich muss ..."},
+              { type: "addStoryFlag", flag: "Q5_IN_PROGRESS"},
+            ]
+          }
+        ]
+      },
+    },
+    cutsceneSpaces: {
+      [utils.asGridCoord(13,15)]: [{
+        scenarios: [
+          {
+            events: [
               { 
                 type: "changeMap", 
-                map: "Lobby",
-                x: utils.withGrid(6),
-                y: utils.withGrid(6),
-                direction: "up",
+                map: "Ecke",
+                x: utils.withGrid(5),
+                y: utils.withGrid(4),
+                direction: "left",
                 face: "down",
               }
             ]
@@ -2247,10 +2289,12 @@ window.OverworldMaps = {
     },
     walls: function() {
       let walls = {};
-      ["1,3","2,4","3,4","4,5","5,4","6,4","7,4","8,4","9,5",
-      "10,4","11,4","12,3","13,4","13,5",
-      "13,6","13,7","13,8","13,9","1,10","2,10","3,10","4,10","5,10","6,11",
-      "7,11","8,10","9,10","10,10","11,10","12,10","0,4","0,5","1,6","2,7","1,8","0,9",
+      ["2,15","3,15","4,15","5,15","6,15","7,15","8,15","9,15","10,14","11,15","12,15","13,16","14,15","15,15",
+      "16,14","16,13","16,12","16,9","16,8","16,7","16,6","16,5","16,4","16,3",
+      "15,2","14,2","13,2","12,2","11,2","10,2","9,2","8,2","7,2","6,2","4,2","3,2",
+      "2,3","2,4","2,5","1,6","1,7","1,8","1,9","1,10","1,11","1,12","1,13","1,14",
+      "10,13","10,12","10,11","10,10","11,10","11,11","12,10","12,11","14,10","14,11","15,10","15,11",
+      "5,3","5,4","6,5","5,5","4,5",
       ].forEach(coord => {
         let [x,y] = coord.split(",");
         walls[utils.asGridCoord(x,y)] = true;

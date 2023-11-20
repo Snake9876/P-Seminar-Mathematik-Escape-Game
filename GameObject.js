@@ -1,5 +1,6 @@
 class GameObject {
   constructor(config) {
+    this.isSuited = config.isSuited;
     this.id = null;
     this.isMounted = false;
     this.hide = config.hide || false;
@@ -8,7 +9,7 @@ class GameObject {
     this.direction = config.direction || "down";
     this.sprite = new Sprite({
       gameObject: this,
-      src: config.src || "/images/gameObjects/people/hero.png",
+      src: config.src || (this.isSuited ? "/images/gameObjects/people/heroSpacesuit.png" : "/images/gameObjects/people/hero.png"),
       shadowImg: config.shadowImg == false ? "/images/gameObjects/shadows/noshadow.png" : "/images/gameObjects/shadows/shadow.png",
     });
 

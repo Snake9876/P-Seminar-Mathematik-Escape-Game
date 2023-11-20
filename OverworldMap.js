@@ -64,6 +64,7 @@ class OverworldMap {
 
       let object = this.configObjects[key];
       object.id = key;
+      object.isSuited = this.overworld.progress.storyFlags["PUT_ON_SUIT"];
       let hide = this.configObjects[key].hide || false;
 
       if((this.configObjects[key].requiredFlags || []).every(sf => {
@@ -1748,7 +1749,6 @@ window.OverworldMaps = {
               { type: "textMessage", name: "Bordcomputer", text: "SAUERSTOFFKONZENTRATION: 70%, TENDENZ FALLEND." },
               { type: "textMessage", name: "playerName", text: "Mir wird langsam echt schwindlig..." },
               { type: "textMessage", name: "playerName", text: "Ich werde wohl meinen Raumanzug brauchen!" },
-              { type: "textMessage", name: "playerName", text: "Besser füll ich vorher meinen Vorrat noch auf!" },
               { type: "removeStoryFlag", flag: "Q1_INTRO" },
               { type: "addStoryFlag", flag: "Q1_IN_PROGRESS" },
             ]
@@ -1764,7 +1764,7 @@ window.OverworldMaps = {
         shadowImg: false,
         talking: [
           {
-            required: ["Q1_IN_PROGRESS"],
+            required: ["Q1_IN_PROGRESS", "PUT_ON_SUIT"],
             events: [
               { type: "textMessage", name: "playerName", text: "Aber wie lang reicht mir ein Vorrat?" },  
               { type: "openModal", fileRef: "QuestionModal", modalRef: "q1" },
@@ -1775,6 +1775,37 @@ window.OverworldMaps = {
             events: [
               { type: "effect", sound: "sounds/chat.wav"},
               { type: "textMessage", name:"Füllstation", text: "Sauerstoff aufgefüllt.", resetTracker: true },
+            ]
+          }
+        ]
+      },
+      spacesuit: {
+        type: "Person",
+        x: utils.withGrid(2),
+        y: utils.withGrid(5),
+        direction: "down",
+        src: "/images/gameObjects/objects/spacesuit.png",
+        shadowImg: false,
+        talking: [
+          {
+            required: ["Q1_IN_PROGRESS"],
+            events: [
+              { 
+                type: "updateObject",
+                update: {
+                  id: "hero",
+                  spriteSrc: "/images/gameObjects/people/heroSpacesuit.png",
+                }
+              },
+              { 
+                type: "updateObject",
+                update: {
+                  id: "spacesuit",
+                  hide: true,
+                }
+              },
+              { type: "textMessage", name: "playerName", text: "Besser füll ich vorher noch meinen Vorrat auf!" },
+              { type: "addStoryFlag", flag: "PUT_ON_SUIT" },
             ]
           }
         ]
@@ -1819,9 +1850,21 @@ window.OverworldMaps = {
       [utils.asGridCoord(5,2)]: [{
         scenarios: [
           {
-            required: ["Q1_IN_PROGRESS"],
+            required: ["Q1_IN_PROGRESS", "PUT_ON_SUIT"],
             events: [
               { type: "textMessage", name: "playerName", text: "Ich sollte vorher besser meinen Sauerstoffvorrat auffüllen!" },
+              { 
+                type: "walk", 
+                who: "hero",
+                direction: "down",
+              },
+
+            ]
+          },
+          {
+            required: ["Q1_IN_PROGRESS"],
+            events: [
+              { type: "textMessage", name: "playerName", text: "Ich muss zuerst noch meinen Raumanzug anziehen!" },
               { 
                 type: "walk", 
                 who: "hero",
@@ -1868,15 +1911,25 @@ window.OverworldMaps = {
       [utils.asGridCoord(5,7)]: [{
         scenarios: [
           {
-            required: ["Q1_IN_PROGRESS"],
+            required: ["Q1_IN_PROGRESS", "PUT_ON_SUIT"],
             events: [
               { type: "textMessage", name: "playerName", text: "Ich sollte vorher besser meinen Sauerstoffvorrat auffüllen!" },
               { 
                 type: "walk", 
                 who: "hero",
                 direction: "up",
-              },
-
+              }
+            ]
+          },
+          {
+            required: ["Q1_IN_PROGRESS"],
+            events: [
+              { type: "textMessage", name: "playerName", text: "Ich muss zuerst noch meinen Raumanzug anziehen!" },
+              { 
+                type: "walk", 
+                who: "hero",
+                direction: "up",
+              }
             ]
           },
           {

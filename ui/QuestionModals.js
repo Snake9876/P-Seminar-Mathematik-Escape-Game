@@ -132,7 +132,7 @@ class QuestionModals {
           <button class="CloseButton">&times;</button>
         </div>
         <div class="ModalContent">
-          <div class="ggbContainer"></div>
+          <button class="checkButton" onclick="window.open('https://www.geogebra.org/classic/aejrg5vw?embed', '_blank').focus();">Geogebra-Applet</button>
           <p>Lorem</p>
           <input class="inputBar" type="text" placeholder="Antwort" id="answer-field1" maxlength="20">
           <button class="checkButton">Check</button>
@@ -262,30 +262,11 @@ class QuestionModals {
     this.createElement();
     container.appendChild(this.overlay)
     container.appendChild(this.questionElement);
-    
-    // Erstelle das GeoGebra-Skript-Element mit dem defer-Attribut
-    var geogebraScript = document.createElement('script');
-    geogebraScript.src = 'https://www.geogebra.org/apps/deployggb.js';
-    geogebraScript.defer = true;
-
-    // Füge das Skript zum Body hinzu (oder an ein anderes geeignetes Element)
-    document.body.appendChild(geogebraScript);
-
-    // Wenn das GeoGebra-Skript erfolgreich geladen wurde
-    geogebraScript.onload = function() {
-      // Der Code, der das GeoGebra-Applet erstellt und injiziert, kann hier platziert werden
-      var ggbApp = new GGBApplet({
-        "appName": "graphing",
-        "showToolBar": false,
-        "showAlgebraInput": false,
-        "showResetIcon": true,
-        "useBrowserForJS": true,
-        "filename": "ggbApplets/q4.ggb"
-      }, true);
-
-      // Einbettung des GeoGebra-Applets in den Container
-      ggbApp.inject('ggbContainer');
-    };
+    document.cookie1 = "_ga=null; SameSite=None; Secure";
+    document.cookie2 = "_ga_FXVLXMD21Y=null; SameSite=None; Secure";
+    document.cookie3 = "GeoGebraLangUI=null; SameSite=None; Secure";
+    document.cookie4 = "GGBSESSID=null; SameSite=None; Secure";
+    document.cookie4 = "stg_debug=null; SameSite=None; Secure";
 
     this.checkButton = document.querySelector('.checkButton');
     this.inputBar = document.querySelector('.inputBar');
@@ -462,7 +443,7 @@ class QuestionModals {
 
           break;
         case 'q4':
-          this.solution = "-sin(5,03*t+1.57)";
+          this.solution = "-sin(5,03*t-1.57)";
           this.answer = document.querySelector('.inputBar').value;
 
           //Check if Question was correct

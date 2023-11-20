@@ -46,6 +46,7 @@ class Progress {
       "GOT_KEYCARD": false,
       "GOT_ITEM_5": false,
       "GOT_ITEM_6": false,
+      "PUT_ON_SUIT": false,
       "O2_ENABLED": false,
     };
     this.saveFileKey = "EscapeGame_SaveFile1";

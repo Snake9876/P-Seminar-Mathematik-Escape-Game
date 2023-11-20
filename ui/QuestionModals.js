@@ -68,8 +68,9 @@ class QuestionModals {
           <button class="CloseButton">&times;</button>
         </div>
         <div class="ModalContent">
-          <p>Lorem</p>
-          <button class="checkButton">Entfernen</button>
+          <p>Durchmesser der Grundfläche = 30cm</p>
+          <p>Höhe = 30cm</p>
+          <button class="checkButton">Entfernen?</button>
         </div>
       `);
 
@@ -88,8 +89,9 @@ class QuestionModals {
           <button class="CloseButton">&times;</button>
         </div>
         <div class="ModalContent">
-          <p>Lorem</p>
-          <button class="checkButton">Entfernen</button>
+        <p>Durchmesser der Grundfläche = 30cm</p>
+        <p>Höhe = 30cm</p>
+          <button class="checkButton">Entfernen?</button>
         </div>
       `);
 
@@ -125,14 +127,12 @@ class QuestionModals {
       this.questionElement.innerHTML = (`
         <div class="ModalHeader">
           <div class="Title">
-            Sauerstoffvorrat
+            Störsignal
           </div>
           <button class="CloseButton">&times;</button>
         </div>
         <div class="ModalContent">
-          <div class="geogebraContainer">
-            <iframe id="ggb-frame" scrolling="no" title="GeoGebraApplet" src="https://www.geogebra.org/calculator/ryzddfdd" ></iframe>
-          </div>
+          <div class="ggbContainer"></div>
           <p>Lorem</p>
           <input class="inputBar" type="text" placeholder="Antwort" id="answer-field1" maxlength="20">
           <button class="checkButton">Check</button>
@@ -154,10 +154,20 @@ class QuestionModals {
           <button class="CloseButton">&times;</button>
         </div>
         <div class="ModalContent">
-          <img id="O2-img" src="/images/questions/Sauerstoffflasche.jpg">
-          <p>Lorem</p>
-          <input class="inputBar" type="text" placeholder="Antwort" id="answer-field1" maxlength="20">
-          <button class="checkButton">Check</button>
+          <div id="display-bar"></div>
+          <div class="keypad">
+            <button class="KeyButton" onclick="appendToDisplay('1')">1</button>
+            <button class="KeyButton" onclick="appendToDisplay('2')">2</button>
+            <button class="KeyButton" onclick="appendToDisplay('3')">3</button>
+            <button class="KeyButton" onclick="appendToDisplay('4')">4</button>
+            <button class="KeyButton" onclick="appendToDisplay('5')">5</button>
+            <button class="KeyButton" onclick="appendToDisplay('6')">6</button>
+            <button class="KeyButton" onclick="appendToDisplay('7')">7</button>
+            <button class="KeyButton" onclick="appendToDisplay('8')">8</button>
+            <button class="KeyButton" onclick="appendToDisplay('9')">9</button>
+            <button class="KeyButton" onclick="appendToDisplay('0')">0</button>
+            <button class="checkButton">Check</button>
+          </div>
         </div>
       `);
 
@@ -247,12 +257,35 @@ class QuestionModals {
     this.coreOnComplete();
   }
 
-      
+  
   async init(container) {
     this.createElement();
     container.appendChild(this.overlay)
     container.appendChild(this.questionElement);
+    
+    // Erstelle das GeoGebra-Skript-Element mit dem defer-Attribut
+    var geogebraScript = document.createElement('script');
+    geogebraScript.src = 'https://www.geogebra.org/apps/deployggb.js';
+    geogebraScript.defer = true;
 
+    // Füge das Skript zum Body hinzu (oder an ein anderes geeignetes Element)
+    document.body.appendChild(geogebraScript);
+
+    // Wenn das GeoGebra-Skript erfolgreich geladen wurde
+    geogebraScript.onload = function() {
+      // Der Code, der das GeoGebra-Applet erstellt und injiziert, kann hier platziert werden
+      var ggbApp = new GGBApplet({
+        "appName": "graphing",
+        "showToolBar": false,
+        "showAlgebraInput": false,
+        "showResetIcon": true,
+        "useBrowserForJS": true,
+        "filename": "ggbApplets/q4.ggb"
+      }, true);
+
+      // Einbettung des GeoGebra-Applets in den Container
+      ggbApp.inject('ggbContainer');
+    };
 
     this.checkButton = document.querySelector('.checkButton');
     this.inputBar = document.querySelector('.inputBar');
@@ -429,7 +462,7 @@ class QuestionModals {
 
           break;
         case 'q4':
-          this.solution = "20";
+          this.solution = "-sin(5,03*t+1.57)";
           this.answer = document.querySelector('.inputBar').value;
 
           //Check if Question was correct

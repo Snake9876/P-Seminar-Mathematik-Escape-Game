@@ -1350,7 +1350,7 @@ window.OverworldMaps = {
         direction: "left",
         src: "/images/gameObjects/people/bellaMedic.png",
         shadowImg: true,
-        requiredFlags: ["Q4_INTRO"],
+        requiredFlags: ["Q3_INTRO"],
         talking: [
           {
             required: ["Q4_COMPLETED"],
@@ -1935,9 +1935,9 @@ window.OverworldMaps = {
         direction: "down",
         src: "/images/gameObjects/people/bellaMedic.png",
         shadowImg: true,
+        requiredFlags: ["Q2_COMPLETED"],
         talking: [
           {
-            //required: ["Q2_COMPLETED"],
             events: [
               { type: "textMessage", name: "Bella", text: "Oh? Hallo!", faceHero: "BellaMedic" },
               { type: "textMessage", name: "Bella", text: "Was ist denn passiert?"},
@@ -1957,7 +1957,8 @@ window.OverworldMaps = {
               },
               { type: "textMessage", name: "Bella", text: "Oh nein, wie schrecklich!" },
               { type: "textMessage", name: "Bella", text: "Bring mich bitte zu ihm!" },
-              { type: "addStoryFlag", flag: "Q4_INTRO" },
+              { type: "removeStoryFlag", flag: "Q2_COMPLETED" },
+              { type: "addStoryFlag", flag: "Q3_INTRO" },
               {
                 type: "changeMap",
                 map: "Cafeteria",
@@ -1972,24 +1973,12 @@ window.OverworldMaps = {
                 direction: "left",
                 time: 1000,
               },
-              { type: "textMessage", name: "Bella", text: "" },
-              { type: "textMessage", name: "playerName", text: "Kann ich dir irgendwie helfen?" },
-              { type: "textMessage", name: "Bella", text: "Ja, du kannst ..." },
-              /*Aufgabe-3:
-              
+              { type: "textMessage", name: "Bella", text: "Hmm, sein Herz schlägt unregelmäßig..." },
+              { type: "textMessage", name: "Bella", text: "Wenn wir nichts unternehmen, droht er einen Herzstillstand zu erleiden!" },
+              { type: "textMessage", name: "playerName", text: "Kann ich dir denn gar nicht helfen?" },
+              { type: "textMessage", name: "Bella", text: "Hmm, da gibt es tatsächlich etwas!" },
               { type: "openModal", fileRef: "questionModal", modalRef: "q3"}
 
-              On complete:
-
-              { type: "textMessage", name: "Bella", text: "So, das wird ihn eine Zeit lang stabilisieren." },
-              { type: "textMessage", name: "Bella", text: "Aber eine Dauerlösung ist das nicht!" },
-              { type: "textMessage", name: "playerName", text: "Kann ich denn schon mit ihm sprechen?" },
-              { type: "textMessage", name: "Bella", text: "Noch ist er bewusstlos..." },
-              { type: "textMessage", name: "Bella", text: "Setze in der Zwischenzeit einen Notruf ab!" },
-              { type: "textMessage", name: "playerName", text: "Gute Idee! Ich beeile mich!" },
-              { type: "addStoryFlag", flag: "Q4_INTRO" },
-
-              */
             ]
           },
         ]

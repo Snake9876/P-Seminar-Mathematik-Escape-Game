@@ -41,14 +41,17 @@ class OverworldEvent {
       this.obj.src = this.event.update.spriteSrc;
     }
 
+    this.map.overworld.progress.OverworldMaps = window.OverworldMaps;
+
     //Reload map
-    this.map.overworld.startMap( window.OverworldMaps[this.map.mapId], {
+    this.map.overworld.startMap( this.map.overworld.progress.OverworldMaps[this.map.mapId], {
       x: this.hero.x,
       y: this.hero.y,
       direction: this.hero.direction,
     });
 
     resolve();
+
   }
 
   /*delay(resolve) {  
@@ -205,7 +208,7 @@ class OverworldEvent {
           })
           this.gameOverScreen.init(container);
         } else {
-          this.map.overworld.startMap( window.OverworldMaps[this.event.map], {
+          this.map.overworld.startMap( this.map.overworld.progress.OverworldMaps[this.event.map], {
             x: this.event.x,
             y: this.event.y,
             direction: this.event.direction,
@@ -214,6 +217,11 @@ class OverworldEvent {
 
         resolve();
         sceneTransition.fadeOut();
+
+        if(this.event.cutscene) {
+          this.map.isCutscenePlaying = true;
+
+        }
 
       })
     }

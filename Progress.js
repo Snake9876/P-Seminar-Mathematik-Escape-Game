@@ -1,10 +1,11 @@
 class Progress {
-  constructor() {
+  constructor({ map }) {
     this.mapId = "Brücke";
+    this.OverworldMaps = window.OverworldMaps;
     this.startingHeroX = 0;
     this.startingHeroY = 0;
     this.startingHeroDirection = "down";
-    this.playerName = this.playerName;
+    this.playerName = "Mathe-Held";
     this.isTrackerEnabled = false;
     this.roomTracker = 0;
     this.isTimerEnabled = false;
@@ -18,14 +19,12 @@ class Progress {
       "Q1_COMPLETED": false,
       //Cafeteria-Task (Rubble)
       "Q2_INTRO": false,
+      "Q2_IN_PROGRESS": false,
       "Q2_COMPLETED": false,
-      //Cafeteria-Task (Medic)
-      "Q3_INTRO": false,
-      "Q3_COMPLETED": false,
       //Comms-Task
-      "Q4_INTRO": false,
-      "Q4_IN_PROGRESS": false,
-      "Q4_COMPLETED": false,
+      "Q3_INTRO": false,
+      "Q3_IN_PROGRESS": false,
+      "Q3_COMPLETED": false,
       //Cargo-Task
       "Q5_INTRO": false,
       "Q5_IN_PROGRESS": false,
@@ -55,6 +54,7 @@ class Progress {
   save() {
     window.localStorage.setItem(this.saveFileKey, JSON.stringify({
       mapId: this.mapId,
+      OverworldMaps: window.OverworldMaps,
       startingHeroX: this.startingHeroX,
       startingHeroY: this.startingHeroY,
       startingHeroDirection: this.startingHeroDirection,
@@ -65,7 +65,11 @@ class Progress {
       timerValue: this.timerValue,
       storyFlags: this.storyFlags,
     }))
+
+
+    console.log(window.localStorage);
   }
+
 
   getSaveFile() {
 
@@ -81,6 +85,7 @@ class Progress {
     const file = this.getSaveFile();
     if (file) {
       this.mapId = file.mapId;
+      this.OverworldMaps = file.OverworldMaps;
       this.startingHeroX = file.startingHeroX;
       this.startingHeroY = file.startingHeroY;
       this.startingHeroDirection = file.startingHeroDirection;

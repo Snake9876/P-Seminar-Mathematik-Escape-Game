@@ -264,7 +264,9 @@ class Overworld {
 
   const container = document.querySelector(".game-container");
   //Create a new Progress tracker
-  this.progress = new Progress({});
+  this.progress = new Progress({
+    map: this.map
+  });
 
   //Show the title screen
   this.titleScreen = new TitleScreen({

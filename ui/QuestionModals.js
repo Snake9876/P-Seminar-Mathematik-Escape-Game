@@ -457,8 +457,8 @@ class QuestionModals {
               setTimeout(() => {
                 this.map.startCutscene([
                   //Custom event 4
-                  { type: "addStoryFlag", flag: "Q4_COMPLETE" },
-                  { type: "removeStoryFlag", flag: "Q4_IN_PROGRESS" },
+                  { type: "addStoryFlag", flag: "Q3_COMPLETE" },
+                  { type: "removeStoryFlag", flag: "Q3_IN_PROGRESS" },
                   { type: "textMessage", name: this.playerName, text: "Ok, wir haben wieder ein Signal!" },
                   {
                     type: "stand",
@@ -495,6 +495,13 @@ class QuestionModals {
               setTimeout(() => {
                 this.map.startCutscene([
                   //Custom event 5
+                  {
+                    type: "updateObject",
+                    update: {
+                      id: "CargoDoor",
+                      hide: true,
+                    }
+                  }
                 ])
               }, 250);
             }

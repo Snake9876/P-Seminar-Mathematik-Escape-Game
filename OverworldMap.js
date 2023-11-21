@@ -75,10 +75,11 @@ class OverworldMap {
         if (object.type === "Person") {
           instance = new Person(object);
         }
+
         this.gameObjects[key] = instance;
         this.gameObjects[key].id = key;
         instance.mount(this);
-
+        
       }
     })
 
@@ -931,7 +932,7 @@ window.OverworldMaps = {
                 direction: "left",
                 time: 1000,
               },
-              { type: "textMessage", name: "playerName", text: "Verdammt, sie klemmt!" },
+              { type: "textMessage", name: "playerName", text: "Verdammt, sie lässt sich nicht öffnen!" },
               { type: "textMessage", name: "playerName", text: "Dass das gerade jetzt passieren muss!" },
               { type: "textMessage", name: "playerName", text: "Wo ist unser Ingenieur Yuri, wenn man ihn braucht?" },
               { type: "textMessage", name: "playerName", text: "Wollte er sich nicht gerade einen Kaffee holen?" },
@@ -1370,7 +1371,7 @@ window.OverworldMaps = {
         requiredFlags: ["Q3_INTRO"],
         talking: [
           {
-            required: ["Q4_COMPLETED"],
+            required: ["Q3_COMPLETED"],
             events: [
               { type: "textMessage", name: "Bella", text: "Hast du den Notruf abgesetzt?" },
               { type: "textMessage", name: "playerName", text: "Hallo Bella! Es kam etwas dazwischen, aber ja." },
@@ -1379,8 +1380,8 @@ window.OverworldMaps = {
               { type: "textMessage", name: "Yuri", text: "...aber du darfst." },
               { type: "textMessage", name: "playerName", text: "Gott sei Dank, geht's dir gut!" },
               { type: "textMessage", name: "Yuri", text: "So leicht lass ich mich nicht unterkriegen!" },
-              { type: "textMessage", name: "playerName", text: "Ha! Ein guter Witz nach dem anderen!" },
-              { type: "textMessage", name: "Yuri", text: "Hey! ...Touché..." },
+              { type: "textMessage", name: "playerName", text: "Ha! Ein Witz nach dem anderen!" },
+              { type: "textMessage", name: "Yuri", text: "Hey! Touché..." },
               { type: "textMessage", name: "Yuri", text: "Was ist überhaupt los?" },
               { type: "textMessage", name: "playerName", text: "Durch die Kollision ist wohl die Steuerung ausgefallen..." },
               { type: "textMessage", name: "playerName", text: "...und nun klemmt die Tür zum..." },
@@ -1392,14 +1393,18 @@ window.OverworldMaps = {
               { type: "textMessage", name: "Yuri", text: "Wir dürfen keine Zeit verlieee..." },
               { type: "textMessage", name: "Bella", text: "Yuri! Dein Bein ist doch gebrochen!" },
               { type: "textMessage", name: "Yuri", text: "Verdammt! Du muss wohl hier bleiben." },
-              { type: "textMessage", name: "Yuri", text: "Du sagtest du Tür klemmt? Neben meinem Bett liegt eine Brechstange." },
-              { type: "textMessage", name: "Yuri", text: "Damit sollte es klappen" },
+              { type: "textMessage", name: "Yuri", text: "Du sagtest du Tür lässt sich nicht öffnen?" },
+              { type: "textMessage", name: "Yuri", text: "Die Schlüsselkarte liegt im Kontrollraum des Hangars." },
+              { type: "textMessage", name: "Yuri", text: "Damit sollte es klappen." },
+              { type: "textMessage", name: "playerName", text: "Ich bin schon auf dem Weg!" },
+              { type: "addStoryFlag", flag: "Q4_INTRO" },
+              //Yuri Brechstange
+              { type: "textMessage", name: "playerName", text: "In meinem Spind liegt ne Brechstange." },
               { type: "textMessage", name: "playerName", text: "Warte, wieso...?" },
               { type: "textMessage", name: "Yuri", text: "Man kann nie wissen..." },
               { type: "textMessage", name: "playerName", text: "Aber...?" },
               { type: "textMessage", name: "Yuri", text: "KLEMMT JETZT DIE VERDAMMTE TÜR, ODER NICHT?!" },
               { type: "textMessage", name: "playerName", text: "Ich bin schon auf dem Weg!" },
-              { type: "addStoryFlag", flag: "Q5_INTRO" }
             ]
           }, 
           {
@@ -1769,6 +1774,19 @@ window.OverworldMaps = {
               { type: "addStoryFlag", flag: "Q1_IN_PROGRESS" },
             ]
           },
+          {
+            required: ["PUT_ON_SUIT"],
+            events: [
+              { type: "textMessage", name: "playerName", text: "Besser füll ich vorher noch meinen Vorrat auf!" },
+            ]
+          },
+          {
+            required: ["Q1_IN_PROGRESS"],
+            events: [
+              { type: "textMessage", name: "playerName", text: "Mir wird langsam echt schwindlig..." },
+              { type: "textMessage", name: "playerName", text: "Ich werde wohl meinen Raumanzug brauchen!" },
+            ]
+          }
         ]
       },
       oxygenContainer: {
@@ -1899,6 +1917,7 @@ window.OverworldMaps = {
                 y: utils.withGrid(3),
                 direction: "right",
                 face: "up",
+                cutscene: true
               },
               { type: "effect", sound: "sounds/alarm.wav"},
               { type: "textMessage", name: "Bordcomputer", text: "SYSTEMWARNUNG!! RAUMSCHIFF AUF KOLLISIONSKURS." },
@@ -1958,6 +1977,7 @@ window.OverworldMaps = {
                 y: utils.withGrid(2),
                 direction: "down",
                 face: "down",
+                cutscene: true
               },
               { type: "effect", sound: "sounds/alarm.wav"},
               { type: "textMessage", name: "Bordcomputer", text: "SYSTEMWARNUNG!! RAUMSCHIFF AUF KOLLISIONSKURS." },
@@ -2222,7 +2242,7 @@ window.OverworldMaps = {
           }
         ]
       },
-      keypad: {
+      Keypad: {
         type: "Person",
         x: utils.withGrid(4),
         y: utils.withGrid(5),
@@ -2237,13 +2257,72 @@ window.OverworldMaps = {
           }
         ]
       },
-      note: {
+      noteCrate: {
         type: "Person",
-        x: utils.withGrid(8),
+        x: utils.withGrid(11),
         y: utils.withGrid(7),
         direction: "right",
-        src: "/images/gameObjects/objects/note.png",
-        requiredFlags: ["Q5_INTRO"],
+        src: "/images/gameObjects/objects/crateCover.png",
+        shadowImg: false,
+        talking: [
+          {
+            required: ["Q5_IN_PROGRESS"],
+            events: [
+              { type: "textMessage", name: "playerName",
+              text: "Hier steht ich muss ..."},
+            ]
+          },
+          {
+            events: [
+              { type: "textMessage", name: "",
+              text: "*Im Container befindet sich ein Zettel..."},
+              { type: "textMessage", name: "playerName",
+              text: "Da ist er ja!"},
+              { type: "textMessage", name: "playerName",
+              text: "Wie lautet jetzt der Code?"},
+              { type: "textMessage", name: "playerName",
+              text: "Hmm, hier steht ich muss ..."},
+              { type: "addStoryFlag", flag: "Q5_IN_PROGRESS"},
+            ]
+          }
+        ]
+      },
+      RedBallCrate: {
+        type: "Person",
+        x: utils.withGrid(4),
+        y: utils.withGrid(10),
+        direction: "right",
+        src: "/images/gameObjects/objects/crateCover.png",
+        shadowImg: false,
+        talking: [
+          {
+            required: ["Q5_IN_PROGRESS"],
+            events: [
+              { type: "textMessage", name: "playerName",
+              text: "Hier steht ich muss ..."},
+            ]
+          },
+          {
+            events: [
+              { type: "textMessage", name: "",
+              text: "*Im Container befindet sich ein Zettel..."},
+              { type: "textMessage", name: "playerName",
+              text: "Da ist er ja!"},
+              { type: "textMessage", name: "playerName",
+              text: "Wie lautet jetzt der Code?"},
+              { type: "textMessage", name: "playerName",
+              text: "Hmm, hier steht ich muss ..."},
+              { type: "addStoryFlag", flag: "Q5_IN_PROGRESS"},
+            ]
+          }
+        ]
+      },
+      BlueBallCrate: {
+        type: "Person",
+        x: utils.withGrid(6),
+        y: utils.withGrid(5),
+        direction: "right",
+        src: "/images/gameObjects/objects/crateCover.png",
         shadowImg: false,
         talking: [
           {
@@ -2295,6 +2374,7 @@ window.OverworldMaps = {
       "2,3","2,4","2,5","1,6","1,7","1,8","1,9","1,10","1,11","1,12","1,13","1,14",
       "10,13","10,12","10,11","10,10","11,10","11,11","12,10","12,11","14,10","14,11","15,10","15,11",
       "5,3","5,4","6,5","5,5","4,5",
+      "3,8","4,8","5,8","8,4","9,4","10,4","8,9","8,10","8,11","13,4","14,4","13,5","14,5","13,6","14,6",
       ].forEach(coord => {
         let [x,y] = coord.split(",");
         walls[utils.asGridCoord(x,y)] = true;

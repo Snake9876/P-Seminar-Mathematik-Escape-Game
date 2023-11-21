@@ -29,6 +29,12 @@ class OverworldEvent {
     resolve();
   }
 
+  updateTimer(resolve) {
+    this.map.overworld.progress.timerValue = this.map.overworld.progress.timerValue + this.event.value;
+
+    resolve();
+  }
+
   updateObject(resolve) {
     this.config = this.event.update;
     this.obj = window.OverworldMaps[this.map.mapId].configObjects[this.config.id];

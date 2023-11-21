@@ -351,8 +351,8 @@ class QuestionModals {
                       id: "Schutthaufen",
                       hide: true,
                     }
-                  }, 
-                  //Remove 2min from timer
+                  },
+                  { type: "updateTimer", value: -120 },
                   { type: "textMessage", name: "playerName", text: "Oh nein, das war der falsche Berg!" },
                 ])
               }, 250);

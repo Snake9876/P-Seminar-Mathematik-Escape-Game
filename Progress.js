@@ -1,5 +1,5 @@
 class Progress {
-  constructor({ map }) {
+  constructor() {
     this.mapId = "Brücke";
     this.OverworldMaps = window.OverworldMaps;
     this.startingHeroX = 0;
@@ -66,8 +66,6 @@ class Progress {
       storyFlags: this.storyFlags,
     }))
 
-
-    console.log(window.localStorage);
   }
 
 
@@ -85,7 +83,7 @@ class Progress {
     const file = this.getSaveFile();
     if (file) {
       this.mapId = file.mapId;
-      this.OverworldMaps = file.OverworldMaps;
+      window.OverworldMaps = file.OverworldMaps;
       this.startingHeroX = file.startingHeroX;
       this.startingHeroY = file.startingHeroY;
       this.startingHeroDirection = file.startingHeroDirection;

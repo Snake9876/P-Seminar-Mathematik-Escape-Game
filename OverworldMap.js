@@ -62,14 +62,15 @@ class OverworldMap {
 
     Object.keys(this.configObjects).forEach(key => {
 
+      this.flags = this.overworld.progress.storyFlags;
+
       let object = this.configObjects[key];
       object.id = key;
-      object.isSuited = this.overworld.progress.storyFlags["PUT_ON_SUIT"];
-      let hide = this.configObjects[key].hide || false;
+      object.isSuited = this.flags["PUT_ON_SUIT"];
 
       if((this.configObjects[key].requiredFlags || []).every(sf => {
-        return this.overworld.progress.storyFlags[sf]
-      }) && hide == false) {
+        return this.flags[sf]
+      }) && (object.hide || false) == false) {
 
         let instance;
         if (object.type === "Person") {

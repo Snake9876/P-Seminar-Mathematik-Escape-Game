@@ -30,21 +30,20 @@ class OverworldEvent {
   }
 
   updateObject(resolve) {
-    this.obj = this.map.configObjects[this.event.update.id];
+    this.config = this.event.update;
+    this.obj = window.OverworldMaps[this.map.mapId].configObjects[this.config.id];
     this.hero = this.map.gameObjects["hero"];
 
     if(this.event.update.hide !== 'undefined') {
-      this.obj.hide = this.event.update.hide;
+      this.obj.hide = this.config.hide;
     }
 
     if(this.event.update.spriteSrc !== 'undefined') {
-      this.obj.src = this.event.update.spriteSrc;
+      this.obj.src = this.config.spriteSrc;
     }
 
-    this.map.overworld.progress.OverworldMaps = window.OverworldMaps;
-
     //Reload map
-    this.map.overworld.startMap( this.map.overworld.progress.OverworldMaps[this.map.mapId], {
+    this.map.overworld.startMap( window.OverworldMaps[this.map.mapId], {
       x: this.hero.x,
       y: this.hero.y,
       direction: this.hero.direction,
@@ -208,7 +207,7 @@ class OverworldEvent {
           })
           this.gameOverScreen.init(container);
         } else {
-          this.map.overworld.startMap( this.map.overworld.progress.OverworldMaps[this.event.map], {
+          this.map.overworld.startMap( window.OverworldMaps[this.event.map], {
             x: this.event.x,
             y: this.event.y,
             direction: this.event.direction,

@@ -91,7 +91,8 @@ class OverworldMap {
 
     for (let i=0; i<events.length; i++) {
       const eventHandler = new OverworldEvent({
-        event: events[i],
+        events: events,
+        eventIndex: i,
         map: this,
         hud: this.overworld.hud,
       })
@@ -305,6 +306,7 @@ window.OverworldMaps = {
         shadowImg: false,
         talking: [
           {
+            required: ["Q7_IN_PROGRESS"],
             events: [
               { type: "effect", sound: "sounds/knocking.wav"},
               {
@@ -313,12 +315,161 @@ window.OverworldMaps = {
                 direction: "right",
                 time: 1000,
               },
-              { type: "textMessage", name: "???",
-              randomText: [
-                "AEIOU, DU GEHOERST AUCH MIT DAZU!", 
-                "Geranienauflauf", 
-                "Lorem ipsum sit dolor amet"
-              ]},
+              { 
+                type: "textMessage", name: "???",
+                randomText: [
+                  "Diese Welt ist klein, so klein...", 
+                  "Geranienauflauf", 
+                  "Lorem ipsum sit dolor amet"
+                ]
+              },
+            ]
+          },
+          {
+            required: ["Q6_IN_PROGRESS"],
+            events: [
+              { type: "effect", sound: "sounds/knocking.wav"},
+              {
+                type: "stand",
+                who: "hero",
+                direction: "right",
+                time: 1000,
+              },
+              { 
+                type: "textMessage", name: "???",
+                randomText: [
+                  "Diese Welt ist klein, so klein...", 
+                  "Geranienauflauf", 
+                  "Lorem ipsum sit dolor amet"
+                ]
+              },
+            ]
+          },
+          {
+            required: ["Q5_IN_PROGRESS"],
+            events: [
+              { type: "effect", sound: "sounds/knocking.wav"},
+              {
+                type: "stand",
+                who: "hero",
+                direction: "right",
+                time: 1000,
+              },
+              { 
+                type: "textMessage", name: "???",
+                randomText: [
+                  "Diese Welt ist klein, so klein...", 
+                  "Geranienauflauf", 
+                  "Lorem ipsum sit dolor amet"
+                ]
+              },
+            ]
+          },
+          {
+            required: ["Q4_IN_PROGRESS"],
+            events: [
+              { type: "effect", sound: "sounds/knocking.wav"},
+              {
+                type: "stand",
+                who: "hero",
+                direction: "right",
+                time: 1000,
+              },
+              { 
+                type: "textMessage", name: "???",
+                randomText: [
+                  "Diese Welt ist klein, so klein...", 
+                  "Geranienauflauf", 
+                  "Lorem ipsum sit dolor amet"
+                ]
+              },
+            ]
+          },
+          {
+            required: ["Q3_IN_PROGRESS"],
+            events: [
+              { type: "effect", sound: "sounds/knocking.wav"},
+              {
+                type: "stand",
+                who: "hero",
+                direction: "right",
+                time: 1000,
+              },
+              { 
+                type: "textMessage", name: "???",
+                randomText: [
+                  "Diese Welt ist klein, so klein...", 
+                  "Geranienauflauf", 
+                  "Lorem ipsum sit dolor amet"
+                ]
+              },
+            ]
+          },
+          {
+            required: ["Q2_IN_PROGRESS"],
+            events: [
+              { type: "effect", sound: "sounds/knocking.wav"},
+              {
+                type: "stand",
+                who: "hero",
+                direction: "right",
+                time: 1000,
+              },
+              { 
+                type: "textMessage", name: "???",
+                randomText: [
+                  "Diese Welt ist klein, so klein...", 
+                  "Geranienauflauf", 
+                  "Lorem ipsum sit dolor amet"
+                ]
+              },
+            ]
+          },
+          {
+            required: ["Q1_IN_PROGRESS"],
+            events: [
+              { type: "effect", sound: "sounds/knocking.wav"},
+              {
+                type: "stand",
+                who: "hero",
+                direction: "right",
+                time: 1000,
+              },
+              { 
+                type: "textMessage", name: "???",
+                randomText: [
+                  "Diese Welt ist klein, so klein...", 
+                  "Geranienauflauf", 
+                  "Lorem ipsum sit dolor amet"
+                ]
+              },
+            ]
+          },
+          {
+            required: ["Q1_INTRO"],
+            events: [
+              { type: "effect", sound: "sounds/knocking.wav"},
+              {
+                type: "stand",
+                who: "hero",
+                direction: "right",
+                time: 1000,
+              },
+              { type: "textMessage", name: "???", text: "AHHH! WIR WERDEN ALLE STERBEN!" },
+              { type: "textMessage", name: "playerName", text: "Huch, war das der Captain?" },
+              { type: "textMessage", name: "playerName", text: "Und so jemandem wird eine Führungsposition anvertraut!" },
+            ]
+          },
+          {
+            events: [
+              { type: "effect", sound: "sounds/knocking.wav"},
+              {
+                type: "stand",
+                who: "hero",
+                direction: "right",
+                time: 1000,
+              },
+              { type: "textMessage", name: "???", text: "AHHH! WIR WERDEN ALLE STERBEN!" }
             ]
           }
         ]
@@ -371,33 +522,17 @@ window.OverworldMaps = {
                 y: utils.withGrid(8),
                 direction: "left",
                 face: "up",
-              },
-              { 
-                type: "walk", 
-                who: "hero",
-                direction: "up",
-              },
-              {
-                type: "stand",
-                who: "hero",
-                direction: "up",
-                time: 500,
+                resumeCutscene: true
               },
               { type: "textMessage", name: "playerName", text: "Oh nein! Was ist denn hier passiert?!" },
               { type: "textMessage", name: "playerName", text: "Yuri! Bist du hier? Kannst du mich hören?" },
-              {
-                type: "stand",
-                who: "hero",
-                direction: "up",
-                time: 500,
-              },
               { type: "textMessage", name: "Yuri", text: "Hilf mir... ich bin unter... größtem Berg..." },
               { type: "textMessage", name: "playerName", text: "Die Zeit reicht nicht aus, jeden Berg wegzuräumen." },
               { type: "textMessage", name: "playerName", text: "Ich muss herausfinden, welcher der Größte ist!" },
               { type: "textMessage", name: "playerName", text: "Aber warte, die Berge sehen doch fast wie Kegel aus!" },
-              { type: "textMessage", name: "playerName", text: "Ich brauche dafür nur einen Meterstab!" },
+              { type: "textMessage", name: "playerName", text: "Jetzt brauche ich nur noch einen Meterstab!" },
               { type: "textMessage", name: "playerName", text: "Hatte ihn nicht ... zuletzt benutzt?" },
-
+              { type: "removeStoryFlag", flag: "Q2_IN_PROGRESS" }
             ]
           },
           {
@@ -411,7 +546,7 @@ window.OverworldMaps = {
                 face: "up",
               }
             ]
-          }
+          },
         ]
       }],
       [utils.asGridCoord(6,6)]: [{
@@ -567,31 +702,15 @@ window.OverworldMaps = {
                 direction: "down",
                 face: "left",
               },
-              { 
-                type: "walk", 
-                who: "hero",
-                direction: "up",
-              },
-              {
-                type: "stand",
-                who: "hero",
-                direction: "up",
-                time: 500,
-              },
               { type: "textMessage", name: "playerName", text: "Oh nein! Was ist denn hier passiert?!" },
               { type: "textMessage", name: "playerName", text: "Yuri! Bist du hier? Kannst du mich hören?" },
-              {
-                type: "stand",
-                who: "hero",
-                direction: "up",
-                time: 500,
-              },
               { type: "textMessage", name: "Yuri", text: "Hilf mir... ich bin unter... größtem Berg..." },
               { type: "textMessage", name: "playerName", text: "Die Zeit reicht nicht aus, jeden Berg wegzuräumen." },
               { type: "textMessage", name: "playerName", text: "Ich muss herausfinden, welcher der Größte ist!" },
               { type: "textMessage", name: "playerName", text: "Aber warte, die Berge sehen doch fast wie Kegel aus!" },
-              { type: "textMessage", name: "playerName", text: "Ich brauche dafür nur einen Meterstab!" },
+              { type: "textMessage", name: "playerName", text: "Jetzt brauche ich nur noch einen Meterstab!" },
               { type: "textMessage", name: "playerName", text: "Hatte ihn nicht ... zuletzt benutzt?" },
+              { type: "removeStoryFlag", flag: "Q2_IN_PROGRESS" }
 
             ]
           },
@@ -1194,31 +1313,15 @@ window.OverworldMaps = {
                 direction: "right",
                 face: "right",
               },
-              { 
-                type: "walk", 
-                who: "hero",
-                direction: "up",
-              },
-              {
-                type: "stand",
-                who: "hero",
-                direction: "up",
-                time: 500,
-              },
               { type: "textMessage", name: "playerName", text: "Oh nein! Was ist denn hier passiert?!" },
               { type: "textMessage", name: "playerName", text: "Yuri! Bist du hier? Kannst du mich hören?" },
-              {
-                type: "stand",
-                who: "hero",
-                direction: "up",
-                time: 500,
-              },
               { type: "textMessage", name: "Yuri", text: "Hilf mir... ich bin unter... größtem Berg..." },
               { type: "textMessage", name: "playerName", text: "Die Zeit reicht nicht aus, jeden Berg wegzuräumen." },
               { type: "textMessage", name: "playerName", text: "Ich muss herausfinden, welcher der Größte ist!" },
               { type: "textMessage", name: "playerName", text: "Aber warte, die Berge sehen doch fast wie Kegel aus!" },
-              { type: "textMessage", name: "playerName", text: "Ich brauche dafür nur einen Meterstab!" },
+              { type: "textMessage", name: "playerName", text: "Jetzt brauche ich nur noch einen Meterstab!" },
               { type: "textMessage", name: "playerName", text: "Hatte ihn nicht ... zuletzt benutzt?" },
+              { type: "removeStoryFlag", flag: "Q2_IN_PROGRESS" }
 
             ]
           },
@@ -1249,31 +1352,15 @@ window.OverworldMaps = {
                 direction: "right",
                 face: "right",
               },
-              { 
-                type: "walk", 
-                who: "hero",
-                direction: "up",
-              },
-              {
-                type: "stand",
-                who: "hero",
-                direction: "up",
-                time: 500,
-              },
               { type: "textMessage", name: "playerName", text: "Oh nein! Was ist denn hier passiert?!" },
               { type: "textMessage", name: "playerName", text: "Yuri! Bist du hier? Kannst du mich hören?" },
-              {
-                type: "stand",
-                who: "hero",
-                direction: "up",
-                time: 500,
-              },
               { type: "textMessage", name: "Yuri", text: "Hilf mir... ich bin unter... größtem Berg..." },
               { type: "textMessage", name: "playerName", text: "Die Zeit reicht nicht aus, jeden Berg wegzuräumen." },
               { type: "textMessage", name: "playerName", text: "Ich muss herausfinden, welcher der Größte ist!" },
               { type: "textMessage", name: "playerName", text: "Aber warte, die Berge sehen doch fast wie Kegel aus!" },
-              { type: "textMessage", name: "playerName", text: "Ich brauche dafür nur einen Meterstab!" },
+              { type: "textMessage", name: "playerName", text: "Jetzt brauche ich nur noch einen Meterstab!" },
               { type: "textMessage", name: "playerName", text: "Hatte ihn nicht ... zuletzt benutzt?" },
+              { type: "removeStoryFlag", flag: "Q2_IN_PROGRESS" }
 
             ]
           },
@@ -1978,7 +2065,7 @@ window.OverworldMaps = {
                 y: utils.withGrid(2),
                 direction: "down",
                 face: "down",
-                cutscene: true
+                resumeCutscene: true
               },
               { type: "effect", sound: "sounds/alarm.wav"},
               { type: "textMessage", name: "Bordcomputer", text: "SYSTEMWARNUNG!! RAUMSCHIFF AUF KOLLISIONSKURS." },
@@ -2056,12 +2143,6 @@ window.OverworldMaps = {
                 y: utils.withGrid(5),
                 direction: "left",
                 face: "left",
-              },
-              { 
-                type: "stand",
-                who: "hero",
-                direction: "left",
-                time: 1000,
               },
               { type: "textMessage", name: "Bella", text: "Hmm, sein Herz schlägt unregelmäßig..." },
               { type: "textMessage", name: "Bella", text: "Wenn wir nichts unternehmen, droht er einen Herzstillstand zu erleiden!" },

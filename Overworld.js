@@ -367,17 +367,10 @@ class Overworld {
       { type: "textMessage", name: "playerName", text: "Aber das ist erstmal Nebensache! Ich muss nach den anderen sehen!"},
       { type: "textMessage", name: "playerName", text: "Die Sauerstoffkonzentration fällt..."},
       { type: "textMessage", name: "playerName", text: "Ein System-Checkup in O2 sollte mir mehr verraten!"},
-      //Info-Modal { type: "openModal", fileRef: "HudModal", ModalRef: "info"}
       { type: "addStoryFlag", flag: "Q1_INTRO" }
      ])
   }
   this.timerLoop();
-
-  // this.map.startCutscene([
-  //   { type: "battle", enemyId: "beth" }
-  //   // { type: "changeMap", map: "DemoRoom"}
-  //   // { type: "textMessage", text: "This is the very first message!"}
-  // ])
 
  }
 }

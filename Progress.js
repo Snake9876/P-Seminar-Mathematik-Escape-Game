@@ -19,7 +19,7 @@ class Progress {
       "Q1_COMPLETED": false,
       //Cafeteria-Task (Rubble)
       "Q2_INTRO": false,
-      "Q2_IN_PROGRESS": false,
+      "Q2_IN_PROGRESS": true,
       "Q2_COMPLETED": false,
       //Comms-Task
       "Q3_INTRO": false,

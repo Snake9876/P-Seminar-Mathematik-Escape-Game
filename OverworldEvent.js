@@ -1,8 +1,10 @@
 class OverworldEvent {
-  constructor({ map, hud, event }) {
+  constructor({ map, hud, events, eventIndex }) {
     this.map = map;
     this.hud = hud;
-    this.event = event;
+    this.events = events;
+    this.eventIndex = eventIndex;
+    this.event = events[eventIndex];
     this.classMap = {
       "HudModal": HudModals,
       "QuestionModal": QuestionModals,
@@ -59,17 +61,6 @@ class OverworldEvent {
 
   }
 
-  /*delay(resolve) {  
-    this.map.isCutscenePlaying = false;
-
-    setTimeout( () => {
-      resolve();
-      this.map.isCutscenePlaying = true;
-    }, 
-    this.event.time
-    );
-  }*/
-
   effect(resolve) {
     
     if(this.event.visual) {
@@ -121,6 +112,7 @@ class OverworldEvent {
   }
 
   stand(resolve) {
+
     const who = this.map.gameObjects[ this.event.who ];
     who.startBehavior({
       map: this.map
@@ -138,9 +130,11 @@ class OverworldEvent {
       }
     }
     document.addEventListener("PersonStandComplete", completeHandler)
+
   }
 
   walk(resolve) {
+
     const who = this.map.gameObjects[ this.event.who ];
     who.startBehavior({
       map: this.map
@@ -158,6 +152,7 @@ class OverworldEvent {
       }
     }
     document.addEventListener("PersonWalkingComplete", completeHandler)
+
   }
 
   textMessage(resolve) {
@@ -218,15 +213,11 @@ class OverworldEvent {
             y: this.event.y,
             direction: this.event.direction,
           }); 
+
         }
 
-        resolve();
         sceneTransition.fadeOut();
-
-        if(this.event.cutscene) {
-          this.map.isCutscenePlaying = true;
-
-        }
+        resolve();
 
       })
     }

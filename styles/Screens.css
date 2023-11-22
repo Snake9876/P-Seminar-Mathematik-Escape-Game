@@ -1,0 +1,57 @@
+.Screen {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: #000;
+  z-index:50;
+}
+
+.Screen_logo {
+  display: block;
+  margin: 0 auto;
+  width: 128px;
+  image-rendering: pixelated;
+}
+
+.Screen .KeyboardMenu {
+  position: relative;
+  width: 100px;
+  margin: 0 auto;
+  background: transparent;
+  border: 0;
+  bottom: -15px;
+  font-size: 1ex;
+}
+
+.Screen button {
+  color: #fff;
+  justify-content: center;
+  padding:0;
+  font-size: 0.2em;
+  height: 18px;
+}
+
+.Screen .DescriptionBox {
+  background: transparent;
+  color: #fff;
+  border: 0;
+  text-align: center;
+}
+
+.Screen .DescriptionBox p {
+  font-size: 7px;
+}
+
+.inputBar {
+  width: 150px;
+  height: 15px;
+  background-color: #000;
+  border-color: #fff;
+  border-width: 1px;
+  border-style: solid;
+  font-family: "Press Start 2P";
+  font-size: 6px;
+  color: #fff;
+}

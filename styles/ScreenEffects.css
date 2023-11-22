@@ -1,0 +1,57 @@
+.SceneTransition {
+  position:absolute;
+  left:0;
+  top:0;
+  right:0;
+  bottom:0;
+  background: #fff;
+  opacity: 0;
+  animation: scene-transition-fade-in 1.2s forwards;
+}
+.SceneTransition.fade-out {
+  animation: scene-transition-fade-out 1.2s forwards;
+}
+
+@keyframes scene-transition-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes scene-transition-fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes shake {
+  0% { transform: translate(0, 50%); scale: 3;}
+  10% { transform: translate(-2px, 50%); scale: 3;}
+  20% { transform: translate(2px, 50%); scale: 3;}
+  30% { transform: translate(-2px, 50%); scale: 3;}
+  40% { transform: translate(2px, 50%); scale: 3;}
+  50% { transform: translate(-2px, 50%); scale: 3;}
+  60% { transform: translate(2px, 50%); scale: 3;}
+  70% { transform: translate(-2px, 50%); scale: 3;}
+  80% { transform: translate(2px, 50%); scale: 3;}
+  90% { transform: translate(-2px, 50%); scale: 3;}
+  100% { transform: translate(0, 50%); scale: 3;}
+}
+
+.shake {
+  animation: shake 0.5s infinite;
+}
+
+@keyframes alarmEffect {
+  0%, 100% {
+    background-color: transparent;
+    z-index: 20;
+  }
+  50% {
+    background-color: red;
+    opacity: 0.2;
+    z-index: 40;
+  }
+}
+
+.alarm {
+  animation: alarmEffect 2s infinite;
+  pointer-events: none;
+}

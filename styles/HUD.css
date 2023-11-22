@@ -1,0 +1,142 @@
+.ButtonArray {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+  height: 30px;
+  left: 125px;
+  right: 100px;
+  bottom: 0;
+  image-rendering: pixelated;
+  background-image: url(/images/ui/hud/button-array.png);
+  background-size: cover;
+}
+
+.ButtonContainer {
+  position: absolute;
+  display: flex;
+  justify-content: left;
+  width: 100%;
+  top: 6px;
+}
+
+.KeyButton {
+  position: relative;
+  padding: 0;
+  height: 13px;
+  font-family: "Press Start 2P";
+  font-size: 0.5em;
+  background-color: #b6cbd6;
+  border-style: none solid solid none;
+  border-color: #a0b2bc;
+  border-width: 2px;
+}
+
+.KeyButton:active {
+  background-color: #a0b2bc;
+  border-color: #666;
+}
+
+#map {
+  left: 9.75px;
+  width: 13px;
+}
+
+#inventory {
+  left: 30.6px;
+  width: 13.5px;
+}
+
+#notes {
+  left: 50.9px;
+  width: 13.6px;
+}
+
+.TextContainer {
+  position: absolute;
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  bottom: 5px;
+}
+
+.KeyDescription {
+  font-family: "Press Start 2P";
+  font-size: 2.5px;
+  color: #fff;
+}
+
+#map-text {
+  margin-left: 3px;
+}
+
+#inv-text {
+  margin-left: 10px;
+}
+
+#notes-text {
+  margin-left: 8px;
+}
+
+
+.OxygenBar {
+  scale: 150%;
+  width: 67px;
+  height: 14px;
+  background: url(/images/ui/hud/oxygen-bar.png) no-repeat no-repeat;
+  position: absolute;
+  image-rendering: pixelated;
+  top: 20px;
+  left: 20px;
+}
+
+.PlayerName {
+  position: absolute;
+  left: 3px;
+  top: -6px;
+  white-space: nowrap;
+  background: var(--menu-font-color);
+  color: #fff;
+  font-size: 4px; /*This is only so small because the component is scaled 2x in battle which is weird */
+  padding: 1px;
+  margin: 0;
+}
+
+.Icon {
+  position: absolute;
+  left: -3.5px;
+  bottom: -4px;
+  right: 40px;
+  width: 28px;
+  height: 28px;
+}
+
+.OxygenContainer {
+  position: absolute;
+  left: 23px;
+  top: 3px;
+  width: 26px;
+  height: 8px;
+}
+.OxygenContainer > rect {
+  transition: width 0.2s;
+}
+
+
+.Timer {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  scale: 150%;
+  width: 48px;
+  height: 32px;
+  background: url(/images/ui/hud/timer-background.png) no-repeat no-repeat;
+  image-rendering: pixelated;
+  top: 15px;
+  right: 20px;
+}
+
+.TimerContent {
+font-size: 8px;
+}

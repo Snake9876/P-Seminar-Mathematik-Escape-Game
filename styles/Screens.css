@@ -45,16 +45,13 @@
 }
 
 .inputBar {
-  position: absolute;
-  left: 100px;
   width: 150px;
   height: 15px;
-  bottom: 60px;
   background-color: #000;
   border-color: #fff;
   border-width: 1px;
   border-style: solid;
   font-family: "Press Start 2P";
-  font-size: 0.25em;
+  font-size: 6px;
   color: #fff;
 }

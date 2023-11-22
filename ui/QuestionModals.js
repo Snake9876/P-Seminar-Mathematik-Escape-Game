@@ -21,39 +21,31 @@ class QuestionModals {
       this.questionElement = document.createElement("div");
       this.questionElement.classList.add('Modal');
       this.questionElement.setAttribute('id', 'q1-modal');
+      this.questionElement.setAttribute('style', 'padding-bottom: 0px;');
       this.questionElement.innerHTML = (`
         <div class="ModalHeader">
           <div class="Title">
-            Sauerstoffvorrat
+            Sauerstoffverlust
           </div>
           <button class="CloseButton">&times;</button>
         </div>
-        <div class="ModalContent">
-          <img id="O2-img" src="/images/questions/Sauerstoffflasche.jpg">
-          <p>Lorem</p>
-          <input class="inputBar" type="text" placeholder="Antwort" id="answer-field1" maxlength="20">
-          <button class="checkButton">Check</button>
+        <div class="ModalContent" style="padding: 5px 15px 0px 15px;">
+          <center>
+            <img id="O2-img" src="/images/questions/Sauerstoffflasche.jpg" style="width: 100px">
+          </center>
+          <div>
+            <p>Aufgrund der starken Beschädigungen am Schiff bist du auf die Sauerstoffzufuhr aus einem Tank, welcher ein Rotationskörper der oben gezeigten Fläche ist, an deinem Raumanzug angewiesen. Leider verbrauchst du pro Raumwechsel 725ml Sauerstoff und möchtest nun herausfinden, nach wie vielen Raumwechseln der Tank leer ist. Dafür musst du zuerst das Gesamtvolumen des Tanks berechnen.
+          </div>
+          <div>
+            <input class="inputBar" type="text" placeholder="Antwort" id="answer-field1" maxlength="20">
+          </div>
+          <div>
+            <button class="checkButton">Check</button>
+          </div>
         </div>
       `);
 
     }
-
-    /* <script type="text/javascript" src="https://cdn.geogebra.org/apps/deployggb.js"></script>
-          <script type="text/javascript">
-            var ggbApplet = new GGBApplet({
-                "width": 600,
-                "height": 400,
-                "material_id": "YOUR_MATERIAL_ID",
-                // Replace "YOUR_MATERIAL_ID" with the actual material ID of your GeoGebra graph.
-                "appletOnLoad": function(api) {
-                    api.inject('applet_container');
-                }
-            });
-            ggbApplet.inject();
-          </script> */
-
-
-
     
     //Question 2.1
     else if (this.modalRef === "q21") {
@@ -63,14 +55,17 @@ class QuestionModals {
       this.questionElement.innerHTML = (`
         <div class="ModalHeader">
           <div class="Title">
-          Schutthaufen
+            Verschütteter Techniker
           </div>
           <button class="CloseButton">&times;</button>
         </div>
         <div class="ModalContent">
-          <p>Durchmesser der Grundfläche = 30cm</p>
-          <p>Höhe = 30cm</p>
-          <button class="checkButton">Entfernen?</button>
+          <ul>
+          <li>Umfang U=8m</li>
+          <li>Mantellinie s=3m</li>
+          </ul>
+          <input class="inputBar" type="text" placeholder="Antwort" id="answer-field1" maxlength="20">
+          <button class="checkButton">Check</button>
         </div>
       `);
 
@@ -84,14 +79,17 @@ class QuestionModals {
       this.questionElement.innerHTML = (`
         <div class="ModalHeader">
           <div class="Title">
-            Schutthaufen
+            Verschütteter Techniker
           </div>
           <button class="CloseButton">&times;</button>
         </div>
         <div class="ModalContent">
-        <p>Durchmesser der Grundfläche = 30cm</p>
-        <p>Höhe = 30cm</p>
-          <button class="checkButton">Entfernen?</button>
+          <ul>
+          <li>Umfang U=7m</li>
+          <li>Mantellinie s=4m</li>
+          </ul>
+          <input class="inputBar" type="text" placeholder="Antwort" id="answer-field1" maxlength="20">
+          <button class="checkButton">Check</button>
         </div>
       `);
 
@@ -103,17 +101,20 @@ class QuestionModals {
       this.questionElement.classList.add('Modal');
       this.questionElement.setAttribute('id', 'q3-modal');
       this.questionElement.innerHTML = (`
-        <div class="ModalHeader">
+        <div class="ModalHeader" style="font-size: 0.5em;">
           <div class="Title">
-            Sauerstoffvorrat
+            Verletzter Techniker
           </div>
           <button class="CloseButton">&times;</button>
         </div>
-        <div class="ModalContent">
-          <img id="O2-img" src="/images/questions/Sauerstoffflasche.jpg">
-          <p>Lorem</p>
+        <div class="ModalContent" style="padding: 5px 5px 0px 5px;">
+          <p>Auf dem Gerät in deiner Hand siehst du die Konzentration eines Medikaments im Blut des Technikers, welche durch die Funktion</p>
+          <center>C(t)=20e<sup>-0.15t</sup></center>
+          <p>beschrieben wird (t entspricht der Zeit nach der Einnahme des Medikaments in min).</p>
+          <p>Bestimme zuerst den Zeitpunkt t<sub>eff</sub>,an der die Konzentration im Gegensatz zur Anfangskonzentration um 15 Einheiten gesunken ist und berechne damit die Konzentration C(t<sub>eff</sub>).</p>
+          <p>Berechne anschließend den Wert am Zeitpunkt t<sub>eff</sub> der Konzentration des Medikaments, nachdem zu zur verbleibenden Konzentration wieder die gleiche Menge Medikament wie am Anfang hinzugegeben hast.</p>
           <input class="inputBar" type="text" placeholder="Antwort" id="answer-field1" maxlength="20">
-          <button class="checkButton">Entfernen</button>
+          <button class="checkButton">Check</button>
         </div>
       `);
 
@@ -132,12 +133,12 @@ class QuestionModals {
           <button class="CloseButton">&times;</button>
         </div>
         <div class="ModalContent">
-          <button class="checkButton" onclick="window.open('https://www.geogebra.org/classic/aejrg5vw?embed', '_blank').focus();">Geogebra-Applet</button>
-          <p>Lorem</p>
+          <div><center>Hier Link einfügen </center></div>
+          <p>Hier in der Kommandozentrale willst du einen Notruf absetzen. Normalerweise beschreibt die Welle eines Funksignals eine Sinsufunktion. Durch Beschädigungen am Schiff aber wurde das ausgesandte Signal verzerrt. Nun musst du die Werte des Graphen so umändern, dass die Antenne wieder sinusförmige Wellen versendet und die Parameter unten angeben.</p>
           <input class="inputBar" type="text" placeholder="Antwort" id="answer-field1" maxlength="20">
           <button class="checkButton">Check</button>
         </div>
-      `)
+      `);
 
     }
 

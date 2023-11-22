@@ -1,349 +1,356 @@
 .Modal {
-    position:absolute;
-    left:4.5em;
-    top:1em;
-    right:4.5em;
-    background: var(--menu-background);
-    color: var(--menu-font-color);
-    border:1px solid var(--menu-border-color);
-    z-index:2;
-    padding-left: 4px;
-    padding-right: 4px;
-    padding-bottom: 4px;
-    image-rendering: pixelated;
-  }
-  
-  .ModalHeader {
-    padding: 10px 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #A48465;
-    color: #fff;
-    font-size: 0.65em;
-  }
+  position:absolute;
+  left:4.5em;
+  top:1em;
+  right:4.5em;
+  background: var(--menu-background);
+  color: var(--menu-font-color);
+  border:1px solid var(--menu-border-color);
+  z-index:2;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-bottom: 4px;
+  image-rendering: pixelated;
+}
 
-  .ModalHeader .CloseButton {
-    cursor: pointer;
-    color: #fff;
-    border: none;
-    outline: none;
-    background: none;
-    font-size: 1.25rem;
-    font-weight: bold;
-  }
-  
-  .ModalContent {
-    padding: 10px 15px;
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .overlay {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    opacity: 0;
-    z-index: 0;
-  }
-  
-  .overlay.active {
-    opacity: 1;
-    z-index: 10;
-  }
-  
- 
+.ModalHeader {
+  padding: 3px 5px 0px 5px ;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #A48465;
+  color: #fff;
+  font-size: 0.55em;
+}
+
+.ModalHeader .CloseButton {
+  cursor: pointer;
+  color: #fff;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.ModalContent {
+  font-size: 5px;
+  padding: 10px 15px;
+  color: black;
+  display: flex;
+  flex-direction: column;
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  opacity: 0;
+  z-index: 0;
+}
+
+.overlay.active {
+  opacity: 1;
+  z-index: 10;
+}
+
+
 /*Menu*/
-  #menu-modal {
-    position:absolute;
-    left:4.5em;
-    top:1em;
-    right:4.5em;
-    background: var(--menu-background);
-    color: var(--menu-font-color);
-    border:1px solid var(--menu-border-color);
-    z-index:2;
-    padding-left: 4px;
-    padding-right: 4px;
-    padding-bottom: 4px;
-  }
-  
-  #menu-modal .KeyboardMenu {
-    position: relative;
-    border:0;
-  }
-  
-  #menu-modal h2 {
-    font-size: 10px;
-    color: var(--menu-font-color);
-    margin:0;
-    padding: 2px 0;
-    text-align:center;
-    border-bottom: 1px solid #A48465;
-  }
-  
+#menu-modal {
+  position:absolute;
+  left:4.5em;
+  top:1em;
+  right:4.5em;
+  background: var(--menu-background);
+  color: var(--menu-font-color);
+  border:1px solid var(--menu-border-color);
+  z-index:2;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-bottom: 4px;
+}
+
+#menu-modal .KeyboardMenu {
+  position: relative;
+  border:0;
+}
+
+#menu-modal h2 {
+  font-size: 10px;
+  color: var(--menu-font-color);
+  margin:0;
+  padding: 2px 0;
+  text-align:center;
+  border-bottom: 1px solid #A48465;
+}
+
 
 /*Map*/
 
-  #map-modal {
-    width: 200px;
-    height: 170px;
-    z-index: 100;
-  }
+#map-modal {
+  width: 200px;
+  height: 170px;
+  z-index: 100;
+}
 
-  #minimap {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -30%);
-    width: 120px;
-    height: 100px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    image-rendering: pixelated;
-  }
+#minimap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+  width: 120px;
+  height: 100px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+}
 
-  #minimap p {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, 45px);
-    font-family: "Press Start 2P";
-    font-size: 5px;
-    color: #000;
-  }
+#minimap p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 45px);
+  font-family: "Press Start 2P";
+  font-size: 5px;
+  color: #000;
+}
 
-  .hoverContainer {
-    width: 100%;
-    height: 100%;
-  }
+.hoverContainer {
+  width: 100%;
+  height: 100%;
+}
 
-  .hoverElement:hover {
-    opacity: 0.5;
-    background-color: #89cff0;
-  }
+.hoverElement:hover {
+  opacity: 0.5;
+  background-color: #89cff0;
+}
 
-  #Brücke {
-    position: absolute;
-    right: 18px;
-    top: 33px;
-    width: 11px;
-    height: 17px;
-  }
+#Brücke {
+  position: absolute;
+  right: 18px;
+  top: 33px;
+  width: 11px;
+  height: 17px;
+}
 
-  #Cafeteria {
-    position: absolute;
-    right: 42px;
-    top: 39px;
-    width: 19px;
-    height: 18px;  
-  }
+#Cafeteria {
+  position: absolute;
+  right: 42px;
+  top: 39px;
+  width: 19px;
+  height: 18px;  
+}
 
-  #O2 {
-    position: absolute;
-    right: 63px;
-    top: 39px;
-    width: 15px;
-    height: 12px; 
-  }
+#O2 {
+  position: absolute;
+  right: 63px;
+  top: 39px;
+  width: 15px;
+  height: 12px; 
+}
 
-  #Quartiere {
-    position: absolute;
-    right: 42px;
-    top: 21px;
-    width: 41px;
-    height: 11px; 
-  }
+#Quartiere {
+  position: absolute;
+  right: 42px;
+  top: 21px;
+  width: 41px;
+  height: 11px; 
+}
 
-  #Krankenstation {
-    position: absolute;
-    right: 72px;
-    top: 69px;
-    width: 15px;
-    height: 15px;
-  }
+#Krankenstation {
+  position: absolute;
+  right: 72px;
+  top: 69px;
+  width: 15px;
+  height: 15px;
+}
 
-  #Hangar {
-    position: absolute;
-    right: 84px;
-    top: 9px;
-    width: 18px;
-    height: 23px;
-  }
+#Hangar {
+  position: absolute;
+  right: 84px;
+  top: 9px;
+  width: 18px;
+  height: 23px;
+}
 
-  #Nachrichtenzentrale {
-    position: absolute;
-    right: 80px;
-    top: 59px;
-    width: 7px;
-    height: 8px;
-  }
+#Nachrichtenzentrale {
+  position: absolute;
+  right: 80px;
+  top: 59px;
+  width: 7px;
+  height: 8px;
+}
 
-  #Maschinenraum {
-    position: absolute;
-    right: 97px;
-    top: 33px;
-    width: 5px;
-    height: 42px;
-  }
+#Maschinenraum {
+  position: absolute;
+  right: 97px;
+  top: 33px;
+  width: 5px;
+  height: 42px;
+}
 
-  #Lobby {
-    position: absolute;
-    right: 30px;
-    top: 30px;
-    width: 11px;
-    height: 27px;
-  }
+#Lobby {
+  position: absolute;
+  right: 30px;
+  top: 30px;
+  width: 11px;
+  height: 27px;
+}
 
-  #Westflügel {
-    position: absolute;
-    right: 41px;
-    top: 33px;
-    width: 45px;
-    height: 4px;
-  }
+#Westflügel {
+  position: absolute;
+  right: 41px;
+  top: 33px;
+  width: 45px;
+  height: 4px;
+}
 
-  #Ecke {
-    position: absolute;
-    right: 86px;
-    top: 33px;
-    width: 9px;
-    height: 9px;
-  }
+#Ecke {
+  position: absolute;
+  right: 86px;
+  top: 33px;
+  width: 9px;
+  height: 9px;
+}
 
-  #Ostflügel {
-    position: absolute;
-    right: 61px;
-    top: 53px;
-    width: 27px;
-    height: 4px;
-  }
+#Ostflügel {
+  position: absolute;
+  right: 61px;
+  top: 53px;
+  width: 27px;
+  height: 4px;
+}
 
-  #Korridor {
-    position: absolute;
-    right: 88px;
-    top: 42px;
-    width: 7px;
-    height: 45px;
-  }
+#Korridor {
+  position: absolute;
+  right: 88px;
+  top: 42px;
+  width: 7px;
+  height: 45px;
+}
 
 
 /*Inventory*/
-  #inv-modal {
-    width: 200px;
-    height: 170px;
-    z-index: 100;
-  }
+#inv-modal {
+  width: 200px;
+  height: 170px;
+  z-index: 100;
+}
 
-  #inv-background {
-    background-image: url(/images/ui/hud/inventory-background.png);
-    background-size: cover;
-    image-rendering: pixelated;
-    padding: 15px;
-  }
-  
-  
-  .ItemRow {
-    padding: 2.5px 0.5px;
-    position: relative;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 100%;
-  }
-  
-  .ItemContainer {
-    width: 40px;
-    height: 40px;
-    background-size: cover;
-    image-rendering: pixelated;
-    opacity: 0;
-  }
+#inv-background {
+  background-image: url(/images/ui/inventory-background.png);
+  background-size: cover;
+  image-rendering: pixelated;
+  padding: 15px;
+}
 
-  #item-1 {
-    background-image: url(/images/ui/icons/meterstick.png);
-  }
 
-  #item-2 {
-    background-image: url(/images/ui/icons/book.png);
-  }
+.ItemRow {
+  padding: 2.5px 0.5px;
+  position: relative;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+}
 
-  #item-3 {
-    background-image: url(/images/ui/icons/meddevice.png);
-  }
+.ItemContainer {
+  width: 40px;
+  height: 40px;
+  background-size: cover;
+  image-rendering: pixelated;
+  opacity: 0;
+}
 
-  #item-4 {
-    background-image: url(/images/ui/icons/keycard.png);
-  }
+#item-1 {
+  background-image: url(/images/ui/icons/meterstick.png);
+}
 
-  #item-5 {
-    background-image: url(/images/ui/icons/crowbar.png);
-  }
+#item-2 {
+  background-image: url(/images/ui/icons/book.png);
+}
 
-  #item-6 {
-    background-image: url(/images/ui/icons/book.png);
-  }
-  
-  
+#item-3 {
+  background-image: url(/images/ui/icons/meddevice.png);
+}
+
+#item-4 {
+  background-image: url(/images/ui/icons/keycard.png);
+}
+
+#item-5 {
+  background-image: url(/images/ui/icons/crowbar.png);
+}
+
+#item-6 {
+  background-image: url(/images/ui/icons/book.png);
+}
+
+
 /*Notes*/
-  #notes-modal {
-    width: 200px;
-    height: 170px;
-    z-index: 100;
-  }
+#notes-modal {
+  width: 200px;
+  height: 170px;
+  z-index: 100;
+}
 
-  #editable-div {
-    font-size: 5px;
-    overflow: auto;
-  }
+#editable-div {
+  font-size: 5px;
+  overflow: auto;
+}
 
 
 /*Questions*/
-  #q1-modal {
-    z-index: 50;
-  }
+#q1-modal {
+  z-index: 50;
+}
 
-  .checkButton {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    text-align:left;
-    -webkit-appearance: none;
-    border:0;
-    background: none;
-    height: 20px;
-    cursor:pointer;
-    font-family:inherit;
-    padding:0;
-    padding-left: 1em;
-    font-size: 10px;
-   }
+.checkButton {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  text-align:left;
+  -webkit-appearance: none;
+  border:0;
+  background: none;
+  justify-content: center;
+  height: 15px;
+  width: 50px;
+  cursor:pointer;
+  font-family:inherit;
+  padding: 0;
+  font-size: 6px;
+ }
 
-   .checkButton:focus {
-    background: var(--menu-selected-background);
-    outline: 0;
-   }
+ .checkButton:focus {
+  background: var(--menu-selected-background);
+  outline: 0;
+ }
 
-  .checkButton.correct {
-    background-color: #2ecc71; /* Green color for correct answer */
-  }
+.checkButton.correct {
+  background-color: #2ecc71; /* Green color for correct answer */
+}
 
-  .checkButton.wrong {
-    background-color: #e74c3c; /* Red color for wrong answer */
-  }
+.checkButton.wrong {
+  background-color: #e74c3c; /* Red color for wrong answer */
+}
 
-  .input[type="text"] {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 55px;
-  }
+.input[type="text"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 55px;
+}
 
-  .input-long[type="text"] {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 150px;
-  }
+.input-long[type="text"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 150px;
+}
+input[type=radio] {
+  margin: 0px;
+  height: 7.5px;
+  width: 7.5px;
+}

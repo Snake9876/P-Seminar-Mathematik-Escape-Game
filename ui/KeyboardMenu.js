@@ -5,6 +5,7 @@ class KeyboardMenu {
     this.down = null;
     this.prevFocus = null;
     this.descriptionContainer = config.descriptionContainer || null;
+    this.audio = new Audio("/sounds/click.mp3");
   }
 
   setOptions(options) {
@@ -24,6 +25,7 @@ class KeyboardMenu {
     this.element.querySelectorAll("button").forEach(button => {
 
       button.addEventListener("click", () => {
+        this.audio.play();
         const chosenOption = this.options[ Number(button.dataset.button) ];
         chosenOption.handler();
       })

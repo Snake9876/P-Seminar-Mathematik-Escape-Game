@@ -531,7 +531,8 @@ window.OverworldMaps = {
               { type: "textMessage", name: "playerName", text: "Aber warte, die Berge sehen doch fast wie Kegel aus!" },
               { type: "textMessage", name: "playerName", text: "Jetzt brauche ich nur noch einen Meterstab!" },
               { type: "textMessage", name: "playerName", text: "Hatte ihn nicht ... zuletzt benutzt?" },
-              { type: "removeStoryFlag", flag: "Q2_IN_PROGRESS" }
+              { type: "removeStoryFlag", flag: "Q2_IN_PROGRESS" },
+              { type: "addStoryFlag", flag: "LOOKING_FOR_METERSTICK" }
             ]
           },
           {
@@ -708,8 +709,9 @@ window.OverworldMaps = {
               { type: "textMessage", name: "playerName", text: "Ich muss herausfinden, welcher der Größte ist!" },
               { type: "textMessage", name: "playerName", text: "Aber warte, die Berge sehen doch fast wie Kegel aus!" },
               { type: "textMessage", name: "playerName", text: "Jetzt brauche ich nur noch einen Meterstab!" },
-              { type: "textMessage", name: "playerName", text: "Hatte ihn nicht ... zuletzt benutzt?" },
-              { type: "removeStoryFlag", flag: "Q2_IN_PROGRESS" }
+              { type: "textMessage", name: "playerName", text: "" },
+              { type: "removeStoryFlag", flag: "Q2_IN_PROGRESS" },
+              { type: "addStoryFlag", flag: "LOOKING_FOR_METERSTICK" }
 
             ]
           },
@@ -1318,9 +1320,10 @@ window.OverworldMaps = {
               { type: "textMessage", name: "playerName", text: "Die Zeit reicht nicht aus, jeden Berg wegzuräumen." },
               { type: "textMessage", name: "playerName", text: "Ich muss herausfinden, welcher der Größte ist!" },
               { type: "textMessage", name: "playerName", text: "Aber warte, die Berge sehen doch fast wie Kegel aus!" },
-              { type: "textMessage", name: "playerName", text: "Jetzt brauche ich nur noch einen Meterstab!" },
-              { type: "textMessage", name: "playerName", text: "Hatte ihn nicht ... zuletzt benutzt?" },
-              { type: "removeStoryFlag", flag: "Q2_IN_PROGRESS" }
+              { type: "textMessage", name: "playerName", text: "Jetzt brauche ich nur noch etwas zum Messen der Längen..." },
+              { type: "textMessage", name: "playerName", text: "Hier im Raum muss es doch irgendwas dafür geben!" },
+              { type: "removeStoryFlag", flag: "Q2_IN_PROGRESS" },
+              { type: "addStoryFlag", flag: "LOOKING_FOR_METERSTICK" }
 
             ]
           },
@@ -1359,8 +1362,8 @@ window.OverworldMaps = {
               { type: "textMessage", name: "playerName", text: "Aber warte, die Berge sehen doch fast wie Kegel aus!" },
               { type: "textMessage", name: "playerName", text: "Jetzt brauche ich nur noch einen Meterstab!" },
               { type: "textMessage", name: "playerName", text: "Hatte ihn nicht ... zuletzt benutzt?" },
-              { type: "removeStoryFlag", flag: "Q2_IN_PROGRESS" }
-
+              { type: "removeStoryFlag", flag: "Q2_IN_PROGRESS" },
+              { type: "addStoryFlag", flag: "LOOKING_FOR_METERSTICK" }
             ]
           },
           {
@@ -1412,7 +1415,7 @@ window.OverworldMaps = {
         shadowImg: true,
         talking: [
           {
-            required: ["Q2_INTRO", "GOT_METERSTICK"],
+            required: ["GOT_METERSTICK"],
             events: [
               { type: "textMessage", name: "playerName",
                 text: "Der Durchmesser der Grundfläche ist m..."
@@ -1428,8 +1431,8 @@ window.OverworldMaps = {
       },
       Schutthaufen: {
         type: "Person",
-        x: utils.withGrid(2),
-        y: utils.withGrid(3),
+        x: utils.withGrid(9),
+        y: utils.withGrid(7),
         direction: "down",
         src: "/images/gameObjects/objects/rubblePile.png",
         shadowImg: false,
@@ -1444,6 +1447,51 @@ window.OverworldMaps = {
                 text: "...und der Berg ist m hoch."
               },
               { type: "openModal", fileRef: "QuestionModal", modalRef: "q21"}          
+            ]
+          }
+        ], 
+      },
+      Schrank: {
+        type: "Person",
+        x: utils.withGrid(13),
+        y: utils.withGrid(6),
+        direction: "down",
+        src: "/images/gameObjects/objects/cupboardDoor.png",
+        shadowImg: false,
+        talking: [
+          {
+            required: ["LOOKING_FOR_METERSTICK"],
+            events: [
+              { type: "removeStoryFlag", flag: "LOOKING_FOR_METERSTICK" },
+              { type: "addStoryFlag", flag: "GOT_METERSTICK" },  
+              {
+                type: "stand",
+                who: "hero",
+                direction: "up",
+                time: 100
+              },
+              {
+                type: "updateObject",
+                update: {
+                  id: "Schrank",
+                  spriteSrc: "/images/gameObjects/objects/cupboardDoorOpen.png",
+                }
+              },
+              { type: "textMessage", name: "playerName",
+                text: "Was haben wir hier?"
+              },
+              { type: "textMessage", name: "playerName",
+                text: "Einen Schraubenschlüssel, einen Proteinriegel..."
+              },
+              { type: "textMessage", name: "playerName",
+                text: "Wem der wohl gehört?"
+              },
+              { type: "textMessage", name: "playerName",
+                text: "Aha! Ein Meterstab!"
+              },
+              { type: "textMessage", name: "playerName",
+                text: "Damit wird es wohl gehen."
+              }    
             ]
           }
         ], 
@@ -1516,7 +1564,7 @@ window.OverworldMaps = {
         shadowImg: false,
         talking: [
           {      
-            //required: ["Q4_IN_PROGRESS"],
+            required: ["Q4_IN_PROGRESS"],
             events: [
               { type: "textMessage", name: "playerName", text: "Hm, wo haben wir es denn?" },
               {
@@ -1661,6 +1709,17 @@ window.OverworldMaps = {
             ]
           }
         ]  
+      }],
+      [utils.asGridCoord(4,8)]: [{
+        scenarios: [
+          {
+            required: ["STEPPED_IN_COFFEE","PUT_ON_SUIT"],
+            events: [
+              { type: "textMessage", name: "playerName", text: "Mist, der Anzug ist frisch gewaschen..." },
+              { type: "removeStoryFlag", flag: "STEPPED_IN_COFFEE" }
+            ]
+          }
+        ]   
       }],
     },
     walls: function() {
@@ -2340,7 +2399,7 @@ window.OverworldMaps = {
         type: "Person",
         x: utils.withGrid(11),
         y: utils.withGrid(7),
-        direction: "right",
+        direction: "down",
         src: "/images/gameObjects/objects/crateCover.png",
         shadowImg: false,
         talking: [
@@ -2370,7 +2429,7 @@ window.OverworldMaps = {
         type: "Person",
         x: utils.withGrid(4),
         y: utils.withGrid(10),
-        direction: "right",
+        direction: "down",
         src: "/images/gameObjects/objects/crateCover.png",
         shadowImg: false,
         talking: [
@@ -2400,7 +2459,7 @@ window.OverworldMaps = {
         type: "Person",
         x: utils.withGrid(6),
         y: utils.withGrid(5),
-        direction: "right",
+        direction: "down",
         src: "/images/gameObjects/objects/crateCover.png",
         shadowImg: false,
         talking: [

@@ -64,8 +64,8 @@ class QuestionModals {
           <li>Umfang U=8m</li>
           <li>Mantellinie s=3m</li>
           </ul>
-          <input class="inputBar" type="text" placeholder="Antwort" id="answer-field1" maxlength="20">
-          <button class="checkButton">Check</button>
+          <p>Berg entfernen?</p>
+          <button class="checkButton">Entfernen</button>
         </div>
       `);
 
@@ -88,8 +88,8 @@ class QuestionModals {
           <li>Umfang U=7m</li>
           <li>Mantellinie s=4m</li>
           </ul>
-          <input class="inputBar" type="text" placeholder="Antwort" id="answer-field1" maxlength="20">
-          <button class="checkButton">Check</button>
+          <p>Berg entfernen?</p>
+          <button class="checkButton">Entfernen</button>
         </div>
       `);
 
@@ -150,27 +150,30 @@ class QuestionModals {
       this.questionElement.innerHTML = (`
         <div class="ModalHeader">
           <div class="Title">
-            Sauerstoffvorrat
+            Code
           </div>
           <button class="CloseButton">&times;</button>
         </div>
         <div class="ModalContent">
-          <div id="display-bar"></div>
-          <div class="keypad">
-            <button class="KeyButton" onclick="appendToDisplay('1')">1</button>
-            <button class="KeyButton" onclick="appendToDisplay('2')">2</button>
-            <button class="KeyButton" onclick="appendToDisplay('3')">3</button>
-            <button class="KeyButton" onclick="appendToDisplay('4')">4</button>
-            <button class="KeyButton" onclick="appendToDisplay('5')">5</button>
-            <button class="KeyButton" onclick="appendToDisplay('6')">6</button>
-            <button class="KeyButton" onclick="appendToDisplay('7')">7</button>
-            <button class="KeyButton" onclick="appendToDisplay('8')">8</button>
-            <button class="KeyButton" onclick="appendToDisplay('9')">9</button>
-            <button class="KeyButton" onclick="appendToDisplay('0')">0</button>
+            <div class="inputBar"></div>
+            <div class="keypad">
+              <button class="KeypadButton">1</button>
+              <button class="KeypadButton">2</button>
+              <button class="KeypadButton">3</button>
+              <button class="KeypadButton">4</button>
+              <button class="KeypadButton">5</button>
+              <button class="KeypadButton">6</button>
+              <button class="KeypadButton">7</button>
+              <button class="KeypadButton">8</button>
+              <button class="KeypadButton">9</button>
+              <div class="CenteredRow">
+                <button class="KeypadButton">0</button>
+              </div>
+            </div>
             <button class="checkButton">Check</button>
           </div>
         </div>
-      `);
+      `); 
 
     }
 
@@ -258,16 +261,26 @@ class QuestionModals {
     this.coreOnComplete();
   }
 
+  appendToDisplay(digit) {
+    var displayBar = document.querySelector(".inputBar");
+
+    if (displayBar.innerText.length < 4) {
+      displayBar.innerText += digit;
+    }
+  }
+
   
   async init(container) {
     this.createElement();
     container.appendChild(this.overlay)
     container.appendChild(this.questionElement);
-    document.cookie1 = "_ga=null; SameSite=None; Secure";
-    document.cookie2 = "_ga_FXVLXMD21Y=null; SameSite=None; Secure";
-    document.cookie3 = "GeoGebraLangUI=null; SameSite=None; Secure";
-    document.cookie4 = "GGBSESSID=null; SameSite=None; Secure";
-    document.cookie4 = "stg_debug=null; SameSite=None; Secure";
+
+    this.keyPadButtons = document.querySelectorAll('.KeypadButton');
+    this.keyPadButtons.forEach((element) => {
+      element.addEventListener('click', () => {
+        this.appendToDisplay(element.innerText)
+      });
+    });
 
     this.checkButton = document.querySelector('.checkButton');
     this.inputBar = document.querySelector('.inputBar');
@@ -295,27 +308,9 @@ class QuestionModals {
                   { type: "removeStoryFlag", flag: "Q1_IN_PROGRESS" },
                   { type: "addStoryFlag", flag: "O2_ENABLED" },
                   { type: "addStoryFlag", flag: "Q1_COMPLETED" },
-                  {
-                    type: "stand",
-                    who: "hero",
-                    direction: "up",
-                    time: 500,
-                  },
                   { type: "textMessage", name: this.progress.playerName, text: "Also muss ich hier alle 20 Raumwechsel meine Vorräte wiederauffüllen!" },
-                  {
-                    type: "stand",
-                    who: "hero",
-                    direction: "up",
-                    time: 1000,
-                  },
                   { type: "effect", sound: "sounds/alarm.wav"},
                   { type: "textMessage", name: "Bordcomputer", text: "STEUERTRIEBWERK AUSGEFALLEN. WARTUNG BENÖTIGT." },
-                  {
-                    type: "stand",
-                    who: "hero",
-                    direction: "up",
-                    time: 500,
-                  },
                   { type: "textMessage", name: this.progress.playerName, text: "Auch das noch!" },
                   { type: "textMessage", name: this.progress.playerName, text: "Dann eben zum Maschinenraum!" },
                 ])
@@ -482,8 +477,8 @@ class QuestionModals {
 
           break;
         case 'q5':
-          this.solution = "20";
-          this.answer = document.querySelector('.inputBar').value;
+          this.solution = "1234";
+          this.answer = document.querySelector('.inputBar').innerText;
 
           //Check if Question was correct
           if(this.checkAnswer(this.answer, this.solution)) {
@@ -508,6 +503,7 @@ class QuestionModals {
             }
           } else {
             this.checkButton.innerHTML = ('Incorrect!');
+            document.querySelector(".inputBar").innerText = "";
     
             setTimeout(() => {
               this.checkButton.innerHTML = ('Check');

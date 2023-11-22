@@ -239,7 +239,7 @@
 }
 
 #inv-background {
-  background-image: url(/images/ui/inventory-background.png);
+  background-image: url(/images/ui/hud/inventory-background.png);
   background-size: cover;
   image-rendering: pixelated;
   padding: 15px;
@@ -268,15 +268,15 @@
 }
 
 #item-2 {
-  background-image: url(/images/ui/icons/book.png);
+  background-image: url(/images/ui/icons/keycard1.png);
 }
 
 #item-3 {
-  background-image: url(/images/ui/icons/meddevice.png);
+  background-image: url(/images/ui/icons/book.png);
 }
 
 #item-4 {
-  background-image: url(/images/ui/icons/keycard.png);
+  background-image: url(/images/ui/icons/note.png);
 }
 
 #item-5 {
@@ -284,7 +284,7 @@
 }
 
 #item-6 {
-  background-image: url(/images/ui/icons/book.png);
+  background-image: url(/images/ui/icons/keycard2.png);
 }
 
 
@@ -323,19 +323,6 @@
   font-size: 6px;
  }
 
- .checkButton:focus {
-  background: var(--menu-selected-background);
-  outline: 0;
- }
-
-.checkButton.correct {
-  background-color: #2ecc71; /* Green color for correct answer */
-}
-
-.checkButton.wrong {
-  background-color: #e74c3c; /* Red color for wrong answer */
-}
-
 .input[type="text"] {
   padding: 10px;
   border: 1px solid #ccc;
@@ -353,4 +340,43 @@ input[type=radio] {
   margin: 0px;
   height: 7.5px;
   width: 7.5px;
+}
+
+.keypad {
+
+  padding: 7px;
+  position: relative;
+  top: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+  margin: 0 auto;
+  image-rendering: pixelated;
+  background-image: url(/images/ui/hud/keypad-background.png);
+  background-size: cover;
+}
+
+.KeypadButton {
+  padding: 0;
+  height: 13px;
+  width: 13px;
+  font-family: "Press Start 2P";
+  font-size: 0.9em;
+  background-color: #b6cbd6;
+  border-style: none solid solid none;
+  border-color: #a0b2bc;
+  border-width: 2px;
+  scale: 80%;
+  transform: translate(0,-2px);
+}
+
+.CenteredRow {
+  grid-column: span 3;
+  display: flex;
+  justify-content: center;
+}
+
+.KeypadButton:active {
+  background-color: #a0b2bc;
+  border-color: #666;
 }

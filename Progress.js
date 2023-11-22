@@ -5,7 +5,7 @@ class Progress {
     this.startingHeroX = 0;
     this.startingHeroY = 0;
     this.startingHeroDirection = "down";
-    this.playerName = "Mathe-Held";
+    this.playerName = this.playerName;
     this.isTrackerEnabled = false;
     this.roomTracker = 0;
     this.isTimerEnabled = false;
@@ -13,40 +13,50 @@ class Progress {
     this.storyFlags = {
       //Story-Flags
       "SEEN_INTRO": true,
-      //O2-Task
+        //O2-Task
       "Q1_INTRO": false,
       "Q1_IN_PROGRESS": false,
       "Q1_COMPLETED": false,
-      //Cafeteria-Task (Rubble)
+        //Cafeteria-Task
       "Q2_INTRO": false,
-      "Q2_IN_PROGRESS": true,
+      "Q2_IN_PROGRESS": false,
+      "LOOKING_FOR_METERSTICK": true,
       "Q2_COMPLETED": false,
-      //Comms-Task
+        //Medic-Task
       "Q3_INTRO": false,
       "Q3_IN_PROGRESS": false,
       "Q3_COMPLETED": false,
-      //Cargo-Task
+        //Comms-Task
       "Q5_INTRO": false,
       "Q5_IN_PROGRESS": false,
       "Q5_COMPLETED": false,
-      //Engine-Task
+        //Cargo-Task
+      "Q5_INTRO": false,
+      "Q5_IN_PROGRESS": false,
+      "Q5_COMPLETED": false,
+        //Engine-Task
       "Q6_INTRO": false,
       "Q6_IN_PROGRESS": false,
       "Q6_COMPLETED": false,
-      //CommandBridge-Task
+        //CommandBridge-Task
       "Q7_INTRO": false,
       "Q7_IN_PROGRESS": false,
       "Q7_COMPLETED": false,
 
       //Item-Flags
+      "PUT_ON_SUIT": false,
       "GOT_METERSTICK": false,
+      "GOT_KEYCARD_QUARTERS": false,
       "GOT_TEXTBOOK": false,
       "GOT_CROWBAR": false,
-      "GOT_KEYCARD": false,
-      "GOT_ITEM_5": false,
-      "GOT_ITEM_6": false,
-      "PUT_ON_SUIT": false,
+      "GOT_NOTE": false,
+      "GOT_KEYCARD_ENGINE": false,
+ 
+      //HUD-Flags
       "O2_ENABLED": false,
+
+      //Fun-Flags
+      "STEPPED_IN_COFFEE": true,
     };
     this.saveFileKey = "EscapeGame_SaveFile1";
   }

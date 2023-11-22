@@ -50,6 +50,11 @@ class OverworldEvent {
       this.obj.src = this.config.spriteSrc;
     }
 
+    //Deactivate old objects
+    Object.values(this.map.gameObjects).forEach(obj => {
+      obj.isMounted = false;
+    })
+
     //Reload map
     this.map.overworld.startMap( window.OverworldMaps[this.map.mapId], {
       x: this.hero.x,
@@ -214,6 +219,12 @@ class OverworldEvent {
             direction: this.event.direction,
           }); 
 
+        }
+
+        if (this.map.overworld.progress.isTrackerEnabled) {
+          this.map.overworld.progress.roomTracker += 1;
+          this.hud.updateFill(this.map.overworld.progress.roomTracker);
+      
         }
 
         sceneTransition.fadeOut();

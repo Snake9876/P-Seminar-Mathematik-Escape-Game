@@ -251,12 +251,6 @@ class Overworld {
   this.progress.startingHeroDirection = this.map.gameObjects.hero.direction;
   
   this.hud.playerName = this.progress.playerName || this.titleScreen.playerName;
-  
-  if (this.progress.isTrackerEnabled) {
-    this.progress.roomTracker = this.progress.roomTracker + 1;
-    this.hud.updateFill(this.progress.roomTracker);
-
-  }
 
  }
 

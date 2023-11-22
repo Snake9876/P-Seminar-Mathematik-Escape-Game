@@ -521,8 +521,7 @@ window.OverworldMaps = {
                 x: utils.withGrid(14),
                 y: utils.withGrid(8),
                 direction: "left",
-                face: "up",
-                resumeCutscene: true
+                face: "up"
               },
               { type: "textMessage", name: "playerName", text: "Oh nein! Was ist denn hier passiert?!" },
               { type: "textMessage", name: "playerName", text: "Yuri! Bist du hier? Kannst du mich hören?" },
@@ -2004,8 +2003,7 @@ window.OverworldMaps = {
                 x: utils.withGrid(1),
                 y: utils.withGrid(3),
                 direction: "right",
-                face: "up",
-                cutscene: true
+                face: "up"
               },
               { type: "effect", sound: "sounds/alarm.wav"},
               { type: "textMessage", name: "Bordcomputer", text: "SYSTEMWARNUNG!! RAUMSCHIFF AUF KOLLISIONSKURS." },
@@ -2065,7 +2063,6 @@ window.OverworldMaps = {
                 y: utils.withGrid(2),
                 direction: "down",
                 face: "down",
-                resumeCutscene: true
               },
               { type: "effect", sound: "sounds/alarm.wav"},
               { type: "textMessage", name: "Bordcomputer", text: "SYSTEMWARNUNG!! RAUMSCHIFF AUF KOLLISIONSKURS." },

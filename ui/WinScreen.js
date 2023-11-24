@@ -1,6 +1,7 @@
 class WinScreen {
   constructor() {
     this.isClosed = false;
+    this.audio = new Audio("/sounds/win.mp3");
   }
 
   getOptions(resolve) {
@@ -28,6 +29,7 @@ class WinScreen {
 
     //Close the menu
     this.isClosed = true;
+    this.audio.pause();
     this.keyboardMenu.end();
     this.element.remove();
   }
@@ -35,6 +37,7 @@ class WinScreen {
   init(container) {
     return new Promise(resolve => {
       this.createElement();
+      this.audio.play();
       container.appendChild(this.element);
       this.keyboardMenu = new KeyboardMenu();
       this.keyboardMenu.init(this.element);

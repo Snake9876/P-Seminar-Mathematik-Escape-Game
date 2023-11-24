@@ -45,6 +45,8 @@
 }
 
 .inputBar {
+  position: relative;
+  left: 6%;
   width: 150px;
   height: 15px;
   background-color: #000;

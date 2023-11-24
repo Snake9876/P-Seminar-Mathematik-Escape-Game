@@ -31,7 +31,8 @@ body {
 
 .game-container {
   position: relative; 
-  background: #d9f4ff;
+  image-rendering: pixelated;
+  background-image: url(/images/ui/hud/background.png);
   width: 352px;
   height: 198px;
   margin: 0 auto;

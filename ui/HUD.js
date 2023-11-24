@@ -52,7 +52,7 @@ class HUD {
   updateFill(value) {
     //Update oxygen percent fills
     this.tracker = value || 0;
-    this.percentage = (1-(Math.floor(this.tracker/4)/5)) * 100;
+    this.percentage = (1-(Math.floor(this.tracker/5)/6)) * 100;
     this.fill = document.querySelectorAll(".OxygenContainer > rect");
     this.fill.forEach(rect => rect.style.width = `${this.percentage}%`);
 

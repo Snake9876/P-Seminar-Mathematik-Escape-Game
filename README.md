@@ -1,7 +1,21 @@
 # P-Seminar-Mathematik-Escape-Game
 
-Beschreibung: Dies ist das Repository des P-Seminars: "Erstellung eines Mathe-Escapegames". Ziel des Projekts ist die Erstellung eines Mathe-Escapegames für die neue 11.Klasse. Das Thema des Escapegames ist "Weltall/Raumschiff" und ist ausgelegt für einen Spieler, die Aufgaben können jedoch auch zusammen in der Gruppe gelöst werden. Handlung Zeit Arten/Themengebiete der Rätsel
+Beschreibung: Dies ist das Repository des P-Seminars: "Erstellung eines Mathematik Escape-Games".
+Ziel des Projekts ist die Erstellung eines Mathematik Escape-Games für die neue 10. bzw. 11. Klasse (Stoffumfang: 10. Klasse LehrplanPLUS).
 
--- SONSTIGE INFORMATIONEN -- Programmiersprachen: HTML5, CSS3, JavaScript Host:
+Projekttitel: "Mathematiker, wir haben ein Problem!"
 
-Institution: Staatliches Gymnasium Holzkirchen Abiturjahrgang: 2022/24 Kurs: P-Seminar - "Erstellung eines Mathe-Escapegames" Kursleitung: StRin Barbara Winderl (M,L) Mitglieder: M. Domansky, A. Trant, G. Wittrisch
+Handlung: 
+Oh nein! Auf einer Weltraummission zum Planeten Arithmetika ist euer Raumschiff durch einen Rundungsfehler in der Berechnung vom Kurs abgekommen und mit einem Meteoroiden kollidiert.
+Dabei wurde es beschädigt und driftet nun geradewegs auf einen noch viel größeren Meteoroiden zu!
+Jetzt bloß nicht die Nerven verlieren!
+Glücklicherweise seid ihr echte Matheprofis und versucht, das Schiff wieder unter Kontolle und auf einen stabilen Kurs zu bringen.
+Schafft ihr es in der verbleibenden Zeit, euch und eure Crew zu retten?
+
+Institution: Staatliches Gymnasium Holzkirchen 
+Kurs: P-Seminar - "Erstellung eines Mathematik Escape-Games"
+Abiturjahrgang: 2022/24 
+Kursleitung: StRin B. Winderl (M,L) 
+Mitglieder: M. Domansky, A. Trant, F. Tuschen, G. Wittrisch
+
+Viel Spaß beim Knobeln! ;)

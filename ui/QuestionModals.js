@@ -31,13 +31,10 @@ class QuestionModals {
         </div>
         <div class="ModalContent" style="padding: 5px 15px 0px 15px;">
           <center>
-            <img id="O2-img" src="/images/questions/Sauerstoffflasche.jpg" style="width: 100px">
+            <img id="O2-img" src="/images/questions/q1.png" style="width: 150px">
           </center>
           <div>
-            <p>Aufgrund der starken Beschädigungen am Schiff bist du auf die Sauerstoffzufuhr aus einem Tank, welcher ein Rotationskörper der oben gezeigten Fläche ist, an deinem Raumanzug angewiesen. Leider verbrauchst du pro Raumwechsel 725ml Sauerstoff und möchtest nun herausfinden, nach wie vielen Raumwechseln der Tank leer ist. Dafür musst du zuerst das Gesamtvolumen des Tanks berechnen.
-          </div>
-          <div>
-            <input class="inputBar" type="text" placeholder="Antwort" id="answer-field1" maxlength="20">
+            <input id="input" class="inputBar" type="text" placeholder="Antwort" id="answer-field1" maxlength="20">
           </div>
           <div>
             <button class="checkButton">Check</button>
@@ -60,12 +57,10 @@ class QuestionModals {
           <button class="CloseButton">&times;</button>
         </div>
         <div class="ModalContent">
-          <ul>
-          <li>Umfang U=8m</li>
-          <li>Mantellinie s=3m</li>
-          </ul>
-          <input class="inputBar" type="text" placeholder="Antwort" id="answer-field1" maxlength="20">
-          <button class="checkButton">Check</button>
+          <center>
+            <img id="q1-img" src="/images/questions/q21.png" style="width: 150px">
+          </center>
+          <button class="checkButton">Entfernen</button>
         </div>
       `);
 
@@ -84,12 +79,10 @@ class QuestionModals {
           <button class="CloseButton">&times;</button>
         </div>
         <div class="ModalContent">
-          <ul>
-          <li>Umfang U=7m</li>
-          <li>Mantellinie s=4m</li>
-          </ul>
-          <input class="inputBar" type="text" placeholder="Antwort" id="answer-field1" maxlength="20">
-          <button class="checkButton">Check</button>
+          <center>
+            <img id="q2-img" src="/images/questions/q22.png"style="width: 150px">
+          </center>
+          <button class="checkButton">Entfernen</button>
         </div>
       `);
 
@@ -103,17 +96,17 @@ class QuestionModals {
       this.questionElement.innerHTML = (`
         <div class="ModalHeader" style="font-size: 0.5em;">
           <div class="Title">
-            Verletzter Techniker
+            Konzentration
           </div>
           <button class="CloseButton">&times;</button>
         </div>
-        <div class="ModalContent" style="padding: 5px 5px 0px 5px;">
-          <p>Auf dem Gerät in deiner Hand siehst du die Konzentration eines Medikaments im Blut des Technikers, welche durch die Funktion</p>
-          <center>C(t)=20e<sup>-0.15t</sup></center>
-          <p>beschrieben wird (t entspricht der Zeit nach der Einnahme des Medikaments in min).</p>
-          <p>Bestimme zuerst den Zeitpunkt t<sub>eff</sub>,an der die Konzentration im Gegensatz zur Anfangskonzentration um 15 Einheiten gesunken ist und berechne damit die Konzentration C(t<sub>eff</sub>).</p>
-          <p>Berechne anschließend den Wert am Zeitpunkt t<sub>eff</sub> der Konzentration des Medikaments, nachdem zu zur verbleibenden Konzentration wieder die gleiche Menge Medikament wie am Anfang hinzugegeben hast.</p>
-          <input class="inputBar" type="text" placeholder="Antwort" id="answer-field1" maxlength="20">
+        <div class="ModalContent">
+          <center>
+            <img id="q3-img" src="/images/questions/q3.png" style="width: 150px">
+          </center>
+          <div>
+            <input id="input" class="inputBar" type="text" placeholder="Antwort" id="answer-field1" maxlength="20">
+          </div>
           <button class="checkButton">Check</button>
         </div>
       `);
@@ -133,9 +126,13 @@ class QuestionModals {
           <button class="CloseButton">&times;</button>
         </div>
         <div class="ModalContent">
-          <div><center>Hier Link einfügen </center></div>
-          <p>Hier in der Kommandozentrale willst du einen Notruf absetzen. Normalerweise beschreibt die Welle eines Funksignals eine Sinsufunktion. Durch Beschädigungen am Schiff aber wurde das ausgesandte Signal verzerrt. Nun musst du die Werte des Graphen so umändern, dass die Antenne wieder sinusförmige Wellen versendet und die Parameter unten angeben.</p>
-          <input class="inputBar" type="text" placeholder="Antwort" id="answer-field1" maxlength="20">
+          <center>
+            <img id="q4-img" src="/images/questions/q4.png" style="width: 150px">
+          </center>
+          <button class="openButton" onclick="window.open('https://www.geogebra.org/m/aejrg5vw', '_blank').focus();">Panel öffnen</button>
+          <div> 
+            <input id="input" class="inputBar" type="text" placeholder="Antwort" id="answer-field1" maxlength="20">
+          </div>
           <button class="checkButton">Check</button>
         </div>
       `);
@@ -150,27 +147,51 @@ class QuestionModals {
       this.questionElement.innerHTML = (`
         <div class="ModalHeader">
           <div class="Title">
-            Sauerstoffvorrat
+            Zahlenschloss
           </div>
           <button class="CloseButton">&times;</button>
         </div>
         <div class="ModalContent">
-          <div id="display-bar"></div>
-          <div class="keypad">
-            <button class="KeyButton" onclick="appendToDisplay('1')">1</button>
-            <button class="KeyButton" onclick="appendToDisplay('2')">2</button>
-            <button class="KeyButton" onclick="appendToDisplay('3')">3</button>
-            <button class="KeyButton" onclick="appendToDisplay('4')">4</button>
-            <button class="KeyButton" onclick="appendToDisplay('5')">5</button>
-            <button class="KeyButton" onclick="appendToDisplay('6')">6</button>
-            <button class="KeyButton" onclick="appendToDisplay('7')">7</button>
-            <button class="KeyButton" onclick="appendToDisplay('8')">8</button>
-            <button class="KeyButton" onclick="appendToDisplay('9')">9</button>
-            <button class="KeyButton" onclick="appendToDisplay('0')">0</button>
+            <div class="inputBar"></div>
+            <div class="keypad">
+              <button class="KeypadButton">1</button>
+              <button class="KeypadButton">2</button>
+              <button class="KeypadButton">3</button>
+              <button class="KeypadButton">4</button>
+              <button class="KeypadButton">5</button>
+              <button class="KeypadButton">6</button>
+              <button class="KeypadButton">7</button>
+              <button class="KeypadButton">8</button>
+              <button class="KeypadButton">9</button>
+              <div class="CenteredRow">
+                <button class="KeypadButton">0</button>
+              </div>
+            </div>
             <button class="checkButton">Check</button>
           </div>
         </div>
-      `);
+      `); 
+
+    }
+
+    //Sticky-Note
+    else if (this.modalRef === "sticky-note") {
+      this.questionElement = document.createElement("div");
+      this.questionElement.classList.add('Modal');
+      this.questionElement.setAttribute('id', 'sticky-note-modal');
+      this.questionElement.innerHTML = (`
+        <div class="ModalHeader">
+          <div class="Title">
+            Notiz-Zettel
+          </div>
+          <button class="CloseButton">&times;</button>
+        </div>
+        <div class="ModalContent">
+          <center>
+            <img id="q5-img" src="/images/questions/q5.png" style="width: 150px">
+          </center>
+        </div>
+      `); 
 
     }
 
@@ -182,14 +203,17 @@ class QuestionModals {
       this.questionElement.innerHTML = (`
         <div class="ModalHeader">
           <div class="Title">
-            Sauerstoffvorrat
+            Motorleistung
           </div>
           <button class="CloseButton">&times;</button>
         </div>
         <div class="ModalContent">
-          <img id="O2-img" src="/images/questions/Sauerstoffflasche.jpg">
-          <p>Lorem</p>
-          <input class="inputBar" type="text" placeholder="Antwort" id="answer-field1" maxlength="20">
+          <center>
+            <img id="q6-img" src="/images/questions/q6.png" style="width: 150px">
+          </center>
+          <div>
+            <input id="input" class="inputBar" type="text" placeholder="Antwort" id="answer-field1" maxlength="20">
+          </div>
           <button class="checkButton">Check</button>
         </div>
       `);
@@ -204,15 +228,40 @@ class QuestionModals {
       this.questionElement.innerHTML = (`
         <div class="ModalHeader">
           <div class="Title">
-            Sauerstoffvorrat
+            Kursberechnung
           </div>
           <button class="CloseButton">&times;</button>
         </div>
         <div class="ModalContent">
-          <img id="O2-img" src="/images/questions/Sauerstoffflasche.jpg">
-          <p>Lorem</p>
-          <input class="inputBar" type="text" placeholder="Antwort" id="answer-field1" maxlength="20">
+          <center>
+            <img id="q7-img" src="/images/questions/q7.png" style="width: 150px">
+          </center>
+          <button id="map-button" class="openButton">Karte öffnen</button>
+          <div>
+            <input id="input" class="inputBar" type="text" placeholder="Antwort" id="answer-field1" maxlength="20">
+          </div>
           <button class="checkButton">Check</button>
+        </div>
+      `);
+
+    }
+
+    //Map
+    else if (this.modalRef === "qMap") {
+      this.questionElement = document.createElement("div");
+      this.questionElement.classList.add('Modal');
+      this.questionElement.setAttribute('id', 'qMap-modal');
+      this.questionElement.innerHTML = (`
+        <div class="ModalHeader">
+          <div class="Title">
+            Kursberechnung
+          </div>
+          <button class="CloseButton">&times;</button>
+        </div>
+        <div class="ModalContent">
+          <center>
+            <img id="q7-task-img" src="/images/questions/q7-task.png" style="width: 150px; image-rendering: pixalated;">
+          </center>
         </div>
       `);
 
@@ -248,7 +297,7 @@ class QuestionModals {
 
   disableQuestion() {
     //Disables question
-    this.checkButton.innerHTML = ('Correct!');
+    this.checkButton.innerHTML = ('Richtig!');
     this.checkButton.setAttribute('disabled', 'disabled');
     this.inputBar.remove();
 
@@ -258,85 +307,100 @@ class QuestionModals {
     this.coreOnComplete();
   }
 
+  appendToDisplay(digit) {
+    var displayBar = document.querySelector(".inputBar");
+
+    if (displayBar.innerText.length < 4) {
+      displayBar.innerText += digit;
+    }
+  }
+
   
   async init(container) {
     this.createElement();
     container.appendChild(this.overlay)
     container.appendChild(this.questionElement);
-    document.cookie1 = "_ga=null; SameSite=None; Secure";
-    document.cookie2 = "_ga_FXVLXMD21Y=null; SameSite=None; Secure";
-    document.cookie3 = "GeoGebraLangUI=null; SameSite=None; Secure";
-    document.cookie4 = "GGBSESSID=null; SameSite=None; Secure";
-    document.cookie4 = "stg_debug=null; SameSite=None; Secure";
 
-    this.checkButton = document.querySelector('.checkButton');
-    this.inputBar = document.querySelector('.inputBar');
-    this.checkButton.addEventListener('click', () => {
-        
-      switch(this.modalRef) {
-        case 'q1':
-          this.solution = "20";
-          this.answer = document.querySelector('.inputBar').value;
+    this.keyPadButtons = document.querySelectorAll('.KeypadButton');
+    this.keyPadButtons.forEach((element) => {
+      element.addEventListener('click', () => {
+        this.appendToDisplay(element.innerText)
+      });
+    });
 
-          //Check if Question was correct
-          if(this.checkAnswer(this.answer, this.solution)) {
-            this.disableQuestion();
+    this.checkButton = document.querySelector('.checkButton') || null;
+    this.inputBar = document.querySelector('.inputBar') || null;
 
-            //Overwrite onComplete callback
-            this.onComplete = () => {
-              this.coreOnComplete();
-              
+    if(this.checkButton !== null) {
+      this.checkButton.addEventListener('click', () => {
+          
+        switch(this.modalRef) {
+          case 'q1':
+            this.solution = "30";
+            this.answer = document.querySelector('.inputBar').value;
+
+            //Check if Question was correct
+            if(this.checkAnswer(this.answer, this.solution)) {
+              this.disableQuestion();
+
+              //Overwrite onComplete callback
+              this.onComplete = () => {
+                this.coreOnComplete();
+                
+                setTimeout(() => {
+                  this.map.startCutscene([
+                    //Custom event 1
+                    { type: "effect", sound: "sounds/chat.wav"},
+                    { type: "toggleOxygenBar" },
+                    { type: "textMessage", name: "Füllstation", text: "Sauerstoff aufgefüllt." },
+                    { type: "removeStoryFlag", flag: "Q1_IN_PROGRESS" },
+                    { type: "addStoryFlag", flag: "O2_ENABLED" },
+                    { type: "addStoryFlag", flag: "Q1_COMPLETED" },
+                    { type: "textMessage", name: this.progress.playerName, text: "Also muss ich hier alle 30 Raumwechsel meine Vorräte wiederauffüllen!" },
+                    { type: "effect", sound: "sounds/alarm.wav"},
+                    { type: "textMessage", name: "Bordcomputer", text: "STEUERTRIEBWERK AUSGEFALLEN. WARTUNG BENÖTIGT." },
+                    { type: "textMessage", name: this.progress.playerName, text: "Auch das noch!" },
+                    { type: "textMessage", name: this.progress.playerName, text: "Dann eben zum Maschinenraum!" },
+                  ])
+                }, 250);
+              }
+            } else {
+              this.checkButton.innerHTML = ('Falsch!');
+      
               setTimeout(() => {
-                this.map.startCutscene([
-                  //Custom event 1
-                  { type: "effect", sound: "sounds/chat.wav"},
-                  { type: "toggleOxygenBar" },
-                  { type: "textMessage", name: "Füllstation", text: "Sauerstoff aufgefüllt." },
-                  { type: "removeStoryFlag", flag: "Q1_IN_PROGRESS" },
-                  { type: "addStoryFlag", flag: "O2_ENABLED" },
-                  { type: "addStoryFlag", flag: "Q1_COMPLETED" },
-                  {
-                    type: "stand",
-                    who: "hero",
-                    direction: "up",
-                    time: 500,
-                  },
-                  { type: "textMessage", name: this.progress.playerName, text: "Also muss ich hier alle 20 Raumwechsel meine Vorräte wiederauffüllen!" },
-                  {
-                    type: "stand",
-                    who: "hero",
-                    direction: "up",
-                    time: 1000,
-                  },
-                  { type: "effect", sound: "sounds/alarm.wav"},
-                  { type: "textMessage", name: "Bordcomputer", text: "STEUERTRIEBWERK AUSGEFALLEN. WARTUNG BENÖTIGT." },
-                  {
-                    type: "stand",
-                    who: "hero",
-                    direction: "up",
-                    time: 500,
-                  },
-                  { type: "textMessage", name: this.progress.playerName, text: "Auch das noch!" },
-                  { type: "textMessage", name: this.progress.playerName, text: "Dann eben zum Maschinenraum!" },
-                ])
-              }, 250);
+                this.checkButton.innerHTML = ('Check');
+              }, 2000);
             }
-          } else {
-            this.checkButton.innerHTML = ('Incorrect!');
-    
-            setTimeout(() => {
-              this.checkButton.innerHTML = ('Check');
-            }, 2000);
-          }
 
-          break;
-        case 'q21':
-          this.solution = true;
-          this.answer = true;
+            break;
+          case 'q21':
+              this.checkButton.innerHTML = ('Falsch!');
+              this.checkButton.setAttribute('disabled', 'disabled');
 
-          //Check if Question was correct
-          if(this.checkAnswer(this.answer, this.solution)) {
-            this.checkButton.innerHTML = ('Correct!');
+              //Overwrite onComplete callback
+              this.onComplete = () => {
+                this.coreOnComplete();
+                
+                setTimeout(() => {
+                  this.map.startCutscene([
+                    //Custom event 2.1
+                    {
+                      type: "updateObject",
+                      update: {
+                        id: "Schutthaufen",
+                        hide: true,
+                      }
+                    },
+                    { type: "updateTimer", value: -120 },
+                    { type: "textMessage", name: "playerName", text: "Oh nein, das war der falsche Berg!" },
+                    { type: "removeStoryFlag", flag: "REMOVABLE" },
+                  ])
+                }, 250);
+              }
+
+            break;
+          case 'q22':
+            this.checkButton.innerHTML = ('Richtig!');
             this.checkButton.setAttribute('disabled', 'disabled');
 
             //Overwrite onComplete callback
@@ -345,44 +409,7 @@ class QuestionModals {
               
               setTimeout(() => {
                 this.map.startCutscene([
-                  //Custom event 2.1
-                  {
-                    type: "updateObject",
-                    update: {
-                      id: "Schutthaufen",
-                      hide: true,
-                    }
-                  },
-                  { type: "updateTimer", value: -120 },
-                  { type: "textMessage", name: "playerName", text: "Oh nein, das war der falsche Berg!" },
-                ])
-              }, 250);
-            }
-          } else {
-            this.checkButton.innerHTML = ('Incorrect!');
-    
-            setTimeout(() => {
-              this.checkButton.innerHTML = ('Check');
-            }, 2000);
-          }
-
-          break;
-        case 'q22':
-          this.solution = true;
-          this.answer = true;
-
-          //Check if Question was correct
-          if(this.checkAnswer(this.answer, this.solution)) {
-            this.checkButton.innerHTML = ('Correct!');
-            this.checkButton.setAttribute('disabled', 'disabled');
-
-            //Overwrite onComplete callback
-            this.onComplete = () => {
-              this.coreOnComplete();
-              
-              setTimeout(() => {
-                this.map.startCutscene([
-                  //Custom event 2.2
+                  { type: "removeStoryFlag", flag: "REMOVABLE" },
                   {
                     type: "updateObject",
                     update: {
@@ -390,209 +417,220 @@ class QuestionModals {
                       spriteSrc: "images/gameObjects/people/yuriEngineer.png",
                     }
                   }, 
-                  { type: "removeStoryFlag", flag: "Q2_INTRO" },
-                  { type: "addStoryFlag", flag: "Q2_COMPLETED" },
-                  { type: "textMessage", name: "playerName", text: "Oh nein, Yuri!"},
-                  { type: "textMessage", name: "playerName", text: "Er ist ohnmächtig und seine Vitalwerte sind miserabel!"},
-                  { type: "textMessage", name: "playerName", text: "Noch ist er am Leben,..."},
-                  { type: "textMessage", name: "playerName", text: "...aber er muss dringend zur Krankenstation gebracht werden!"},
-                  { type: "textMessage", name: "playerName", text: "Ich muss Krankenschwester Bella finden!"},
                 ])
               }, 250);
             }
-          } else {
-            this.checkButton.innerHTML = ('Incorrect!');
-    
-            setTimeout(() => {
-              this.checkButton.innerHTML = ('Check');
-            }, 2000);
-          }
 
-          break;
-        case 'q3':
-          this.solution = "20";
-          this.answer = document.querySelector('.inputBar').value;
+            break;
+          case 'q3':
+            this.solution = "40";
+            this.answer = document.querySelector('.inputBar').value;
 
-          //Check if Question was correct
-          if(this.checkAnswer(this.answer, this.solution)) {
-            this.disableQuestion();
+            //Check if Question was correct
+            if(this.checkAnswer(this.answer, this.solution)) {
+              this.disableQuestion();
 
-            //Overwrite onComplete callback
-            this.onComplete = () => {
-              this.coreOnComplete();
+              //Overwrite onComplete callback
+              this.onComplete = () => {
+                this.coreOnComplete();
 
+                setTimeout(() => {
+                  this.map.startCutscene([
+                    //Custom event 3
+                    { type: "textMessage", name: "Bella", text: "40 Minuten also..." },
+                    { type: "textMessage", name: "Bella", text: "Das Medikament wird ihn fürs Erste stabilisieren." },
+                    { type: "textMessage", name: "playerName", text: "Kann ich denn schon mit ihm sprechen?" },
+                    { type: "textMessage", name: "Bella", text: "Noch ist er leider bewusstlos..." },
+                    { type: "textMessage", name: "Bella", text: "Setze doch in der Zwischenzeit einen Notruf ab!" },
+                    { type: "textMessage", name: "Bella", text: "Vielleicht wacht er in der Zwischenzeit auf." },
+                    { type: "textMessage", name: "playerName", text: "Gute Idee! Ich beeile mich!" },
+                    { type: "removeStoryFlag", flag: "Q3_IN_PROGRESS" },
+                    { type: "addStoryFlag", flag: "Q3_COMPLETED" },
+                    { type: "addStoryFlag", flag: "Q4_INTRO" },
+                  ])
+                }, 250);
+              }
+            } else {
+              this.checkButton.innerHTML = ('Falsch!');
+      
               setTimeout(() => {
-                this.map.startCutscene([
-                  //Custom event 3
-                  { type: "textMessage", name: "Bella", text: "So, das wird ihn eine Zeit lang stabilisieren." },
-                  { type: "textMessage", name: "Bella", text: "Aber eine Dauerlösung ist das nicht!" },
-                  { type: "textMessage", name: this.progress.playerName, text: "Kann ich denn schon mit ihm sprechen?" },
-                  { type: "textMessage", name: "Bella", text: "Noch ist er bewusstlos..." },
-                  { type: "textMessage", name: "Bella", text: "Setze in der Zwischenzeit einen Notruf ab!" },
-                  { type: "textMessage", name: this.progress.playerName, text: "Gute Idee! Ich beeile mich!" },
-                  { type: "addStoryFlag", flag: "Q4_INTRO" },
-                ])
-              }, 250);
+                this.checkButton.innerHTML = ('Check');
+              }, 2000);
             }
-          } else {
-            this.checkButton.innerHTML = ('Incorrect!');
-    
-            setTimeout(() => {
-              this.checkButton.innerHTML = ('Check');
-            }, 2000);
-          }
 
-          break;
-        case 'q4':
-          this.solution = "-sin(5,03*t-1.57)";
-          this.answer = document.querySelector('.inputBar').value;
+            break;
+          case 'q4':
+            this.solution = "-sin(5,03*t-1.57)";
+            this.answer = document.querySelector('.inputBar').value;
 
-          //Check if Question was correct
-          if(this.checkAnswer(this.answer, this.solution)) {
-            this.disableQuestion();
+            //Check if Question was correct
+            if(this.checkAnswer(this.answer, this.solution)) {
+              this.disableQuestion();
 
-            //Overwrite onComplete callback
-            this.onComplete = () => {
-              this.coreOnComplete();
-              
+              //Overwrite onComplete callback
+              this.onComplete = () => {
+                this.coreOnComplete();
+                
+                setTimeout(() => {
+                  this.map.startCutscene([
+                    //Custom event 4
+                    { type: "addStoryFlag", flag: "Q4_COMPLETED" },
+                    { type: "removeStoryFlag", flag: "Q4_IN_PROGRESS" },
+                    { type: "textMessage", name: "playerName", text: "Na also, es scheint zu funktionieren!" },
+                    { 
+                      type: "stand",
+                      who: "hero",
+                      direction: "up",
+                      time: 1000
+                    },
+                    { type: "textMessage", name: "playerName", text: "So, damit wäre der Notruf abgesetzt!" },
+                    { type: "textMessage", name: "playerName", text: "Mal sehen, ob Yuri schon wach ist." },
+                  ])
+                }, 250);
+              }
+            } else {
+              this.checkButton.innerHTML = ('Falsch!');
+      
               setTimeout(() => {
-                this.map.startCutscene([
-                  //Custom event 4
-                  { type: "addStoryFlag", flag: "Q3_COMPLETE" },
-                  { type: "removeStoryFlag", flag: "Q3_IN_PROGRESS" },
-                  { type: "textMessage", name: this.playerName, text: "Ok, wir haben wieder ein Signal!" },
-                  {
-                    type: "stand",
-                    who: "hero",
-                    direction: "up",
-                    time: 1000
-                  },
-                  { type: "textMessage", name: this.playerName, text: "Der Notruf ist abgesetzt." },
-                  { type: "textMessage", name: this.playerName, text: "Mal sehen, ob Yuri schon wach ist." },
-                ])
-              }, 250);
+                this.checkButton.innerHTML = ('Check');
+              }, 2000);
             }
-          } else {
-            this.checkButton.innerHTML = ('Incorrect!');
-    
-            setTimeout(() => {
-              this.checkButton.innerHTML = ('Check');
-            }, 2000);
-          }
 
-          break;
-        case 'q5':
-          this.solution = "20";
-          this.answer = document.querySelector('.inputBar').value;
+            break;
+          case 'q5':
+            this.solution = "5328";
+            this.answer = document.querySelector('.inputBar').innerText;
 
-          //Check if Question was correct
-          if(this.checkAnswer(this.answer, this.solution)) {
-            this.disableQuestion();
+            //Check if Question was correct
+            if(this.checkAnswer(this.answer, this.solution)) {
+              this.disableQuestion();
 
-            //Overwrite onComplete callback
-            this.onComplete = () => {
-              this.coreOnComplete();
-              
-              setTimeout(() => {
-                this.map.startCutscene([
-                  //Custom event 5
-                  {
-                    type: "updateObject",
-                    update: {
-                      id: "CargoDoor",
-                      hide: true,
+              //Overwrite onComplete callback
+              this.onComplete = () => {
+                this.coreOnComplete();
+                
+                setTimeout(() => {
+                  this.map.startCutscene([
+                    //Custom event 5
+                    {
+                      type: "updateObject",
+                      update: {
+                        id: "CargoDoor",
+                        hide: true,
+                      }
                     }
-                  }
-                ])
-              }, 250);
-            }
-          } else {
-            this.checkButton.innerHTML = ('Incorrect!');
-    
-            setTimeout(() => {
-              this.checkButton.innerHTML = ('Check');
-            }, 2000);
-          }
-
-          break;
-        case 'q6':  
-          this.solution = "20";
-          this.answer = document.querySelector('.inputBar').value;
-
-          //Check if Question was correct
-          if(this.checkAnswer(this.answer, this.solution)) {
-            this.disableQuestion();
-
-            //Overwrite onComplete callback
-            this.onComplete = () => {
-              this.coreOnComplete;
-              
+                  ])
+                }, 250);
+              }
+            } else {
+              this.checkButton.innerHTML = ('Falsch!');
+              document.querySelector(".inputBar").innerText = "";
+      
               setTimeout(() => {
-                this.map.startCutscene([
-                  //Custom event 6
-                  { type: "effect", visual: "rumble", toggle: "true" },
-                  { type: "textMessage", name:"Bordcomputer", text: "SYSTEMWARNUNG!! EINTRITT IN ASTEROIDENGÜRTEL."},
-                  { type: "textMessage", name:"Bordcomputer", text: "BERECHNUNG EINES NEUEN KURSES ERFORDERLICH."},
-                  { type: "textMessage", name: this.progress.playerName, text: "Jetzt muss es schnell gehen!"},
-                  { type: "textMessage", name: this.progress.playerName, text: "Zurück zur Steuereinheit!"},
-                  { type: "addStoryFlag", flag: "Q7_INTRO" }
-                ])
-              }, 250);
+                this.checkButton.innerHTML = ('Check');
+              }, 2000);
             }
-          }
 
-          break;
-        case 'q7':
-          this.solution = "20";
-          this.answer = document.querySelector('.inputBar').value;
+            break;
+          case 'q6':  
+            this.solution = "4,8";
+            this.answer = document.querySelector('.inputBar').value;
 
-          //Check if Question was correct
-          if(this.checkAnswer(this.answer, this.solution)) {
-            this.disableQuestion();
+            //Check if Question was correct
+            if(this.checkAnswer(this.answer, this.solution)) {
+              this.disableQuestion();
 
-            //Overwrite onComplete callback
-            this.onComplete = () => {
-              this.coreOnComplete;
+              //Overwrite onComplete callback
+              this.onComplete = () => {
+                this.coreOnComplete;
+                
+                setTimeout(() => {
+                  this.map.startCutscene([
+                    //Custom event 6
+                    { type: "effect", visual: "rumble", toggle: "true" },
+                    { type: "effect", sound: "sounds/alarm.wav"},
+                    { type: "textMessage", name:"Bordcomputer", text: "SYSTEMWARNUNG!! EINTRITT IN ASTEROIDENGÜRTEL."},
+                    { type: "textMessage", name:"Bordcomputer", text: "BERECHNUNG EINES NEUEN KURSES ERFORDERLICH."},
+                    { type: "textMessage", name: this.progress.playerName, text: "Jetzt muss es schnell gehen!"},
+                    { type: "textMessage", name: this.progress.playerName, text: "Zurück zur Steuereinheit!"},
+                    { type: "removeStoryFlag", flag: "Q6_IN_PROGRESS" },
+                    { type: "addStoryFlag", flag: "Q6_COMPLETED" }
+                  ])
+                }, 250);
+              }
+            }
 
-              const container = document.querySelector('.game-container');
-              const sceneTransition = new ScreenEffects();
-              
+            break;
+          case 'q7':
+            this.solution = "-2,2,1,0";
+            this.answer = document.querySelector('.inputBar').value;
+
+            //Check if Question was correct
+            if(this.checkAnswer(this.answer, this.solution)) {
+              this.disableQuestion();
+
+              //Overwrite onComplete callback
+              this.onComplete = () => {
+                this.coreOnComplete;
+
+                const container = document.querySelector('.game-container');
+                const sceneTransition = new ScreenEffects();
+                
+                setTimeout(() => {
+                  this.map.startCutscene([
+                    { type: "effect", visual: "rumble", toggle: "true" },
+                  ]);
+
+                  sceneTransition.init(container, () => {
+            
+                    this.map.isPaused = true;
+                    this.winScreen = new WinScreen();
+                    this.winScreen.init(container);
+                
+                    sceneTransition.fadeOut();
+            
+                  })
+
+                }, 50);
+              }
+            } else {
+              this.checkButton.innerHTML = ('Falsch!');
+      
               setTimeout(() => {
-  
-                sceneTransition.init(container, () => {
-          
-                  this.map.isPaused = true;
-                  this.winScreen = new WinScreen();
-                  this.winScreen.init(container);
-              
-                  sceneTransition.fadeOut();
-          
-                })
-
-              }, 250);
+                this.checkButton.innerHTML = ('Check');
+              }, 2000);
             }
-          } else {
-            this.checkButton.innerHTML = ('Incorrect!');
-    
-            setTimeout(() => {
-              this.checkButton.innerHTML = ('Check');
-            }, 2000);
-          }
 
-          break;
-      }
-    })
-    
+            break;
+        }
+      })
+    }
 
     utils.wait(200);
     this.esc = new KeyPressListener("Escape", () => {
       this.close();
     })
+
+    this.openMap = document.getElementById('map-button') || null;
+
+    if(this.openMap !== null) {
+      this.openMap.addEventListener('click', () => {
+        this.close();
+
+        setTimeout(() => {
+          this.map.startCutscene([
+
+            { type: "openModal", fileRef: "QuestionModal", modalRef: "qMap" }
+          ])
+        }, 1);
+      });
+    }
+
     this.closeButton = document.querySelector('.CloseButton');
     this.closeButton.addEventListener('click', () => {
       this.close();
     })
-
+  
   }
 
 }

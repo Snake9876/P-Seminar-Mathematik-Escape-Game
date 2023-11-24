@@ -118,83 +118,6 @@ class Overworld {
       ])
     }
   })
-  new KeyPressListener("1", () => {
-    if (!this.map.isCutscenePlaying) {
-      this.map.startCutscene([
-        { 
-          type: "openModal", 
-          fileRef: "QuestionModal",
-          modalRef: "q1"
-        }
-      ])
-    }
-  })
-  new KeyPressListener("2", () => {
-    if (!this.map.isCutscenePlaying) {
-      this.map.startCutscene([
-        { 
-          type: "openModal", 
-          fileRef: "QuestionModal",
-          modalRef: "q21"
-        }
-      ])
-    }
-  })
-  new KeyPressListener("8", () => {
-    if (!this.map.isCutscenePlaying) {
-      this.map.startCutscene([
-        { 
-          type: "openModal", 
-          fileRef: "QuestionModal",
-          modalRef: "q22"
-        }
-      ])
-    }
-  })
-  new KeyPressListener("3", () => {
-    if (!this.map.isCutscenePlaying) {
-      this.map.startCutscene([
-        { 
-          type: "openModal", 
-          fileRef: "QuestionModal",
-          modalRef: "q3"
-        }
-      ])
-    }
-  })
-  new KeyPressListener("4", () => {
-    if (!this.map.isCutscenePlaying) {
-      this.map.startCutscene([
-        { 
-          type: "openModal", 
-          fileRef: "QuestionModal",
-          modalRef: "q4"
-        }
-      ])
-    }
-  })
-  new KeyPressListener("5", () => {
-    if (!this.map.isCutscenePlaying) {
-      this.map.startCutscene([
-        { 
-          type: "openModal", 
-          fileRef: "QuestionModal",
-          modalRef: "q5"
-        }
-      ])
-    }
-  })
-  new KeyPressListener("6", () => {
-    if (!this.map.isCutscenePlaying) {
-      this.map.startCutscene([
-        { 
-          type: "openModal", 
-          fileRef: "QuestionModal",
-          modalRef: "q6"
-        }
-      ])
-    }
-  })
   new KeyPressListener("7", () => {
     if (!this.map.isCutscenePlaying) {
       this.map.startCutscene([
@@ -251,12 +174,6 @@ class Overworld {
   this.progress.startingHeroDirection = this.map.gameObjects.hero.direction;
   
   this.hud.playerName = this.progress.playerName || this.titleScreen.playerName;
-  
-  if (this.progress.isTrackerEnabled) {
-    this.progress.roomTracker = this.progress.roomTracker + 1;
-    this.hud.updateFill(this.progress.roomTracker);
-
-  }
 
  }
 
@@ -367,17 +284,10 @@ class Overworld {
       { type: "textMessage", name: "playerName", text: "Aber das ist erstmal Nebensache! Ich muss nach den anderen sehen!"},
       { type: "textMessage", name: "playerName", text: "Die Sauerstoffkonzentration fällt..."},
       { type: "textMessage", name: "playerName", text: "Ein System-Checkup in O2 sollte mir mehr verraten!"},
-      //Info-Modal { type: "openModal", fileRef: "HudModal", ModalRef: "info"}
       { type: "addStoryFlag", flag: "Q1_INTRO" }
      ])
   }
   this.timerLoop();
-
-  // this.map.startCutscene([
-  //   { type: "battle", enemyId: "beth" }
-  //   // { type: "changeMap", map: "DemoRoom"}
-  //   // { type: "textMessage", text: "This is the very first message!"}
-  // ])
 
  }
 }

@@ -1,8 +1,10 @@
 class OverworldEvent {
-  constructor({ map, hud, event }) {
+  constructor({ map, hud, events, eventIndex }) {
     this.map = map;
     this.hud = hud;
-    this.event = event;
+    this.events = events;
+    this.eventIndex = eventIndex;
+    this.event = events[eventIndex];
     this.classMap = {
       "HudModal": HudModals,
       "QuestionModal": QuestionModals,
@@ -48,6 +50,11 @@ class OverworldEvent {
       this.obj.src = this.config.spriteSrc;
     }
 
+    //Deactivate old objects
+    Object.values(this.map.gameObjects).forEach(obj => {
+      obj.isMounted = false;
+    })
+
     //Reload map
     this.map.overworld.startMap( window.OverworldMaps[this.map.mapId], {
       x: this.hero.x,
@@ -58,17 +65,6 @@ class OverworldEvent {
     resolve();
 
   }
-
-  /*delay(resolve) {  
-    this.map.isCutscenePlaying = false;
-
-    setTimeout( () => {
-      resolve();
-      this.map.isCutscenePlaying = true;
-    }, 
-    this.event.time
-    );
-  }*/
 
   effect(resolve) {
     
@@ -121,6 +117,7 @@ class OverworldEvent {
   }
 
   stand(resolve) {
+
     const who = this.map.gameObjects[ this.event.who ];
     who.startBehavior({
       map: this.map
@@ -138,9 +135,11 @@ class OverworldEvent {
       }
     }
     document.addEventListener("PersonStandComplete", completeHandler)
+
   }
 
   walk(resolve) {
+
     const who = this.map.gameObjects[ this.event.who ];
     who.startBehavior({
       map: this.map
@@ -158,6 +157,7 @@ class OverworldEvent {
       }
     }
     document.addEventListener("PersonWalkingComplete", completeHandler)
+
   }
 
   textMessage(resolve) {
@@ -206,7 +206,7 @@ class OverworldEvent {
       sceneTransition.init(container, () => {
 
         //Open Game-Over-Screen after 20 room changes
-        if (this.map.overworld.progress.roomTracker >= 20) {
+        if (this.map.overworld.progress.roomTracker >= 30) {
           this.map.isPaused = true;
           this.gameOverScreen = new GameOverScreen({
             progress: this.map.overworld.progress
@@ -218,15 +218,17 @@ class OverworldEvent {
             y: this.event.y,
             direction: this.event.direction,
           }); 
+
         }
 
-        resolve();
+        if (this.map.overworld.progress.isTrackerEnabled) {
+          this.map.overworld.progress.roomTracker += 1;
+          this.hud.updateFill(this.map.overworld.progress.roomTracker);
+      
+        }
+
         sceneTransition.fadeOut();
-
-        if(this.event.cutscene) {
-          this.map.isCutscenePlaying = true;
-
-        }
+        resolve();
 
       })
     }

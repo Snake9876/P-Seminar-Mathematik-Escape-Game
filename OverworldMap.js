@@ -91,7 +91,8 @@ class OverworldMap {
 
     for (let i=0; i<events.length; i++) {
       const eventHandler = new OverworldEvent({
-        event: events[i],
+        events: events,
+        eventIndex: i,
         map: this,
         hud: this.overworld.hud,
       })
@@ -155,17 +156,23 @@ window.OverworldMaps = {
         shadowImg: false,
         talking: [
           {
+            required: ["Q6_COMPLETED"],
+            events: [
+              { type: "addStoryFlag", flag: "Q7_INTRO" },
+              { type: "textMessage", name: "playerName", text: "Lorem" },
+              { type: "openModal", fileRef: "QuestionModal", modalRef: "q7"},
+            ]
+          },
+          {
             required: ["Q7_INTRO"],
             events: [
-              { type: "textMessage", name: "playerName", text: "Es scheint nichts zu passieren*"},
-              { type: "openModal", fileRef: "questionModal", modalRef: "q7"},
+              { type: "textMessage", name: "playerName", text: "Lorem"},
+              { type: "openModal", fileRef: "QuestionModal", modalRef: "q7"},
             ]
           },
           {
             events: [
-              { type: "toggleOxygenBar" },
-              { type: "textMessage", name: "playerName", text: "Es scheint nichts zu passieren*"},
-              { type: "textMessage", name: "", text: "Es scheint nichts zu passieren*"},
+              { type: "textMessage", name: "", text: "*Es scheint nichts zu passieren...*"},
             ]
           }
         ]
@@ -179,15 +186,23 @@ window.OverworldMaps = {
         shadowImg: false,
         talking: [
           {
+            required: ["Q6_COMPLETED"],
+            events: [
+              { type: "addStoryFlag", flag: "Q7_INTRO" },
+              { type: "textMessage", name: "playerName", text: "Lorem" },
+              { type: "openModal", fileRef: "QuestionModal", modalRef: "q7"},
+            ]
+          },
+          {
             required: ["Q7_INTRO"],
             events: [
-              { type: "textMessage", name: "", text: "Es scheint nichts zu passieren*"},
+              { type: "textMessage", name: "playerName", text: "Lorem"},
+              { type: "openModal", fileRef: "QuestionModal", modalRef: "q7"},
             ]
           },
           {
             events: [
-              { type: "toggleTimer" },
-              { type: "textMessage", name: "", text: "Es scheint nichts zu passieren*"},
+              { type: "textMessage", name: "", text: "*Es scheint nichts zu passieren...*"},
             ]
           }
         ]
@@ -305,6 +320,7 @@ window.OverworldMaps = {
         shadowImg: false,
         talking: [
           {
+            required: ["CAPTAIN_KNOCKED"],
             events: [
               { type: "effect", sound: "sounds/knocking.wav"},
               {
@@ -313,12 +329,29 @@ window.OverworldMaps = {
                 direction: "right",
                 time: 1000,
               },
-              { type: "textMessage", name: "???",
-              randomText: [
-                "AEIOU, DU GEHOERST AUCH MIT DAZU!", 
-                "Geranienauflauf", 
-                "Lorem ipsum sit dolor amet"
-              ]},
+              { 
+                type: "textMessage", name: "???",
+                randomText: [
+                  "Diese Welt ist klein, so klein...", 
+                  "Ich will nach Hause...", 
+                  "Wo ist Herr Kuschel?"
+                ]
+              },
+            ]
+          },
+          {
+            events: [
+              { type: "effect", sound: "sounds/knocking.wav"},
+              {
+                type: "stand",
+                who: "hero",
+                direction: "right",
+                time: 1000,
+              },
+              { type: "textMessage", name: "???", text: "AHHH! WIR WERDEN ALLE STERBEN!" },
+              { type: "textMessage", name: "playerName", text: "War das der Captain?" },
+              { type: "textMessage", name: "playerName", text: "Und so jemandem wird eine Führungsposition anvertraut..." },
+              { type: "addStoryFlag", flag: "CAPTAIN_KNOCKED" }
             ]
           }
         ]
@@ -341,7 +374,7 @@ window.OverworldMaps = {
                 time: 1000,
               },
               { type: "textMessage", 
-              text: "*Es scheint niemand zu antworten..."},
+              text: "*Es scheint niemand zu antworten*"},
             ]
           }
         ]
@@ -362,7 +395,7 @@ window.OverworldMaps = {
       [utils.asGridCoord(5,2)]: [{
         scenarios: [
           {
-            required: ["Q2_IN_PROGRESS"],
+            required: ["Q2_INTRO","Q2_IN_PROGRESS"],
             events: [
               { 
                 type: "changeMap",
@@ -370,34 +403,18 @@ window.OverworldMaps = {
                 x: utils.withGrid(14),
                 y: utils.withGrid(8),
                 direction: "left",
-                face: "up",
-              },
-              { 
-                type: "walk", 
-                who: "hero",
-                direction: "up",
-              },
-              {
-                type: "stand",
-                who: "hero",
-                direction: "up",
-                time: 500,
+                face: "up"
               },
               { type: "textMessage", name: "playerName", text: "Oh nein! Was ist denn hier passiert?!" },
               { type: "textMessage", name: "playerName", text: "Yuri! Bist du hier? Kannst du mich hören?" },
-              {
-                type: "stand",
-                who: "hero",
-                direction: "up",
-                time: 500,
-              },
               { type: "textMessage", name: "Yuri", text: "Hilf mir... ich bin unter... größtem Berg..." },
               { type: "textMessage", name: "playerName", text: "Die Zeit reicht nicht aus, jeden Berg wegzuräumen." },
               { type: "textMessage", name: "playerName", text: "Ich muss herausfinden, welcher der Größte ist!" },
               { type: "textMessage", name: "playerName", text: "Aber warte, die Berge sehen doch fast wie Kegel aus!" },
-              { type: "textMessage", name: "playerName", text: "Ich brauche dafür nur einen Meterstab!" },
-              { type: "textMessage", name: "playerName", text: "Hatte ihn nicht ... zuletzt benutzt?" },
-
+              { type: "textMessage", name: "playerName", text: "Jetzt brauche ich nur noch etwas zum Messen der Längen..." },
+              { type: "textMessage", name: "playerName", text: "Hier im Raum muss es doch irgendwas dafür geben!" },
+              { type: "removeStoryFlag", flag: "Q2_INTRO" },
+              { type: "addStoryFlag", flag: "LOOKING_FOR_METERSTICK" }
             ]
           },
           {
@@ -411,7 +428,7 @@ window.OverworldMaps = {
                 face: "up",
               }
             ]
-          }
+          },
         ]
       }],
       [utils.asGridCoord(6,6)]: [{
@@ -515,18 +532,17 @@ window.OverworldMaps = {
         direction: "right",
         src: "/images/gameObjects/objects/door.png",
         shadowImg: false,
-        hide: false,
         talking: [
           {
-            required: ["Q5_INTRO"],
+            required: ["GOT_KEYCARD_QUARTERS"],
             events: [
-              { type: "effect", sound: "sounds/knocking.wav"},
-              { type: "textMessage", name: "playerName", text: "Natürlich ist diese Tür auch verschlossen."},
-              { type: "textMessage", name: "playerName", text: "Was auch sonst?"},
-              { type: "textMessage", name: "playerName", text: "Deshalb hab ich um Schlüsselkarten für alle gebeten."},
-              { type: "textMessage", name: "playerName", text: "Aber auf mich hört ja niemand!" },
-              { type: "textMessage", name: "playerName", text: "Wahrscheinlich hat Han sie wie immer im Frachtraum liegen lassen!" },
-              { type: "addStoryFlag", flag: "Q5_IN_PROGRESS" },
+              { 
+                type: "updateObject", 
+                update: {
+                  id: "QuartersDoor",
+                  hide: true
+                }
+              },
             ]
           },
           {
@@ -557,7 +573,7 @@ window.OverworldMaps = {
       [utils.asGridCoord(1,7)]: [{
         scenarios: [
           {
-            required: ["Q2_IN_PROGRESS"],
+            required: ["Q2_INTRO","Q2_IN_PROGRESS"],
             events: [
               { 
                 type: "changeMap",
@@ -567,45 +583,17 @@ window.OverworldMaps = {
                 direction: "down",
                 face: "left",
               },
-              { 
-                type: "walk", 
-                who: "hero",
-                direction: "up",
-              },
-              {
-                type: "stand",
-                who: "hero",
-                direction: "up",
-                time: 500,
-              },
               { type: "textMessage", name: "playerName", text: "Oh nein! Was ist denn hier passiert?!" },
               { type: "textMessage", name: "playerName", text: "Yuri! Bist du hier? Kannst du mich hören?" },
-              {
-                type: "stand",
-                who: "hero",
-                direction: "up",
-                time: 500,
-              },
               { type: "textMessage", name: "Yuri", text: "Hilf mir... ich bin unter... größtem Berg..." },
               { type: "textMessage", name: "playerName", text: "Die Zeit reicht nicht aus, jeden Berg wegzuräumen." },
               { type: "textMessage", name: "playerName", text: "Ich muss herausfinden, welcher der Größte ist!" },
               { type: "textMessage", name: "playerName", text: "Aber warte, die Berge sehen doch fast wie Kegel aus!" },
-              { type: "textMessage", name: "playerName", text: "Ich brauche dafür nur einen Meterstab!" },
-              { type: "textMessage", name: "playerName", text: "Hatte ihn nicht ... zuletzt benutzt?" },
+              { type: "textMessage", name: "playerName", text: "Jetzt brauche ich nur noch etwas zum Messen der Längen..." },
+              { type: "textMessage", name: "playerName", text: "Hier im Raum muss es doch irgendwas dafür geben!" },
+              { type: "removeStoryFlag", flag: "Q2_INTRO" },
+              { type: "addStoryFlag", flag: "LOOKING_FOR_METERSTICK" }
 
-            ]
-          },
-          {
-            required: ["GOT_METERSTICK"],
-            events: [
-              { 
-                type: "changeMap",
-                map: "Cafeteria",
-                x: utils.withGrid(8),
-                y: utils.withGrid(2),
-                direction: "down",
-                face: "left",
-              }
             ]
           },
           {
@@ -911,6 +899,18 @@ window.OverworldMaps = {
         hide: false,
         talking: [
           {
+            required: ["GOT_KEYCARD_ENGINE"],
+            events: [
+              {
+                type: "updateObject",
+                update: {
+                  id: "EngineDoor",
+                  hide: true
+                }
+              }
+            ]
+          },
+          {
             required: ["Q2_IN_PROGRESS"],
             events: [
               {
@@ -1018,27 +1018,6 @@ window.OverworldMaps = {
       }],
       [utils.asGridCoord(5,8)]: [{
         scenarios: [
-          {
-            required: ["Q4_INTRO"],
-            events: [
-              {
-                type: "changeMap",
-                map: "Nachrichtenzentrale",
-                x: utils.withGrid(6),
-                y: utils.withGrid(2),
-                direction: "down",
-                face: "right",
-              },
-              {
-                type: "stand",
-                who: "hero",
-                direction: "down",
-                time: 500,
-              },
-              { type: "textMessage", name: "playerName", text: "Na toll! Ich bin also wieder auf mich allein gestellt."},
-              { type: "textMessage", name: "playerName", text: "Na gut, ich werde das schon hinkriegen!"},
-            ]
-          },
           {
             events: [
               {
@@ -1184,7 +1163,7 @@ window.OverworldMaps = {
       [utils.asGridCoord(9,3)]: [{
         scenarios: [
           {
-            required: ["Q2_IN_PROGRESS"],
+            required: ["Q2_INTRO","Q2_IN_PROGRESS"],
             events: [
               { 
                 type: "changeMap",
@@ -1194,31 +1173,16 @@ window.OverworldMaps = {
                 direction: "right",
                 face: "right",
               },
-              { 
-                type: "walk", 
-                who: "hero",
-                direction: "up",
-              },
-              {
-                type: "stand",
-                who: "hero",
-                direction: "up",
-                time: 500,
-              },
               { type: "textMessage", name: "playerName", text: "Oh nein! Was ist denn hier passiert?!" },
               { type: "textMessage", name: "playerName", text: "Yuri! Bist du hier? Kannst du mich hören?" },
-              {
-                type: "stand",
-                who: "hero",
-                direction: "up",
-                time: 500,
-              },
               { type: "textMessage", name: "Yuri", text: "Hilf mir... ich bin unter... größtem Berg..." },
               { type: "textMessage", name: "playerName", text: "Die Zeit reicht nicht aus, jeden Berg wegzuräumen." },
               { type: "textMessage", name: "playerName", text: "Ich muss herausfinden, welcher der Größte ist!" },
               { type: "textMessage", name: "playerName", text: "Aber warte, die Berge sehen doch fast wie Kegel aus!" },
-              { type: "textMessage", name: "playerName", text: "Ich brauche dafür nur einen Meterstab!" },
-              { type: "textMessage", name: "playerName", text: "Hatte ihn nicht ... zuletzt benutzt?" },
+              { type: "textMessage", name: "playerName", text: "Jetzt brauche ich nur noch etwas zum Messen der Längen..." },
+              { type: "textMessage", name: "playerName", text: "Hier im Raum muss es doch irgendwas dafür geben!" },
+              { type: "removeStoryFlag", flag: "Q2_INTRO" },
+              { type: "addStoryFlag", flag: "LOOKING_FOR_METERSTICK" }
 
             ]
           },
@@ -1239,7 +1203,7 @@ window.OverworldMaps = {
       [utils.asGridCoord(9,4)]: [{
         scenarios: [
           {
-            required: ["Q2_IN_PROGRESS"],
+            required: ["Q2_INTRO","Q2_IN_PROGRESS"],
             events: [
               { 
                 type: "changeMap",
@@ -1249,32 +1213,16 @@ window.OverworldMaps = {
                 direction: "right",
                 face: "right",
               },
-              { 
-                type: "walk", 
-                who: "hero",
-                direction: "up",
-              },
-              {
-                type: "stand",
-                who: "hero",
-                direction: "up",
-                time: 500,
-              },
               { type: "textMessage", name: "playerName", text: "Oh nein! Was ist denn hier passiert?!" },
               { type: "textMessage", name: "playerName", text: "Yuri! Bist du hier? Kannst du mich hören?" },
-              {
-                type: "stand",
-                who: "hero",
-                direction: "up",
-                time: 500,
-              },
               { type: "textMessage", name: "Yuri", text: "Hilf mir... ich bin unter... größtem Berg..." },
               { type: "textMessage", name: "playerName", text: "Die Zeit reicht nicht aus, jeden Berg wegzuräumen." },
               { type: "textMessage", name: "playerName", text: "Ich muss herausfinden, welcher der Größte ist!" },
               { type: "textMessage", name: "playerName", text: "Aber warte, die Berge sehen doch fast wie Kegel aus!" },
-              { type: "textMessage", name: "playerName", text: "Ich brauche dafür nur einen Meterstab!" },
-              { type: "textMessage", name: "playerName", text: "Hatte ihn nicht ... zuletzt benutzt?" },
-
+              { type: "textMessage", name: "playerName", text: "Jetzt brauche ich nur noch etwas zum Messen der Längen..." },
+              { type: "textMessage", name: "playerName", text: "Hier im Raum muss es doch irgendwas dafür geben!" },
+              { type: "removeStoryFlag", flag: "Q2_INTRO" },
+              { type: "addStoryFlag", flag: "LOOKING_FOR_METERSTICK" }
             ]
           },
           {
@@ -1326,38 +1274,98 @@ window.OverworldMaps = {
         shadowImg: true,
         talking: [
           {
-            required: ["Q2_INTRO", "GOT_METERSTICK"],
+            required: ["Q2_COMPLETED"],
             events: [
-              { type: "textMessage", name: "playerName",
-                text: "Der Durchmesser der Grundfläche ist m..."
-              },
-              { type: "textMessage", name: "playerName",
-                text: "...und der Berg ist m hoch."
-              },
+              { type: "textMessage", name: "playerName", text: "Er ist ohnmächtig und seine Vitalwerte sind miserabel!"},
+              { type: "textMessage", name: "playerName", text: "Ich muss Krankenschwester Bella finden!"}, 
+            ]
+          },
+          {
+            required: ["REMOVABLE","GOT_METERSTICK"],
+            events: [
               { type: "openModal", fileRef: "QuestionModal", modalRef: "q22"} 
               
+            ]
+          },
+          {
+            required: ["Q2_IN_PROGRESS","GOT_METERSTICK"],
+            events: [
+              { type: "removeStoryFlag", flag: "Q2_IN_PROGRESS" }, 
+              {
+                type: "updateObject",
+                update: {
+                  id: "Yuri",
+                  spriteSrc: "images/gameObjects/people/yuriEngineer.png",
+                }
+              }, 
+              { type: "textMessage", name: "playerName", text: "Oh nein, Yuri!"},
+              { type: "textMessage", name: "playerName", text: "Er ist ohnmächtig und seine Vitalwerte sind miserabel!"},
+              { type: "textMessage", name: "playerName", text: "Noch ist er am Leben,..."},
+              { type: "textMessage", name: "playerName", text: "...aber er muss dringend untersucht werden!"},
+              { type: "textMessage", name: "playerName", text: "Ich muss Krankenschwester Bella finden!"}, 
+              { type: "addStoryFlag", flag: "Q2_COMPLETED" },
             ]
           }
         ]
       },
       Schutthaufen: {
         type: "Person",
-        x: utils.withGrid(2),
-        y: utils.withGrid(3),
+        x: utils.withGrid(9),
+        y: utils.withGrid(7),
         direction: "down",
         src: "/images/gameObjects/objects/rubblePile.png",
         shadowImg: false,
         talking: [
           {
-            required: ["GOT_METERSTICK"],
+            required: ["REMOVABLE","GOT_METERSTICK"],
             events: [
-              { type: "textMessage", name: "playerName",
-                text: "Der Durchmesser der Grundfläche ist m..."
-              },
-              { type: "textMessage", name: "playerName",
-                text: "...und der Berg ist m hoch."
-              },
               { type: "openModal", fileRef: "QuestionModal", modalRef: "q21"}          
+            ]
+          }
+        ], 
+      },
+      Schrank: {
+        type: "Person",
+        x: utils.withGrid(13),
+        y: utils.withGrid(6),
+        direction: "down",
+        src: "/images/gameObjects/objects/cupboardDoor.png",
+        shadowImg: false,
+        talking: [
+          {
+            required: ["LOOKING_FOR_METERSTICK"],
+            events: [
+              { type: "removeStoryFlag", flag: "LOOKING_FOR_METERSTICK" },
+              { type: "addStoryFlag", flag: "GOT_METERSTICK" },  
+              { type: "addStoryFlag", flag: "REMOVABLE" },  
+              {
+                type: "stand",
+                who: "hero",
+                direction: "up",
+                time: 100
+              },
+              {
+                type: "updateObject",
+                update: {
+                  id: "Schrank",
+                  spriteSrc: "/images/gameObjects/objects/cupboardDoorOpen.png",
+                }
+              },
+              { type: "textMessage", name: "playerName",
+                text: "Was haben wir hier?"
+              },
+              { type: "textMessage", name: "playerName",
+                text: "Einen Schraubenschlüssel, einen Proteinriegel..."
+              },
+              { type: "textMessage", name: "playerName",
+                text: "Wem der wohl gehört?"
+              },
+              { type: "textMessage", name: "playerName",
+                text: "Aha! Ein Meterstab!"
+              },
+              { type: "textMessage", name: "playerName",
+                text: "Damit wird es wohl gehen."
+              }    
             ]
           }
         ], 
@@ -1370,9 +1378,36 @@ window.OverworldMaps = {
         src: "/images/gameObjects/people/bellaMedic.png",
         shadowImg: true,
         requiredFlags: ["Q3_INTRO"],
-        talking: [
+        talking: [ 
           {
-            required: ["Q3_COMPLETED"],
+            required: ["LOOKING_FOR_CROWBAR"],
+            events: [
+              { type: "textMessage", name: "playerName", text: "Yuri! Weißt du zufällig, wie ich die Kisten im Hangar öffnen kann?" },
+              { type: "textMessage", name: "Yuri", text: "Hier, nimm meine Schlüsselkarte für die Quartiere." },
+              { type: "textMessage", name: "Yuri", text: "Da liegt meine Brechstange." },
+              { type: "textMessage", name: "playerName", text: "Warte, wieso...?" },
+              { type: "textMessage", name: "Yuri", text: "Man kann nie wissen..." },
+              { type: "textMessage", name: "playerName", text: "Aber...?" },
+              { type: "textMessage", name: "Yuri", text: "WILLST DU JETZT DIE VERDAMMTE KISTE ÖFFNEN, ODER NICHT?!" },
+              { type: "textMessage", name: "playerName", text: "Ich bin schon auf dem Weg!" },
+              { type: "addStoryFlag", flag: "GOT_KEYCARD_QUARTERS" },
+              { type: "removeStoryFlag", flag: "LOOKING_FOR_CROWBAR" }
+            ]
+          },
+          {
+            required: ["Q5_IN_PROGRESS"],
+            events: [
+              { type: "textMessage", name: "Yuri", text: "Was stehst du hier noch rum? Geh schon!" },
+            ]
+          },  
+          {
+            required: ["Q5_INTRO"],
+            events: [
+              { type: "textMessage", name: "Yuri", text: "Was stehst du hier noch rum? Geh schon!" },
+            ]
+          }, 
+          {
+            required: ["Q4_COMPLETED"],
             events: [
               { type: "textMessage", name: "Bella", text: "Hast du den Notruf abgesetzt?" },
               { type: "textMessage", name: "playerName", text: "Hallo Bella! Es kam etwas dazwischen, aber ja." },
@@ -1393,32 +1428,42 @@ window.OverworldMaps = {
               { type: "textMessage", name: "Yuri", text: "BITTE WAS?!!!" },
               { type: "textMessage", name: "Yuri", text: "Wir dürfen keine Zeit verlieee..." },
               { type: "textMessage", name: "Bella", text: "Yuri! Dein Bein ist doch gebrochen!" },
-              { type: "textMessage", name: "Yuri", text: "Verdammt! Du muss wohl hier bleiben." },
+              { type: "textMessage", name: "Bella", text: "Du darfst dich nicht bewegen!" },
+              { type: "textMessage", name: "Yuri", text: "Verdammt! Dann hängt es wohl an dir." },
               { type: "textMessage", name: "Yuri", text: "Du sagtest du Tür lässt sich nicht öffnen?" },
-              { type: "textMessage", name: "Yuri", text: "Die Schlüsselkarte liegt im Kontrollraum des Hangars." },
+              { type: "textMessage", name: "Yuri", text: "Die Schlüsselkarte habe ich zuletzt im Kontrollraum des Hangars gesehen..." },
               { type: "textMessage", name: "Yuri", text: "Damit sollte es klappen." },
-              { type: "textMessage", name: "playerName", text: "Ich bin schon auf dem Weg!" },
-              { type: "addStoryFlag", flag: "Q4_INTRO" },
-              //Yuri Brechstange
-              { type: "textMessage", name: "playerName", text: "In meinem Spind liegt ne Brechstange." },
-              { type: "textMessage", name: "playerName", text: "Warte, wieso...?" },
-              { type: "textMessage", name: "Yuri", text: "Man kann nie wissen..." },
-              { type: "textMessage", name: "playerName", text: "Aber...?" },
-              { type: "textMessage", name: "Yuri", text: "KLEMMT JETZT DIE VERDAMMTE TÜR, ODER NICHT?!" },
-              { type: "textMessage", name: "playerName", text: "Ich bin schon auf dem Weg!" },
+              { type: "textMessage", name: "playerName", text: "Du kannst auf mich zählen!" },
+              { type: "textMessage", name: "Yuri", text: "Wenn wir draufgehen, bring ich dich um!" },
+              { type: "textMessage", name: "playerName", text: "Charismatisch, wie immer!" },
+              { type: "addStoryFlag", flag: "Q5_INTRO" },
             ]
-          }, 
+          },
           {
-            required: ["Q5_INTRO"],
-            events: [
-              { type: "textMessage", name: "Yuri", text: "Was stehst du hier noch rum? Geh schon!" },
-            ]
-          }, 
-          {
+            required: ["Q3_COMPLETED"],
             events: [
               { type: "textMessage", name: "Bella", text: "Am besten setzt du einen Notruf ab!" },
             ]
           },
+          {
+            required: ["Q3_IN_PROGRESS"],
+            events: [
+              { type: "textMessage", name: "Bella", text: "Da gibt es tatsächlich etwas, wobei du mir helfen kannst!" },
+              { type: "openModal", fileRef: "QuestionModal", modalRef: "q3"}
+            ]
+          }, 
+          {
+            required: ["Q3_INTRO"],
+            events: [
+              { type: "addStoryFlag", flag: "Q3_IN_PROGRESS" },
+              { type: "textMessage", name: "Bella", text: "Hmm, sein Herz schlägt unregelmäßig..." },
+              { type: "textMessage", name: "Bella", text: "Ich habe im bereits ein Medikament verabreicht." },
+              { type: "textMessage", name: "Bella", text: "Mit dem Zweiten muss ich noch etwas warten..." },
+              { type: "textMessage", name: "playerName", text: "Kann ich dir denn gar nicht helfen?" },
+              { type: "textMessage", name: "Bella", text: "Hmm, da gibt es tatsächlich etwas!" },
+              { type: "openModal", fileRef: "QuestionModal", modalRef: "q3"}
+            ]
+          }
         ]
       },
       Book: {
@@ -1430,8 +1475,10 @@ window.OverworldMaps = {
         shadowImg: false,
         talking: [
           {      
-            //required: ["Q4_IN_PROGRESS"],
+            required: ["Q4_INTRO","Q4_IN_PROGRESS"],
             events: [
+              { type: "addStoryFlag", flag: "GOT_TEXTBOOK" },
+              { type:"removeStoryFlag", flag: "Q4_INTRO" },
               { type: "textMessage", name: "playerName", text: "Hm, wo haben wir es denn?" },
               {
                 type: "stand",
@@ -1468,8 +1515,6 @@ window.OverworldMaps = {
                   spriteSrc: "/images/gameObjects/shadows/noshadow.png",
                 }
               },
-              { type: "addStoryFlag", flag: "GOT_TEXTBOOK" },
-              { type:"addStoryFlag", flag: "Q4_IN_PROGRESS" },
               {
                 type: "stand",
                 who: "hero",
@@ -1576,6 +1621,17 @@ window.OverworldMaps = {
           }
         ]  
       }],
+      [utils.asGridCoord(4,8)]: [{
+        scenarios: [
+          {
+            required: ["STEPPED_IN_COFFEE","PUT_ON_SUIT"],
+            events: [
+              { type: "textMessage", name: "playerName", text: "Mist, der Anzug ist frisch gewaschen..." },
+              { type: "removeStoryFlag", flag: "STEPPED_IN_COFFEE" }
+            ]
+          }
+        ]   
+      }],
     },
     walls: function() {
       let walls = {};
@@ -1611,32 +1667,16 @@ window.OverworldMaps = {
         x: utils.withGrid(5),
         y: utils.withGrid(2),
         direction: "down",
-        src: "/images/gameObjects/objects/disabledMonitor.png",
+        src: "/images/gameObjects/objects/Monitor.png",
         shadowImg: false,
         talking: [
           {      
-            required: ["GOT_TEXTBOOK", "Q4_IN_PROGRESS"],    
+            required: ["Q4_IN_PROGRESS","GOT_TEXTBOOK"],    
             events: [
-              { type: "textMessage", name: "playerName", text: "Ich muss also eine Gegenfunktion aufstellen, um ein reines Signal zu erhalten!" },
               { type: "effect", sound: "sounds/chat.wav" },
-              /*Aufgabe-4:
+              { type: "textMessage", name: "playerName", text: "Hilf mir, schlaues Buch!" },
+              { type: "openModal", fileRef: "QuestionModal", modalRef: "q4" }
 
-              { type: "openModal", fileRef: "questionModal", modalRef: "q4" },
-
-              On complete:
-
-              { type:"addStoryFlag", flag: "Q4_COMPLETE" },
-              { type:"removeStoryFlag", flag "Q4_IN_PROGRESS" },
-              { type: "textMessage", name: "playerName", text: "Ok, wir haben wieder ein Signal!" },
-              {
-                type: "stand",
-                who: "hero",
-                direction: "up",
-                time: 1000
-              },
-              { type: "textMessage", name: "playerName", text: "Der Notruf ist abgesetzt." },
-              { type: "textMessage", name: "playerName", text: "Mal sehen, ob Yuri schon wach ist." },
-              */
             ]
           },
           {
@@ -1651,10 +1691,27 @@ window.OverworldMaps = {
               },
               { type: "textMessage", name: "playerName", text: "Mist! Auch das noch!" },
               { type: "textMessage", name: "playerName", text: "Anscheinend wurde unsere Antenne in der Kollision beschädigt." },
-              { type: "textMessage", name: "playerName", text: "Wenigstens nimmt sie noch Signale auf..." },
-              { type: "textMessage", name: "playerName", text: "...sie scheinen verzerrt zu sein!" },
-              { type: "textMessage", name: "playerName", text: "Vielleicht kann ich sie reparieren!" },
-              { type: "textMessage", name: "playerName", text: "Irgendwas muss mir hier doch weiterhelfen können!" },
+              { type: "textMessage", name: "playerName", text: "Wenigstens scheint sie noch Signale aussenden zu können,..." },
+              { type: "textMessage", name: "playerName", text: "...aber sie scheinen verzerrt zu sein!" },
+              { type: "textMessage", name: "playerName", text: "Vielleicht kann ich sie reparieren..." },
+              { type: "textMessage", name: "playerName", text: "Hab ich darüber nicht erst letztens gelesen?" },
+              { type: "addStoryFlag", flag: "Q4_IN_PROGRESS" },
+            ]
+          },
+          {      
+            required: ["Q4_IN_PROGRESS"],    
+            events: [
+              { type: "effect", sound: "sounds/chat.wav" },
+              { type: "textMessage", name: "playerName", text: "Vielleicht kann ich die Antenne reparieren..." },
+              { type: "textMessage", name: "playerName", text: "Hab ich darüber nicht erst letztens gelesen?" },
+            ]
+          },
+          {      
+            required: ["Q4_COMPLETED"],    
+            events: [
+              { type: "effect", sound: "sounds/chat.wav" },
+              { type: "textMessage", name: "playerName", text: "Der Notruf wurde abgesetzt." },
+              { type: "textMessage", name: "playerName", text: "Hoffentlich empfängt ihn jemand..." },
             ]
           }
         ]
@@ -1702,6 +1759,46 @@ window.OverworldMaps = {
         isPlayerControlled: true,
         x: utils.withGrid(30),
         y: utils.withGrid(10),
+      },
+      LockerDoor: {
+        type: "Person",
+        x: utils.withGrid(7),
+        y: utils.withGrid(3),
+        direction: "down",
+        src: "/images/gameObjects/objects/lockerDoor.png",
+        shadowImg: false,
+        talking: [
+          {      
+            required: ["LOCKER_CLOSED","LOCKER_OCCUPIED"],    
+            events: [
+              { type: "removeStoryFlag", flag: "LOCKER_CLOSED" },
+              { 
+                type: "updateObject", 
+                update: {
+                  id: "LockerDoor",
+                  spriteSrc: "/images/gameObjects/objects/crowbar.png"
+                }
+              },
+            ]
+          },
+          {      
+            required: ["LOCKER_OCCUPIED"],    
+            events: [
+              { type: "removeStoryFlag", flag: "LOCKER_OCCUPIED" },
+              { 
+                type: "updateObject", 
+                update: {
+                  id: "LockerDoor",
+                  spriteSrc: "/images/gameObjects/shadows/noshadow.png"
+                }
+              },
+              { type: "textMessage", name: "playerName", text: "Er meinte es wirklich ernst!" },
+              { type: "textMessage", name: "playerName", text: "Ich weiß nicht, ob ich mich freuen oder mir Sorgen machen soll..." },
+              { type: "textMessage", name: "playerName", text: "Damit werden sich die Kisten wohl öffnen lassen!" },
+              { type: "removeStoryFlag", flag: "GOT_CROWBAR" },
+            ]
+          },
+        ]
       }
     },
     walls: function() {
@@ -1863,7 +1960,7 @@ window.OverworldMaps = {
                 time: 1000,
               },
               { type: "textMessage", 
-              text: "*Es scheint niemand zu antworten..."},
+              text: "*Es scheint niemand zu antworten...*"},
             ]
           }
         ]
@@ -1917,8 +2014,7 @@ window.OverworldMaps = {
                 x: utils.withGrid(1),
                 y: utils.withGrid(3),
                 direction: "right",
-                face: "up",
-                cutscene: true
+                face: "up"
               },
               { type: "effect", sound: "sounds/alarm.wav"},
               { type: "textMessage", name: "Bordcomputer", text: "SYSTEMWARNUNG!! RAUMSCHIFF AUF KOLLISIONSKURS." },
@@ -1978,7 +2074,6 @@ window.OverworldMaps = {
                 y: utils.withGrid(2),
                 direction: "down",
                 face: "down",
-                cutscene: true
               },
               { type: "effect", sound: "sounds/alarm.wav"},
               { type: "textMessage", name: "Bordcomputer", text: "SYSTEMWARNUNG!! RAUMSCHIFF AUF KOLLISIONSKURS." },
@@ -2028,7 +2123,10 @@ window.OverworldMaps = {
         requiredFlags: ["Q2_COMPLETED"],
         talking: [
           {
+            required: ["Q2_COMPLETED"], 
             events: [
+              { type: "removeStoryFlag", flag: "Q2_COMPLETED" },
+              { type: "addStoryFlag", flag: "Q3_INTRO" },
               { type: "textMessage", name: "Bella", text: "Oh? Hallo!", faceHero: "BellaMedic" },
               { type: "textMessage", name: "Bella", text: "Was ist denn passiert?"},
               { type: "textMessage", name: "Bella", text: "Ich hab einen lauten Knall gehört!"},
@@ -2047,8 +2145,6 @@ window.OverworldMaps = {
               },
               { type: "textMessage", name: "Bella", text: "Oh nein, wie schrecklich!" },
               { type: "textMessage", name: "Bella", text: "Bring mich bitte zu ihm!" },
-              { type: "removeStoryFlag", flag: "Q2_COMPLETED" },
-              { type: "addStoryFlag", flag: "Q3_INTRO" },
               {
                 type: "changeMap",
                 map: "Cafeteria",
@@ -2056,19 +2152,7 @@ window.OverworldMaps = {
                 y: utils.withGrid(5),
                 direction: "left",
                 face: "left",
-              },
-              { 
-                type: "stand",
-                who: "hero",
-                direction: "left",
-                time: 1000,
-              },
-              { type: "textMessage", name: "Bella", text: "Hmm, sein Herz schlägt unregelmäßig..." },
-              { type: "textMessage", name: "Bella", text: "Wenn wir nichts unternehmen, droht er einen Herzstillstand zu erleiden!" },
-              { type: "textMessage", name: "playerName", text: "Kann ich dir denn gar nicht helfen?" },
-              { type: "textMessage", name: "Bella", text: "Hmm, da gibt es tatsächlich etwas!" },
-              { type: "openModal", fileRef: "questionModal", modalRef: "q3"}
-
+              }
             ]
           },
         ]
@@ -2119,29 +2203,34 @@ window.OverworldMaps = {
       },
       maintenanceMonitor: {
         type: "Person",
-        x: utils.withGrid(9),
-        y: utils.withGrid(5),
-        direction: "up",
+        x: utils.withGrid(4),
+        y: utils.withGrid(2),
+        direction: "down",
         src: "/images/gameObjects/objects/monitor.png",
         shadowImg: false,
         talking: [
           {
             required: ["Q6_INTRO"],
             events: [
-              /*Aufgabe-6:
-
-              { type: "openModal", fileRef: "questionModal", modalRef: "q6"},
-
-              On complete:
-
-              { type: "effect", visual: "rumble", toggle: "true" },
-              { type: "textMessage", name:"Bordcomputer", text: "SYSTEMWARNUNG!! EINTRITT IN ASTEROIDENGÜRTEL."},
-              { type: "textMessage", name:"Bordcomputer", text: "BERECHNUNG EINES NEUEN KURSES ERFORDERLICH."},
-              { type: "textMessage", name: "playerName", text: "Jetzt muss es schnell gehen!"},
-              { type: "textMessage", name: "playerName", text: "Zurück zur Steuereinheit!"},
-              { type: "addStoryFlag", flag: "Q7_INTRO" }
-
-              */
+              { type: "textMessage", name: "playerName", text: "Dann schauen wir mal, was mit dem Motor nicht stimmt..." },
+              {
+                type: "stand",
+                who: "hero",
+                direction: "up",
+                time: 1000,
+              },
+              { type: "textMessage", name: "playerName", text: "Oh, nicht gut... anscheinend ist er überhitzt." },
+              { type: "textMessage", name: "playerName", text: "Ich werde das System neustarten und wieder korrekt hochfahren müssen!" },
+              { type: "openModal", fileRef: "QuestionModal", modalRef: "q6"},
+              { type: "removeStoryFlag", flag: "Q6_INTRO" },
+              { type: "addStoryFlag", flag: "Q6_IN_PROGRESS" },
+            ]
+          },
+          {
+            required: ["Q6_IN_PROGRESS"],
+            events: [
+              { type: "textMessage", name: "playerName", text: "Ich werde das System neustarten und wieder korrekt hochfahren müssen!" },
+              { type: "openModal", fileRef: "QuestionModal", modalRef: "q6"},
             ]
           },
         ]
@@ -2218,14 +2307,17 @@ window.OverworldMaps = {
               {
                 type: "stand",
                 who: "hero",
-                direction: "left",
+                direction: "up",
                 time: 1000,
               },
               { type: "textMessage", name: "playerName", text: "Langsam ist das echt nicht mehr witzig!"},
+              { type: "textMessage", name: "playerName", text: "Die Tür hat ein Zahlenschloss..."},
               { type: "textMessage", name: "playerName", text: "Wie war der Code noch gleich?"},
-              { type: "textMessage", name: "playerName", text: "Zum Glück kann sich Berny sowas nicht merken..."},
+              { type: "textMessage", name: "playerName", text: "Zum Glück kann sich unser Lagarist Nick sowas nicht merken..."},
               { type: "textMessage", name: "playerName", text: "... er hat einen Zettel dafür!"},
               { type: "textMessage", name: "playerName", text: "Der muss doch hier irgendwo im Hangar sein!"},
+              { type: "removeStoryFlag", flag: "Q5_INTRO"},
+              { type: "addStoryFlag", flag: "Q5_IN_PROGRESS"},
             ]
           },
           {
@@ -2252,8 +2344,36 @@ window.OverworldMaps = {
         shadowImg: false,
         talking: [
           {
+            required: ["Q5_IN_PROGRESS"],
             events: [
               { type: "openModal", fileRef: "QuestionModal", modalRef: "q5" } 
+            ]
+          }
+        ]
+      },
+      Keycard: {
+        type: "Person",
+        x: utils.withGrid(2),
+        y: utils.withGrid(3),
+        direction: "down",
+        src: "/images/gameObjects/objects/keycard.png",
+        shadowImg: false,
+        talking: [
+          { 
+            required: ["OPENED_CRATE"],
+            events: [
+              { type: "removeStoryFlag", flag: "OPENED_CRATE" },
+              { type: "addStoryFlag", flag: "GOT_KEYCARD_ENGINE" },
+              {
+                type: "updateObject", 
+                update: {
+                  id: "Keycard",
+                  spriteSrc: "/images/gameObjects/shadows/noshadow.png"
+                }
+              },
+              { type: "textMessage", name: "playerName", text: "Da ist sie ja!"},
+              { type: "textMessage", name: "playerName", text: "Ich darf keine Zeit verlieren..."},
+              { type: "textMessage", name: "playerName", text: "Auf zum Maschinenraum!"},
             ]
           }
         ]
@@ -2262,28 +2382,50 @@ window.OverworldMaps = {
         type: "Person",
         x: utils.withGrid(11),
         y: utils.withGrid(7),
-        direction: "right",
+        direction: "down",
         src: "/images/gameObjects/objects/crateCover.png",
         shadowImg: false,
         talking: [
           {
-            required: ["Q5_IN_PROGRESS"],
+            required: ["GOT_NOTE","OPENED_NOTE_CRATE"],
             events: [
-              { type: "textMessage", name: "playerName",
-              text: "Hier steht ich muss ..."},
+              { type: "textMessage", name: "playerName", text: "Auf dem Zettel steht, ich muss..."},
+              { type: "openModal", fileRef: "QuestionModal", modalRef: "sticky-note" }
             ]
           },
           {
+            required: ["OPENED_NOTE_CRATE"],
             events: [
-              { type: "textMessage", name: "",
-              text: "*Im Container befindet sich ein Zettel..."},
-              { type: "textMessage", name: "playerName",
-              text: "Da ist er ja!"},
-              { type: "textMessage", name: "playerName",
-              text: "Wie lautet jetzt der Code?"},
-              { type: "textMessage", name: "playerName",
-              text: "Hmm, hier steht ich muss ..."},
-              { type: "addStoryFlag", flag: "Q5_IN_PROGRESS"},
+              { type: "addStoryFlag", flag: "GOT_NOTE" }, 
+              { type: "textMessage", name: "playerName", text: "Aha! Hab ich's doch gewusst, dass der Zettel hier ist!"},
+              { type: "textMessage", name: "playerName", text: "Na nu? Die Aufgaben sind ja super einfach!"},
+              { type: "textMessage", name: "playerName", text: "Dafür sind die Kugeln also gedacht!"},
+              { type: "textMessage", name: "playerName", text: "Falls Nick vergisst, wie man Wahrscheinlichkeiten berechnet..."},
+              { type: "textMessage", name: "playerName", text: "...macht er damit wahrscheinlich seine Zufallsexperimente!"},
+              { type: "textMessage", name: "playerName", text: "Zum Glück kann ich das im Kopf!"},
+              { type: "textMessage", name: "playerName", text: "Hier steht, ich muss..."},
+              { type: "openModal", fileRef: "QuestionModal", modalRef: "sticky-note" }
+            ]
+          },
+          {
+            required: ["GOT_CROWBAR"],
+            events: [
+              { 
+                type: "updateObject", 
+                update: {
+                  id: "noteCrate",
+                  spriteSrc: "/images/gameObjects/shadows/noshadow.png"
+                }
+              },
+              { type: "addStoryFlag", flag: "OPENED_NOTE_CRATE" },
+            ]
+          },
+          {
+            required: ["Q5_IN_PROGRESS"],
+            events: [
+              { type: "textMessage", name: "playerName", text: "Argh! Sie lässt sich nicht öffnen!"},
+              { type: "textMessage", name: "playerName", text: "Vielleicht weiß Yuri weiter!"},
+              { type: "addStoryFlag", flag: "LOOKING_FOR_CROWBAR"},
             ]
           }
         ]
@@ -2292,28 +2434,35 @@ window.OverworldMaps = {
         type: "Person",
         x: utils.withGrid(4),
         y: utils.withGrid(10),
-        direction: "right",
+        direction: "down",
         src: "/images/gameObjects/objects/crateCover.png",
         shadowImg: false,
         talking: [
           {
-            required: ["Q5_IN_PROGRESS"],
+            required: ["OPENED_RED_CRATE"],
             events: [
-              { type: "textMessage", name: "playerName",
-              text: "Hier steht ich muss ..."},
+              { type: "textMessage", name: "playerName", text: "Rote Kugeln? Wofür braucht Nick rote Kugeln?"},
             ]
           },
           {
+            required: ["GOT_CROWBAR"],
             events: [
-              { type: "textMessage", name: "",
-              text: "*Im Container befindet sich ein Zettel..."},
-              { type: "textMessage", name: "playerName",
-              text: "Da ist er ja!"},
-              { type: "textMessage", name: "playerName",
-              text: "Wie lautet jetzt der Code?"},
-              { type: "textMessage", name: "playerName",
-              text: "Hmm, hier steht ich muss ..."},
-              { type: "addStoryFlag", flag: "Q5_IN_PROGRESS"},
+              { 
+                type: "updateObject", 
+                update: {
+                  id: "RedBallCrate",
+                  spriteSrc: "/images/gameObjects/shadows/noshadow.png"
+                }
+              },
+              { type: "addStoryFlag", flag: "OPENED_RED_CRATE" },
+            ]
+          },
+          {
+            required: ["Q5_IN_PROGRESS"],
+            events: [
+              { type: "textMessage", name: "playerName", text: "Argh! Sie lässt sich nicht öffnen!"},
+              { type: "textMessage", name: "playerName", text: "Vielleicht weiß Yuri weiter!"},
+              { type: "addStoryFlag", flag: "LOOKING_FOR_CROWBAR"},
             ]
           }
         ]
@@ -2322,28 +2471,35 @@ window.OverworldMaps = {
         type: "Person",
         x: utils.withGrid(6),
         y: utils.withGrid(5),
-        direction: "right",
+        direction: "down",
         src: "/images/gameObjects/objects/crateCover.png",
         shadowImg: false,
         talking: [
           {
-            required: ["Q5_IN_PROGRESS"],
+            required: ["OPENED_BLUE_CRATE"],
             events: [
-              { type: "textMessage", name: "playerName",
-              text: "Hier steht ich muss ..."},
+              { type: "textMessage", name: "playerName", text: "Blaue Kugeln? Wofür braucht Nick blaue Kugeln?"},
             ]
           },
           {
+            required: ["GOT_CROWBAR"],
             events: [
-              { type: "textMessage", name: "",
-              text: "*Im Container befindet sich ein Zettel..."},
-              { type: "textMessage", name: "playerName",
-              text: "Da ist er ja!"},
-              { type: "textMessage", name: "playerName",
-              text: "Wie lautet jetzt der Code?"},
-              { type: "textMessage", name: "playerName",
-              text: "Hmm, hier steht ich muss ..."},
-              { type: "addStoryFlag", flag: "Q5_IN_PROGRESS"},
+              { 
+                type: "updateObject", 
+                update: {
+                  id: "BlueBallCrate",
+                  spriteSrc: "/images/gameObjects/shadows/noshadow.png"
+                }
+              },
+              { type: "addStoryFlag", flag: "OPENED_BLUE_CRATE" },
+            ]
+          },
+          {
+            required: ["Q5_IN_PROGRESS"],
+            events: [
+              { type: "textMessage", name: "playerName", text: "Argh! Sie lässt sich nicht öffnen!"},
+              { type: "textMessage", name: "playerName", text: "Vielleicht weiß Yuri weiter!"},
+              { type: "addStoryFlag", flag: "LOOKING_FOR_CROWBAR"},
             ]
           }
         ]

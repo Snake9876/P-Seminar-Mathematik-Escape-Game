@@ -35,7 +35,7 @@ class Progress {
       "Q4_COMPLETED": false,
         //Cargo-Task
       "Q5_INTRO": false,
-      "Q5_IN_PROGRESS": true,
+      "Q5_IN_PROGRESS": false,
       "LOOKING_FOR_CROWBAR": false,
       "LOCKER_CLOSED": true,
       "LOCKER_OCCUPIED": true,
@@ -55,7 +55,7 @@ class Progress {
       "GOT_METERSTICK": false,
       "GOT_TEXTBOOK": false,
       "GOT_KEYCARD_QUARTERS": false,
-      "GOT_CROWBAR": true,
+      "GOT_CROWBAR": false,
       "GOT_NOTE": false,
       "GOT_KEYCARD_ENGINE": false,
  

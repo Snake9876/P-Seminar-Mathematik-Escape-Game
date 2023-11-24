@@ -32,7 +32,7 @@ body {
 .game-container {
   position: relative; 
   image-rendering: pixelated;
-  background-image: url(/P-Seminar-Mathematik-Escape-Game/images/ui/hud/background.png);
+  background-image: url(/images/ui/hud/background.png);
   width: 352px;
   height: 198px;
   margin: 0 auto;

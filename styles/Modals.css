@@ -239,7 +239,7 @@
 }
 
 #inv-background {
-  background-image: url(P-Seminar-Mathematik-Escape-Game/images/ui/hud/inventory-background.png);
+  background-image: url(/images/ui/hud/inventory-background.png);
   background-size: cover;
   image-rendering: pixelated;
   padding: 15px;
@@ -264,27 +264,27 @@
 }
 
 #item-1 {
-  background-image: url(P-Seminar-Mathematik-Escape-Game/images/ui/icons/meterstick.png);
+  background-image: url(/images/ui/icons/meterstick.png);
 }
 
 #item-2 {
-  background-image: url(P-Seminar-Mathematik-Escape-Game/images/ui/icons/book.png);
+  background-image: url(/images/ui/icons/book.png);
 }
 
 #item-3 {
-  background-image: url(P-Seminar-Mathematik-Escape-Game/images/ui/icons/keycard1.png);
+  background-image: url(/images/ui/icons/keycard1.png);
 }
 
 #item-4 {
-  background-image: url(P-Seminar-Mathematik-Escape-Game/images/ui/icons/crowbar.png);
+  background-image: url(/images/ui/icons/crowbar.png);
 }
 
 #item-5 {
-  background-image: url(P-Seminar-Mathematik-Escape-Game/images/ui/icons/note.png);
+  background-image: url(/images/ui/icons/note.png);
 }
 
 #item-6 {
-  background-image: url(P-Seminar-Mathematik-Escape-Game/images/ui/icons/keycard2.png);
+  background-image: url(/images/ui/icons/keycard2.png);
 }
 
 
@@ -374,7 +374,7 @@ input[type=radio] {
   gap: 5px;
   margin: 0 auto;
   image-rendering: pixelated;
-  background-image: url(/P-Seminar-Mathematik-Escape-Game/images/ui/hud/keypad-background.png);
+  background-image: url(/images/ui/hud/keypad-background.png);
   background-size: cover;
 }
 

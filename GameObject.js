@@ -8,8 +8,8 @@ class GameObject {
     this.direction = config.direction || "down";
     this.sprite = new Sprite({
       gameObject: this,
-      src: config.src || (config.isSuited ? "/images/gameObjects/people/heroSpacesuit.png" : "/images/gameObjects/people/hero.png"),
-      shadowImg: config.shadowImg == false ? "/images/gameObjects/shadows/noshadow.png" : "/images/gameObjects/shadows/shadow.png",
+      src: config.src || (config.isSuited ? "P-Seminar-Mathematik-Escape-Game/images/gameObjects/people/heroSpacesuit.png" : "P-Seminar-Mathematik-Escape-Game/images/gameObjects/people/hero.png"),
+      shadowImg: config.shadowImg == false ? "P-Seminar-Mathematik-Escape-Game/images/gameObjects/shadows/noshadow.png" : "P-Seminar-Mathematik-Escape-Game/images/gameObjects/shadows/shadow.png",
     });
 
     //These happen once on map startup.

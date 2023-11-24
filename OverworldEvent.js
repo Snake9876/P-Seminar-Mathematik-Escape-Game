@@ -206,7 +206,7 @@ class OverworldEvent {
       sceneTransition.init(container, () => {
 
         //Open Game-Over-Screen after 20 room changes
-        if (this.map.overworld.progress.roomTracker >= 20) {
+        if (this.map.overworld.progress.roomTracker >= 30) {
           this.map.isPaused = true;
           this.gameOverScreen = new GameOverScreen({
             progress: this.map.overworld.progress

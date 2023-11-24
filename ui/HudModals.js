@@ -157,10 +157,10 @@ class HudModals {
     let itemList = {
       "GOT_METERSTICK": document.getElementById('item-1'),
       "GOT_TEXTBOOK": document.getElementById('item-2'),
-      "GOT_CROWBAR": document.getElementById('item-3'),
-      "GOT_KEYCARD": document.getElementById('item-4'),
-      "GOT_ITEM_5": document.getElementById('item-5'),
-      "GOT_ITEM_6": document.getElementById('item-6')
+      "GOT_KEYCARD_QUARTERS": document.getElementById('item-3'),
+      "GOT_CROWBAR": document.getElementById('item-4'),
+      "GOT_NOTE": document.getElementById('item-5'),
+      "GOT_KEYCARD_ENGINE": document.getElementById('item-6'),
     }
 
     Object.keys(itemList).forEach(itemKey => {

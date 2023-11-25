@@ -159,20 +159,20 @@ window.OverworldMaps = {
             required: ["Q6_COMPLETED"],
             events: [
               { type: "addStoryFlag", flag: "Q7_INTRO" },
-              { type: "textMessage", name: "playerName", text: "Lorem" },
+              { type: "textMessage", name: "playerName", text: "Ich muss den Kurs angleichen!" },
               { type: "openModal", fileRef: "QuestionModal", modalRef: "q7"},
             ]
           },
           {
             required: ["Q7_INTRO"],
             events: [
-              { type: "textMessage", name: "playerName", text: "Lorem"},
+              { type: "textMessage", name: "playerName", text: "Ich muss den Kurs angleichen!"},
               { type: "openModal", fileRef: "QuestionModal", modalRef: "q7"},
             ]
           },
           {
             events: [
-              { type: "textMessage", name: "", text: "*Es scheint nichts zu passieren...*"},
+              { type: "textMessage", name: "playerName", text: "Es scheint nichts zu passieren..."}
             ]
           }
         ]
@@ -189,20 +189,20 @@ window.OverworldMaps = {
             required: ["Q6_COMPLETED"],
             events: [
               { type: "addStoryFlag", flag: "Q7_INTRO" },
-              { type: "textMessage", name: "playerName", text: "Lorem" },
+              { type: "textMessage", name: "playerName", text: "Ich muss den Kurs angleichen!"},
               { type: "openModal", fileRef: "QuestionModal", modalRef: "q7"},
             ]
           },
           {
             required: ["Q7_INTRO"],
             events: [
-              { type: "textMessage", name: "playerName", text: "Lorem"},
+              { type: "textMessage", name: "playerName", text: "Ich muss den Kurs angleichen!"},
               { type: "openModal", fileRef: "QuestionModal", modalRef: "q7"},
             ]
           },
           {
             events: [
-              { type: "textMessage", name: "", text: "*Es scheint nichts zu passieren...*"},
+              { type: "textMessage", name: "playerName", text: "Es scheint nichts zu passieren..."}
             ]
           }
         ]
@@ -373,8 +373,7 @@ window.OverworldMaps = {
                 direction: "left",
                 time: 1000,
               },
-              { type: "textMessage", 
-              text: "*Es scheint niemand zu antworten*"},
+              { type: "textMessage", name: "playerName", text: "Es scheint niemand zu antworten..."}
             ]
           }
         ]
@@ -554,7 +553,7 @@ window.OverworldMaps = {
                 direction: "right",
                 time: 1000,
               },
-              { type: "textMessage", name: "playerName", text: "*Es scheint niemand zu antworten...*"}
+              { type: "textMessage", name: "playerName", text: "Es scheint niemand zu antworten..."}
             ]
           }
         ]
@@ -949,7 +948,7 @@ window.OverworldMaps = {
                 direction: "left",
                 time: 1000,
               },
-              { type: "textMessage", name: "", text: "*Es scheint niemand zu antworten...*" }
+              { type: "textMessage", name: "playerName", text: "Es scheint niemand zu antworten..."}
             ]
           },
         ]
@@ -1959,8 +1958,7 @@ window.OverworldMaps = {
                 direction: "left",
                 time: 1000,
               },
-              { type: "textMessage", 
-              text: "*Es scheint niemand zu antworten...*"},
+              { type: "textMessage", name: "playerName", text: "Es scheint niemand zu antworten..."}
             ]
           }
         ]
@@ -2210,6 +2208,13 @@ window.OverworldMaps = {
         shadowImg: false,
         talking: [
           {
+            required: ["Q6_IN_PROGRESS"],
+            events: [
+              { type: "textMessage", name: "playerName", text: "Ich werde das System neustarten und wieder korrekt hochfahren müssen!" },
+              { type: "openModal", fileRef: "QuestionModal", modalRef: "q6"},
+            ]
+          },
+          {
             required: ["Q6_INTRO"],
             events: [
               { type: "textMessage", name: "playerName", text: "Dann schauen wir mal, was mit dem Motor nicht stimmt..." },
@@ -2225,14 +2230,7 @@ window.OverworldMaps = {
               { type: "removeStoryFlag", flag: "Q6_INTRO" },
               { type: "addStoryFlag", flag: "Q6_IN_PROGRESS" },
             ]
-          },
-          {
-            required: ["Q6_IN_PROGRESS"],
-            events: [
-              { type: "textMessage", name: "playerName", text: "Ich werde das System neustarten und wieder korrekt hochfahren müssen!" },
-              { type: "openModal", fileRef: "QuestionModal", modalRef: "q6"},
-            ]
-          },
+          }
         ]
       }
     },
@@ -2329,8 +2327,7 @@ window.OverworldMaps = {
                 direction: "up",
                 time: 1000,
               },
-              { type: "textMessage", 
-              text: "*Es scheint niemand zu antworten..."},
+              { type: "textMessage", name: "playerName", text: "Es scheint niemand zu antworten..."}
             ]
           }
         ]
@@ -2360,10 +2357,12 @@ window.OverworldMaps = {
         shadowImg: false,
         talking: [
           { 
-            required: ["OPENED_CRATE"],
+            required: ["Q5_IN_PROGRESS"],
             events: [
-              { type: "removeStoryFlag", flag: "OPENED_CRATE" },
+              { type: "removeStoryFlag", flag: "OPENED_NOTE_CRATE" },
+              { type: "removeStoryFlag", flag: "Q5_IN_PROGRESS" },
               { type: "addStoryFlag", flag: "GOT_KEYCARD_ENGINE" },
+              { type: "addStoryFlag", flag: "Q6_INTRO" },
               {
                 type: "updateObject", 
                 update: {
@@ -2399,25 +2398,22 @@ window.OverworldMaps = {
               { type: "addStoryFlag", flag: "GOT_NOTE" }, 
               { type: "textMessage", name: "playerName", text: "Aha! Hab ich's doch gewusst, dass der Zettel hier ist!"},
               { type: "textMessage", name: "playerName", text: "Na nu? Die Aufgaben sind ja super einfach!"},
-              { type: "textMessage", name: "playerName", text: "Dafür sind die Kugeln also gedacht!"},
-              { type: "textMessage", name: "playerName", text: "Falls Nick vergisst, wie man Wahrscheinlichkeiten berechnet..."},
-              { type: "textMessage", name: "playerName", text: "...macht er damit wahrscheinlich seine Zufallsexperimente!"},
               { type: "textMessage", name: "playerName", text: "Zum Glück kann ich das im Kopf!"},
               { type: "textMessage", name: "playerName", text: "Hier steht, ich muss..."},
               { type: "openModal", fileRef: "QuestionModal", modalRef: "sticky-note" }
             ]
           },
           {
-            required: ["GOT_CROWBAR"],
+            required: ["Q5_IN_PROGRESS","GOT_CROWBAR"],
             events: [
+              { type: "addStoryFlag", flag: "OPENED_NOTE_CRATE" },
               { 
                 type: "updateObject", 
                 update: {
                   id: "noteCrate",
                   spriteSrc: "images/gameObjects/shadows/noshadow.png"
                 }
-              },
-              { type: "addStoryFlag", flag: "OPENED_NOTE_CRATE" },
+              }
             ]
           },
           {
@@ -2438,6 +2434,14 @@ window.OverworldMaps = {
         src: "images/gameObjects/objects/crateCover.png",
         shadowImg: false,
         talking: [
+          {
+            required: ["OPENED_RED_CRATE","GOT_NOTE"],
+            events: [
+              { type: "textMessage", name: "playerName", text: "Dafür sind die Kugeln also gedacht!"},
+              { type: "textMessage", name: "playerName", text: "Falls Nick vergisst, wie man Wahrscheinlichkeiten berechnet..."},
+              { type: "textMessage", name: "playerName", text: "...macht er damit wahrscheinlich seine Zufallsexperimente!"},
+            ]
+          },
           {
             required: ["OPENED_RED_CRATE"],
             events: [
@@ -2475,6 +2479,14 @@ window.OverworldMaps = {
         src: "images/gameObjects/objects/crateCover.png",
         shadowImg: false,
         talking: [
+          {
+            required: ["OPENED_BLUE_CRATE","GOT_NOTE"],
+            events: [
+              { type: "textMessage", name: "playerName", text: "Dafür sind die Kugeln also gedacht!"},
+              { type: "textMessage", name: "playerName", text: "Falls Nick vergisst, wie man Wahrscheinlichkeiten berechnet..."},
+              { type: "textMessage", name: "playerName", text: "...macht er damit wahrscheinlich seine Zufallsexperimente!"},
+            ]
+          },
           {
             required: ["OPENED_BLUE_CRATE"],
             events: [

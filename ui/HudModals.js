@@ -32,7 +32,7 @@ class HudModals {
       this.mapElement.innerHTML = (`
         <div class="ModalHeader">
           <div class="Title">
-            Map Modal
+            Karte
           </div>
           <button class="CloseButton">&times;</button>
         </div>
@@ -65,7 +65,7 @@ class HudModals {
       this.inventoryElement.innerHTML = (`
         <div class="ModalHeader">
           <div class="Title">
-            Inventory Modal
+            Inventar
           </div>
           <button class="CloseButton">&times;</button>
         </div>
@@ -92,7 +92,7 @@ class HudModals {
       this.notesElement.innerHTML = (`
         <div class="ModalHeader">
           <div class="Title">
-            Notes Modal
+            Notizen
           </div>
           <button class="CloseButton">&times;</button>
         </div>
@@ -134,7 +134,7 @@ class HudModals {
         },
         {
           label: "GitHub",
-          description: "GitHub Repository",
+          description: "Zum GitHub Repository",
           handler: () => {
             window.open('https://github.com/Snake9876/P-Seminar-Mathematik-Escape-Game', '_blank').focus();
           }

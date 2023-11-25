@@ -46,7 +46,7 @@ class Progress {
         //Engine-Task
       "Q6_INTRO": false,
       "Q6_IN_PROGRESS": false,
-      "Q5_COMPLETED": false,
+      "Q6_COMPLETED": false,
         //CommandBridge-Task
       "Q7_INTRO": false,
       "Q7_IN_PROGRESS": false,

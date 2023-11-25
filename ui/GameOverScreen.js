@@ -1,7 +1,7 @@
 class GameOverScreen {
   constructor() {
     this.isClosed = false;
-    this.audio = new Audio("P-Seminar-Mathematik-Escape-Game/sounds/game-over.mp3");
+    this.audio = new Audio("sounds/game-over.mp3");
   }
 
   getOptions(resolve) {
@@ -21,7 +21,7 @@ class GameOverScreen {
     this.element = document.createElement("div");
     this.element.classList.add("Screen");
     this.element.innerHTML = (`
-      <img class="Screen_logo" src="P-Seminar-Mathematik-Escape-Game/images/ui/screens/gameover.png" />
+      <img class="Screen_logo" src="images/ui/screens/gameover.png" />
     `)
   }
 

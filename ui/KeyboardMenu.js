@@ -5,7 +5,7 @@ class KeyboardMenu {
     this.down = null;
     this.prevFocus = null;
     this.descriptionContainer = config.descriptionContainer || null;
-    this.audio = new Audio("P-Seminar-Mathematik-Escape-Game/sounds/click.mp3");
+    this.audio = new Audio("sounds/click.mp3");
   }
 
   setOptions(options) {

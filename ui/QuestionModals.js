@@ -31,7 +31,7 @@ class QuestionModals {
         </div>
         <div class="ModalContent" style="padding: 5px 15px 0px 15px;">
           <center>
-            <img id="O2-img" src="P-Seminar-Mathematik-Escape-Game/images/questions/q1.png" style="width: 150px">
+            <img id="O2-img" src="images/questions/q1.png" style="width: 150px">
           </center>
           <div>
             <input id="input" class="inputBar" type="text" placeholder="Antwort" id="answer-field1" maxlength="20">
@@ -58,7 +58,7 @@ class QuestionModals {
         </div>
         <div class="ModalContent">
           <center>
-            <img id="q1-img" src="P-Seminar-Mathematik-Escape-Game/images/questions/q21.png" style="width: 150px">
+            <img id="q1-img" src="images/questions/q21.png" style="width: 150px">
           </center>
           <button class="checkButton">Entfernen</button>
         </div>
@@ -80,7 +80,7 @@ class QuestionModals {
         </div>
         <div class="ModalContent">
           <center>
-            <img id="q2-img" src="P-Seminar-Mathematik-Escape-Game/images/questions/q22.png"style="width: 150px">
+            <img id="q2-img" src="images/questions/q22.png"style="width: 150px">
           </center>
           <button class="checkButton">Entfernen</button>
         </div>
@@ -102,7 +102,7 @@ class QuestionModals {
         </div>
         <div class="ModalContent">
           <center>
-            <img id="q3-img" src="P-Seminar-Mathematik-Escape-Game/images/questions/q3.png" style="width: 150px">
+            <img id="q3-img" src="images/questions/q3.png" style="width: 150px">
           </center>
           <div>
             <input id="input" class="inputBar" type="text" placeholder="Antwort" id="answer-field1" maxlength="20">
@@ -127,7 +127,7 @@ class QuestionModals {
         </div>
         <div class="ModalContent">
           <center>
-            <img id="q4-img" src="P-Seminar-Mathematik-Escape-Game/images/questions/q4.png" style="width: 150px">
+            <img id="q4-img" src="images/questions/q4.png" style="width: 150px">
           </center>
           <button class="openButton" onclick="window.open('https://www.geogebra.org/m/aejrg5vw', '_blank').focus();">Panel öffnen</button>
           <div> 
@@ -188,7 +188,7 @@ class QuestionModals {
         </div>
         <div class="ModalContent">
           <center>
-            <img id="q5-img" src="P-Seminar-Mathematik-Escape-Game/images/questions/q5.png" style="width: 150px">
+            <img id="q5-img" src="images/questions/q5.png" style="width: 150px">
           </center>
         </div>
       `); 
@@ -209,7 +209,7 @@ class QuestionModals {
         </div>
         <div class="ModalContent">
           <center>
-            <img id="q6-img" src="P-Seminar-Mathematik-Escape-Game/images/questions/q6.png" style="width: 150px">
+            <img id="q6-img" src="images/questions/q6.png" style="width: 150px">
           </center>
           <div>
             <input id="input" class="inputBar" type="text" placeholder="Antwort" id="answer-field1" maxlength="20">
@@ -234,7 +234,7 @@ class QuestionModals {
         </div>
         <div class="ModalContent">
           <center>
-            <img id="q7-img" src="P-Seminar-Mathematik-Escape-Game/images/questions/q7.png" style="width: 150px">
+            <img id="q7-img" src="images/questions/q7.png" style="width: 150px">
           </center>
           <button id="map-button" class="openButton">Karte öffnen</button>
           <div>
@@ -260,7 +260,7 @@ class QuestionModals {
         </div>
         <div class="ModalContent">
           <center>
-            <img id="q7-task-img" src="P-Seminar-Mathematik-Escape-Game/images/questions/q7-task.png" style="width: 150px; image-rendering: pixalated;">
+            <img id="q7-task-img" src="images/questions/q7-task.png" style="width: 150px; image-rendering: pixalated;">
           </center>
         </div>
       `);
@@ -414,7 +414,7 @@ class QuestionModals {
                     type: "updateObject",
                     update: {
                       id: "Yuri",
-                      spriteSrc: "P-Seminar-Mathematik-Escape-Game/images/gameObjects/people/yuriEngineer.png",
+                      spriteSrc: "images/gameObjects/people/yuriEngineer.png",
                     }
                   }, 
                 ])

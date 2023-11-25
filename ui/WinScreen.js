@@ -1,7 +1,7 @@
 class WinScreen {
   constructor() {
     this.isClosed = false;
-    this.audio = new Audio("P-Seminar-Mathematik-Escape-Game/sounds/win.mp3");
+    this.audio = new Audio("sounds/win.mp3");
   }
 
   getOptions(resolve) {
@@ -21,7 +21,7 @@ class WinScreen {
     this.element = document.createElement("div");
     this.element.classList.add("Screen");
     this.element.innerHTML = (`
-      <img class="Screen_logo" src="P-Seminar-Mathematik-Escape-Game/images/ui/screens/winscreen.png" />
+      <img class="Screen_logo" src="images/ui/screens/winscreen.png" />
     `)
   }
 

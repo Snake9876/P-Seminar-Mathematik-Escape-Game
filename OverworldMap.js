@@ -136,9 +136,9 @@ class OverworldMap {
 window.OverworldMaps = {
   Brücke: {
     id: "Brücke",
-    lowerSrc: "P-Seminar-Mathematik-Escape-Game/images/maps/CommandBridgeLower.png",
-    upperSrc: "P-Seminar-Mathematik-Escape-Game/images/maps/CommandBridgeUpper.png",
-    minimapSrc: "P-Seminar-Mathematik-Escape-Game/images/ui/minimaps/CommandBridgeMinimap.png",
+    lowerSrc: "images/maps/CommandBridgeLower.png",
+    upperSrc: "images/maps/CommandBridgeUpper.png",
+    minimapSrc: "images/ui/minimaps/CommandBridgeMinimap.png",
     configObjects: {
       hero: {
         type: "Person",
@@ -152,7 +152,7 @@ window.OverworldMaps = {
         x: utils.withGrid(6),
         y: utils.withGrid(4),
         direction: "down",
-        src: "P-Seminar-Mathematik-Escape-Game/images/gameObjects/objects/keyboard.png",
+        src: "images/gameObjects/objects/keyboard.png",
         shadowImg: false,
         talking: [
           {
@@ -182,7 +182,7 @@ window.OverworldMaps = {
         x: utils.withGrid(7),
         y: utils.withGrid(4),
         direction: "right",
-        src: "P-Seminar-Mathematik-Escape-Game/images/gameObjects/objects/keyboard.png",
+        src: "images/gameObjects/objects/keyboard.png",
         shadowImg: false,
         talking: [
           {
@@ -301,9 +301,9 @@ window.OverworldMaps = {
   },
   Lobby: {
     id: "Lobby",
-    lowerSrc: "P-Seminar-Mathematik-Escape-Game/images/maps/Hallway1Lower.png",
-    upperSrc: "P-Seminar-Mathematik-Escape-Game/images/maps/Hallway1Upper.png",
-    minimapSrc: "P-Seminar-Mathematik-Escape-Game/images/ui/minimaps/Hallway1Minimap.png",
+    lowerSrc: "images/maps/Hallway1Lower.png",
+    upperSrc: "images/maps/Hallway1Upper.png",
+    minimapSrc: "images/ui/minimaps/Hallway1Minimap.png",
     configObjects: {
       hero: {
         type: "Person",
@@ -316,7 +316,7 @@ window.OverworldMaps = {
         x: utils.withGrid(11),
         y: utils.withGrid(3),
         direction: "right",
-        src: "P-Seminar-Mathematik-Escape-Game/images/gameObjects/objects/door.png",
+        src: "images/gameObjects/objects/door.png",
         shadowImg: false,
         talking: [
           {
@@ -361,7 +361,7 @@ window.OverworldMaps = {
         x: utils.withGrid(1),
         y: utils.withGrid(4),
         direction: "left",
-        src: "P-Seminar-Mathematik-Escape-Game/images/gameObjects/objects/door.png",
+        src: "images/gameObjects/objects/door.png",
         shadowImg: false,
         talking: [
           {
@@ -515,9 +515,9 @@ window.OverworldMaps = {
   },
   Westflügel: {
     id: "Westflügel",
-    lowerSrc: "P-Seminar-Mathematik-Escape-Game/images/maps/Hallway2Lower.png",
-    upperSrc: "P-Seminar-Mathematik-Escape-Game/images/maps/Hallway2Upper.png",
-    minimapSrc: "P-Seminar-Mathematik-Escape-Game/images/ui/minimaps/Hallway2Minimap.png",
+    lowerSrc: "images/maps/Hallway2Lower.png",
+    upperSrc: "images/maps/Hallway2Upper.png",
+    minimapSrc: "images/ui/minimaps/Hallway2Minimap.png",
     configObjects: {
       hero: {
         type: "Person",
@@ -530,7 +530,7 @@ window.OverworldMaps = {
         x: utils.withGrid(5),
         y: utils.withGrid(5),
         direction: "right",
-        src: "P-Seminar-Mathematik-Escape-Game/images/gameObjects/objects/door.png",
+        src: "images/gameObjects/objects/door.png",
         shadowImg: false,
         talking: [
           {
@@ -742,9 +742,9 @@ window.OverworldMaps = {
   },
   Ecke: {
     id: "Ecke",
-    lowerSrc: "P-Seminar-Mathematik-Escape-Game/images/maps/CornerLower.png",
-    upperSrc: "P-Seminar-Mathematik-Escape-Game/images/maps/CornerUpper.png",
-    minimapSrc: "P-Seminar-Mathematik-Escape-Game/images/ui/minimaps/CornerMinimap.png",
+    lowerSrc: "images/maps/CornerLower.png",
+    upperSrc: "images/maps/CornerUpper.png",
+    minimapSrc: "images/ui/minimaps/CornerMinimap.png",
     configObjects: {
       hero: {
         type: "Person",
@@ -879,9 +879,9 @@ window.OverworldMaps = {
   },
   Korridor: {
     id: "Korridor",
-    lowerSrc: "P-Seminar-Mathematik-Escape-Game/images/maps/Hallway3Lower.png",
-    upperSrc: "P-Seminar-Mathematik-Escape-Game/images/maps/Hallway3Upper.png",
-    minimapSrc: "P-Seminar-Mathematik-Escape-Game/images/ui/minimaps/Hallway3Minimap.png",
+    lowerSrc: "images/maps/Hallway3Lower.png",
+    upperSrc: "images/maps/Hallway3Upper.png",
+    minimapSrc: "images/ui/minimaps/Hallway3Minimap.png",
     configObjects: {
       hero: {
         type: "Person",
@@ -894,7 +894,7 @@ window.OverworldMaps = {
         x: utils.withGrid(1),
         y: utils.withGrid(9),
         direction: "left",
-        src: "P-Seminar-Mathematik-Escape-Game/images/gameObjects/objects/door.png",
+        src: "images/gameObjects/objects/door.png",
         shadowImg: false,
         hide: false,
         talking: [
@@ -1100,9 +1100,9 @@ window.OverworldMaps = {
   },
   Ostflügel: {
     id: "Ostflügel",
-    lowerSrc: "P-Seminar-Mathematik-Escape-Game/images/maps/Hallway4Lower.png",
-    upperSrc: "P-Seminar-Mathematik-Escape-Game/images/maps/Hallway4Upper.png",
-    minimapSrc: "P-Seminar-Mathematik-Escape-Game/images/ui/minimaps/Hallway4Minimap.png",
+    lowerSrc: "images/maps/Hallway4Lower.png",
+    upperSrc: "images/maps/Hallway4Upper.png",
+    minimapSrc: "images/ui/minimaps/Hallway4Minimap.png",
     configObjects: {
       hero: {
         type: "Person",
@@ -1255,9 +1255,9 @@ window.OverworldMaps = {
   },
   Cafeteria: {
     id: "Cafeteria",
-    lowerSrc: "P-Seminar-Mathematik-Escape-Game/images/maps/CafeteriaLower.png",
-    upperSrc: "P-Seminar-Mathematik-Escape-Game/images/maps/CafeteriaUpper.png",
-    minimapSrc: "P-Seminar-Mathematik-Escape-Game/images/ui/minimaps/CafeteriaMinimap.png",
+    lowerSrc: "images/maps/CafeteriaLower.png",
+    upperSrc: "images/maps/CafeteriaUpper.png",
+    minimapSrc: "images/ui/minimaps/CafeteriaMinimap.png",
     configObjects: {
       hero: {
         type: "Person",
@@ -1270,7 +1270,7 @@ window.OverworldMaps = {
         x: utils.withGrid(3),
         y: utils.withGrid(5),
         direction: "down",
-        src: "P-Seminar-Mathematik-Escape-Game/images/gameObjects/objects/rubblePile.png",
+        src: "images/gameObjects/objects/rubblePile.png",
         shadowImg: true,
         talking: [
           {
@@ -1295,7 +1295,7 @@ window.OverworldMaps = {
                 type: "updateObject",
                 update: {
                   id: "Yuri",
-                  spriteSrc: "P-Seminar-Mathematik-Escape-Game/images/gameObjects/people/yuriEngineer.png",
+                  spriteSrc: "images/gameObjects/people/yuriEngineer.png",
                 }
               }, 
               { type: "textMessage", name: "playerName", text: "Oh nein, Yuri!"},
@@ -1313,7 +1313,7 @@ window.OverworldMaps = {
         x: utils.withGrid(9),
         y: utils.withGrid(7),
         direction: "down",
-        src: "P-Seminar-Mathematik-Escape-Game/images/gameObjects/objects/rubblePile.png",
+        src: "images/gameObjects/objects/rubblePile.png",
         shadowImg: false,
         talking: [
           {
@@ -1329,7 +1329,7 @@ window.OverworldMaps = {
         x: utils.withGrid(13),
         y: utils.withGrid(6),
         direction: "down",
-        src: "P-Seminar-Mathematik-Escape-Game/images/gameObjects/objects/cupboardDoor.png",
+        src: "images/gameObjects/objects/cupboardDoor.png",
         shadowImg: false,
         talking: [
           {
@@ -1348,7 +1348,7 @@ window.OverworldMaps = {
                 type: "updateObject",
                 update: {
                   id: "Schrank",
-                  spriteSrc: "P-Seminar-Mathematik-Escape-Game/images/gameObjects/objects/cupboardDoorOpen.png",
+                  spriteSrc: "images/gameObjects/objects/cupboardDoorOpen.png",
                 }
               },
               { type: "textMessage", name: "playerName",
@@ -1375,7 +1375,7 @@ window.OverworldMaps = {
         x: utils.withGrid(4),
         y: utils.withGrid(5),
         direction: "left",
-        src: "P-Seminar-Mathematik-Escape-Game/images/gameObjects/people/bellaMedic.png",
+        src: "images/gameObjects/people/bellaMedic.png",
         shadowImg: true,
         requiredFlags: ["Q3_INTRO"],
         talking: [ 
@@ -1471,7 +1471,7 @@ window.OverworldMaps = {
         x: utils.withGrid(12),
         y: utils.withGrid(3),
         direction: "down",
-        src: "P-Seminar-Mathematik-Escape-Game/images/gameObjects/objects/bookItem.png",
+        src: "images/gameObjects/objects/bookItem.png",
         shadowImg: false,
         talking: [
           {      
@@ -1512,7 +1512,7 @@ window.OverworldMaps = {
                 type: "updateObject",
                 update: {
                   id: "Book",
-                  spriteSrc: "P-Seminar-Mathematik-Escape-Game/images/gameObjects/shadows/noshadow.png",
+                  spriteSrc: "images/gameObjects/shadows/noshadow.png",
                 }
               },
               {
@@ -1652,9 +1652,9 @@ window.OverworldMaps = {
   },
   Nachrichtenzentrale: {
     id: "Nachrichtenzentrale",
-    lowerSrc: "P-Seminar-Mathematik-Escape-Game/images/maps/CommsLower.png",
-    upperSrc: "P-Seminar-Mathematik-Escape-Game/images/maps/CommsUpper.png",
-    minimapSrc: "P-Seminar-Mathematik-Escape-Game/images/ui/minimaps/CommsMinimap.png",
+    lowerSrc: "images/maps/CommsLower.png",
+    upperSrc: "images/maps/CommsUpper.png",
+    minimapSrc: "images/ui/minimaps/CommsMinimap.png",
     configObjects: {
       hero: {
         type: "Person",
@@ -1667,7 +1667,7 @@ window.OverworldMaps = {
         x: utils.withGrid(5),
         y: utils.withGrid(2),
         direction: "down",
-        src: "P-Seminar-Mathematik-Escape-Game/images/gameObjects/objects/Monitor.png",
+        src: "images/gameObjects/objects/Monitor.png",
         shadowImg: false,
         talking: [
           {      
@@ -1750,9 +1750,9 @@ window.OverworldMaps = {
   },
   Quartiere: {
     id: "Quartiere",
-    lowerSrc: "P-Seminar-Mathematik-Escape-Game/images/maps/QuartersLower.png",
-    upperSrc: "P-Seminar-Mathematik-Escape-Game/images/maps/QuartersUpper.png",
-    minimapSrc: "P-Seminar-Mathematik-Escape-Game/images/ui/minimaps/QuartersMinimap.png",
+    lowerSrc: "images/maps/QuartersLower.png",
+    upperSrc: "images/maps/QuartersUpper.png",
+    minimapSrc: "images/ui/minimaps/QuartersMinimap.png",
     configObjects: {
       hero: {
         type: "Person",
@@ -1765,7 +1765,7 @@ window.OverworldMaps = {
         x: utils.withGrid(7),
         y: utils.withGrid(3),
         direction: "down",
-        src: "P-Seminar-Mathematik-Escape-Game/images/gameObjects/objects/lockerDoor.png",
+        src: "images/gameObjects/objects/lockerDoor.png",
         shadowImg: false,
         talking: [
           {      
@@ -1776,7 +1776,7 @@ window.OverworldMaps = {
                 type: "updateObject", 
                 update: {
                   id: "LockerDoor",
-                  spriteSrc: "P-Seminar-Mathematik-Escape-Game/images/gameObjects/objects/crowbar.png"
+                  spriteSrc: "images/gameObjects/objects/crowbar.png"
                 }
               },
             ]
@@ -1789,7 +1789,7 @@ window.OverworldMaps = {
                 type: "updateObject", 
                 update: {
                   id: "LockerDoor",
-                  spriteSrc: "P-Seminar-Mathematik-Escape-Game/images/gameObjects/shadows/noshadow.png"
+                  spriteSrc: "images/gameObjects/shadows/noshadow.png"
                 }
               },
               { type: "textMessage", name: "playerName", text: "Er meinte es wirklich ernst!" },
@@ -1834,9 +1834,9 @@ window.OverworldMaps = {
   },
   O2: {
     id: "O2",
-    lowerSrc: "P-Seminar-Mathematik-Escape-Game/images/maps/O2Lower.png",
-    upperSrc: "P-Seminar-Mathematik-Escape-Game/images/maps/O2Upper.png",
-    minimapSrc: "P-Seminar-Mathematik-Escape-Game/images/ui/minimaps/O2Minimap.png",
+    lowerSrc: "images/maps/O2Lower.png",
+    upperSrc: "images/maps/O2Upper.png",
+    minimapSrc: "images/ui/minimaps/O2Minimap.png",
     configObjects: {
       hero: {
         type: "Person",
@@ -1849,7 +1849,7 @@ window.OverworldMaps = {
         x: utils.withGrid(3),
         y: utils.withGrid(2),
         direction: "down",
-        src: "P-Seminar-Mathematik-Escape-Game/images/gameObjects/objects/monitor.png",
+        src: "images/gameObjects/objects/monitor.png",
         shadowImg: false,
         talking: [
           {
@@ -1892,7 +1892,7 @@ window.OverworldMaps = {
         x: utils.withGrid(7),
         y: utils.withGrid(3),
         direction: "down",
-        src: "P-Seminar-Mathematik-Escape-Game/images/gameObjects/objects/oxygenContainer.png",
+        src: "images/gameObjects/objects/oxygenContainer.png",
         shadowImg: false,
         talking: [
           {
@@ -1916,7 +1916,7 @@ window.OverworldMaps = {
         x: utils.withGrid(2),
         y: utils.withGrid(5),
         direction: "down",
-        src: "P-Seminar-Mathematik-Escape-Game/images/gameObjects/objects/spacesuit.png",
+        src: "images/gameObjects/objects/spacesuit.png",
         shadowImg: false,
         talking: [
           {
@@ -1926,7 +1926,7 @@ window.OverworldMaps = {
                 type: "updateObject",
                 update: {
                   id: "hero",
-                  spriteSrc: "P-Seminar-Mathematik-Escape-Game/images/gameObjects/people/heroSpacesuit.png",
+                  spriteSrc: "images/gameObjects/people/heroSpacesuit.png",
                 }
               },
               { 
@@ -1947,7 +1947,7 @@ window.OverworldMaps = {
         x: utils.withGrid(1),
         y: utils.withGrid(4),
         direction: "left",
-        src: "P-Seminar-Mathematik-Escape-Game/images/gameObjects/objects/door.png",
+        src: "images/gameObjects/objects/door.png",
         shadowImg: false,
         talking: [
           {
@@ -2103,9 +2103,9 @@ window.OverworldMaps = {
   },
   Krankenstation: {
     id: "Krankenstation",
-    lowerSrc: "P-Seminar-Mathematik-Escape-Game/images/maps/MedbayLower.png",
-    upperSrc: "P-Seminar-Mathematik-Escape-Game/images/maps/MedbayUpper.png",
-    minimapSrc: "P-Seminar-Mathematik-Escape-Game/images/ui/minimaps/MedbayMinimap.png",
+    lowerSrc: "images/maps/MedbayLower.png",
+    upperSrc: "images/maps/MedbayUpper.png",
+    minimapSrc: "images/ui/minimaps/MedbayMinimap.png",
     configObjects: {
       hero: {
         type: "Person",
@@ -2118,7 +2118,7 @@ window.OverworldMaps = {
         x: utils.withGrid(3),
         y: utils.withGrid(3),
         direction: "down",
-        src: "P-Seminar-Mathematik-Escape-Game/images/gameObjects/people/bellaMedic.png",
+        src: "images/gameObjects/people/bellaMedic.png",
         shadowImg: true,
         requiredFlags: ["Q2_COMPLETED"],
         talking: [
@@ -2191,9 +2191,9 @@ window.OverworldMaps = {
   },
   Maschinenraum: {
     id: "Maschinenraum",
-    lowerSrc: "P-Seminar-Mathematik-Escape-Game/images/maps/EngineLower.png",
-    upperSrc: "P-Seminar-Mathematik-Escape-Game/images/maps/EngineUpper.png",
-    minimapSrc: "P-Seminar-Mathematik-Escape-Game/images/ui/minimaps/EngineMinimap.png",
+    lowerSrc: "images/maps/EngineLower.png",
+    upperSrc: "images/maps/EngineUpper.png",
+    minimapSrc: "images/ui/minimaps/EngineMinimap.png",
     configObjects: {
       hero: {
         type: "Person",
@@ -2206,7 +2206,7 @@ window.OverworldMaps = {
         x: utils.withGrid(4),
         y: utils.withGrid(2),
         direction: "down",
-        src: "P-Seminar-Mathematik-Escape-Game/images/gameObjects/objects/monitor.png",
+        src: "images/gameObjects/objects/monitor.png",
         shadowImg: false,
         talking: [
           {
@@ -2281,9 +2281,9 @@ window.OverworldMaps = {
   },
   Hangar: {
     id: "Hangar",
-    lowerSrc: "P-Seminar-Mathematik-Escape-Game/images/maps/CargoLower.png",
-    upperSrc: "P-Seminar-Mathematik-Escape-Game/images/maps/CargoUpper.png",
-    minimapSrc: "P-Seminar-Mathematik-Escape-Game/images/ui/minimaps/CargoMinimap.png",
+    lowerSrc: "images/maps/CargoLower.png",
+    upperSrc: "images/maps/CargoUpper.png",
+    minimapSrc: "images/ui/minimaps/CargoMinimap.png",
     configObjects: {
       hero: {
         type: "Person",
@@ -2297,7 +2297,7 @@ window.OverworldMaps = {
         x: utils.withGrid(3),
         y: utils.withGrid(5),
         direction: "up",
-        src: "P-Seminar-Mathematik-Escape-Game/images/gameObjects/objects/door.png",
+        src: "images/gameObjects/objects/door.png",
         shadowImg: false,
         talking: [
           {
@@ -2340,7 +2340,7 @@ window.OverworldMaps = {
         x: utils.withGrid(4),
         y: utils.withGrid(5),
         direction: "right",
-        src: "P-Seminar-Mathematik-Escape-Game/images/gameObjects/objects/keypad.png",
+        src: "images/gameObjects/objects/keypad.png",
         shadowImg: false,
         talking: [
           {
@@ -2356,7 +2356,7 @@ window.OverworldMaps = {
         x: utils.withGrid(2),
         y: utils.withGrid(3),
         direction: "down",
-        src: "P-Seminar-Mathematik-Escape-Game/images/gameObjects/objects/keycard.png",
+        src: "images/gameObjects/objects/keycard.png",
         shadowImg: false,
         talking: [
           { 
@@ -2368,7 +2368,7 @@ window.OverworldMaps = {
                 type: "updateObject", 
                 update: {
                   id: "Keycard",
-                  spriteSrc: "P-Seminar-Mathematik-Escape-Game/images/gameObjects/shadows/noshadow.png"
+                  spriteSrc: "images/gameObjects/shadows/noshadow.png"
                 }
               },
               { type: "textMessage", name: "playerName", text: "Da ist sie ja!"},
@@ -2383,7 +2383,7 @@ window.OverworldMaps = {
         x: utils.withGrid(11),
         y: utils.withGrid(7),
         direction: "down",
-        src: "P-Seminar-Mathematik-Escape-Game/images/gameObjects/objects/crateCover.png",
+        src: "images/gameObjects/objects/crateCover.png",
         shadowImg: false,
         talking: [
           {
@@ -2414,7 +2414,7 @@ window.OverworldMaps = {
                 type: "updateObject", 
                 update: {
                   id: "noteCrate",
-                  spriteSrc: "P-Seminar-Mathematik-Escape-Game/images/gameObjects/shadows/noshadow.png"
+                  spriteSrc: "images/gameObjects/shadows/noshadow.png"
                 }
               },
               { type: "addStoryFlag", flag: "OPENED_NOTE_CRATE" },
@@ -2435,7 +2435,7 @@ window.OverworldMaps = {
         x: utils.withGrid(4),
         y: utils.withGrid(10),
         direction: "down",
-        src: "P-Seminar-Mathematik-Escape-Game/images/gameObjects/objects/crateCover.png",
+        src: "images/gameObjects/objects/crateCover.png",
         shadowImg: false,
         talking: [
           {
@@ -2451,7 +2451,7 @@ window.OverworldMaps = {
                 type: "updateObject", 
                 update: {
                   id: "RedBallCrate",
-                  spriteSrc: "P-Seminar-Mathematik-Escape-Game/images/gameObjects/shadows/noshadow.png"
+                  spriteSrc: "images/gameObjects/shadows/noshadow.png"
                 }
               },
               { type: "addStoryFlag", flag: "OPENED_RED_CRATE" },
@@ -2472,7 +2472,7 @@ window.OverworldMaps = {
         x: utils.withGrid(6),
         y: utils.withGrid(5),
         direction: "down",
-        src: "P-Seminar-Mathematik-Escape-Game/images/gameObjects/objects/crateCover.png",
+        src: "images/gameObjects/objects/crateCover.png",
         shadowImg: false,
         talking: [
           {
@@ -2488,7 +2488,7 @@ window.OverworldMaps = {
                 type: "updateObject", 
                 update: {
                   id: "BlueBallCrate",
-                  spriteSrc: "P-Seminar-Mathematik-Escape-Game/images/gameObjects/shadows/noshadow.png"
+                  spriteSrc: "images/gameObjects/shadows/noshadow.png"
                 }
               },
               { type: "addStoryFlag", flag: "OPENED_BLUE_CRATE" },

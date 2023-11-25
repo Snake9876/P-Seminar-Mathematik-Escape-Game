@@ -30,7 +30,7 @@ class HUD {
     this.oxygenBarElement.classList.add("OxygenBar");
     this.oxygenBarElement.innerHTML = (`
       <p class="PlayerName">${this.playerName}</p>
-      <img class="Icon" src="/images/ui/icons/lung.png" />
+      <img class="Icon" src="images/ui/icons/lung.png" />
       <svg viewBox="0 0 24 5" class="OxygenContainer">
         <rect x=0 y=0 width="100%" height=1 fill="#00ffff" />
         <rect x=0 y=1 width="100%" height=3 fill="#08daff" />

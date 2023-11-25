@@ -21,7 +21,7 @@ class Progress {
         //Cafeteria-Task
       "Q2_INTRO": false,
       "Q2_IN_PROGRESS": false,
-      "LOOKING_FOR_METERSTICK": true,
+      "LOOKING_FOR_METERSTICK": false,
       "REMOVABLE": false,
       "Q2_COMPLETED": false,
       "LOOKING_FOR_MEDIC": false,

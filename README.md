@@ -1,7 +1,8 @@
 # *"Mathematiker, wir haben ein Problem!"*
 
 **Beschreibung:** Dies ist das Repository des P-Seminars: "Erstellung eines Mathematik Escape-Games".\
-Ziel des Projekts ist die Erstellung eines Mathematik Escape-Games für die neue 10. bzw. 11. Klasse (Stoffumfang: 10. Klasse LehrplanPLUS).
+Ziel des Projekts ist die Erstellung eines Mathematik Escape-Games für die neue 10. bzw. 11. Klasse \
+(Stoffumfang: 10. Klasse LehrplanPLUS).
 ##
 **Titel des Projekts:** "Mathematiker, wir haben ein Problem!" 
 

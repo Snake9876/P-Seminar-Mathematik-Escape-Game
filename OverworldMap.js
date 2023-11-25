@@ -1795,7 +1795,7 @@ window.OverworldMaps = {
               { type: "textMessage", name: "playerName", text: "Er meinte es wirklich ernst!" },
               { type: "textMessage", name: "playerName", text: "Ich weiß nicht, ob ich mich freuen oder mir Sorgen machen soll..." },
               { type: "textMessage", name: "playerName", text: "Damit werden sich die Kisten wohl öffnen lassen!" },
-              { type: "removeStoryFlag", flag: "GOT_CROWBAR" },
+              { type: "addStoryFlag", flag: "GOT_CROWBAR" },
             ]
           },
         ]

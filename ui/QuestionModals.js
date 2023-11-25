@@ -391,7 +391,7 @@ class QuestionModals {
                         hide: true,
                       }
                     },
-                    { type: "updateTimer", value: -120 },
+                    { type: "updateTimer", value: -300 },
                     { type: "textMessage", name: "playerName", text: "Oh nein, das war der falsche Berg!" },
                     { type: "removeStoryFlag", flag: "REMOVABLE" },
                   ])

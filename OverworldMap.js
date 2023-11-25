@@ -409,7 +409,7 @@ window.OverworldMaps = {
               { type: "textMessage", name: "playerName", text: "Yuri! Bist du hier? Kannst du mich hören?" },
               { type: "textMessage", name: "Yuri", text: "Hilf mir... ich bin unter... größtem Berg..." },
               { type: "textMessage", name: "playerName", text: "Die Zeit reicht nicht aus, jeden Berg wegzuräumen." },
-              { type: "textMessage", name: "playerName", text: "Ich muss herausfinden, welcher der Größte ist!" },
+              { type: "textMessage", name: "playerName", text: "Ich muss herausfinden, welcher der Größere ist!" },
               { type: "textMessage", name: "playerName", text: "Aber warte, die Berge sehen doch fast wie Kegel aus!" },
               { type: "textMessage", name: "playerName", text: "Jetzt brauche ich nur noch etwas zum Messen der Längen..." },
               { type: "textMessage", name: "playerName", text: "Hier im Raum muss es doch irgendwas dafür geben!" },
@@ -1667,7 +1667,7 @@ window.OverworldMaps = {
         x: utils.withGrid(5),
         y: utils.withGrid(2),
         direction: "down",
-        src: "images/gameObjects/objects/Monitor.png",
+        src: "images/gameObjects/objects/monitor.png",
         shadowImg: false,
         talking: [
           {      

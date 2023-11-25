@@ -460,7 +460,7 @@ class QuestionModals {
 
             break;
           case 'q4':
-            this.solution = "-sin(5,03*t-1.57)";
+            this.solution = "-sin(5,03*t-1,57)";
             this.answer = document.querySelector('.inputBar').value;
 
             //Check if Question was correct

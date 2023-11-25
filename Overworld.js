@@ -118,6 +118,17 @@ class Overworld {
       ])
     }
   })
+  new KeyPressListener("6", () => {
+    if (!this.map.isCutscenePlaying) {
+      this.map.startCutscene([
+        { 
+          type: "openModal", 
+          fileRef: "QuestionModal",
+          modalRef: "q6"
+        }
+      ])
+    }
+  })
 
   this.modalButton = document.querySelectorAll('.KeyButton');
   this.modalButton.forEach(btn => {

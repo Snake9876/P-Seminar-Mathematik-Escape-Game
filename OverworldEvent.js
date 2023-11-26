@@ -67,6 +67,11 @@ class OverworldEvent {
   }
 
   effect(resolve) {
+
+    if (this.event.sound) {
+      const audio = new Audio(this.event.sound);
+      audio.play();
+    }
     
     if(this.event.visual) {
       const container = document.querySelector(".game-container");
@@ -81,6 +86,8 @@ class OverworldEvent {
             }, this.event.time);
           }
 
+          
+          resolve();
           break;
         case "alarm":
           if(this.event.time) {
@@ -103,14 +110,12 @@ class OverworldEvent {
               isAlarm.remove();
             }
           }
-          
-          break;
-      }
-    }
 
-    if (this.event.sound) {
-      const audio = new Audio(this.event.sound);
-      audio.play();
+          
+          resolve();
+          break;
+
+      }
     }
 
     resolve();

@@ -97,7 +97,7 @@ class HudModals {
           <button class="CloseButton">&times;</button>
         </div>
         <div class="ModalContent">
-          <div id="editable-div" contenteditable="true"></div>
+          <div id="editable-div" contenteditable="true">Platz für Notizen</div>
         </div>
       `);
     }

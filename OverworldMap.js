@@ -919,7 +919,7 @@ window.OverworldMaps = {
                 time: 1000,
               },
               { type: "textMessage", name: "playerName", text: "Wo ist unser Ingenieur Yuri, wenn man ihn braucht?" },
-              { type: "textMessage", name: "playerName", text: "Wollte er sich nicht gerade einen Kaffee holen?" },
+              { type: "textMessage", name: "playerName", text: "Wollte er sich nicht gerade einen KAFFEE holen?" },
             ]
           },
           {
@@ -935,7 +935,7 @@ window.OverworldMaps = {
               { type: "textMessage", name: "playerName", text: "Verdammt, sie lässt sich nicht öffnen!" },
               { type: "textMessage", name: "playerName", text: "Dass das gerade jetzt passieren muss!" },
               { type: "textMessage", name: "playerName", text: "Wo ist unser Ingenieur Yuri, wenn man ihn braucht?" },
-              { type: "textMessage", name: "playerName", text: "Wollte er sich nicht gerade einen Kaffee holen?" },
+              { type: "textMessage", name: "playerName", text: "Wollte er sich nicht gerade einen KAFFEE holen?" },
               { type: "addStoryFlag", flag: "Q2_IN_PROGRESS" }
             ]
           },
@@ -1429,8 +1429,8 @@ window.OverworldMaps = {
               { type: "textMessage", name: "Bella", text: "Yuri! Dein Bein ist doch gebrochen!" },
               { type: "textMessage", name: "Bella", text: "Du darfst dich nicht bewegen!" },
               { type: "textMessage", name: "Yuri", text: "Verdammt! Dann hängt es wohl an dir." },
-              { type: "textMessage", name: "Yuri", text: "Du sagtest du Tür lässt sich nicht öffnen?" },
-              { type: "textMessage", name: "Yuri", text: "Die Schlüsselkarte habe ich zuletzt im Kontrollraum des Hangars gesehen..." },
+              { type: "textMessage", name: "Yuri", text: "Du sagtest die Tür lässt sich nicht öffnen?" },
+              { type: "textMessage", name: "Yuri", text: "Die Schlüsselkarte habe ich zuletzt im KONTOLLRAUM DES HANGARS gesehen..." },
               { type: "textMessage", name: "Yuri", text: "Damit sollte es klappen." },
               { type: "textMessage", name: "playerName", text: "Du kannst auf mich zählen!" },
               { type: "textMessage", name: "Yuri", text: "Wenn wir draufgehen, bring ich dich um!" },
@@ -1441,7 +1441,7 @@ window.OverworldMaps = {
           {
             required: ["Q3_COMPLETED"],
             events: [
-              { type: "textMessage", name: "Bella", text: "Am besten setzt du einen Notruf ab!" },
+              { type: "textMessage", name: "Bella", text: "Am besten setzt du einen NOTRUF ab!" },
             ]
           },
           {
@@ -1520,28 +1520,28 @@ window.OverworldMaps = {
                 direction: "up",
                 time: 250
               },
-              { type: "textMessage", name: "playerName", text: "... das Störsignal mit einer Gegenfunktion destruktiv interferieren..." },
+              { type: "textMessage", name: "playerName", text: "... das Störsignal mit einer GEGENFUNKTION destruktiv interferieren..." },
               {
                 type: "stand",
                 who: "hero",
                 direction: "up",
                 time: 500
               },
-              { type: "textMessage", name: "playerName", text: "...gleiche Frequenz..." },
+              { type: "textMessage", name: "playerName", text: "...GLEICHE FREQUENZ..." },
               {
                 type: "stand",
                 who: "hero",
                 direction: "up",
                 time: 500
               },
-              { type: "textMessage", name: "playerName", text: "...gleiche Verschiebung in x- und y-Richtung..." },
+              { type: "textMessage", name: "playerName", text: "...GLEICHE VERSCHIEBUNG in x- und y-Richtung..." },
               {
                 type: "stand",
                 who: "hero",
                 direction: "up",
                 time: 500
               },
-              { type: "textMessage", name: "playerName", text: "...umgekehrte Amplitude..." },
+              { type: "textMessage", name: "playerName", text: "...UMGEKEHRTE AMPLITUDE..." },
               {
                 type: "stand",
                 who: "hero",
@@ -1693,7 +1693,7 @@ window.OverworldMaps = {
               { type: "textMessage", name: "playerName", text: "Wenigstens scheint sie noch Signale aussenden zu können,..." },
               { type: "textMessage", name: "playerName", text: "...aber sie scheinen verzerrt zu sein!" },
               { type: "textMessage", name: "playerName", text: "Vielleicht kann ich sie reparieren..." },
-              { type: "textMessage", name: "playerName", text: "Hab ich darüber nicht erst letztens gelesen?" },
+              { type: "textMessage", name: "playerName", text: "Hab ich darüber nicht erst letztens IN EINEM BUCH gelesen?" },
               { type: "addStoryFlag", flag: "Q4_IN_PROGRESS" },
             ]
           },
@@ -1702,7 +1702,7 @@ window.OverworldMaps = {
             events: [
               { type: "effect", sound: "sounds/chat.wav" },
               { type: "textMessage", name: "playerName", text: "Vielleicht kann ich die Antenne reparieren..." },
-              { type: "textMessage", name: "playerName", text: "Hab ich darüber nicht erst letztens gelesen?" },
+              { type: "textMessage", name: "playerName", text: "Hab ich darüber nicht erst letztens IN EINEM BUCH gelesen?" },
             ]
           },
           {      
@@ -2016,7 +2016,7 @@ window.OverworldMaps = {
               },
               { type: "effect", sound: "sounds/alarm.wav"},
               { type: "textMessage", name: "Bordcomputer", text: "SYSTEMWARNUNG!! RAUMSCHIFF AUF KOLLISIONSKURS." },
-              { type: "textMessage", name: "Bordcomputer", text: "AUFPRALL IN T-MINUS 45 MINUTEN." },
+              { type: "textMessage", name: "Bordcomputer", text: "AUFPRALL IN T-MINUS 60 MINUTEN." },
               { type: "toggleTimer" },
               { type: "textMessage", name: "playerName", text: "Das wird ja immer besser!" },
               { type: "textMessage", name: "playerName", text: "Ich muss mich beeilen!" },
@@ -2075,7 +2075,7 @@ window.OverworldMaps = {
               },
               { type: "effect", sound: "sounds/alarm.wav"},
               { type: "textMessage", name: "Bordcomputer", text: "SYSTEMWARNUNG!! RAUMSCHIFF AUF KOLLISIONSKURS." },
-              { type: "textMessage", name: "Bordcomputer", text: "AUFPRALL IN T-MINUS 45 MINUTEN." },
+              { type: "textMessage", name: "Bordcomputer", text: "AUFPRALL IN T-MINUS 60 MINUTEN." },
               { type: "toggleTimer" },
               { type: "textMessage", name: "playerName", text: "Das wird ja immer besser!" },
               { type: "textMessage", name: "playerName", text: "Ich muss mich beeilen!" },

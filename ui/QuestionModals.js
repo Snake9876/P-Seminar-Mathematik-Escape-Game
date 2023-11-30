@@ -31,13 +31,13 @@ class QuestionModals {
         </div>
         <div class="ModalContent" style="padding: 5px 15px 0px 15px;">
           <center>
-            <img id="O2-img" src="/images/questions/q1.png" style="width: 150px">
+            <img id="O2-img" src="images/questions/q1.png" style="width: 170px">
           </center>
           <div>
             <input id="input" class="inputBar" type="text" placeholder="Antwort" id="answer-field1" maxlength="20">
           </div>
           <div>
-            <button class="checkButton">Check</button>
+            <button class="checkButton">Überprüfen</button>
           </div>
         </div>
       `);
@@ -58,9 +58,9 @@ class QuestionModals {
         </div>
         <div class="ModalContent">
           <center>
-            <img id="q1-img" src="/images/questions/q21.png" style="width: 150px">
+            <img id="q1-img" src="images/questions/q21.png" style="width: 170px;">
           </center>
-          <button class="checkButton">Entfernen</button>
+          <button class="checkButton" style="margin-bottom: -10px;">Entfernen</button>
         </div>
       `);
 
@@ -80,9 +80,9 @@ class QuestionModals {
         </div>
         <div class="ModalContent">
           <center>
-            <img id="q2-img" src="/images/questions/q22.png"style="width: 150px">
+            <img id="q2-img" src="images/questions/q22.png"style="width: 170px">
           </center>
-          <button class="checkButton">Entfernen</button>
+          <button class="checkButton" style="margin-bottom: -10px;">Entfernen</button>
         </div>
       `);
 
@@ -102,12 +102,12 @@ class QuestionModals {
         </div>
         <div class="ModalContent">
           <center>
-            <img id="q3-img" src="/images/questions/q3.png" style="width: 150px">
+            <img id="q3-img" src="images/questions/q3.png" style="width: 170px">
           </center>
           <div>
             <input id="input" class="inputBar" type="text" placeholder="Antwort" id="answer-field1" maxlength="20">
           </div>
-          <button class="checkButton">Check</button>
+          <button class="checkButton" style="margin-bottom: -10px;">Überprüfen</button>
         </div>
       `);
 
@@ -127,13 +127,13 @@ class QuestionModals {
         </div>
         <div class="ModalContent">
           <center>
-            <img id="q4-img" src="/images/questions/q4.png" style="width: 150px">
+            <img id="q4-img" src="images/questions/q4.png" style="width: 170px">
           </center>
-          <button class="openButton" onclick="window.open('https://www.geogebra.org/m/aejrg5vw', '_blank').focus();">Panel öffnen</button>
+          <button class="openButton" style="margin-bottom: -5px; margin-top: 5px;" onclick="window.open('https://www.geogebra.org/m/j8wsv9dk', '_blank').focus();">Panel öffnen</button>
           <div> 
             <input id="input" class="inputBar" type="text" placeholder="Antwort" id="answer-field1" maxlength="20">
           </div>
-          <button class="checkButton">Check</button>
+          <button class="checkButton" style="margin-bottom: -10px;">Überprüfen</button>
         </div>
       `);
 
@@ -167,7 +167,7 @@ class QuestionModals {
                 <button class="KeypadButton">0</button>
               </div>
             </div>
-            <button class="checkButton">Check</button>
+            <button class="checkButton" style="margin-bottom: -10px; margin-top: 5px;">Überprüfen</button>
           </div>
         </div>
       `); 
@@ -188,7 +188,7 @@ class QuestionModals {
         </div>
         <div class="ModalContent">
           <center>
-            <img id="q5-img" src="/images/questions/q5.png" style="width: 150px">
+            <img id="q5-img" src="images/questions/q5.png" style="width: 170px">
           </center>
         </div>
       `); 
@@ -209,14 +209,14 @@ class QuestionModals {
         </div>
         <div class="ModalContent">
           <center>
-            <img id="q6-img" src="/images/questions/q6.png" style="width: 150px">
-          </center>
-          <div>
-            <input id="input" class="inputBar" type="text" placeholder="Antwort" id="answer-field1" maxlength="20">
-          </div>
-          <button class="checkButton">Check</button>
+          <img id="q6-img" src="images/questions/q6.png" style="width: 170px">
+        </center>
+        <div>
+          <input id="input" class="inputBar" type="text" placeholder="Antwort" id="answer-field1" maxlength="20">
         </div>
-      `);
+        <button class="checkButton" style="margin-bottom: -10px;">Überprüfen</button>
+      </div>
+    `);
 
     }
 
@@ -234,13 +234,13 @@ class QuestionModals {
         </div>
         <div class="ModalContent">
           <center>
-            <img id="q7-img" src="/images/questions/q7.png" style="width: 150px">
+            <img id="q7-img" src="images/questions/q7.png" style="width: 170px">
           </center>
-          <button id="map-button" class="openButton">Karte öffnen</button>
+          <button id="map-button" class="openButton" style="margin-bottom: -5px; margin-top: 5px;">Karte öffnen</button>
           <div>
             <input id="input" class="inputBar" type="text" placeholder="Antwort" id="answer-field1" maxlength="20">
           </div>
-          <button class="checkButton">Check</button>
+          <button class="checkButton"style="margin-bottom: -10px;">Überprüfen</button>
         </div>
       `);
 
@@ -254,13 +254,13 @@ class QuestionModals {
       this.questionElement.innerHTML = (`
         <div class="ModalHeader">
           <div class="Title">
-            Kursberechnung
+            Karte
           </div>
           <button class="CloseButton">&times;</button>
         </div>
         <div class="ModalContent">
           <center>
-            <img id="q7-task-img" src="/images/questions/q7-task.png" style="width: 150px; image-rendering: pixalated;">
+            <img id="q7-task-img" src="images/questions/q7-task.png" style="width: 250px; transform: translate(0,-7px); image-rendering: pixalated; background-size: cover;">
           </center>
         </div>
       `);
@@ -583,7 +583,7 @@ class QuestionModals {
 
             break;
           case 'q7':
-            this.solution = "-2,2,1,0";
+            this.solution = "-2,1,0";
             this.answer = document.querySelector('.inputBar').value;
 
             //Check if Question was correct

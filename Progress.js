@@ -9,7 +9,7 @@ class Progress {
     this.isTrackerEnabled = false;
     this.roomTracker = 0;
     this.isTimerEnabled = false;
-    this.timerValue = 2700;
+    this.timerValue = 3600;
     this.storyFlags = {
       //Story-Flags
       "SEEN_INTRO": true,

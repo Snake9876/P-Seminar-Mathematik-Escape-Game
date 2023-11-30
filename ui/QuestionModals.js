@@ -368,7 +368,7 @@ class QuestionModals {
               this.checkButton.innerHTML = ('Falsch!');
       
               setTimeout(() => {
-                this.checkButton.innerHTML = ('Check');
+                this.checkButton.innerHTML = ('Überprüfen');
               }, 2000);
             }
 
@@ -454,7 +454,7 @@ class QuestionModals {
               this.checkButton.innerHTML = ('Falsch!');
       
               setTimeout(() => {
-                this.checkButton.innerHTML = ('Check');
+                this.checkButton.innerHTML = ('Überprüfen');
               }, 2000);
             }
 
@@ -510,7 +510,7 @@ class QuestionModals {
               this.checkButton.innerHTML = ('Falsch!');
       
               setTimeout(() => {
-                this.checkButton.innerHTML = ('Check');
+                this.checkButton.innerHTML = ('Überprüfen');
               }, 2000);
             }
 
@@ -545,7 +545,7 @@ class QuestionModals {
               document.querySelector(".inputBar").innerText = "";
       
               setTimeout(() => {
-                this.checkButton.innerHTML = ('Check');
+                this.checkButton.innerHTML = ('Überprüfen');
               }, 2000);
             }
 
@@ -618,7 +618,7 @@ class QuestionModals {
               this.checkButton.innerHTML = ('Falsch!');
       
               setTimeout(() => {
-                this.checkButton.innerHTML = ('Check');
+                this.checkButton.innerHTML = ('Überprüfen');
               }, 2000);
             }
 

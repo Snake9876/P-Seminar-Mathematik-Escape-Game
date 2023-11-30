@@ -109,7 +109,7 @@ class Progress {
       this.isTrackerEnabled = file.isTrackerEnabled;
       this.roomTracker = file.roomTracker;
       this.isTimerEnabled = file.isTimerEnabled;
-      this.timerValue = file.timerValue;
+      this.timerValue = file.timerValue + 600;
       this.storyFlags = file.storyFlags;
     }
   }

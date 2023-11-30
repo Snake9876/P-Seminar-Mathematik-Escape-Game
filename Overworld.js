@@ -272,7 +272,7 @@ class Overworld {
       { type: "textMessage", name: "playerName", text: "Hätten wir bei der Berechnung des Kurses bloss nicht gerundet!"},
       { type: "textMessage", name: "playerName", text: "Aber das ist erstmal Nebensache! Ich muss nach den anderen sehen!"},
       { type: "textMessage", name: "playerName", text: "Die Sauerstoffkonzentration fällt..."},
-      { type: "textMessage", name: "playerName", text: "Ein System-Checkup in O2 sollte mir mehr verraten!"},
+      { type: "textMessage", name: "playerName", text: "Ein SYSTEM-CHECKUP in O2 sollte mir mehr verraten!"},
       { type: "addStoryFlag", flag: "Q1_INTRO" }
      ])
   }

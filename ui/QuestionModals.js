@@ -31,13 +31,13 @@ class QuestionModals {
         </div>
         <div class="ModalContent" style="padding: 5px 15px 0px 15px;">
           <center>
-            <img id="O2-img" src="images/questions/q1.png" style="width: 170px">
+            <img id="O2-img" src="/images/questions/q1.png" style="width: 150px">
           </center>
           <div>
             <input id="input" class="inputBar" type="text" placeholder="Antwort" id="answer-field1" maxlength="20">
           </div>
           <div>
-            <button class="checkButton">Überprüfen</button>
+            <button class="checkButton">Check</button>
           </div>
         </div>
       `);
@@ -58,9 +58,9 @@ class QuestionModals {
         </div>
         <div class="ModalContent">
           <center>
-            <img id="q1-img" src="images/questions/q21.png" style="width: 170px;">
+            <img id="q1-img" src="/images/questions/q21.png" style="width: 150px">
           </center>
-          <button class="checkButton" style="margin-bottom: -10px;">Entfernen</button>
+          <button class="checkButton">Entfernen</button>
         </div>
       `);
 
@@ -80,9 +80,9 @@ class QuestionModals {
         </div>
         <div class="ModalContent">
           <center>
-            <img id="q2-img" src="images/questions/q22.png"style="width: 170px">
+            <img id="q2-img" src="/images/questions/q22.png"style="width: 150px">
           </center>
-          <button class="checkButton" style="margin-bottom: -10px;">Entfernen</button>
+          <button class="checkButton">Entfernen</button>
         </div>
       `);
 
@@ -102,12 +102,12 @@ class QuestionModals {
         </div>
         <div class="ModalContent">
           <center>
-            <img id="q3-img" src="images/questions/q3.png" style="width: 170px">
+            <img id="q3-img" src="/images/questions/q3.png" style="width: 150px">
           </center>
           <div>
             <input id="input" class="inputBar" type="text" placeholder="Antwort" id="answer-field1" maxlength="20">
           </div>
-          <button class="checkButton" style="margin-bottom: -10px;">Überprüfen</button>
+          <button class="checkButton">Check</button>
         </div>
       `);
 
@@ -127,13 +127,13 @@ class QuestionModals {
         </div>
         <div class="ModalContent">
           <center>
-            <img id="q4-img" src="images/questions/q4.png" style="width: 170px">
+            <img id="q4-img" src="/images/questions/q4.png" style="width: 150px">
           </center>
-          <button class="openButton" style="margin-bottom: -5px; margin-top: 5px;" onclick="window.open('https://www.geogebra.org/m/aejrg5vw', '_blank').focus();">Panel öffnen</button>
+          <button class="openButton" onclick="window.open('https://www.geogebra.org/m/aejrg5vw', '_blank').focus();">Panel öffnen</button>
           <div> 
             <input id="input" class="inputBar" type="text" placeholder="Antwort" id="answer-field1" maxlength="20">
           </div>
-          <button class="checkButton" style="margin-bottom: -10px;">Überprüfen</button>
+          <button class="checkButton">Check</button>
         </div>
       `);
 
@@ -167,7 +167,7 @@ class QuestionModals {
                 <button class="KeypadButton">0</button>
               </div>
             </div>
-            <button class="checkButton" style="margin-bottom: -10px; margin-top: 5px;">Überprüfen</button>
+            <button class="checkButton">Check</button>
           </div>
         </div>
       `); 
@@ -188,7 +188,7 @@ class QuestionModals {
         </div>
         <div class="ModalContent">
           <center>
-            <img id="q5-img" src="images/questions/q5.png" style="width: 170px">
+            <img id="q5-img" src="/images/questions/q5.png" style="width: 150px">
           </center>
         </div>
       `); 
@@ -209,12 +209,12 @@ class QuestionModals {
         </div>
         <div class="ModalContent">
           <center>
-            <img id="q6-img" src="images/questions/q6.png" style="width: 170px">
+            <img id="q6-img" src="/images/questions/q6.png" style="width: 150px">
           </center>
           <div>
             <input id="input" class="inputBar" type="text" placeholder="Antwort" id="answer-field1" maxlength="20">
           </div>
-          <button class="checkButton" style="margin-bottom: -10px;">Überprüfen</button>
+          <button class="checkButton">Check</button>
         </div>
       `);
 
@@ -234,13 +234,13 @@ class QuestionModals {
         </div>
         <div class="ModalContent">
           <center>
-            <img id="q7-img" src="images/questions/q7.png" style="width: 170px">
+            <img id="q7-img" src="/images/questions/q7.png" style="width: 150px">
           </center>
-          <button id="map-button" class="openButton" style="margin-bottom: -5px; margin-top: 5px;">Karte öffnen</button>
+          <button id="map-button" class="openButton">Karte öffnen</button>
           <div>
             <input id="input" class="inputBar" type="text" placeholder="Antwort" id="answer-field1" maxlength="20">
           </div>
-          <button class="checkButton"style="margin-bottom: -10px;">Überprüfen</button>
+          <button class="checkButton">Check</button>
         </div>
       `);
 
@@ -254,13 +254,13 @@ class QuestionModals {
       this.questionElement.innerHTML = (`
         <div class="ModalHeader">
           <div class="Title">
-            Karte
+            Kursberechnung
           </div>
           <button class="CloseButton">&times;</button>
         </div>
         <div class="ModalContent">
           <center>
-            <img id="q7-task-img" src="images/questions/q7-task.png" style="width: 250px; transform: translate(0,-7px); image-rendering: pixalated; background-size: cover;">
+            <img id="q7-task-img" src="/images/questions/q7-task.png" style="width: 150px; image-rendering: pixalated;">
           </center>
         </div>
       `);
@@ -360,7 +360,7 @@ class QuestionModals {
                     { type: "effect", sound: "sounds/alarm.wav"},
                     { type: "textMessage", name: "Bordcomputer", text: "STEUERTRIEBWERK AUSGEFALLEN. WARTUNG BENÖTIGT." },
                     { type: "textMessage", name: "playerName", text: "Auch das noch!" },
-                    { type: "textMessage", name: "playerName", text: "Dann eben zum Maschinenraum!" },
+                    { type: "textMessage", name: "playerName", text: "Dann eben zum MASCHINENRAUM!" },
                   ])
                 }, 250);
               }
@@ -368,7 +368,7 @@ class QuestionModals {
               this.checkButton.innerHTML = ('Falsch!');
       
               setTimeout(() => {
-                this.checkButton.innerHTML = ('Überprüfen');
+                this.checkButton.innerHTML = ('Check');
               }, 2000);
             }
 
@@ -391,7 +391,7 @@ class QuestionModals {
                         hide: true,
                       }
                     },
-                    { type: "updateTimer", value: -300 },
+                    { type: "updateTimer", value: -120 },
                     { type: "textMessage", name: "playerName", text: "Oh nein, das war der falsche Berg!" },
                     { type: "removeStoryFlag", flag: "REMOVABLE" },
                   ])
@@ -441,7 +441,7 @@ class QuestionModals {
                     { type: "textMessage", name: "Bella", text: "Das Medikament wird ihn fürs Erste stabilisieren." },
                     { type: "textMessage", name: "playerName", text: "Kann ich denn schon mit ihm sprechen?" },
                     { type: "textMessage", name: "Bella", text: "Noch ist er leider bewusstlos..." },
-                    { type: "textMessage", name: "Bella", text: "Setze doch in der Zwischenzeit einen Notruf ab!" },
+                    { type: "textMessage", name: "Bella", text: "Setze doch einen NOTRUF ab!" },
                     { type: "textMessage", name: "Bella", text: "Vielleicht wacht er in der Zwischenzeit auf." },
                     { type: "textMessage", name: "playerName", text: "Gute Idee! Ich beeile mich!" },
                     { type: "removeStoryFlag", flag: "Q3_IN_PROGRESS" },
@@ -454,23 +454,41 @@ class QuestionModals {
               this.checkButton.innerHTML = ('Falsch!');
       
               setTimeout(() => {
-                this.checkButton.innerHTML = ('Überprüfen');
+                this.checkButton.innerHTML = ('Check');
               }, 2000);
             }
 
             break;
           case 'q4':
-            this.solution = "-sin(5,03*t-1,57)";
+            this.solutionArray = [
+              "sin(5,03*t-1,57)",
+              "sin(5,03t-1,57)",
+              "1*sin(5,03*t-1,57)",
+              "1*sin(5,03t-1,57)",
+              "-sin(5,03*t+1,57)",
+              "-sin(5,03t+1,57)",
+              "-1*sin(5,03*t+1,57)",
+              "-1*sin(5,03t+1,57)",
+              "sin(5.03*t-1.57)",
+              "sin(5.03t-1.57)",
+              "1*sin(5.03*t-1.57)",
+              "1*sin(5.03t-1.57)",
+              "-sin(5.03*t+1.57)",
+              "-sin(5.03t+1.57)",
+              "-1*sin(5.03*t+1.57)",
+              "-1*sin(5.03t+1.57)",
+            ];
             this.answer = document.querySelector('.inputBar').value;
 
             //Check if Question was correct
-            if(this.checkAnswer(this.answer, this.solution)) {
+            if(this.solutionArray.includes(this.answer)) {
               this.disableQuestion();
 
               //Overwrite onComplete callback
               this.onComplete = () => {
                 this.coreOnComplete();
                 
+                -
                 setTimeout(() => {
                   this.map.startCutscene([
                     //Custom event 4
@@ -484,7 +502,7 @@ class QuestionModals {
                       time: 1000
                     },
                     { type: "textMessage", name: "playerName", text: "So, damit wäre der Notruf abgesetzt!" },
-                    { type: "textMessage", name: "playerName", text: "Mal sehen, ob Yuri schon wach ist." },
+                    { type: "textMessage", name: "playerName", text: "Mal sehen, ob YURI schon WACH ist." },
                   ])
                 }, 250);
               }
@@ -492,7 +510,7 @@ class QuestionModals {
               this.checkButton.innerHTML = ('Falsch!');
       
               setTimeout(() => {
-                this.checkButton.innerHTML = ('Überprüfen');
+                this.checkButton.innerHTML = ('Check');
               }, 2000);
             }
 
@@ -512,8 +530,6 @@ class QuestionModals {
                 setTimeout(() => {
                   this.map.startCutscene([
                     //Custom event 5
-                    { type: "removeStoryFlag", flag: "OPENED_RED_CRATE" },
-                    { type: "removeStoryFlag", flag: "OPENED_BLUE_CRATE" },
                     {
                       type: "updateObject",
                       update: {
@@ -529,17 +545,20 @@ class QuestionModals {
               document.querySelector(".inputBar").innerText = "";
       
               setTimeout(() => {
-                this.checkButton.innerHTML = ('Überprüfen');
+                this.checkButton.innerHTML = ('Check');
               }, 2000);
             }
 
             break;
           case 'q6':  
-            this.solution = "4,8";
+          this.solutionArray = [
+           "4,8",
+           "4.8"
+          ];
             this.answer = document.querySelector('.inputBar').value;
 
             //Check if Question was correct
-            if(this.checkAnswer(this.answer, this.solution)) {
+            if(this.solutionArray.includes(this.answer)) {
               this.disableQuestion();
 
               //Overwrite onComplete callback
@@ -554,7 +573,7 @@ class QuestionModals {
                     { type: "textMessage", name:"Bordcomputer", text: "SYSTEMWARNUNG!! EINTRITT IN ASTEROIDENGÜRTEL."},
                     { type: "textMessage", name:"Bordcomputer", text: "BERECHNUNG EINES NEUEN KURSES ERFORDERLICH."},
                     { type: "textMessage", name: "playerName", text: "Jetzt muss es schnell gehen!"},
-                    { type: "textMessage", name: "playerName", text: "Zurück zur Steuereinheit!"},
+                    { type: "textMessage", name: "playerName", text: "Zurück zur BRÜCKE!"},
                     { type: "removeStoryFlag", flag: "Q6_IN_PROGRESS" },
                     { type: "addStoryFlag", flag: "Q6_COMPLETED" }
                   ])
@@ -599,7 +618,7 @@ class QuestionModals {
               this.checkButton.innerHTML = ('Falsch!');
       
               setTimeout(() => {
-                this.checkButton.innerHTML = ('Überprüfen');
+                this.checkButton.innerHTML = ('Check');
               }, 2000);
             }
 

@@ -406,12 +406,12 @@ window.OverworldMaps = {
               },
               { type: "textMessage", name: "playerName", text: "Oh nein! Was ist denn hier passiert?!" },
               { type: "textMessage", name: "playerName", text: "Yuri! Bist du hier? Kannst du mich hören?" },
-              { type: "textMessage", name: "Yuri", text: "Hilf mir... ich bin unter... größerem Berg..." },
+              { type: "textMessage", name: "Yuri", text: "Hilf mir... ich bin unter... GRÖßEREM Berg..." },
               { type: "textMessage", name: "playerName", text: "Die Zeit reicht nicht aus, jeden Berg wegzuräumen." },
-              { type: "textMessage", name: "playerName", text: "Ich muss herausfinden, welcher der Größere ist!" },
+              { type: "textMessage", name: "playerName", text: "Ich muss herausfinden, welcher der GRÖßERE ist!" },
               { type: "textMessage", name: "playerName", text: "Aber warte, die Berge sehen doch fast wie Kegel aus!" },
               { type: "textMessage", name: "playerName", text: "Jetzt brauche ich nur noch etwas zum Messen der Längen..." },
-              { type: "textMessage", name: "playerName", text: "Hier im Raum muss es doch irgendwas dafür geben!" },
+              { type: "textMessage", name: "playerName", text: "HIER IM RAUM muss es doch irgendwas dafür geben!" },
               { type: "removeStoryFlag", flag: "Q2_INTRO" },
               { type: "addStoryFlag", flag: "LOOKING_FOR_METERSTICK" }
             ]
@@ -584,12 +584,12 @@ window.OverworldMaps = {
               },
               { type: "textMessage", name: "playerName", text: "Oh nein! Was ist denn hier passiert?!" },
               { type: "textMessage", name: "playerName", text: "Yuri! Bist du hier? Kannst du mich hören?" },
-              { type: "textMessage", name: "Yuri", text: "Hilf mir... ich bin unter... größerem Berg..." },
+              { type: "textMessage", name: "Yuri", text: "Hilf mir... ich bin unter... GRÖßEREM Berg..." },
               { type: "textMessage", name: "playerName", text: "Die Zeit reicht nicht aus, jeden Berg wegzuräumen." },
-              { type: "textMessage", name: "playerName", text: "Ich muss herausfinden, welcher der Größte ist!" },
+              { type: "textMessage", name: "playerName", text: "Ich muss herausfinden, welcher der GRÖßERE ist!" },
               { type: "textMessage", name: "playerName", text: "Aber warte, die Berge sehen doch fast wie Kegel aus!" },
               { type: "textMessage", name: "playerName", text: "Jetzt brauche ich nur noch etwas zum Messen der Längen..." },
-              { type: "textMessage", name: "playerName", text: "Hier im Raum muss es doch irgendwas dafür geben!" },
+              { type: "textMessage", name: "playerName", text: "HIER IM RAUM muss es doch irgendwas dafür geben!" },
               { type: "removeStoryFlag", flag: "Q2_INTRO" },
               { type: "addStoryFlag", flag: "LOOKING_FOR_METERSTICK" }
 
@@ -1174,12 +1174,12 @@ window.OverworldMaps = {
               },
               { type: "textMessage", name: "playerName", text: "Oh nein! Was ist denn hier passiert?!" },
               { type: "textMessage", name: "playerName", text: "Yuri! Bist du hier? Kannst du mich hören?" },
-              { type: "textMessage", name: "Yuri", text: "Hilf mir... ich bin unter... größerem Berg..." },
+              { type: "textMessage", name: "Yuri", text: "Hilf mir... ich bin unter... GRÖßEREM Berg..." },
               { type: "textMessage", name: "playerName", text: "Die Zeit reicht nicht aus, jeden Berg wegzuräumen." },
-              { type: "textMessage", name: "playerName", text: "Ich muss herausfinden, welcher der Größte ist!" },
+              { type: "textMessage", name: "playerName", text: "Ich muss herausfinden, welcher der GRÖßERE ist!" },
               { type: "textMessage", name: "playerName", text: "Aber warte, die Berge sehen doch fast wie Kegel aus!" },
               { type: "textMessage", name: "playerName", text: "Jetzt brauche ich nur noch etwas zum Messen der Längen..." },
-              { type: "textMessage", name: "playerName", text: "Hier im Raum muss es doch irgendwas dafür geben!" },
+              { type: "textMessage", name: "playerName", text: "HIER IM RAUM muss es doch irgendwas dafür geben!" },
               { type: "removeStoryFlag", flag: "Q2_INTRO" },
               { type: "addStoryFlag", flag: "LOOKING_FOR_METERSTICK" }
 
@@ -1214,12 +1214,12 @@ window.OverworldMaps = {
               },
               { type: "textMessage", name: "playerName", text: "Oh nein! Was ist denn hier passiert?!" },
               { type: "textMessage", name: "playerName", text: "Yuri! Bist du hier? Kannst du mich hören?" },
-              { type: "textMessage", name: "Yuri", text: "Hilf mir... ich bin unter... größerem Berg..." },
+              { type: "textMessage", name: "Yuri", text: "Hilf mir... ich bin unter... GRÖßEREM Berg..." },
               { type: "textMessage", name: "playerName", text: "Die Zeit reicht nicht aus, jeden Berg wegzuräumen." },
-              { type: "textMessage", name: "playerName", text: "Ich muss herausfinden, welcher der Größte ist!" },
+              { type: "textMessage", name: "playerName", text: "Ich muss herausfinden, welcher der GRÖßERE ist!" },
               { type: "textMessage", name: "playerName", text: "Aber warte, die Berge sehen doch fast wie Kegel aus!" },
               { type: "textMessage", name: "playerName", text: "Jetzt brauche ich nur noch etwas zum Messen der Längen..." },
-              { type: "textMessage", name: "playerName", text: "Hier im Raum muss es doch irgendwas dafür geben!" },
+              { type: "textMessage", name: "playerName", text: "HIER IM RAUM muss es doch irgendwas dafür geben!" },
               { type: "removeStoryFlag", flag: "Q2_INTRO" },
               { type: "addStoryFlag", flag: "LOOKING_FOR_METERSTICK" }
             ]
@@ -1276,7 +1276,7 @@ window.OverworldMaps = {
             required: ["Q2_COMPLETED"],
             events: [
               { type: "textMessage", name: "playerName", text: "Er ist ohnmächtig und seine Vitalwerte sind miserabel!"},
-              { type: "textMessage", name: "playerName", text: "Ich muss Krankenschwester Bella finden!"}, 
+              { type: "textMessage", name: "playerName", text: "Ich muss KRANKENSCHWESTER BELLA finden!"}, 
             ]
           },
           {
@@ -1301,7 +1301,7 @@ window.OverworldMaps = {
               { type: "textMessage", name: "playerName", text: "Er ist ohnmächtig und seine Vitalwerte sind miserabel!"},
               { type: "textMessage", name: "playerName", text: "Noch ist er am Leben,..."},
               { type: "textMessage", name: "playerName", text: "...aber er muss dringend untersucht werden!"},
-              { type: "textMessage", name: "playerName", text: "Ich muss Krankenschwester Bella finden!"}, 
+              { type: "textMessage", name: "playerName", text: "Ich muss KRANKENSCHWESTER BELLA finden!"}, 
               { type: "addStoryFlag", flag: "Q2_COMPLETED" },
             ]
           }
@@ -1360,7 +1360,7 @@ window.OverworldMaps = {
                 text: "Wem der wohl gehört?"
               },
               { type: "textMessage", name: "playerName",
-                text: "Aha! Ein Meterstab!"
+                text: "Aha! Ein METERSTAB!"
               },
               { type: "textMessage", name: "playerName",
                 text: "Damit wird es wohl gehen."
@@ -1382,8 +1382,8 @@ window.OverworldMaps = {
             required: ["LOOKING_FOR_CROWBAR"],
             events: [
               { type: "textMessage", name: "playerName", text: "Yuri! Weißt du zufällig, wie ich die Kisten im Hangar öffnen kann?" },
-              { type: "textMessage", name: "Yuri", text: "Hier, nimm meine Schlüsselkarte für die Quartiere." },
-              { type: "textMessage", name: "Yuri", text: "Da liegt meine Brechstange." },
+              { type: "textMessage", name: "Yuri", text: "Hier, nimm meine Schlüsselkarte für die QUARTIERE." },
+              { type: "textMessage", name: "Yuri", text: "Dort liegt meine BRECHSTANGE." },
               { type: "textMessage", name: "playerName", text: "Warte, wieso...?" },
               { type: "textMessage", name: "Yuri", text: "Man kann nie wissen..." },
               { type: "textMessage", name: "playerName", text: "Aber...?" },
@@ -2309,11 +2309,11 @@ window.OverworldMaps = {
                 time: 1000,
               },
               { type: "textMessage", name: "playerName", text: "Langsam ist das echt nicht mehr witzig!"},
-              { type: "textMessage", name: "playerName", text: "Die Tür hat ein Zahlenschloss..."},
-              { type: "textMessage", name: "playerName", text: "Wie war der Code noch gleich?"},
+              { type: "textMessage", name: "playerName", text: "Die Tür hat ein ZAHLENSCHLOSS..."},
+              { type: "textMessage", name: "playerName", text: "Wie war der CODE noch gleich?"},
               { type: "textMessage", name: "playerName", text: "Zum Glück kann sich unser Lagarist Nick sowas nicht merken..."},
-              { type: "textMessage", name: "playerName", text: "... er hat einen Zettel dafür!"},
-              { type: "textMessage", name: "playerName", text: "Der muss doch hier irgendwo im Hangar sein!"},
+              { type: "textMessage", name: "playerName", text: "... er hat einen ZETTEL dafür!"},
+              { type: "textMessage", name: "playerName", text: "Der muss doch hier IRGENDWO IM HANGAR sein!"},
               { type: "removeStoryFlag", flag: "Q5_INTRO"},
               { type: "addStoryFlag", flag: "Q5_IN_PROGRESS"},
             ]
@@ -2372,7 +2372,7 @@ window.OverworldMaps = {
               },
               { type: "textMessage", name: "playerName", text: "Da ist sie ja!"},
               { type: "textMessage", name: "playerName", text: "Ich darf keine Zeit verlieren..."},
-              { type: "textMessage", name: "playerName", text: "Auf zum Maschinenraum!"},
+              { type: "textMessage", name: "playerName", text: "Auf zum MASCHINENRAUM!"},
             ]
           }
         ]
@@ -2420,7 +2420,7 @@ window.OverworldMaps = {
             required: ["Q5_IN_PROGRESS"],
             events: [
               { type: "textMessage", name: "playerName", text: "Argh! Sie lässt sich nicht öffnen!"},
-              { type: "textMessage", name: "playerName", text: "Vielleicht weiß Yuri weiter!"},
+              { type: "textMessage", name: "playerName", text: "Vielleicht weiß YURI weiter!"},
               { type: "addStoryFlag", flag: "LOOKING_FOR_CROWBAR"},
             ]
           }
@@ -2465,7 +2465,7 @@ window.OverworldMaps = {
             required: ["Q5_IN_PROGRESS"],
             events: [
               { type: "textMessage", name: "playerName", text: "Argh! Sie lässt sich nicht öffnen!"},
-              { type: "textMessage", name: "playerName", text: "Vielleicht weiß Yuri weiter!"},
+              { type: "textMessage", name: "playerName", text: "Vielleicht weiß YURI weiter!"},
               { type: "addStoryFlag", flag: "LOOKING_FOR_CROWBAR"},
             ]
           }
@@ -2510,7 +2510,7 @@ window.OverworldMaps = {
             required: ["Q5_IN_PROGRESS"],
             events: [
               { type: "textMessage", name: "playerName", text: "Argh! Sie lässt sich nicht öffnen!"},
-              { type: "textMessage", name: "playerName", text: "Vielleicht weiß Yuri weiter!"},
+              { type: "textMessage", name: "playerName", text: "Vielleicht weiß YURI weiter!"},
               { type: "addStoryFlag", flag: "LOOKING_FOR_CROWBAR"},
             ]
           }
